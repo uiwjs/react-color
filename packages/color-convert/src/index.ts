@@ -1,12 +1,6 @@
 export * from './utils';
 
-export type ObjectColor =
-  | RgbColor
-  | HslColor
-  | HsvColor
-  | RgbaColor
-  | HslaColor
-  | HsvaColor;
+export type ObjectColor = RgbColor | HslColor | HsvColor | RgbaColor | HslaColor | HsvaColor;
 export interface HsvColor {
   h: number;
   s: number;
@@ -72,8 +66,7 @@ export const hsvaToHslaString = (hsva: HsvaColor): string => {
 };
 
 export const hslaStringToHsva = (hslString: string): HsvaColor => {
-  const matcher =
-    /hsla?\(?\s*(-?\d*\.?\d+)(deg|rad|grad|turn)?[,\s]+(-?\d*\.?\d+)%?[,\s]+(-?\d*\.?\d+)%?,?\s*[/\s]*(-?\d*\.?\d+)?(%)?\s*\)?/i;
+  const matcher = /hsla?\(?\s*(-?\d*\.?\d+)(deg|rad|grad|turn)?[,\s]+(-?\d*\.?\d+)%?[,\s]+(-?\d*\.?\d+)%?,?\s*[/\s]*(-?\d*\.?\d+)?(%)?\s*\)?/i;
   const match = matcher.exec(hslString);
 
   if (!match) return { h: 0, s: 0, v: 0, a: 1 };
@@ -112,19 +105,14 @@ export const hsvaToHsla = ({ h, s, v, a }: HsvaColor): HslaColor => {
 
   return {
     h: round(h),
-    s: round(
-      hh > 0 && hh < 200
-        ? ((s * v) / 100 / (hh <= 100 ? hh : 200 - hh)) * 100
-        : 0,
-    ),
+    s: round(hh > 0 && hh < 200 ? ((s * v) / 100 / (hh <= 100 ? hh : 200 - hh)) * 100 : 0),
     l: round(hh / 2),
     a: round(a, 2),
   };
 };
 
 export const hsvaStringToHsva = (hsvString: string): HsvaColor => {
-  const matcher =
-    /hsva?\(?\s*(-?\d*\.?\d+)(deg|rad|grad|turn)?[,\s]+(-?\d*\.?\d+)%?[,\s]+(-?\d*\.?\d+)%?,?\s*[/\s]*(-?\d*\.?\d+)?(%)?\s*\)?/i;
+  const matcher = /hsva?\(?\s*(-?\d*\.?\d+)(deg|rad|grad|turn)?[,\s]+(-?\d*\.?\d+)%?[,\s]+(-?\d*\.?\d+)%?,?\s*[/\s]*(-?\d*\.?\d+)?(%)?\s*\)?/i;
   const match = matcher.exec(hsvString);
 
   if (!match) return { h: 0, s: 0, v: 0, a: 1 };
@@ -154,8 +142,7 @@ export const parseHue = (value: string, unit = 'deg'): number => {
 export const hsvStringToHsva = hsvaStringToHsva;
 
 export const rgbaStringToHsva = (rgbaString: string): HsvaColor => {
-  const matcher =
-    /rgba?\(?\s*(-?\d*\.?\d+)(%)?[,\s]+(-?\d*\.?\d+)(%)?[,\s]+(-?\d*\.?\d+)(%)?,?\s*[/\s]*(-?\d*\.?\d+)?(%)?\s*\)?/i;
+  const matcher = /rgba?\(?\s*(-?\d*\.?\d+)(%)?[,\s]+(-?\d*\.?\d+)(%)?[,\s]+(-?\d*\.?\d+)(%)?,?\s*[/\s]*(-?\d*\.?\d+)?(%)?\s*\)?/i;
   const match = matcher.exec(rgbaString);
 
   if (!match) return { h: 0, s: 0, v: 0, a: 1 };
@@ -200,11 +187,7 @@ export const hexToRgba = (hex: string): RgbaColor => {
   };
 };
 
-export const round = (
-  number: number,
-  digits = 0,
-  base = Math.pow(10, digits),
-): number => {
+export const round = (number: number, digits = 0, base = Math.pow(10, digits)): number => {
   return Math.round(base * number) / base;
 };
 
@@ -246,8 +229,7 @@ export const hsvaToRgbaString = (hsva: HsvaColor): string => {
 
 export const rgbaToRgb = ({ r, g, b }: RgbaColor): RgbColor => ({ r, g, b });
 export const hslaToHsl = ({ h, s, l }: HslaColor): HslColor => ({ h, s, l });
-export const hsvaToHex = (hsva: HsvaColor): string =>
-  rgbaToHex(hsvaToRgba(hsva));
+export const hsvaToHex = (hsva: HsvaColor): string => rgbaToHex(hsvaToRgba(hsva));
 export const hsvaToHsv = (hsva: HsvaColor): HsvColor => {
   const { h, s, v } = roundHsva(hsva);
   return { h, s, v };

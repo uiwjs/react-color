@@ -1,10 +1,7 @@
 import { hexToRgba } from './';
 import { ObjectColor } from './';
 
-export const equalColorObjects = (
-  first: ObjectColor,
-  second: ObjectColor,
-): boolean => {
+export const equalColorObjects = (first: ObjectColor, second: ObjectColor): boolean => {
   if (first === second) return true;
 
   for (const prop in first) {
@@ -13,11 +10,7 @@ export const equalColorObjects = (
     // on an object to define how iteration is normally done. To ensure extra keys are not allowed on our types,
     // we must cast our object to unknown (as RGB demands `r` be a key, while `Record<string, x>` does not care if
     // there is or not), and then as a type TS can iterate over.
-    if (
-      (first as unknown as Record<string, number>)[prop] !==
-      (second as unknown as Record<string, number>)[prop]
-    )
-      return false;
+    if ((first as unknown as Record<string, number>)[prop] !== (second as unknown as Record<string, number>)[prop]) return false;
   }
 
   return true;
@@ -37,5 +30,4 @@ export const equalHex = (first: string, second: string): boolean => {
 const hex3 = /^#?[0-9A-F]{3}$/i;
 const hex6 = /^#?[0-9A-F]{6}$/i;
 
-export const validHex = (color: string): boolean =>
-  hex6.test(color) || hex3.test(color);
+export const validHex = (color: string): boolean => hex6.test(color) || hex3.test(color);

@@ -7,4 +7,5 @@ dist
 build
 website/web/build
 lib
+coverage
 node_modules

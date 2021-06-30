@@ -1,23 +1,12 @@
-import {
-  HslColor,
-  HslaColor,
-  HsvaColor,
-  hsvaToHslString,
-} from '@uiw/color-convert';
+import { HslColor, HslaColor, HsvaColor, hsvaToHslString } from '@uiw/color-convert';
 
 export interface Interaction {
   left: number;
   top: number;
 }
 
-export const calculateChange = (
-  e: React.MouseEvent<HTMLDivElement, MouseEvent> &
-    React.TouchEvent<HTMLDivElement>,
-  hsva: HsvaColor,
-  container: HTMLDivElement,
-): HsvaColor => {
-  const { width: containerWidth, height: containerHeight } =
-    container.getBoundingClientRect();
+export const calculateChange = (e: React.MouseEvent<HTMLDivElement, MouseEvent> & React.TouchEvent<HTMLDivElement>, hsva: HsvaColor, container: HTMLDivElement): HsvaColor => {
+  const { width: containerWidth, height: containerHeight } = container.getBoundingClientRect();
   const x = typeof e.pageX === 'number' ? e.pageX : e.touches[0].pageX;
   const y = typeof e.pageY === 'number' ? e.pageY : e.touches[0].pageY;
   let left = x - (container.getBoundingClientRect().left + window.pageXOffset);

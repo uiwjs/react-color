@@ -7,10 +7,7 @@ function App() {
   const [hsva, setHsva] = useState({ h: 0, s: 75, v: 82, a: 1 });
   return (
     <div className={styles.app}>
-      <header
-        className={styles.header}
-        style={{ backgroundColor: hsvaToHslaString(hsva) }}
-      >
+      <header className={styles.header} style={{ backgroundColor: hsvaToHslaString(hsva) }}>
         <img src={logo} className={styles.logo} alt="logo" />
       </header>
       <div className={styles.content}>
