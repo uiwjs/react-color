@@ -7,7 +7,7 @@ import { useCallback } from 'react';
 
 export * from '@uiw/color-convert';
 
-interface ColorSaturationProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
+export interface ColorSaturationProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   prefixCls?: string;
   hsva: HsvaColor;
   onChange: (newColor: HsvaColor) => void;
