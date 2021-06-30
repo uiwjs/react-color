@@ -1,0 +1,44 @@
+{
+  "private": true,
+  "scripts": {
+    "type": "npm run t:cjs && npm run t:esm",
+    "type:watch": "npm run t:esm -- --watch & npm run t:cjs -- --watch",
+    "t:esm": "lerna exec --scope @uiw/color-convert -- tsbb types --outDir lib/esm",
+    "t:cjs": "lerna exec --scope @uiw/color-convert -- tsbb types --outDir lib/cjs",
+    "b:lib": "lerna exec --scope @uiw/color-convert -- tsbb build --target react",
+    "w:lib": "lerna exec --scope @uiw/color-convert -- tsbb watch --target react",
+    "lib:watch": "npm run w:lib && npm run type:watch",
+    "bootstrap": "lerna bootstrap",
+    "hoist": "lerna bootstrap --hoist",
+    "test": "tsbb test --env=jsdom",
+    "coverage": "tsbb test --coverage",
+    "clean": "lerna clean",
+    "prepare": "husky install",
+    "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,less,md,json}": [
+      "prettier --write"
+    ]
+  },
+  "license": "MIT",
+  "jest": {
+    "testMatch": [
+      "<rootDir>/packages/**/tests/*.{js,jsx,ts,tsx}"
+    ],
+    "collectCoverageFrom": [
+      "**/*.{tsx,ts}",
+      "!**/node_modules/**",
+      "!**/coverage/**",
+      "!**/website/**",
+      "!**/vendor/**"
+    ]
+  },
+  "devDependencies": {
+    "lint-staged": "11.0.0",
+    "lerna": "4.0.0",
+    "husky": "6.0.0",
+    "prettier": "2.3.1",
+    "tsbb": "2.2.1"
+  }
+}

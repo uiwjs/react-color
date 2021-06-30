@@ -1,0 +1,8 @@
+{
+  "packages": ["packages/*", "website"],
+  "bootstrap": {
+    "yarnClientArgs": ["--no-yarn-lock", "--no-package-lock"],
+    "forceLocal": true
+  },
+  "version": "0.0.0"
+}
