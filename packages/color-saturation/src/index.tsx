@@ -14,7 +14,7 @@ interface ColorSaturationProps extends Omit<React.HTMLAttributes<HTMLDivElement>
 }
 
 export default React.forwardRef<HTMLDivElement, ColorSaturationProps>((props, ref) => {
-  const { prefixCls = 'w-color-saturation', hsva, onChange, ...other } = props;
+  const { prefixCls = 'w-color-saturation', className, hsva, onChange, ...other } = props;
   const container = useRef<HTMLDivElement>(null);
   const hasTouched = useRef(false);
   const [isDragging, setDragging] = useState(false);
@@ -77,7 +77,14 @@ export default React.forwardRef<HTMLDivElement, ColorSaturationProps>((props, re
   }, []);
 
   return (
-    <div className={prefixCls} style={containerStyle} ref={container} {...other} onMouseDown={handleMoveStart} onTouchStart={handleMoveStart}>
+    <div
+      className={`${prefixCls} ${className || ''}`}
+      style={containerStyle}
+      ref={container}
+      {...other}
+      onMouseDown={handleMoveStart}
+      onTouchStart={handleMoveStart}
+    >
       <div
         style={{
           inset: 0,

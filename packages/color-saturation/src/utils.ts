@@ -15,7 +15,11 @@ export const preventDefaultMove = (event: MouseEvent | TouchEvent): void => {
   !isTouch(event) && event.preventDefault();
 };
 
-export const calculateChange = (e: React.MouseEvent<HTMLDivElement, MouseEvent> & React.TouchEvent<HTMLDivElement>, hsva: HsvaColor, container: HTMLDivElement): HsvaColor => {
+export const calculateChange = (
+  e: React.MouseEvent<HTMLDivElement, MouseEvent> & React.TouchEvent<HTMLDivElement>,
+  hsva: HsvaColor,
+  container: HTMLDivElement,
+): HsvaColor => {
   const { width: containerWidth, height: containerHeight } = container.getBoundingClientRect();
   const x = typeof e.pageX === 'number' ? e.pageX : e.touches[0].pageX;
   const y = typeof e.pageY === 'number' ? e.pageY : e.touches[0].pageY;

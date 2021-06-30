@@ -6,6 +6,10 @@
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
   "keywords": [
+    "react",
+    "react-color",
+    "react-color-saturation",
+    "saturation",
     "color",
     "convert"
   ],
