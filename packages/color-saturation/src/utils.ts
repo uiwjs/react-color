@@ -1,9 +1,19 @@
-import { HslColor, HslaColor, HsvaColor, hsvaToHslString } from '@uiw/color-convert';
+import { HsvaColor } from '@uiw/color-convert';
 
 export interface Interaction {
   left: number;
   top: number;
 }
+
+// Check if an event was triggered by touch
+export const isTouch = (event: MouseEvent | TouchEvent): event is TouchEvent => 'touches' in event;
+
+// Browsers introduced an intervention, making touch events passive by default.
+// This workaround removes `preventDefault` call from the touch handlers.
+// https://github.com/facebook/react/issues/19651
+export const preventDefaultMove = (event: MouseEvent | TouchEvent): void => {
+  !isTouch(event) && event.preventDefault();
+};
 
 export const calculateChange = (e: React.MouseEvent<HTMLDivElement, MouseEvent> & React.TouchEvent<HTMLDivElement>, hsva: HsvaColor, container: HTMLDivElement): HsvaColor => {
   const { width: containerWidth, height: containerHeight } = container.getBoundingClientRect();

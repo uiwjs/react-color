@@ -13,7 +13,7 @@ function App() {
       <div className={styles.content}>
         <ColorSaturation
           hsva={hsva}
-          onChange={(newColor: any) => {
+          onChange={(newColor) => {
             newColor = { ...hsva, ...newColor };
             setHsva({ ...newColor });
           }}
