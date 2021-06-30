@@ -10,6 +10,7 @@ package-lock.json
 .cache
 .vscode
 
+*.log
 *.bak
 *.tem
 *.temp
