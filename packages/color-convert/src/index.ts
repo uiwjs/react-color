@@ -66,7 +66,8 @@ export const hsvaToHslaString = (hsva: HsvaColor): string => {
 };
 
 export const hslaStringToHsva = (hslString: string): HsvaColor => {
-  const matcher = /hsla?\(?\s*(-?\d*\.?\d+)(deg|rad|grad|turn)?[,\s]+(-?\d*\.?\d+)%?[,\s]+(-?\d*\.?\d+)%?,?\s*[/\s]*(-?\d*\.?\d+)?(%)?\s*\)?/i;
+  const matcher =
+    /hsla?\(?\s*(-?\d*\.?\d+)(deg|rad|grad|turn)?[,\s]+(-?\d*\.?\d+)%?[,\s]+(-?\d*\.?\d+)%?,?\s*[/\s]*(-?\d*\.?\d+)?(%)?\s*\)?/i;
   const match = matcher.exec(hslString);
 
   if (!match) return { h: 0, s: 0, v: 0, a: 1 };
@@ -112,7 +113,8 @@ export const hsvaToHsla = ({ h, s, v, a }: HsvaColor): HslaColor => {
 };
 
 export const hsvaStringToHsva = (hsvString: string): HsvaColor => {
-  const matcher = /hsva?\(?\s*(-?\d*\.?\d+)(deg|rad|grad|turn)?[,\s]+(-?\d*\.?\d+)%?[,\s]+(-?\d*\.?\d+)%?,?\s*[/\s]*(-?\d*\.?\d+)?(%)?\s*\)?/i;
+  const matcher =
+    /hsva?\(?\s*(-?\d*\.?\d+)(deg|rad|grad|turn)?[,\s]+(-?\d*\.?\d+)%?[,\s]+(-?\d*\.?\d+)%?,?\s*[/\s]*(-?\d*\.?\d+)?(%)?\s*\)?/i;
   const match = matcher.exec(hsvString);
 
   if (!match) return { h: 0, s: 0, v: 0, a: 1 };
@@ -142,7 +144,8 @@ export const parseHue = (value: string, unit = 'deg'): number => {
 export const hsvStringToHsva = hsvaStringToHsva;
 
 export const rgbaStringToHsva = (rgbaString: string): HsvaColor => {
-  const matcher = /rgba?\(?\s*(-?\d*\.?\d+)(%)?[,\s]+(-?\d*\.?\d+)(%)?[,\s]+(-?\d*\.?\d+)(%)?,?\s*[/\s]*(-?\d*\.?\d+)?(%)?\s*\)?/i;
+  const matcher =
+    /rgba?\(?\s*(-?\d*\.?\d+)(%)?[,\s]+(-?\d*\.?\d+)(%)?[,\s]+(-?\d*\.?\d+)(%)?,?\s*[/\s]*(-?\d*\.?\d+)?(%)?\s*\)?/i;
   const match = matcher.exec(rgbaString);
 
   if (!match) return { h: 0, s: 0, v: 0, a: 1 };
