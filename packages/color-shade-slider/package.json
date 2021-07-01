@@ -1,0 +1,39 @@
+{
+  "name": "@uiw/react-color-shade-slider",
+  "version": "0.0.1",
+  "description": "Color ShadeSlider component for React.",
+  "author": "Kenny Wong <wowohoo@qq.com>",
+  "sideEffects": false,
+  "main": "lib/cjs/index.js",
+  "module": "lib/esm/index.js",
+  "keywords": [
+    "react",
+    "react-color",
+    "react-color-shade-slider",
+    "shade-slider",
+    "color",
+    "convert"
+  ],
+  "license": "MIT",
+  "files": [
+    "lib",
+    "src"
+  ],
+  "peerDependencies": {
+    "react": ">=16.9.0",
+    "react-dom": ">=16.9.0"
+  },
+  "dependencies": {
+    "@babel/runtime": "7.14.6",
+    "@uiw/color-convert": "0.0.1",
+    "@uiw/react-color-alpha": "0.0.1"
+  },
+  "devDependencies": {
+    "@types/react": "17.0.11",
+    "@types/react-dom": "17.0.8",
+    "@types/react-test-renderer": "17.0.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-test-renderer": "17.0.2"
+  }
+}
