@@ -1,12 +1,12 @@
 import React from 'react';
 import { hsvaToHslaString } from '@uiw/color-convert';
-import Alpha, { ColorAlphaProps } from '@uiw/react-color-alpha';
+import Alpha, { AlphaProps } from '@uiw/react-color-alpha';
 
-export interface ColorShadeSliderProps extends Omit<ColorAlphaProps, 'onChange'> {
+export interface ShadeSliderProps extends Omit<AlphaProps, 'onChange'> {
   onChange?: (newShade: { v: number; s: number }) => void;
 }
 
-export default React.forwardRef<HTMLDivElement, ColorShadeSliderProps>((props, ref) => {
+export default React.forwardRef<HTMLDivElement, ShadeSliderProps>((props, ref) => {
   const { onChange, direction = 'horizontal', hsva, ...other } = props;
   const colorFrom = hsvaToHslaString(Object.assign({}, hsva, { a: 1, s: 100, v: 100 }));
   return (

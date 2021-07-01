@@ -5,14 +5,14 @@ import { Pointer } from './Pointer';
 
 export * from '@uiw/color-convert';
 
-export interface ColorSaturationProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
+export interface SaturationProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   prefixCls?: string;
   /** hsva => `{ h: 0, s: 75, v: 82, a: 1 }` */
   hsva: HsvaColor;
   onChange?: (newColor: HsvaColor) => void;
 }
 
-export default React.forwardRef<HTMLDivElement, ColorSaturationProps>((props, ref) => {
+export default React.forwardRef<HTMLDivElement, SaturationProps>((props, ref) => {
   const { prefixCls = 'w-color-saturation', className, style, hsva, onChange, ...other } = props;
   const containerStyle: React.CSSProperties = {
     width: 200,

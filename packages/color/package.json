@@ -6,6 +6,10 @@
   "sideEffects": false,
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uiwjs/react-color.git"
+  },
   "keywords": [
     "react",
     "react-color",
