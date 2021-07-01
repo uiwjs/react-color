@@ -1,6 +1,6 @@
 {
   "name": "@uiw-website/document",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "React color website.",
   "private": true,
   "scripts": {
