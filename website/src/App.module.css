@@ -1,6 +1,6 @@
 .app {
   padding: 30px;
-  height: 100%;
+  min-height: 100%;
 }
 
 .warpper {
@@ -8,6 +8,8 @@
   box-shadow: 0 10px 15px -5px rgb(32 32 64 / 25%);
   border-radius: 16px;
   padding: 5px;
+  max-width: 860px;
+  margin: 0 auto;
 }
 
 .header {
