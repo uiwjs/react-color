@@ -1,13 +1,25 @@
+.app {
+  padding: 30px;
+  height: 100%;
+}
+
+.warpper {
+  background-color: #fff;
+  box-shadow: 0 10px 15px -5px rgb(32 32 64 / 25%);
+  border-radius: 16px;
+  padding: 5px;
+}
+
 .header {
   background-color: #282c34;
   min-height: 380px;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
+  border-radius: 16px 16px 0 0;
 }
 
 .logo {
