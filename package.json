@@ -25,6 +25,7 @@
     "coverage": "tsbb test --coverage",
     "clean": "lerna clean",
     "prepare": "husky install",
+    "publish": "lerna publish from-package --yes --no-verify-access",
     "version": "lerna version --no-changelog --no-push --no-git-tag-version --yes",
     "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'"
   },
