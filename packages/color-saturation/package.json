@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-color-saturation",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Color Saturation",
   "author": "Kenny Wong <wowohoo@qq.com>",
   "main": "lib/cjs/index.js",
@@ -24,8 +24,8 @@
   },
   "dependencies": {
     "@babel/runtime": "7.14.6",
-    "@uiw/color-convert": "0.0.1",
-    "@uiw/react-drag-event-interactive": "0.0.1"
+    "@uiw/color-convert": "^0.0.2",
+    "@uiw/react-drag-event-interactive": "^0.0.2"
   },
   "devDependencies": {
     "@types/react": "17.0.11",
