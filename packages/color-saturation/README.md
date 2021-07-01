@@ -10,11 +10,11 @@ npm i @uiw/react-color-saturation
 ## Usage
 
 ```js
-import ColorSaturation from '@uiw/react-color-saturation';
+import Saturation from '@uiw/react-color-saturation';
 
 function Demo() {
   return (
-    <ColorSaturation hsva={{ h: 0, s: 75, v: 82, a: 1 }} />
+    <Saturation hsva={{ h: 0, s: 75, v: 82, a: 1 }} />
   );
 }
 ```

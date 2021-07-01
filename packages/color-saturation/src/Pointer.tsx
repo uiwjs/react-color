@@ -27,9 +27,18 @@ export const Pointer = ({ className, color, left, top, prefixCls }: PointerProps
             transform: 'translate(-3px, -3px)',
             boxShadow: BOXSHADOW,
             borderRadius: '50%',
-            backgroundColor: color,
+            backgroundColor: '#fff',
           }}
-        />
+        >
+          <div
+            style={{
+              inset: 0,
+              borderRadius: '50%',
+              position: 'absolute',
+              backgroundColor: color,
+            }}
+          />
+        </div>
       </div>
     ),
     [top, left, color, className, prefixCls],
