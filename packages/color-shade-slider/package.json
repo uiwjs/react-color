@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-color-shade-slider",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Color ShadeSlider component for React.",
   "author": "Kenny Wong <wowohoo@qq.com>",
   "sideEffects": false,
@@ -29,8 +29,8 @@
   },
   "dependencies": {
     "@babel/runtime": "7.14.6",
-    "@uiw/color-convert": "^0.0.3",
-    "@uiw/react-color-alpha": "^0.0.3"
+    "@uiw/color-convert": "^0.0.4",
+    "@uiw/react-color-alpha": "^0.0.4"
   },
   "devDependencies": {
     "@types/react": "17.0.11",
