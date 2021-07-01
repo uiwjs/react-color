@@ -3,15 +3,17 @@ import { useMemo } from 'react';
 
 export interface PointerProps extends React.HTMLAttributes<HTMLDivElement> {
   prefixCls?: string;
-  left: string;
+  left?: string;
+  top?: string;
 }
 
 const BOXSHADOW = 'rgb(0 0 0 / 37%) 0px 1px 4px 0px';
 
-export const Pointer = ({ className, prefixCls, left }: PointerProps): JSX.Element => {
+export const Pointer = ({ className, prefixCls, left, top }: PointerProps): JSX.Element => {
   const style: React.CSSProperties = {
     position: 'absolute',
     left,
+    top,
   };
   return useMemo(
     () => (
@@ -21,7 +23,7 @@ export const Pointer = ({ className, prefixCls, left }: PointerProps): JSX.Eleme
           style={{
             width: 18,
             height: 18,
-            transform: 'translate(-9px, -1px)',
+            transform: left ? 'translate(-9px, -1px)' : 'translate(-1px, -9px)',
             boxShadow: BOXSHADOW,
             borderRadius: '50%',
             backgroundColor: 'rgb(248, 248, 248)',
@@ -29,6 +31,6 @@ export const Pointer = ({ className, prefixCls, left }: PointerProps): JSX.Eleme
         />
       </div>
     ),
-    [className, left, prefixCls],
+    [className, left, top, prefixCls],
   );
 };
