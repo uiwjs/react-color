@@ -10,12 +10,12 @@ npm i @uiw/react-color
 ```
 
 ```jsx
-import { ColorSaturation, ColorAlpha, ColorHue, hsvaToHslaString } from '@uiw/react-color';
+import { Saturation, Alpha, Hue, hsvaToHslaString } from '@uiw/react-color';
 
 function Demo() {
   const [hsva, setHsva] = useState({ h: 0, s: 0, v: 68, a: 1 });
   return (
-    <ColorAlpha
+    <Alpha
       width={200}
       hsva={hsva}
       onChange={(newAlpha) => {

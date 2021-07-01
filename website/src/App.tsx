@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ColorSaturation, ColorAlpha, ColorHue, ColorShadeSlider, hsvaToHslaString } from '@uiw/react-color';
+import { Saturation, Alpha, Hue, ShadeSlider, hsvaToHslaString } from '@uiw/react-color';
 import logo from './logo.svg';
 import styles from './App.module.css';
 import Title from './components/Title';
@@ -17,14 +17,14 @@ export default function App() {
         <div className={styles.content}>
           <div style={{ display: 'flex' }}>
             <div>
-              <ColorSaturation
+              <Saturation
                 hsva={hsva}
                 onChange={(newColor) => {
                   setHsva({ ...hsva, ...newColor, a: hsva.a });
                 }}
               />
               <Title>{`<Saturation />`}</Title>
-              <ColorAlpha
+              <Alpha
                 width={200}
                 hsva={hsva}
                 onChange={(newAlpha) => {
@@ -32,7 +32,7 @@ export default function App() {
                 }}
               />
               <Title>{`<Alpha />`}</Title>
-              <ColorHue
+              <Hue
                 width={200}
                 hue={hsva.h}
                 onChange={(newHue) => {
@@ -40,7 +40,7 @@ export default function App() {
                 }}
               />
               <Title>{`<Hue />`}</Title>
-              <ColorShadeSlider
+              <ShadeSlider
                 width={200}
                 hsva={hsva}
                 onChange={(newShade) => {
@@ -49,7 +49,7 @@ export default function App() {
               />
               <Title>{`<ShadeSlider />`}</Title>
             </div>
-            <ColorAlpha
+            <Alpha
               width={16}
               height={323}
               direction="vertical"
@@ -59,7 +59,7 @@ export default function App() {
                 setHsva({ ...hsva, ...newAlpha });
               }}
             />
-            <ColorHue
+            <Hue
               width={16}
               height={323}
               direction="vertical"
@@ -69,7 +69,7 @@ export default function App() {
                 setHsva({ ...hsva, ...newHue });
               }}
             />
-            <ColorShadeSlider
+            <ShadeSlider
               width={16}
               height={323}
               direction="vertical"
