@@ -7,15 +7,18 @@ export interface ColorHuaProps extends Omit<ColorAlphaProps, 'hsva' | 'onChange'
 }
 
 export default React.forwardRef<HTMLDivElement, ColorHuaProps>((props, ref) => {
-  const { hue = 0, onChange, ...other } = props;
+  const { hue = 0, onChange, direction = 'horizontal', ...other } = props;
   return (
     <Alpha
       ref={ref}
       {...other}
-      background="linear-gradient(to right, rgb(255, 0, 0) 0%, rgb(255, 255, 0) 17%, rgb(0, 255, 0) 33%, rgb(0, 255, 255) 50%, rgb(0, 0, 255) 67%, rgb(255, 0, 255) 83%, rgb(255, 0, 0) 100%)"
+      direction={direction}
+      background={`linear-gradient(to ${
+        direction === 'horizontal' ? 'right' : 'bottom'
+      }, rgb(255, 0, 0) 0%, rgb(255, 255, 0) 17%, rgb(0, 255, 0) 33%, rgb(0, 255, 255) 50%, rgb(0, 0, 255) 67%, rgb(255, 0, 255) 83%, rgb(255, 0, 0) 100%)`}
       hsva={{ h: hue, s: 100, v: 100, a: hue / 360 }}
       onChange={(_, interaction) => {
-        onChange && onChange({ h: 360 * interaction.left });
+        onChange && onChange({ h: direction === 'horizontal' ? 360 * interaction.left : 360 * interaction.top });
       }}
     />
   );
