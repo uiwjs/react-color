@@ -1,4 +1,4 @@
-Color Saturation
+Color Alpha
 ===
 
 ## Install
@@ -13,8 +13,14 @@ npm i @uiw/react-color-alpha
 import Alpha from '@uiw/react-color-alpha';
 
 function Demo() {
+  const [hsva, setHsva] = useState({ h: 0, s: 0, v: 68, a: 1 });
   return (
-    <Alpha hsva={{ h: 0, s: 75, v: 82, a: 1 }} />
+    <Alpha
+      hsva={hsva}
+      onChange={(newAlpha) => {
+        setHsva({ ...hsva, ...newAlpha });
+      }}
+    />
   );
 }
 ```

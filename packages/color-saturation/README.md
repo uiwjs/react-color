@@ -13,8 +13,14 @@ npm i @uiw/react-color-saturation
 import Saturation from '@uiw/react-color-saturation';
 
 function Demo() {
+  const [hsva, setHsva] = useState({ h: 0, s: 0, v: 68, a: 1 });
   return (
-    <Saturation hsva={{ h: 0, s: 75, v: 82, a: 1 }} />
+    <Saturation
+      hsva={hsva}
+      onChange={(newColor) => {
+        setHsva({ ...hsva, ...newColor, a: hsva.a });
+      }}
+    />
   );
 }
 ```

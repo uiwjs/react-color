@@ -13,8 +13,14 @@ npm i @uiw/react-color-hue
 import Hue from '@uiw/react-color-hue';
 
 function Demo() {
+  const [hsva, setHsva] = useState({ h: 0, s: 0, v: 68, a: 1 });
   return (
-    <Hue hue={222} />
+    <Hue
+      hue={hsva.h}
+      onChange={(newHue) => {
+        setHsva({ ...hsva, ...newHue });
+      }}
+    />
   );
 }
 ```

@@ -3,7 +3,30 @@ React Color
 
 Color picker component for React.
 
-### Packages
+## Getting Started
+
+```bash
+npm i @uiw/react-color
+```
+
+```jsx
+import { ColorSaturation, ColorAlpha, ColorHue, hsvaToHslaString } from '@uiw/react-color';
+
+function Demo() {
+  const [hsva, setHsva] = useState({ h: 0, s: 0, v: 68, a: 1 });
+  return (
+    <ColorAlpha
+      width={200}
+      hsva={hsva}
+      onChange={(newAlpha) => {
+        setHsva({ ...hsva, ...newAlpha });
+      }}
+    />
+  );
+}
+```
+
+## Packages
 
 **`@uiw/react-color`**
 
@@ -21,9 +44,9 @@ Color picker component for React.
 
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@uiw/react-color-alpha)](https://bundlephobia.com/package/@uiw/react-color-alpha) [![npm version](https://img.shields.io/npm/v/@uiw/react-color-alpha.svg)](https://www.npmjs.com/package/@uiw/react-color-alpha)
 
-**`@uiw/react-color-circle`**
+**`@uiw/react-color-shade-slider`**
 
-[![npm bundle size](https://img.shields.io/bundlephobia/minzip/@uiw/react-color-circle)](https://bundlephobia.com/package/@uiw/react-color-circle) [![npm version](https://img.shields.io/npm/v/@uiw/react-color-circle.svg)](https://www.npmjs.com/package/@uiw/react-color-circle)
+[![npm bundle size](https://img.shields.io/bundlephobia/minzip/@uiw/react-color-shade-slider)](https://bundlephobia.com/package/@uiw/react-color-shade-slider) [![npm version](https://img.shields.io/npm/v/@uiw/react-color-shade-slider.svg)](https://www.npmjs.com/package/@uiw/react-color-shade-slider)
 
 **`@uiw/react-color-slider`**
 
