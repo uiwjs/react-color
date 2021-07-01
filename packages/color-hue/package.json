@@ -1,15 +1,15 @@
 {
-  "name": "@uiw/react-color-hua",
+  "name": "@uiw/react-color-hue",
   "version": "0.0.1",
-  "description": "Color hua",
+  "description": "Color hue",
   "author": "Kenny Wong <wowohoo@qq.com>",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
   "keywords": [
     "react",
     "react-color",
-    "react-color-hua",
-    "hua",
+    "react-color-hue",
+    "hue",
     "color",
     "convert"
   ],

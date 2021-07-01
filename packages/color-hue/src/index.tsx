@@ -1,12 +1,12 @@
 import React from 'react';
 import Alpha, { ColorAlphaProps } from '@uiw/react-color-alpha';
 
-export interface ColorHuaProps extends Omit<ColorAlphaProps, 'hsva' | 'onChange'> {
-  onChange?: (newHua: { h: number }) => void;
+export interface ColorHueProps extends Omit<ColorAlphaProps, 'hsva' | 'onChange'> {
+  onChange?: (newHue: { h: number }) => void;
   hue: number;
 }
 
-export default React.forwardRef<HTMLDivElement, ColorHuaProps>((props, ref) => {
+export default React.forwardRef<HTMLDivElement, ColorHueProps>((props, ref) => {
   const { hue = 0, onChange, direction = 'horizontal', ...other } = props;
   return (
     <Alpha
