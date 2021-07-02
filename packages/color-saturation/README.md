@@ -3,6 +3,8 @@ Color Saturation
 
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@uiw/react-color-saturation)](https://bundlephobia.com/package/@uiw/react-color-saturation) [![npm version](https://img.shields.io/npm/v/@uiw/react-color-saturation.svg)](https://www.npmjs.com/package/@uiw/react-color-saturation)
 
+![image](https://user-images.githubusercontent.com/1680273/124278948-7d05f400-db79-11eb-9358-e290a0b636a2.png)
+
 ## Install
 
 ```bash
