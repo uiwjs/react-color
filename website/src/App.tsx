@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Saturation, Sketch, Alpha, Hue, ShadeSlider, hsvaToHslaString } from '@uiw/react-color';
+import GitHubCorners from '@uiw/react-github-corners';
 import Markdown from '@uiw/react-markdown-preview';
 import logo from './logo.svg';
 import styles from './App.module.css';
@@ -11,6 +12,7 @@ export default function App() {
   console.log('mdStr:', mdStr);
   return (
     <div className={styles.app} style={{ backgroundColor: hsvaToHslaString(hsva) }}>
+      <GitHubCorners fixed size={56} target="_blank" href="https://github.com/uiwjs/react-color" />
       <div className={styles.warpper}>
         <header className={styles.header}>
           <img src={logo} className={styles.logo} alt="logo" />
