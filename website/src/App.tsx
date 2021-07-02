@@ -82,16 +82,18 @@ export default function App() {
                 setHsva({ ...hsva, ...newShade });
               }}
             />
-            <Sketch
-              style={{ marginLeft: 20 }}
-              color={hsva}
-              onChange={(color) => {
-                setHsva({ ...hsva, ...color.hsv });
-              }}
-            />
+            <div style={{ marginLeft: 20 }}>
+              <Sketch
+                color={hsva}
+                onChange={(color) => {
+                  setHsva({ ...hsva, ...color.hsv });
+                }}
+              />
+              <Title>{`<Sketch />`}</Title>
+            </div>
           </div>
         </div>
-        <Markdown source={mdStr} style={{ padding: '0 15px 30px 15px' }} />
+        <Markdown source={mdStr} style={{ padding: '0px 20px 30px' }} />
       </div>
     </div>
   );
