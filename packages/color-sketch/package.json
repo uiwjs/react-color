@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-color-sketch",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Color Sketch component for React.",
   "author": "Kenny Wong <wowohoo@qq.com>",
   "sideEffects": false,
@@ -29,10 +29,10 @@
   },
   "dependencies": {
     "@babel/runtime": "7.14.6",
-    "@uiw/color-convert": "^0.0.5",
-    "@uiw/react-color-alpha": "^0.0.5",
-    "@uiw/react-color-hue": "^0.0.5",
-    "@uiw/react-color-saturation": "^0.0.5"
+    "@uiw/color-convert": "^0.0.6",
+    "@uiw/react-color-alpha": "^0.0.6",
+    "@uiw/react-color-hue": "^0.0.6",
+    "@uiw/react-color-saturation": "^0.0.6"
   },
   "devDependencies": {
     "@types/react": "17.0.13",
