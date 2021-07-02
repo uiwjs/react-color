@@ -41,6 +41,7 @@
     ],
     "collectCoverageFrom": [
       "**/*.{tsx,ts}",
+      "!**/*.{js,d.ts}",
       "!**/node_modules/**",
       "!**/coverage/**",
       "!**/website/**",
