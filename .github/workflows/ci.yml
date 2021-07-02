@@ -22,6 +22,16 @@ jobs:
     - run: npm run doc
     - run: npm run coverage
 
+    - run: npm install @jsdevtools/npm-publish -g
+    - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color/package.json
+    - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-alpha/package.json
+    - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-convert/package.json
+    - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-hue/package.json
+    - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-saturation/package.json
+    - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-shade-slider/package.json
+    - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-sketch/package.json
+    - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/drag-event-interactive/package.json
+
     - name: Create Tag
       id: create_tag
       uses: jaywcjlove/create-tag-action@v1.2.0
