@@ -30,14 +30,27 @@ function Demo() {
 ```ts
 import { HsvaColor } from '@uiw/color-convert';
 
-interface ColorAlphaProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
+interface AlphaProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   prefixCls?: string;
-  /** @default 320px */
+  /** String, Pixel value for picker width. Default `316px` */
   width?: number;
-  /** @default 16px */
+  /** String, Pixel value for picker height. Default `16px` */
   height?: number;
   /** hsva => `{ h: 0, s: 75, v: 82, a: 1 }` */
   hsva: HsvaColor;
-  onChange?: (newAlpha: { a: number }) => void;
+  /** React Component, Custom pointer component */
+  pointer?: ({ prefixCls, left }: PointerProps) => JSX.Element;
+  /** Set rounded corners. */
+  radius?: number;
+  /** Set the background color. */
+  background?: string;
+  /** String Enum, horizontal or vertical. Default `horizontal` */
+  direction?: 'vertical' | 'horizontal';
+  onChange?: (newAlpha: { a: number }, offset: Interaction) => void;
+}
+interface PointerProps extends React.HTMLAttributes<HTMLDivElement> {
+  prefixCls?: string;
+  left?: string;
+  top?: string;
 }
 ```

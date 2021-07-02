@@ -28,9 +28,9 @@ function Demo() {
 ## Props
 
 ```ts
-import { ColorAlphaProps } from '@uiw/react-color-alpha';
+import { AlphaProps } from '@uiw/react-color-alpha';
 
-interface ColorShadeSliderProps extends Omit<ColorAlphaProps, 'onChange'> {
-  onChange?: (newShade: { v: number, s: number }) => void;
+interface ShadeSliderProps extends Omit<AlphaProps, 'onChange'> {
+  onChange?: (newShade: { v: number; s: number }) => void;
 }
 ```

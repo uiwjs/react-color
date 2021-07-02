@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Saturation, Alpha, Hue, ShadeSlider, hsvaToHslaString } from '@uiw/react-color';
+import { Saturation, Sketch, Alpha, Hue, ShadeSlider, hsvaToHslaString } from '@uiw/react-color';
 import logo from './logo.svg';
 import styles from './App.module.css';
 import Title from './components/Title';
@@ -15,7 +15,7 @@ export default function App() {
           <p>Color picker component for React.</p>
         </header>
         <div className={styles.content}>
-          <div style={{ display: 'flex' }}>
+          <div style={{ display: 'flex', alignItems: 'flex-start' }}>
             <div>
               <Saturation
                 hsva={hsva}
@@ -79,7 +79,13 @@ export default function App() {
                 setHsva({ ...hsva, ...newShade });
               }}
             />
-            <div></div>
+            <Sketch
+              style={{ marginLeft: 20 }}
+              color={hsva}
+              onChange={(color) => {
+                setHsva({ ...hsva, ...color.hsv });
+              }}
+            />
           </div>
         </div>
       </div>

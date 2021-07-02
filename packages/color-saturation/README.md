@@ -30,9 +30,10 @@ function Demo() {
 ```ts
 import { HsvaColor } from '@uiw/color-convert';
 
-interface ColorSaturationProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
+interface SaturationProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   prefixCls?: string;
+  /** hsva => `{ h: 0, s: 75, v: 82, a: 1 }` */
   hsva: HsvaColor;
-  onChange: (newColor: HsvaColor) => void;
+  onChange?: (newColor: HsvaColor) => void;
 }
 ```

@@ -6,9 +6,9 @@ import { Pointer, PointerProps } from './Pointer';
 export interface AlphaProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   prefixCls?: string;
   /** String, Pixel value for picker width. Default `316px` */
-  width?: number;
+  width?: React.CSSProperties['width'];
   /** String, Pixel value for picker height. Default `16px` */
-  height?: number;
+  height?: React.CSSProperties['height'];
   /** hsva => `{ h: 0, s: 75, v: 82, a: 1 }` */
   hsva: HsvaColor;
   /** React Component, Custom pointer component */
@@ -17,6 +17,10 @@ export interface AlphaProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
   radius?: number;
   /** Set the background color. */
   background?: string;
+  /** Set the background element props. */
+  bgProps?: React.HTMLAttributes<HTMLDivElement>;
+  /** Set the interactive element props. */
+  innerProps?: React.HTMLAttributes<HTMLDivElement>;
   /** String Enum, horizontal or vertical. Default `horizontal` */
   direction?: 'vertical' | 'horizontal';
   onChange?: (newAlpha: { a: number }, offset: Interaction) => void;
@@ -31,6 +35,8 @@ export default React.forwardRef<HTMLDivElement, AlphaProps>((props, ref) => {
     className,
     hsva,
     background,
+    bgProps = {},
+    innerProps = {},
     radius = 0,
     width = 320,
     height = 16,
@@ -67,17 +73,27 @@ export default React.forwardRef<HTMLDivElement, AlphaProps>((props, ref) => {
       style={{ borderRadius: radius, ...style, position: 'relative', width, height, background: BACKGROUND }}
       ref={ref}
     >
-      <Interactive
+      <div
+        {...bgProps}
         style={{
-          position: 'absolute',
           inset: 0,
+          position: 'absolute',
+          background: background || innerBackground,
+          borderRadius: radius,
+          ...bgProps.style,
+        }}
+      />
+      <Interactive
+        {...innerProps}
+        style={{
+          ...innerProps.style,
+          inset: 0,
+          position: 'absolute',
         }}
         onMove={handleChange}
         onDown={handleChange}
       >
-        <div style={{ position: 'absolute', inset: 0, background: background || innerBackground, borderRadius: radius }}>
-          <Comp prefixCls={prefixCls} {...comProps} />
-        </div>
+        <Comp prefixCls={prefixCls} {...comProps} />
       </Interactive>
     </div>
   );

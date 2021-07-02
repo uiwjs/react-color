@@ -1,7 +1,7 @@
 {
-  "name": "@uiw/react-color",
+  "name": "@uiw/react-color-sketch",
   "version": "0.0.4",
-  "description": "Color Picker component for React.",
+  "description": "Color Sketch component for React.",
   "author": "Kenny Wong <wowohoo@qq.com>",
   "sideEffects": false,
   "main": "lib/cjs/index.js",
@@ -13,10 +13,8 @@
   "keywords": [
     "react",
     "react-color",
-    "react-color-alpha",
-    "react-color-hua",
-    "color-convert",
-    "alpha",
+    "react-color-sketch",
+    "sketch",
     "color",
     "convert"
   ],
@@ -30,12 +28,11 @@
     "react-dom": ">=16.9.0"
   },
   "dependencies": {
+    "@babel/runtime": "7.14.6",
     "@uiw/color-convert": "^0.0.4",
     "@uiw/react-color-alpha": "^0.0.4",
     "@uiw/react-color-hue": "^0.0.4",
-    "@uiw/react-color-saturation": "^0.0.4",
-    "@uiw/react-color-shade-slider": "^0.0.4",
-    "@uiw/react-color-sketch": "^0.0.4"
+    "@uiw/react-color-saturation": "^0.0.4"
   },
   "devDependencies": {
     "@types/react": "17.0.11",

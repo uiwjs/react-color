@@ -28,9 +28,9 @@ function Demo() {
 ## Props
 
 ```ts
-import { ColorAlphaProps } from '@uiw/react-color-alpha';
+import { AlphaProps } from '@uiw/react-color-alpha';
 
-interface ColorHueProps extends Omit<ColorAlphaProps, 'hsva' | 'onChange'> {
+interface HueProps extends Omit<AlphaProps, 'hsva' | 'onChange'> {
   onChange?: (newHue: { h: number }) => void;
   hue: number;
 }
