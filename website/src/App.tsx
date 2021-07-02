@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { Saturation, Sketch, Alpha, Hue, ShadeSlider, hsvaToHslaString } from '@uiw/react-color';
+import Markdown from '@uiw/react-markdown-preview';
 import logo from './logo.svg';
 import styles from './App.module.css';
 import Title from './components/Title';
+import mdStr from '@uiw/react-color/README.md';
 
 export default function App() {
   const [hsva, setHsva] = useState({ h: 209, s: 36, v: 90, a: 1 });
+  console.log('mdStr:', mdStr);
   return (
     <div className={styles.app} style={{ backgroundColor: hsvaToHslaString(hsva) }}>
       <div className={styles.warpper}>
@@ -88,6 +91,7 @@ export default function App() {
             />
           </div>
         </div>
+        <Markdown source={mdStr} style={{ padding: '0 15px 30px 15px' }} />
       </div>
     </div>
   );

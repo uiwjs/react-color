@@ -43,10 +43,8 @@
   }
 }
 
-
 .content {
-  max-width: 780px;
   padding: 0px 20px;
   margin: 0 auto;
-  padding-bottom: 120px;
+  padding-bottom: 40px;
 }
