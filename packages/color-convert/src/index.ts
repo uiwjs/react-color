@@ -160,33 +160,27 @@ export const rgbaStringToHsva = (rgbaString: string): HsvaColor => {
 
 export const rgbStringToHsva = rgbaStringToHsva;
 
-const format = (number: number) => {
-  const hex = number.toString(16);
-  return hex.length < 2 ? '0' + hex : hex;
-};
-
 export const rgbaToHex = ({ r, g, b }: RgbaColor): string => {
-  return '#' + format(r) + format(g) + format(b);
+  let bin = (r << 16) | (g << 8) | b;
+  return `#${((h) => new Array(7 - h.length).join('0') + h)(bin.toString(16))}`;
 };
 
 export const hexToHsva = (hex: string): HsvaColor => rgbaToHsva(hexToRgba(hex));
 export const hexToRgba = (hex: string): RgbaColor => {
-  if (hex[0] === '#') hex = hex.substr(1);
-
-  if (hex.length < 6) {
-    return {
-      r: parseInt(hex[0] + hex[0], 16),
-      g: parseInt(hex[1] + hex[1], 16),
-      b: parseInt(hex[2] + hex[2], 16),
-      a: 1,
-    };
+  const htemp = hex.replace('#', '');
+  if (/^#/.test(hex) && htemp.length === 3) {
+    hex = `#${htemp.charAt(0)}${htemp.charAt(0)}${htemp.charAt(1)}${htemp.charAt(1)}${htemp.charAt(2)}${htemp.charAt(2)}`;
   }
-
+  const reg = new RegExp(`[A-Za-z0-9]{${hex.length < 6 ? '1' : '2'}}`, 'g');
+  const [r, g, b, a] = hex.match(reg)!.map((v) => parseInt(v, 16));
+  // return {
+  //   r, g, b, a: a  ? a / 255 : 1
+  // }
   return {
-    r: parseInt(hex.substr(0, 2), 16),
-    g: parseInt(hex.substr(2, 2), 16),
-    b: parseInt(hex.substr(4, 2), 16),
-    a: 1,
+    r,
+    g,
+    b,
+    a: a ? Math.round((a / 255) * 100) / 100 : 1,
   };
 };
 
@@ -201,6 +195,10 @@ export const roundHsva = (hsva: HsvaColor): HsvaColor => ({
   a: round(hsva.a, 2),
 });
 
+/**
+ * Converts HSVA to RGBA. Based on formula from https://en.wikipedia.org/wiki/HSL_and_HSV
+ * @param color HSVA color as an array [0-360, 0-1, 0-1, 0-1]
+ */
 export const hsvaToRgba = ({ h, s, v, a }: HsvaColor): RgbaColor => {
   h = (h / 360) * 6;
   s = s / 100;

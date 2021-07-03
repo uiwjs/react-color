@@ -1,5 +1,5 @@
 // HEX
-import { hexToHsva, hsvaToHex, roundHsva, round } from '../src';
+import { hexToHsva, hexToRgba, hsvaToHex, roundHsva, round } from '../src';
 import { equalHex } from '../src/utils';
 // HSLA
 import { hsvaToHsla, hslaToHsva, HsvaColor, HslaColor } from '../src';
@@ -14,7 +14,7 @@ import { hsvaToRgba, rgbaToHsva, RgbaColor } from '../src';
 // RGBA string
 import { hsvaToRgbaString, rgbaStringToHsva } from '../src';
 // RGB
-import { rgbaToRgb } from '../src';
+import { rgbaToRgb, rgbaToHex } from '../src';
 // RGB string
 import { hsvaToRgbString, rgbStringToHsva } from '../src';
 // HSVA String
@@ -24,6 +24,22 @@ import { hsvaToHsv } from '../src';
 // HSV string
 import { hsvaToHsvString, hsvStringToHsva } from '../src';
 import { equalColorString, equalColorObjects, validHex } from '../src/utils';
+
+it('Converts RGBA to HEX', () => {
+  expect(rgbaToHex({ r: 208, g: 2, b: 27, a: 1 })).toEqual('#d0021b');
+  expect(rgbaToHex({ r: 209, g: 2, b: 26, a: 1 })).toEqual('#d1021a');
+  expect(rgbaToHex(hexToRgba('#d0021b'))).toEqual('#d0021b');
+  expect(rgbaToHex(hexToRgba('#d1021a'))).toEqual('#d1021a');
+});
+
+it('Converts HEX to RGBA', () => {
+  expect(hexToRgba('#d0021b')).toMatchObject({ r: 208, g: 2, b: 27, a: 1 });
+
+  expect(hexToRgba('#abc')).toMatchObject({ r: 170, g: 187, b: 204, a: 1 });
+  expect(hexToRgba('#aabbcc')).toMatchObject({ r: 170, g: 187, b: 204, a: 1 });
+  expect(hexToRgba('#282c34')).toMatchObject({ r: 40, g: 44, b: 52, a: 1 });
+  expect(hexToRgba('#4780f17a')).toMatchObject({ r: 71, g: 128, b: 241, a: 0.48 });
+});
 
 it('Converts HEX to HSVA', () => {
   expect(hexToHsva('#ffffff')).toMatchObject({ h: 0, s: 0, v: 100, a: 1 });
@@ -288,6 +304,8 @@ it('Converts HSVA to HSLA string', () => {
 });
 
 it('Validates HEX colors', () => {
+  expect(validHex('#4780f145')).toBe(true);
+  expect(validHex('4780f145')).toBe(true);
   // valid strings
   expect(validHex('#8c0dba')).toBe(true);
   expect(validHex('aabbcc')).toBe(true);

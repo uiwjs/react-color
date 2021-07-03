@@ -27,7 +27,4 @@ export const equalHex = (first: string, second: string): boolean => {
   return equalColorObjects(hexToRgba(first), hexToRgba(second));
 };
 
-const hex3 = /^#?[0-9A-F]{3}$/i;
-const hex6 = /^#?[0-9A-F]{6}$/i;
-
-export const validHex = (color: string): boolean => hex6.test(color) || hex3.test(color);
+export const validHex = (hex: string): boolean => /^#?([A-Fa-f0-9]{3,4}){1,2}$/.test(hex);
