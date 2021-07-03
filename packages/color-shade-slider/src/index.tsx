@@ -7,12 +7,13 @@ export interface ShadeSliderProps extends Omit<AlphaProps, 'onChange'> {
 }
 
 export default React.forwardRef<HTMLDivElement, ShadeSliderProps>((props, ref) => {
-  const { onChange, direction = 'horizontal', hsva, ...other } = props;
+  const { prefixCls = 'w-color-saturation', className, onChange, direction = 'horizontal', hsva, ...other } = props;
   const colorFrom = hsvaToHslaString(Object.assign({}, hsva, { a: 1, s: 100, v: 100 }));
   return (
     <Alpha
       ref={ref}
       {...other}
+      className={`${prefixCls} ${className || ''}`}
       hsva={{ h: hsva.h, s: 100, v: hsva.v, a: 1 - hsva.v / 100 }}
       direction={direction}
       background={`linear-gradient(to ${direction === 'horizontal' ? 'right' : 'bottom'}, ${colorFrom}, rgb(0, 0, 0))`}

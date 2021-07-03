@@ -7,10 +7,11 @@ export interface HueProps extends Omit<AlphaProps, 'hsva' | 'onChange'> {
 }
 
 export default React.forwardRef<HTMLDivElement, HueProps>((props, ref) => {
-  const { hue = 0, onChange, direction = 'horizontal', ...other } = props;
+  const { prefixCls = 'w-color-hue', className, hue = 0, onChange, direction = 'horizontal', ...other } = props;
   return (
     <Alpha
       ref={ref}
+      className={`${prefixCls} ${className || ''}`}
       {...other}
       direction={direction}
       background={`linear-gradient(to ${

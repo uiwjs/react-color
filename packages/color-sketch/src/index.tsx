@@ -34,6 +34,7 @@ interface ColorResult {
 }
 export type PresetColor = { color: string; title: string } | string;
 export interface SketchProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'color'> {
+  prefixCls?: string;
   width?: number;
   color?: string | HsvaColor;
   presetColors?: PresetColor[];
@@ -56,7 +57,7 @@ const Bar = (props: PointerProps) => (
 );
 
 export default React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
-  const { onChange, width = 218, presetColors, color, style, ...other } = props;
+  const { prefixCls = 'w-color-sketch', className, onChange, width = 218, presetColors, color, style, ...other } = props;
   const [hsva, setHsva] = useState({ h: 209, s: 36, v: 90, a: 1 });
   useEffect(() => {
     if (typeof color === 'string' && validHex(color)) {
@@ -66,14 +67,14 @@ export default React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
     }
   }, [color]);
   const handleChange = useCallback(
-    (hsva: HsvaColor) => {
-      setHsva(hsva);
+    (hsv: HsvaColor) => {
+      setHsva(hsv);
       onChange &&
         onChange({
-          hex: hsvaToHex(hsva),
-          hsl: hsvaToHsla(hsva),
-          hsv: hsva,
-          rgb: hsvaToRgba(hsva),
+          hex: hsvaToHex(hsv),
+          hsl: hsvaToHsla(hsv),
+          hsv: hsv,
+          rgb: hsvaToRgba(hsv),
         });
     },
     [hsva],
@@ -82,6 +83,7 @@ export default React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
   return (
     <div
       {...other}
+      className={`${prefixCls} ${className || ''}`}
       ref={ref}
       style={{
         background: 'rgb(255, 255, 255)',
@@ -130,12 +132,12 @@ export default React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
               marginLeft: 4,
               boxShadow: 'rgb(0 0 0 / 15%) 0px 0px 0px 1px inset, rgb(0 0 0 / 25%) 0px 0px 4px inset',
             }}
-            background={hsvaToHslaString(hsva)}
+            background={hsvaToHex(hsva)}
             pointer={() => <div />}
           />
         </div>
       </div>
-      <Swatch colors={presetColors} onClick={(hsva) => handleChange(hsva)} />
+      <Swatch colors={presetColors} color={hsvaToHex(hsva)} onClick={(hsva) => handleChange(hsva)} />
     </div>
   );
 });
