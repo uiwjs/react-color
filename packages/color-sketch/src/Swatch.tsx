@@ -2,7 +2,8 @@ import React from 'react';
 import { HsvaColor, hexToHsva } from '@uiw/color-convert';
 
 export type PresetColor = { color: string; title: string } | string;
-export interface SwatchProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'> {
+export interface SwatchProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick' | 'color'> {
+  color?: string;
   colors?: PresetColor[];
   onClick?: (hsva: HsvaColor) => void;
 }
@@ -10,7 +11,7 @@ export interface SwatchProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 
 const PRESET_COLORS = [
   '#D0021B',
   '#F5A623',
-  '#F8E71C',
+  '#f8e61b',
   '#8B572A',
   '#7ED321',
   '#417505',
@@ -24,8 +25,6 @@ const PRESET_COLORS = [
   '#9B9B9B',
   '#FFFFFF',
 ];
-
-const Rect = (props: React.HTMLAttributes<HTMLDivElement>) => <div tabIndex={0} {...props} />;
 
 export default function Swatch(props: SwatchProps) {
   const { colors = PRESET_COLORS, onClick } = props;

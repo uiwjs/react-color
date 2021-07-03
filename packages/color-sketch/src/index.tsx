@@ -1,10 +1,9 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, Fragment } from 'react';
 import Saturation from '@uiw/react-color-saturation';
 import Alpha from '@uiw/react-color-alpha';
 import { PointerProps } from '@uiw/react-color-alpha/lib/cjs/Pointer';
 import Hue from '@uiw/react-color-hue';
 import {
-  hsvaToHslaString,
   validHex,
   HsvaColor,
   HslaColor,
@@ -13,6 +12,7 @@ import {
   hsvaToHsla,
   hsvaToHex,
   hsvaToRgba,
+  hsvaToRgbaString,
   hexToHsva,
 } from '@uiw/color-convert';
 import Swatch from './Swatch';
@@ -101,16 +101,6 @@ export default React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
         />
         <div style={{ display: 'flex', marginTop: 4 }}>
           <div style={{ flex: 1 }}>
-            <Alpha
-              width="auto"
-              height={10}
-              hsva={hsva}
-              pointer={Bar}
-              innerProps={{
-                style: { marginLeft: 1, marginRight: 5 },
-              }}
-              onChange={(newAlpha) => handleChange({ ...hsva, ...newAlpha })}
-            />
             <Hue
               width="auto"
               height={10}
@@ -119,8 +109,18 @@ export default React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
               innerProps={{
                 style: { marginLeft: 1, marginRight: 5 },
               }}
-              style={{ marginTop: 4 }}
               onChange={(newHue) => handleChange({ ...hsva, ...newHue })}
+            />
+            <Alpha
+              width="auto"
+              height={10}
+              hsva={hsva}
+              pointer={Bar}
+              style={{ marginTop: 4 }}
+              innerProps={{
+                style: { marginLeft: 1, marginRight: 5 },
+              }}
+              onChange={(newAlpha) => handleChange({ ...hsva, ...newAlpha })}
             />
           </div>
           <Alpha
@@ -130,10 +130,16 @@ export default React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
             radius={2}
             style={{
               marginLeft: 4,
-              boxShadow: 'rgb(0 0 0 / 15%) 0px 0px 0px 1px inset, rgb(0 0 0 / 25%) 0px 0px 4px inset',
             }}
-            background={hsvaToHex(hsva)}
-            pointer={() => <div />}
+            bgProps={{ style: { background: 'transparent' } }}
+            innerProps={{
+              style: {
+                borderRadius: 2,
+                background: hsvaToRgbaString(hsva),
+                boxShadow: 'rgb(0 0 0 / 15%) 0px 0px 0px 1px inset, rgb(0 0 0 / 25%) 0px 0px 4px inset',
+              },
+            }}
+            pointer={() => <Fragment />}
           />
         </div>
       </div>
