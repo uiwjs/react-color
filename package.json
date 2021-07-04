@@ -37,7 +37,7 @@
   "license": "MIT",
   "jest": {
     "testMatch": [
-      "<rootDir>/packages/**/tests/*.{js,jsx,ts,tsx}"
+      "<rootDir>/test/*.{ts,tsx}"
     ],
     "collectCoverageFrom": [
       "**/*.{tsx,ts}",
@@ -49,6 +49,7 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "5.14.1",
     "lint-staged": "11.0.0",
     "lerna": "4.0.0",
     "husky": "7.0.0",

@@ -1,30 +1,30 @@
-import { color } from '../src';
+import { color } from '../packages/color-convert/src';
 // HEX
-import { hexToHsva, hexToRgba, hsvaToHex } from '../src';
-import { equalHex } from '../src/utils';
+import { hexToHsva, hexToRgba, hsvaToHex } from '../packages/color-convert/src';
+import { equalHex } from '../packages/color-convert/src/utils';
 // HSLA
-import { hsvaToHsla, hslaToHsva, HsvaColor, HslaColor } from '../src';
+import { hsvaToHsla, hslaToHsva, HsvaColor, HslaColor } from '../packages/color-convert/src';
 // HSL
-import { hslaToHsl } from '../src';
+import { hslaToHsl } from '../packages/color-convert/src';
 // HSL string
-import { hsvaToHslString, hslStringToHsva } from '../src';
+import { hsvaToHslString, hslStringToHsva } from '../packages/color-convert/src';
 // HSLA string
-import { hslaStringToHsva } from '../src';
+import { hslaStringToHsva } from '../packages/color-convert/src';
 // RGBA
-import { hsvaToRgba, rgbaToHsva, RgbaColor } from '../src';
+import { hsvaToRgba, rgbaToHsva, RgbaColor } from '../packages/color-convert/src';
 // RGBA string
-import { hsvaToRgbaString, rgbaStringToHsva } from '../src';
+import { hsvaToRgbaString, rgbaStringToHsva } from '../packages/color-convert/src';
 // RGB
-import { rgbaToRgb, rgbaToHex, rgbaToHexa } from '../src';
+import { rgbaToRgb, rgbaToHex, rgbaToHexa } from '../packages/color-convert/src';
 // RGB string
-import { hsvaToRgbString, rgbStringToHsva } from '../src';
+import { hsvaToRgbString, rgbStringToHsva } from '../packages/color-convert/src';
 // HSVA String
-import { hsvaToHsvaString, hsvaToHslaString, hsvaStringToHsva } from '../src';
+import { hsvaToHsvaString, hsvaToHslaString, hsvaStringToHsva } from '../packages/color-convert/src';
 // HSV
-import { hsvaToHsv } from '../src';
+import { hsvaToHsv } from '../packages/color-convert/src';
 // HSV string
-import { hsvaToHsvString, hsvStringToHsva } from '../src';
-import { equalColorString, equalColorObjects, validHex } from '../src/utils';
+import { hsvaToHsvString, hsvStringToHsva } from '../packages/color-convert/src';
+import { equalColorString, equalColorObjects, validHex } from '../packages/color-convert/src/utils';
 
 it('Converts color => HEX to ColorResult', () => {
   const { rgb, rgba, hsl, hsv, hsla, hsva } = color('#d1021a');
