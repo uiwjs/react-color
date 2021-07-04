@@ -1,3 +1,4 @@
+import { color } from '../src';
 // HEX
 import { hexToHsva, hexToRgba, hsvaToHex } from '../src';
 import { equalHex } from '../src/utils';
@@ -14,7 +15,7 @@ import { hsvaToRgba, rgbaToHsva, RgbaColor } from '../src';
 // RGBA string
 import { hsvaToRgbaString, rgbaStringToHsva } from '../src';
 // RGB
-import { rgbaToRgb, rgbaToHex } from '../src';
+import { rgbaToRgb, rgbaToHex, rgbaToHexa } from '../src';
 // RGB string
 import { hsvaToRgbString, rgbStringToHsva } from '../src';
 // HSVA String
@@ -25,11 +26,28 @@ import { hsvaToHsv } from '../src';
 import { hsvaToHsvString, hsvStringToHsva } from '../src';
 import { equalColorString, equalColorObjects, validHex } from '../src/utils';
 
+it('Converts color => HEX to ColorResult', () => {
+  const { rgb, rgba, hsl, hsv, hsla, hsva } = color('#d1021a');
+  expect(rgb).toHaveProperty(['r'], 209);
+  expect(rgb).toEqual({ b: 26, g: 2, r: 209 });
+  expect(rgba).toEqual({ b: 26, g: 2, r: 209, a: 1 });
+  expect(hsl).toEqual({ h: 353.04347826086956, l: 41.37254901960784, s: 98.10426540284361 });
+  expect(hsla).toEqual({ h: 353.04347826086956, l: 41.37254901960784, s: 98.10426540284361, a: 1 });
+  expect(hsv).toEqual({ h: 353.04347826086956, s: 99.04306220095694, v: 81.96078431372548 });
+  expect(hsva).toEqual({ h: 353.04347826086956, s: 99.04306220095694, v: 81.96078431372548, a: 1 });
+});
+
 it('Converts RGBA to HEX', () => {
   expect(rgbaToHex({ r: 208, g: 2, b: 27, a: 1 })).toEqual('#d0021b');
   expect(rgbaToHex({ r: 209, g: 2, b: 26, a: 1 })).toEqual('#d1021a');
   expect(rgbaToHex(hexToRgba('#d0021b'))).toEqual('#d0021b');
   expect(rgbaToHex(hexToRgba('#d1021a'))).toEqual('#d1021a');
+});
+
+it('Converts RGBA to HEXA', () => {
+  expect(rgbaToHexa(hexToRgba('#4780f17a'))).toEqual('#4780f17a');
+  expect(rgbaToHexa({ b: 26, g: 2, r: 209, a: 1 })).toEqual('#d1021aff');
+  expect(rgbaToHexa({ b: 26, g: 2, r: 209 } as any)).toEqual('#d1021a');
 });
 
 it('Converts HEX to RGBA', () => {
@@ -325,16 +343,3 @@ it('Validates HEX colors', () => {
   // @ts-ignore
   expect(validHex()).toBe(false);
 });
-
-// it('Rounds a number', () => {
-//   expect(round(0)).toBe(0);
-//   expect(round(1)).toBe(1);
-//   expect(round(0.1)).toBe(0.1);
-//   // expect(round(0.1)).toBe(0);
-//   // expect(round(0.9)).toBe(1);
-//   expect(round(0.9)).toBe(0.9);
-//   expect(round(0.123, 2)).toBe(0.12);
-//   expect(round(0.789, 2)).toBe(0.79);
-//   expect(round(1, 10)).toBe(1);
-//   expect(round(0.123, 10)).toBe(0.123);
-// });
