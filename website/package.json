@@ -1,6 +1,6 @@
 {
   "name": "@uiw-website/document",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "React color website.",
   "private": true,
   "scripts": {
@@ -13,15 +13,15 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@uiw/react-color": "^0.0.6",
-    "@uiw/color-convert": "^0.0.6",
-    "@uiw/react-color-alpha": "^0.0.6",
-    "@uiw/react-color-hue": "^0.0.6",
-    "@uiw/react-color-saturation": "^0.0.6",
-    "@uiw/react-color-shade-slider": "^0.0.6",
-    "@uiw/react-color-slider": "^0.0.6",
-    "@uiw/react-color-sketch": "^0.0.6",
-    "@uiw/react-drag-event-interactive": "^0.0.6",
+    "@uiw/color-convert": "^0.0.7",
+    "@uiw/react-color": "^0.0.7",
+    "@uiw/react-color-alpha": "^0.0.7",
+    "@uiw/react-color-hue": "^0.0.7",
+    "@uiw/react-color-saturation": "^0.0.7",
+    "@uiw/react-color-shade-slider": "^0.0.7",
+    "@uiw/react-color-sketch": "^0.0.7",
+    "@uiw/react-color-slider": "^0.0.7",
+    "@uiw/react-drag-event-interactive": "^0.0.7",
     "@uiw/react-markdown-preview": "3.1.3",
     "react": "17.0.2",
     "react-dom": "17.0.2"
