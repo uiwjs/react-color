@@ -1,15 +1,34 @@
-import React, { useState } from 'react';
-import { Saturation, Sketch, Alpha, Hue, ShadeSlider, hsvaToHslaString } from '@uiw/react-color';
+import { useState } from 'react';
+import { Saturation, Sketch, Alpha, Hue, Slider, ShadeSlider, hsvaToHslaString } from '@uiw/react-color';
 import GitHubCorners from '@uiw/react-github-corners';
 import Markdown from '@uiw/react-markdown-preview';
 import logo from './logo.svg';
 import styles from './App.module.css';
 import Title from './components/Title';
+
 import mdStr from '@uiw/react-color/README.md';
+import mdStrSketch from '@uiw/react-color-sketch/README.md';
+import mdStrSlider from '@uiw/react-color-slider/README.md';
+import mdStrSaturation from '@uiw/react-color-saturation/README.md';
+import mdStrAlpha from '@uiw/react-color-alpha/README.md';
+import mdStrHue from '@uiw/react-color-hue/README.md';
+import mdStrShadeSlider from '@uiw/react-color-shade-slider/README.md';
+import mdStrConvert from '@uiw/color-convert/README.md';
+import mdStrDragEventInteractive from '@uiw/react-drag-event-interactive/README.md';
+
+let markdownStr = mdStr
+  .replace(/([\s\S]*)<!--dividing-->/, '')
+  .replace(/<!--react-color-sketch-->/, mdStrSketch.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
+  .replace(/<!--react-color-slider-->/, mdStrSlider.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
+  .replace(/<!--react-color-saturation-->/, mdStrSaturation.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
+  .replace(/<!--react-color-alpha-->/, mdStrAlpha.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
+  .replace(/<!--react-color-hue-->/, mdStrHue.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
+  .replace(/<!--react-color-shade-slider-->/, mdStrShadeSlider.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
+  .replace(/<!--color-convert-->/, mdStrConvert.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
+  .replace(/<!--react-drag-event-interactive-->/, mdStrDragEventInteractive.replace(/<!--footer-dividing-->([\s\S]*)/, ''));
 
 export default function App() {
   const [hsva, setHsva] = useState({ h: 209, s: 36, v: 90, a: 1 });
-  console.log('mdStr:', mdStr);
   return (
     <div className={styles.app} style={{ backgroundColor: hsvaToHslaString(hsva) }}>
       <GitHubCorners fixed size={56} target="_blank" href="https://github.com/uiwjs/react-color" />
@@ -17,13 +36,13 @@ export default function App() {
         <header className={styles.header}>
           <img src={logo} className={styles.logo} alt="logo" />
           <h1>React Color</h1>
-          <p>Color picker component for React.</p>
         </header>
         <div className={styles.content}>
           <div style={{ display: 'flex', alignItems: 'flex-start' }}>
             <div>
               <Saturation
                 hsva={hsva}
+                style={{ height: 180 }}
                 onChange={(newColor) => {
                   setHsva({ ...hsva, ...newColor, a: hsva.a });
                 }}
@@ -56,7 +75,7 @@ export default function App() {
             </div>
             <Alpha
               width={16}
-              height={323}
+              height={310}
               direction="vertical"
               style={{ marginLeft: 20 }}
               hsva={hsva}
@@ -66,7 +85,7 @@ export default function App() {
             />
             <Hue
               width={16}
-              height={323}
+              height={310}
               direction="vertical"
               style={{ marginLeft: 20 }}
               hue={hsva.h}
@@ -76,7 +95,7 @@ export default function App() {
             />
             <ShadeSlider
               width={16}
-              height={323}
+              height={310}
               direction="vertical"
               style={{ marginLeft: 20 }}
               hsva={hsva}
@@ -91,11 +110,13 @@ export default function App() {
                   setHsva({ ...hsva, ...color.hsv });
                 }}
               />
-              <Title>{`<Sketch />`}</Title>
+              <Title>{`<Sketch color="#d0021b" />`}</Title>
+              <Slider style={{ width: 220 }} color={hsva} onChange={(color) => setHsva({ ...hsva, ...color.hsv })} />
+              <Title>{`<Slider color="#d0021b" />`}</Title>
             </div>
           </div>
         </div>
-        <Markdown source={mdStr} style={{ padding: '0px 20px 30px' }} />
+        <Markdown source={markdownStr} style={{ padding: '0px 20px 30px' }} />
       </div>
     </div>
   );

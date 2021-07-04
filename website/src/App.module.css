@@ -14,7 +14,7 @@
 
 .header {
   background-color: #282c34;
-  min-height: 380px;
+  min-height: 280px;
   margin-bottom: 30px;
   display: flex;
   flex-direction: column;
