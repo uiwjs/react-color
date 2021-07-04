@@ -26,7 +26,7 @@ export interface AlphaProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
   onChange?: (newAlpha: { a: number }, offset: Interaction) => void;
 }
 
-const BACKGROUND =
+export const BACKGROUND_IMG =
   'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4T2NkYGAQYcAP3uCTZhw1gGGYhAGBZIA/nYDCgBDAm9BGDWAAJyRCgLaBCAAgXwixzAS0pgAAAABJRU5ErkJggg==) left center';
 
 export default React.forwardRef<HTMLDivElement, AlphaProps>((props, ref) => {
@@ -70,7 +70,15 @@ export default React.forwardRef<HTMLDivElement, AlphaProps>((props, ref) => {
     <div
       {...other}
       className={`${prefixCls} ${className || ''}`}
-      style={{ borderRadius: radius, ...style, position: 'relative', width, height, background: BACKGROUND }}
+      style={{
+        borderRadius: radius,
+        ...style,
+        position: 'relative',
+        width,
+        height,
+        background: BACKGROUND_IMG,
+        backgroundColor: '#fff',
+      }}
       ref={ref}
     >
       <div
