@@ -36,3 +36,9 @@ interface InteractiveProps extends React.HTMLAttributes<HTMLDivElement> {
   onDown?: (offset: Interaction, event: MouseEvent | TouchEvent) => void;
 }
 ```
+
+<!--footer-dividing-->
+
+## License
+
+Licensed under the MIT License.

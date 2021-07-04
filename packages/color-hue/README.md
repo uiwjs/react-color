@@ -1,4 +1,4 @@
-Color Hue
+React Color Hue
 ===
 
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@uiw/react-color-hue)](https://bundlephobia.com/package/@uiw/react-color-hue) [![npm version](https://img.shields.io/npm/v/@uiw/react-color-hue.svg)](https://www.npmjs.com/package/@uiw/react-color-hue)
@@ -39,3 +39,9 @@ interface HueProps extends Omit<AlphaProps, 'hsva' | 'onChange'> {
   hue: number;
 }
 ```
+
+<!--footer-dividing-->
+
+## License
+
+Licensed under the MIT License.

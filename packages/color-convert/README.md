@@ -185,6 +185,8 @@ const { rgb, rgba, hsl, hsv, hsla, hsva } = color('#d1021a');
 // hsva  => { h: 353.04347826086956, s: 99.04306220095694, v: 81.96078431372548, a: 1 }
 ```
 
+<!--footer-dividing-->
+
 ## License
 
 Licensed under the MIT License.

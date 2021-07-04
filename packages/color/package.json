@@ -35,6 +35,7 @@
     "@uiw/react-color-hue": "^0.0.6",
     "@uiw/react-color-saturation": "^0.0.6",
     "@uiw/react-color-shade-slider": "^0.0.6",
+    "@uiw/react-color-slider": "^0.0.6",
     "@uiw/react-color-sketch": "^0.0.6"
   },
   "devDependencies": {

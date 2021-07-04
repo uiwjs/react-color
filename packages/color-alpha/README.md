@@ -1,4 +1,4 @@
-Color Alpha
+React Color Alpha
 ===
 
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@uiw/react-color-alpha)](https://bundlephobia.com/package/@uiw/react-color-alpha) [![npm version](https://img.shields.io/npm/v/@uiw/react-color-alpha.svg)](https://www.npmjs.com/package/@uiw/react-color-alpha)
@@ -58,3 +58,9 @@ interface PointerProps extends React.HTMLAttributes<HTMLDivElement> {
   top?: string;
 }
 ```
+
+<!--footer-dividing-->
+
+## License
+
+Licensed under the MIT License.

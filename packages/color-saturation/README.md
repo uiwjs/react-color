@@ -1,4 +1,4 @@
-Color Saturation
+React Color Saturation
 ===
 
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@uiw/react-color-saturation)](https://bundlephobia.com/package/@uiw/react-color-saturation) [![npm version](https://img.shields.io/npm/v/@uiw/react-color-saturation.svg)](https://www.npmjs.com/package/@uiw/react-color-saturation)
@@ -41,3 +41,9 @@ interface SaturationProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'on
   onChange?: (newColor: HsvaColor) => void;
 }
 ```
+
+<!--footer-dividing-->
+
+## License
+
+Licensed under the MIT License.
