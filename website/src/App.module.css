@@ -1,11 +1,13 @@
 .app {
   padding: 30px;
   min-height: 100%;
+  padding-bottom: 120px;
+  padding-top: 80px;
 }
 
 .warpper {
   background-color: #fff;
-  box-shadow: 0 10px 15px -5px rgb(32 32 64 / 25%);
+  box-shadow: rgb(0 0 0 / 15%) 0px 0px 0px 1px, rgb(0 0 0 / 15%) 0px 8px 16px;
   border-radius: 16px;
   padding: 5px;
   max-width: 860px;
@@ -14,14 +16,19 @@
 
 .header {
   background-color: #282c34;
-  min-height: 280px;
-  margin-bottom: 30px;
+  color: #fff;
+  margin-bottom: 70px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white;
+  padding-top: 50px;
+  padding-bottom: 40px;
   border-radius: 16px 16px 0 0;
+}
+
+.header h1 {
+  margin: 15px 0 0 0;
 }
 
 .logo {

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Saturation, Sketch, Alpha, Hue, Slider, ShadeSlider, hsvaToHslaString } from '@uiw/react-color';
+import { Saturation, Sketch, Alpha, Hue, Slider, ShadeSlider, hsvaToHslaString, BACKGROUND_IMG } from '@uiw/react-color';
 import GitHubCorners from '@uiw/react-github-corners';
 import Markdown from '@uiw/react-markdown-preview';
 import logo from './logo.svg';
@@ -30,93 +30,95 @@ let markdownStr = mdStr
 export default function App() {
   const [hsva, setHsva] = useState({ h: 209, s: 36, v: 90, a: 1 });
   return (
-    <div className={styles.app} style={{ backgroundColor: hsvaToHslaString(hsva) }}>
-      <GitHubCorners fixed size={56} target="_blank" href="https://github.com/uiwjs/react-color" />
-      <div className={styles.warpper}>
-        <header className={styles.header}>
-          <img src={logo} className={styles.logo} alt="logo" />
-          <h1>React Color</h1>
-        </header>
-        <div className={styles.content}>
-          <div style={{ display: 'flex', alignItems: 'flex-start' }}>
-            <div>
-              <Saturation
-                hsva={hsva}
-                style={{ height: 180 }}
-                onChange={(newColor) => {
-                  setHsva({ ...hsva, ...newColor, a: hsva.a });
-                }}
-              />
-              <Title>{`<Saturation />`}</Title>
+    <div style={{ background: `url(${BACKGROUND_IMG}) left center` }}>
+      <div className={styles.app} style={{ backgroundColor: hsvaToHslaString(hsva) }}>
+        <GitHubCorners fixed size={56} target="_blank" href="https://github.com/uiwjs/react-color" />
+        <div className={styles.warpper}>
+          <header className={styles.header}>
+            <img src={logo} className={styles.logo} alt="logo" />
+            <h1>React Color</h1>
+          </header>
+          <div className={styles.content}>
+            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center' }}>
+              <div>
+                <Saturation
+                  hsva={hsva}
+                  style={{ height: 180 }}
+                  onChange={(newColor) => {
+                    setHsva({ ...hsva, ...newColor, a: hsva.a });
+                  }}
+                />
+                <Title>{`<Saturation />`}</Title>
+                <Alpha
+                  width={200}
+                  hsva={hsva}
+                  onChange={(newAlpha) => {
+                    setHsva({ ...hsva, ...newAlpha });
+                  }}
+                />
+                <Title>{`<Alpha />`}</Title>
+                <Hue
+                  width={200}
+                  hue={hsva.h}
+                  onChange={(newHue) => {
+                    setHsva({ ...hsva, ...newHue });
+                  }}
+                />
+                <Title>{`<Hue />`}</Title>
+                <ShadeSlider
+                  width={200}
+                  hsva={hsva}
+                  onChange={(newShade) => {
+                    setHsva({ ...hsva, ...newShade });
+                  }}
+                />
+                <Title>{`<ShadeSlider />`}</Title>
+              </div>
               <Alpha
-                width={200}
+                width={16}
+                height={310}
+                direction="vertical"
+                style={{ marginLeft: 20 }}
                 hsva={hsva}
                 onChange={(newAlpha) => {
                   setHsva({ ...hsva, ...newAlpha });
                 }}
               />
-              <Title>{`<Alpha />`}</Title>
               <Hue
-                width={200}
+                width={16}
+                height={310}
+                direction="vertical"
+                style={{ marginLeft: 20 }}
                 hue={hsva.h}
                 onChange={(newHue) => {
                   setHsva({ ...hsva, ...newHue });
                 }}
               />
-              <Title>{`<Hue />`}</Title>
               <ShadeSlider
-                width={200}
+                width={16}
+                height={310}
+                direction="vertical"
+                style={{ marginLeft: 20 }}
                 hsva={hsva}
                 onChange={(newShade) => {
                   setHsva({ ...hsva, ...newShade });
                 }}
               />
-              <Title>{`<ShadeSlider />`}</Title>
-            </div>
-            <Alpha
-              width={16}
-              height={310}
-              direction="vertical"
-              style={{ marginLeft: 20 }}
-              hsva={hsva}
-              onChange={(newAlpha) => {
-                setHsva({ ...hsva, ...newAlpha });
-              }}
-            />
-            <Hue
-              width={16}
-              height={310}
-              direction="vertical"
-              style={{ marginLeft: 20 }}
-              hue={hsva.h}
-              onChange={(newHue) => {
-                setHsva({ ...hsva, ...newHue });
-              }}
-            />
-            <ShadeSlider
-              width={16}
-              height={310}
-              direction="vertical"
-              style={{ marginLeft: 20 }}
-              hsva={hsva}
-              onChange={(newShade) => {
-                setHsva({ ...hsva, ...newShade });
-              }}
-            />
-            <div style={{ marginLeft: 20 }}>
-              <Sketch
-                color={hsva}
-                onChange={(color) => {
-                  setHsva({ ...hsva, ...color.hsv });
-                }}
-              />
-              <Title>{`<Sketch color="#d0021b" />`}</Title>
-              <Slider style={{ width: 220 }} color={hsva} onChange={(color) => setHsva({ ...hsva, ...color.hsv })} />
-              <Title>{`<Slider color="#d0021b" />`}</Title>
+              <div style={{ marginLeft: 20 }}>
+                <Sketch
+                  color={hsva}
+                  onChange={(color) => {
+                    setHsva({ ...hsva, ...color.hsv });
+                  }}
+                />
+                <Title>{`<Sketch color="#d0021b" />`}</Title>
+                <Slider style={{ width: 220 }} color={hsva} onChange={(color) => setHsva({ ...hsva, ...color.hsv })} />
+                <Title>{`<Slider color="#d0021b" />`}</Title>
+              </div>
             </div>
           </div>
+          <Markdown source={markdownStr} style={{ padding: '0px 20px 30px' }} />
         </div>
-        <Markdown source={markdownStr} style={{ padding: '0px 20px 30px' }} />
       </div>
     </div>
   );

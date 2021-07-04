@@ -27,7 +27,7 @@ export interface AlphaProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
 }
 
 export const BACKGROUND_IMG =
-  'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4T2NkYGAQYcAP3uCTZhw1gGGYhAGBZIA/nYDCgBDAm9BGDWAAJyRCgLaBCAAgXwixzAS0pgAAAABJRU5ErkJggg==) left center';
+  'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4T2NkYGAQYcAP3uCTZhw1gGGYhAGBZIA/nYDCgBDAm9BGDWAAJyRCgLaBCAAgXwixzAS0pgAAAABJRU5ErkJggg==';
 
 export default React.forwardRef<HTMLDivElement, AlphaProps>((props, ref) => {
   const {
@@ -76,7 +76,7 @@ export default React.forwardRef<HTMLDivElement, AlphaProps>((props, ref) => {
         position: 'relative',
         width,
         height,
-        background: BACKGROUND_IMG,
+        background: `url(${BACKGROUND_IMG}) left center`,
         backgroundColor: '#fff',
       }}
       ref={ref}
