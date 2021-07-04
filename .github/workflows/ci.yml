@@ -30,6 +30,7 @@ jobs:
     - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-saturation/package.json
     - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-shade-slider/package.json
     - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-sketch/package.json
+    - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-slider/package.json
     - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/drag-event-interactive/package.json
 
     - name: Create Tag
