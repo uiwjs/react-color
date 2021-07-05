@@ -1,6 +1,7 @@
 import { validHex } from './utils';
 
 export * from './utils';
+export * from './getContrastingColor';
 
 const RGB_MAX = 255;
 const HUE_MAX = 360;
