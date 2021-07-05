@@ -1,4 +1,4 @@
-import { color } from '../packages/color-convert/src';
+import { color, getContrastingColor } from '../packages/color-convert/src';
 // HEX
 import { hexToHsva, hexToRgba, hsvaToHex } from '../packages/color-convert/src';
 import { equalHex } from '../packages/color-convert/src/utils';
@@ -25,6 +25,12 @@ import { hsvaToHsv } from '../packages/color-convert/src';
 // HSV string
 import { hsvaToHsvString, hsvStringToHsva } from '../packages/color-convert/src';
 import { equalColorString, equalColorObjects, validHex } from '../packages/color-convert/src/utils';
+
+it('Converts color => getContrastingColor', () => {
+  expect(getContrastingColor('#d0021b')).toEqual('#fff');
+  expect(getContrastingColor('#000')).toEqual('#fff');
+  expect(getContrastingColor('#fff')).toEqual('#000');
+});
 
 it('Converts color => HEX to ColorResult', () => {
   const { rgb, rgba, hsl, hsv, hsla, hsva } = color('#d1021a');
