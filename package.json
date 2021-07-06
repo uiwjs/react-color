@@ -52,7 +52,7 @@
     "@testing-library/jest-dom": "5.14.1",
     "lint-staged": "11.0.0",
     "lerna": "4.0.0",
-    "husky": "7.0.0",
+    "husky": "7.0.1",
     "prettier": "2.3.2",
     "tsbb": "2.2.1"
   }
