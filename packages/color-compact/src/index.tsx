@@ -13,7 +13,7 @@ export interface CompactProps extends Omit<React.HTMLAttributes<HTMLDivElement>,
   prefixCls?: string;
   color?: string | HsvaColor;
   colors?: string[];
-  onChange?: (color: ColorResult) => void;
+  onChange?: (color: ColorResult, evn: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }
 
 const COLORS = [
@@ -57,9 +57,9 @@ const COLORS = [
 
 export default React.forwardRef<HTMLDivElement, CompactProps>((props, ref) => {
   const { prefixCls = 'w-color-compact', className, style, onChange, color, colors = COLORS, ...other } = props;
-  const hsva = (typeof color === 'string' && validHex(color) ? hexToHsva(color) : color || {}) as HsvaColor;
-  const handleClick = (hexStr: string) => {
-    onChange && onChange(handleColor(hexToHsva(hexStr)));
+  const hsva = (typeof color === 'string' && validHex(color) ? hexToHsva(color) : color) as HsvaColor;
+  const handleClick = (hexStr: string, evn: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    onChange && onChange(handleColor(hexToHsva(hexStr)), evn);
   };
   return (
     <div
@@ -78,7 +78,7 @@ export default React.forwardRef<HTMLDivElement, CompactProps>((props, ref) => {
       {...other}
     >
       {colors.map((hex, idx) => {
-        const checked = equalColorObjects(hexToHsva(hex), hsva);
+        const checked = hsva ? equalColorObjects(hexToHsva(hex), hsva) : false;
         return (
           <div
             key={hex}
@@ -87,7 +87,8 @@ export default React.forwardRef<HTMLDivElement, CompactProps>((props, ref) => {
             }}
           >
             <div
-              onClick={() => handleClick(hex)}
+              onClick={(evn) => handleClick(hex, evn)}
+              title={hex}
               style={{
                 backgroundColor: hex,
                 height: 15,

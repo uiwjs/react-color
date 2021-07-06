@@ -48,8 +48,50 @@ it('Alpha', async () => {
 
 it('Hue onChange', async () => {
   const MyComponent = () => {
-    return <Compact color="'#e27300'" />;
+    return (
+      <Compact
+        color="#e27300"
+        onChange={(color) => {
+          expect(color.hex).toEqual('#4d4d4d');
+        }}
+      />
+    );
   };
   render(<MyComponent />);
-  // fireEvent.click(screen.getByTestId('custom-element'));
+  fireEvent(
+    screen.getByTitle('#4D4D4D'),
+    new MouseEvent('click', {
+      bubbles: true,
+      cancelable: true,
+    }),
+  );
+});
+
+it('Hue hex color checked onChange', async () => {
+  render(
+    <Compact
+      color="#F44E3B"
+      onChange={(color, evn) => {
+        expect(color.hex).toEqual('#f44e3b');
+      }}
+    />,
+  );
+  fireEvent(
+    screen.getByTitle('#F44E3B'),
+    new MouseEvent('click', {
+      bubbles: true,
+      cancelable: true,
+    }),
+  );
+});
+
+it('Hue color === undefined', async () => {
+  render(<Compact onChange={(color) => expect(color.hex).toEqual('#f44e3b')} />);
+  fireEvent(
+    screen.getByTitle('#F44E3B'),
+    new MouseEvent('click', {
+      bubbles: true,
+      cancelable: true,
+    }),
+  );
 });
