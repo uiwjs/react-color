@@ -33,7 +33,10 @@ it('Converts color => getContrastingColor', () => {
 });
 
 it('Converts color => HEX to ColorResult', () => {
-  const { rgb, rgba, hsl, hsv, hsla, hsva } = color('#d1021a');
+  const { rgb, rgba, hex, hexa, hsl, hsla, hsv, hsva } = color('#d1021a');
+  expect(hex).toEqual('#d1021a');
+  expect(hexa).toEqual('#d1021aff');
+  expect(color({ h: 353.04347826086956, s: 99.04306220095694, v: 81.96078431372548, a: 1 }).hex).toEqual('#d1021a');
   expect(rgb).toHaveProperty(['r'], 209);
   expect(rgb).toEqual({ b: 26, g: 2, r: 209 });
   expect(rgba).toEqual({ b: 26, g: 2, r: 209, a: 1 });
@@ -41,6 +44,19 @@ it('Converts color => HEX to ColorResult', () => {
   expect(hsla).toEqual({ h: 353.04347826086956, l: 41.37254901960784, s: 98.10426540284361, a: 1 });
   expect(hsv).toEqual({ h: 353.04347826086956, s: 99.04306220095694, v: 81.96078431372548 });
   expect(hsva).toEqual({ h: 353.04347826086956, s: 99.04306220095694, v: 81.96078431372548, a: 1 });
+});
+
+it('Converts color => HEXA to ColorResult', () => {
+  const { rgb, rgba, hex, hexa, hsl, hsla, hsv, hsva } = color('#4780f17a');
+  expect(hex).toEqual('#4780f1');
+  expect(hexa).toEqual('#4780f17a');
+  expect(rgb).toHaveProperty(['r'], 71);
+  expect(rgb).toEqual({ r: 71, g: 128, b: 241 });
+  expect(rgba).toEqual({ r: 71, g: 128, b: 241, a: 0.47843137254901963 });
+  expect(hsl).toEqual({ h: 219.88235294117646, s: 85.85858585858585, l: 61.17647058823529 });
+  expect(hsla).toEqual({ h: 219.88235294117646, s: 85.85858585858585, l: 61.17647058823529, a: 0.47843137254901963 });
+  expect(hsv).toEqual({ h: 219.88235294117646, s: 70.53941908713693, v: 94.50980392156862 });
+  expect(hsva).toEqual({ h: 219.88235294117646, s: 70.53941908713693, v: 94.50980392156862, a: 0.47843137254901963 });
 });
 
 it('Converts RGBA to HEX', () => {
@@ -153,6 +169,7 @@ it('Converts HSVA to RGBA', () => {
   let test = (input: HsvaColor, output: RgbaColor) => expect(hsvaToRgba(input)).toMatchObject(output);
 
   test({ h: 0, s: 0, v: 100, a: 1 }, { r: 255, g: 255, b: 255, a: 1 });
+  test({ h: 128, s: 0, v: 100, a: 1 }, { r: 255, g: 255, b: 255, a: 1 });
   test({ h: 0, s: 100, v: 100, a: 0.567 }, { r: 255, g: 0, b: 0, a: 0.567 });
 });
 

@@ -15,6 +15,8 @@ export type ColorResult = {
   rgba: RgbaColor;
   hsla: HslaColor;
   hsva: HsvaColor;
+  hex: string;
+  hexa: string;
 };
 
 export interface HsvColor {
@@ -277,8 +279,11 @@ export const color = (str: string | HsvaColor): ColorResult => {
   let rgba!: RgbaColor;
   let hsla!: HslaColor;
   let hsva!: HsvaColor;
+  let hex!: string;
+  let hexa!: string;
   if (typeof str === 'string' && validHex(str)) {
     hsva = hexToHsva(str);
+    hex = str;
   } else if (typeof str !== 'string') {
     hsva = str;
   }
@@ -286,8 +291,10 @@ export const color = (str: string | HsvaColor): ColorResult => {
     hsv = hsvaToHsv(hsva);
     hsla = hsvaToHsla(hsva);
     rgba = hsvaToRgba(hsva);
+    hexa = rgbaToHexa(rgba);
+    hex = hsvaToHex(hsva);
     hsl = hslaToHsl(hsla);
     rgb = rgbaToRgb(rgba);
   }
-  return { rgb, hsl, hsv, rgba, hsla, hsva };
+  return { rgb, hsl, hsv, rgba, hsla, hsva, hex, hexa };
 };
