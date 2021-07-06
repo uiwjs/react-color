@@ -1,5 +1,16 @@
 import { useState } from 'react';
-import { Saturation, Sketch, Alpha, Hue, Slider, ShadeSlider, hsvaToHslaString, BACKGROUND_IMG } from '@uiw/react-color';
+import {
+  Saturation,
+  Sketch,
+  Alpha,
+  Compact,
+  Hue,
+  Slider,
+  ShadeSlider,
+  hsvaToHex,
+  hsvaToHslaString,
+  BACKGROUND_IMG,
+} from '@uiw/react-color';
 import GitHubCorners from '@uiw/react-github-corners';
 import Markdown from '@uiw/react-markdown-preview';
 import logo from './logo.svg';
@@ -9,6 +20,7 @@ import Title from './components/Title';
 import mdStr from '@uiw/react-color/README.md';
 import mdStrSketch from '@uiw/react-color-sketch/README.md';
 import mdStrSlider from '@uiw/react-color-slider/README.md';
+import mdStrCompact from '@uiw/react-color-compact/README.md';
 import mdStrSaturation from '@uiw/react-color-saturation/README.md';
 import mdStrAlpha from '@uiw/react-color-alpha/README.md';
 import mdStrHue from '@uiw/react-color-hue/README.md';
@@ -20,6 +32,7 @@ let markdownStr = mdStr
   .replace(/([\s\S]*)<!--dividing-->/, '')
   .replace(/<!--react-color-sketch-->/, mdStrSketch.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-slider-->/, mdStrSlider.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
+  .replace(/<!--react-color-compact-->/, mdStrCompact.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-saturation-->/, mdStrSaturation.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-alpha-->/, mdStrAlpha.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-hue-->/, mdStrHue.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
@@ -111,10 +124,19 @@ export default function App() {
                     setHsva({ ...hsva, ...color.hsv });
                   }}
                 />
-                <Title>{`<Sketch color="#d0021b" />`}</Title>
+                <Title>{`<Sketch color="${hsvaToHex(hsva)}" />`}</Title>
                 <Slider style={{ width: 220 }} color={hsva} onChange={(color) => setHsva({ ...hsva, ...color.hsv })} />
-                <Title>{`<Slider color="#d0021b" />`}</Title>
+                <Title>{`<Slider color="${hsvaToHex(hsva)}" />`}</Title>
               </div>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center' }}>
+              <Compact
+                style={{
+                  boxShadow: 'rgb(0 0 0 / 15%) 0px 0px 0px 1px, rgb(0 0 0 / 15%) 0px 8px 16px',
+                }}
+                color={hsva}
+                onChange={(color) => setHsva({ ...hsva, ...color.hsv })}
+              />
             </div>
           </div>
           <Markdown source={markdownStr} style={{ padding: '0px 20px 30px' }} />

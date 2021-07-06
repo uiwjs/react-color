@@ -1,10 +1,10 @@
 {
   "private": true,
   "scripts": {
-    "lib:t:esm": "lerna exec --scope @uiw/react-color-alpha -- tsbb types --outDir lib/esm",
-    "lib:t:cjs": "lerna exec --scope @uiw/react-color-alpha -- tsbb types --outDir lib/cjs",
-    "lib:b": "lerna exec --scope @uiw/react-color-alpha -- tsbb build --target react",
-    "lib:watch": "lerna exec --scope @uiw/react-color-alpha -- tsbb watch --target react",
+    "lib:t:esm": "lerna exec --scope @uiw/react-color-compact -- tsbb types --outDir lib/esm",
+    "lib:t:cjs": "lerna exec --scope @uiw/react-color-compact -- tsbb types --outDir lib/cjs",
+    "lib:b": "lerna exec --scope @uiw/react-color-compact -- tsbb build --target react",
+    "lib:watch": "lerna exec --scope @uiw/react-color-compact -- tsbb watch --target react",
     "lib:watch:type": "npm run lib:t:esm -- --watch & npm run lib:t:cjs -- --watch",
     "lib:type": "npm run lib:t:cjs && npm run lib:t:esm",
     "lib:build": "npm run lib:b && npm run lib:type",

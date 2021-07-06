@@ -38,7 +38,7 @@ npm i @uiw/react-color
 
 ```jsx
 import { Sketch } from '@uiw/react-color';
-import { Saturation, Alpha, Hue, Slider, ShadeSlider, hsvaToHslaString } from '@uiw/react-color';
+import { Saturation, Alpha, Hue, Slider, ShadeSlider, Compact, hsvaToHslaString } from '@uiw/react-color';
 
 function Demo() {
   const [hex, setHex] = useState("#fff");
@@ -61,6 +61,7 @@ Package | Version / unpkg / bundle size
 [`@uiw/react-color`](https://uiwjs.github.io/react-color/#getting-started) | [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@uiw/react-color)](https://bundlephobia.com/package/@uiw/react-color) [![npm version](https://img.shields.io/npm/v/@uiw/react-color.svg)](https://www.npmjs.com/package/@uiw/react-color) [![Open in unpkg](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@uiw/react-color/file/README.md) [![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?logo=codesandbox)](https://codesandbox.io/embed/react-color-example-rev1n?fontsize=14&hidenavigation=1&theme=dark) 
 [`@uiw/react-color-sketch`](https://uiwjs.github.io/react-color/#react-color-sketch) | [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@uiw/react-color-sketch)](https://bundlephobia.com/package/@uiw/react-color-sketch) [![npm version](https://img.shields.io/npm/v/@uiw/react-color-sketch.svg)](https://www.npmjs.com/package/@uiw/react-color-sketch) [![Open in unpkg](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@uiw/react-color-sketch/file/README.md)
 [`@uiw/react-color-slider`](https://uiwjs.github.io/react-color/#react-color-slider) | [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@uiw/react-color-slider)](https://bundlephobia.com/package/@uiw/react-color-slider) [![npm version](https://img.shields.io/npm/v/@uiw/react-color-slider.svg)](https://www.npmjs.com/package/@uiw/react-color-slider) [![Open in unpkg](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@uiw/react-color-slider/file/README.md)
+[`@uiw/react-color-compact`](https://uiwjs.github.io/react-color/#react-color-compact) | [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@uiw/react-color-compact)](https://bundlephobia.com/package/@uiw/react-color-compact) [![npm version](https://img.shields.io/npm/v/@uiw/react-color-compact.svg)](https://www.npmjs.com/package/@uiw/react-color-compact) [![Open in unpkg](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@uiw/react-color-compact/file/README.md)
 [`@uiw/react-color-saturation`](https://uiwjs.github.io/react-color/#react-color-saturation) | [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@uiw/react-color-saturation)](https://bundlephobia.com/package/@uiw/react-color-saturation) [![npm version](https://img.shields.io/npm/v/@uiw/react-color-saturation.svg)](https://www.npmjs.com/package/@uiw/react-color-saturation) [![Open in unpkg](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@uiw/react-color-saturation/file/README.md)
 [`@uiw/react-color-hue`](https://uiwjs.github.io/react-color/#react-color-hue) | [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@uiw/react-color-hue)](https://bundlephobia.com/package/@uiw/react-color-hue) [![npm version](https://img.shields.io/npm/v/@uiw/react-color-hue.svg)](https://www.npmjs.com/package/@uiw/react-color-hue) [![Open in unpkg](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@uiw/react-color-hue/file/README.md)
 [`@uiw/react-color-alpha`](https://uiwjs.github.io/react-color/#react-color-alpha) | [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@uiw/react-color-alpha)](https://bundlephobia.com/package/@uiw/react-color-alpha) [![npm version](https://img.shields.io/npm/v/@uiw/react-color-alpha.svg)](https://www.npmjs.com/package/@uiw/react-color-alpha) [![Open in unpkg](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@uiw/react-color-alpha/file/README.md)
@@ -70,6 +71,7 @@ Package | Version / unpkg / bundle size
 
 <!--react-color-sketch-->
 <!--react-color-slider-->
+<!--react-color-compact-->
 <!--react-color-saturation-->
 <!--react-color-alpha-->
 <!--react-color-hue-->
