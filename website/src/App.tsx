@@ -129,7 +129,7 @@ export default function App() {
                 <Title>{`<Slider color="${hsvaToHex(hsva)}" />`}</Title>
               </div>
             </div>
-            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center' }}>
+            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center', paddingTop: 36 }}>
               <Compact
                 style={{
                   boxShadow: 'rgb(0 0 0 / 15%) 0px 0px 0px 1px, rgb(0 0 0 / 15%) 0px 8px 16px',

@@ -34,33 +34,35 @@ export default React.forwardRef<HTMLDivElement, SaturationProps>((props, ref) =>
   };
 
   return (
-    <div className={`${prefixCls} ${className || ''}`} style={containerStyle} ref={ref} {...other}>
-      <Interactive
+    <Interactive
+      className={`${prefixCls} ${className || ''}`}
+      {...other}
+      style={{
+        position: 'absolute',
+        inset: 0,
+        ...containerStyle,
+      }}
+      ref={ref}
+      onMove={handleChange}
+      onDown={handleChange}
+    >
+      <div
         style={{
-          position: 'absolute',
           inset: 0,
+          background: 'linear-gradient(to right, rgb(255, 255, 255), rgba(255, 255, 255, 0))',
+          position: 'absolute',
         }}
-        onMove={handleChange}
-        onDown={handleChange}
       >
         <div
           style={{
             inset: 0,
-            background: 'linear-gradient(to right, rgb(255, 255, 255), rgba(255, 255, 255, 0))',
+            background: 'linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0))',
             position: 'absolute',
           }}
         >
-          <div
-            style={{
-              inset: 0,
-              background: 'linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0))',
-              position: 'absolute',
-            }}
-          >
-            <Pointer prefixCls={prefixCls} top={`${100 - hsva.v}%`} left={`${hsva.s}%`} color={hsvaToHslaString(hsva)} />
-          </div>
+          <Pointer prefixCls={prefixCls} top={`${100 - hsva.v}%`} left={`${hsva.s}%`} color={hsvaToHslaString(hsva)} />
         </div>
-      </Interactive>
-    </div>
+      </div>
+    </Interactive>
   );
 });

@@ -30,6 +30,8 @@ it('Converts color => getContrastingColor', () => {
   expect(getContrastingColor('#d0021b')).toEqual('#fff');
   expect(getContrastingColor('#000')).toEqual('#fff');
   expect(getContrastingColor('#fff')).toEqual('#000');
+  expect(getContrastingColor(undefined!)).toEqual('#fff');
+  expect(getContrastingColor(null!)).toEqual('#fff');
 });
 
 it('Converts color => HEX to ColorResult', () => {
@@ -333,6 +335,8 @@ it('Compares two object colors', () => {
   expect(equalColorObjects({ h: 100, s: 50, v: 50 }, { h: 100, s: 50, v: 50 })).toBe(true);
   expect(equalColorObjects({ h: 50, s: 0, v: 0 }, { h: 100, s: 0, v: 0 })).toBe(false);
   expect(equalColorObjects({ h: 1, s: 2, v: 3 }, { h: 4, s: 5, v: 6, a: 0 })).toBe(false);
+  const hsv = { h: 1, s: 2, v: 3 };
+  expect(equalColorObjects(hsv, hsv)).toBe(true);
 });
 
 it('Compares two string colors', () => {

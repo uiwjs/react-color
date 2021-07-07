@@ -79,7 +79,6 @@ it('Hue direction === vertical', async () => {
         title: 'custom-element',
       }}
       onChange={(newHue) => {
-        console.log('newHue', newHue);
         expect(Object.keys(newHue)).toEqual(expect.arrayContaining(['h']));
       }}
     />,
@@ -100,7 +99,6 @@ it('Hue direction === vertical', async () => {
         title: 'custom-element',
       }}
       onChange={(newHue) => {
-        console.log('newHue', newHue);
         expect(Object.keys(newHue)).toEqual(expect.arrayContaining(['h']));
       }}
     />,

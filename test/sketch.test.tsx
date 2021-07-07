@@ -3,6 +3,7 @@
  */
 import React, { useState } from 'react';
 import TestRenderer from 'react-test-renderer';
+import { screen, render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Sketch from '../packages/color-sketch/src';
 
@@ -40,4 +41,40 @@ it('Sketch', async () => {
       });
     }
   }
+});
+
+it('Sketch onChange color:HsvaColor', async () => {
+  render(
+    <Sketch
+      style={{ marginLeft: 20 }}
+      color={{ h: 0, s: 0, v: 68, a: 1 }}
+      onChange={(color) => {
+        expect(Object.keys(color)).toEqual(expect.arrayContaining(['hex', 'hsl', 'hsv', 'rgb']));
+        expect(color.hex).toEqual('#d0021b');
+        expect(color.hexa).toEqual('#d0021bff');
+      }}
+    />,
+  );
+
+  const elm = screen.getByTitle('#D0021B');
+  elm.focus();
+  fireEvent.click(elm);
+});
+
+it('Sketch onChange color:HexColor', async () => {
+  render(
+    <Sketch
+      style={{ marginLeft: 20 }}
+      color="#ca1d32"
+      onChange={(color) => {
+        expect(Object.keys(color)).toEqual(expect.arrayContaining(['hex', 'hsl', 'hsv', 'rgb']));
+        expect(color.hex).toEqual('#d0021b');
+        expect(color.hexa).toEqual('#d0021bff');
+      }}
+    />,
+  );
+
+  const elm = screen.getByTitle('#D0021B');
+  elm.focus();
+  fireEvent.click(elm);
 });

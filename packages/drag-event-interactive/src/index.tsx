@@ -8,7 +8,7 @@ export interface InteractiveProps extends React.HTMLAttributes<HTMLDivElement> {
   onDown?: (offset: Interaction, event: MouseEvent | TouchEvent) => void;
 }
 
-export default function Interactive(props: InteractiveProps) {
+export default React.forwardRef<HTMLDivElement, InteractiveProps>((props, ref) => {
   const { onMove, onDown, ...reset } = props;
   const container = useRef<HTMLDivElement>(null);
   const hasTouched = useRef(false);
@@ -69,4 +69,4 @@ export default function Interactive(props: InteractiveProps) {
   );
 
   return <div {...reset} ref={container} onMouseDown={handleMoveStart} onTouchStart={handleMoveStart} />;
-}
+});

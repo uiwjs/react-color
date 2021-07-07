@@ -6,32 +6,15 @@ import Hue from '@uiw/react-color-hue';
 import {
   validHex,
   HsvaColor,
-  HslaColor,
-  HsvColor,
-  RgbaColor,
-  hsvaToHsla,
   hsvaToHex,
-  hsvaToRgba,
   hsvaToRgbaString,
   hexToHsva,
+  color as handleColor,
+  ColorResult,
 } from '@uiw/color-convert';
 import Swatch from './Swatch';
 import { useEffect } from 'react';
 
-/**
- * ```js
- * hex: "#d98877"
- * hsl: { h: 10.402, s: 0.563, l: 0.658, a: 1 }
- * hsv: { h: 10.402, s: 0.451, v: 0.850, a: 1 }
- * rgb: { r: 217, g: 136, b: 119, a: 1 }
- * ```
- */
-interface ColorResult {
-  hex: string;
-  hsl: HslaColor;
-  hsv: HsvColor;
-  rgb: RgbaColor;
-}
 export type PresetColor = { color: string; title: string } | string;
 export interface SketchProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'color'> {
   prefixCls?: string;
@@ -69,13 +52,7 @@ export default React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
   const handleChange = useCallback(
     (hsv: HsvaColor) => {
       setHsva(hsv);
-      onChange &&
-        onChange({
-          hex: hsvaToHex(hsv),
-          hsl: hsvaToHsla(hsv),
-          hsv: hsv,
-          rgb: hsvaToRgba(hsv),
-        });
+      onChange && onChange(handleColor(hsv));
     },
     [hsva],
   );

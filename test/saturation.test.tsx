@@ -3,6 +3,7 @@
  */
 import React, { useState } from 'react';
 import TestRenderer from 'react-test-renderer';
+import { screen, render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Saturation from '../packages/color-saturation/src';
 
@@ -30,4 +31,20 @@ it('Saturation', async () => {
       backgroundColor: 'hsl(0,100%, 50%)',
     });
   }
+});
+
+it('Saturation onChange', async () => {
+  render(
+    <Saturation
+      title="custom-element"
+      hsva={{ h: 0, s: 0, v: 68, a: 1 }}
+      onChange={(newColor) => {
+        expect(Object.keys(newColor)).toEqual(expect.arrayContaining(['h', 's', 'v', 'a']));
+      }}
+    />,
+  );
+
+  const elm = screen.getByTitle('custom-element');
+  elm.focus();
+  fireEvent.mouseDown(elm, { clientX: 1 });
 });
