@@ -178,12 +178,11 @@ it('Sketch Click Alpha', async () => {
   );
   // @ts-ignore
   if (container.firstChild.firstChild.firstChild?.nextSibling.firstChild.firstChild?.nextSibling.firstChild?.nextSibling) {
-    // @ts-ignore
     const elm =
-      container.firstChild.firstChild.firstChild?.nextSibling.firstChild.firstChild?.nextSibling.firstChild?.nextSibling;
+      container.firstChild?.firstChild?.firstChild?.nextSibling.firstChild.firstChild?.nextSibling.firstChild?.nextSibling;
 
     // @ts-ignore
     elm.focus();
-    fireEvent.mouseDown(elm, { clientX: 1 });
+    fireEvent.mouseDown(elm!, { clientX: 1 });
   }
 });
