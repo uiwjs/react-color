@@ -1,7 +1,7 @@
 import React from 'react';
 import { HsvaColor, hexToHsva } from '@uiw/color-convert';
 
-export type PresetColor = { color: string; title: string } | string;
+export type PresetColor = { color: string; title?: string } | string;
 export interface SwatchProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick' | 'color'> {
   color?: string;
   colors?: PresetColor[];

@@ -12,10 +12,9 @@ import {
   color as handleColor,
   ColorResult,
 } from '@uiw/color-convert';
-import Swatch from './Swatch';
+import Swatch, { PresetColor } from './Swatch';
 import { useEffect } from 'react';
 
-export type PresetColor = { color: string; title: string } | string;
 export interface SketchProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'color'> {
   prefixCls?: string;
   width?: number;
