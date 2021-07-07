@@ -62,7 +62,8 @@ export default function Swatch(props: SwatchProps) {
           if (typeof item === 'string') {
             title = item;
             background = item;
-          } else if (item && item.color) {
+          }
+          if (typeof item === 'object' && item.color) {
             title = item.title || item.color;
             background = item.color;
           }

@@ -84,7 +84,14 @@ it('Sketch onChange presetColors', async () => {
     <Sketch
       style={{ marginLeft: 20 }}
       color="#ca1d32"
-      presetColors={['#D0021B', '#F5A623', '#f8e61b', { color: '#8B572A' }, { color: '#7ED321', title: 'Color Title' }]}
+      presetColors={[
+        { color: '#D0021B' },
+        '',
+        '#F5A623',
+        '#f8e61b',
+        { color: '#8B572A' },
+        { color: '#7ED321', title: 'Color Title' },
+      ]}
       onChange={(color) => {
         expect(Object.keys(color)).toEqual(expect.arrayContaining(['hex', 'hsl', 'hsv', 'rgb']));
         expect(color.hex).toEqual('#d0021b');
@@ -96,4 +103,87 @@ it('Sketch onChange presetColors', async () => {
   const elm = screen.getByTitle('#D0021B');
   elm.focus();
   fireEvent.click(elm);
+});
+
+it('Sketch Click Saturation', async () => {
+  const { container } = render(
+    <Sketch
+      style={{ marginLeft: 20 }}
+      color="#ca1d32"
+      presetColors={['#D0021B', '#F5A623', '#f8e61b', { color: '#8B572A' }, { color: '#7ED321', title: 'Color Title' }]}
+      onChange={(color) => {
+        // expect(Object.keys(color)).toEqual(expect.arrayContaining(['hex', 'hsl', 'hsv', 'rgb']));
+        expect(Object.keys(color)).toEqual(expect.arrayContaining(['rgb', 'hsl', 'hsv', 'rgba', 'hsla', 'hsva', 'hex', 'hexa']));
+        expect(color.hex).toEqual('#d0021b');
+        expect(color.hexa).toEqual('#d0021bff');
+      }}
+    />,
+  );
+  if (container.firstChild && container.firstChild.firstChild) {
+    const elm = container.firstChild.firstChild.firstChild;
+    if (elm) {
+      // @ts-ignore
+      elm.focus();
+      fireEvent.click(elm);
+    }
+  }
+});
+
+it('Sketch Click Hue', async () => {
+  const { container } = render(
+    <Sketch
+      style={{ marginLeft: 20 }}
+      color="#ca1d32"
+      presetColors={['#D0021B', '#F5A623', '#f8e61b', { color: '#8B572A' }, { color: '#7ED321', title: 'Color Title' }]}
+      onChange={(color) => {
+        expect(color.hex).toEqual('#000000');
+        expect(color.hexa).toEqual('#000000ff');
+        expect(Object.keys(color)).toEqual(expect.arrayContaining(['rgb', 'hsl', 'hsv', 'rgba', 'hsla', 'hsva', 'hex', 'hexa']));
+        // expect(color.rgb).toEqual({ r: 208, g: 2, b: 27 });
+        // expect(color.rgba).toEqual({ r: 208, g: 2, b: 27, a: 1 });
+      }}
+    />,
+  );
+  if (container.firstChild && container.firstChild.firstChild && container.firstChild.firstChild.firstChild) {
+    const elm = container.firstChild.firstChild.firstChild;
+    // @ts-ignore
+    elm.focus();
+    fireEvent.mouseDown(elm, { clientX: 1 });
+  }
+  if (
+    container.firstChild &&
+    container.firstChild.firstChild &&
+    container.firstChild.firstChild.firstChild?.nextSibling!.firstChild!.firstChild!.firstChild?.nextSibling
+  ) {
+    const elm = container.firstChild.firstChild.firstChild?.nextSibling.firstChild.firstChild.firstChild?.nextSibling;
+
+    // @ts-ignore
+    elm.focus();
+    fireEvent.mouseDown(elm, { clientX: 1 });
+  }
+});
+
+it('Sketch Click Alpha', async () => {
+  const { container } = render(
+    <Sketch
+      style={{ marginLeft: 20 }}
+      color="#ca1d32"
+      presetColors={['#D0021B', '#F5A623', '#f8e61b', { color: '#8B572A' }, { color: '#7ED321', title: 'Color Title' }]}
+      onChange={(color) => {
+        expect(color.hex).toEqual('#ca1d32');
+        // expect(color.hexa).toEqual('#000000ff');
+        expect(Object.keys(color)).toEqual(expect.arrayContaining(['rgb', 'hsl', 'hsv', 'rgba', 'hsla', 'hsva', 'hex', 'hexa']));
+      }}
+    />,
+  );
+  // @ts-ignore
+  if (container.firstChild.firstChild.firstChild?.nextSibling.firstChild.firstChild?.nextSibling.firstChild?.nextSibling) {
+    // @ts-ignore
+    const elm =
+      container.firstChild.firstChild.firstChild?.nextSibling.firstChild.firstChild?.nextSibling.firstChild?.nextSibling;
+
+    // @ts-ignore
+    elm.focus();
+    fireEvent.mouseDown(elm, { clientX: 1 });
+  }
 });

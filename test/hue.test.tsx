@@ -94,7 +94,6 @@ it('Hue direction === vertical', async () => {
     <Hue
       hue={undefined!}
       direction="vertical"
-      data-testid="custom-element"
       innerProps={{
         title: 'custom-element',
       }}
@@ -107,4 +106,5 @@ it('Hue direction === vertical', async () => {
   const elm = screen.getByTitle('custom-element');
   elm.focus();
   fireEvent.mouseDown(elm, { clientX: 1 });
+  expect(elm.style).toHaveProperty('_values', { inset: '0', position: 'absolute' });
 });
