@@ -54,7 +54,6 @@ export default React.forwardRef<HTMLDivElement, AlphaProps>((props, ref) => {
     [hsva],
   );
 
-  const Comp = pointer ? pointer : Pointer;
   const colorTo = hsvaToHslaString(Object.assign({}, hsva, { a: 1 }));
   const innerBackground = `linear-gradient(to ${
     direction === 'horizontal' ? 'right' : 'bottom'
@@ -69,7 +68,7 @@ export default React.forwardRef<HTMLDivElement, AlphaProps>((props, ref) => {
   return (
     <div
       {...other}
-      className={`${prefixCls} ${className || ''}`}
+      className={[prefixCls, `${prefixCls}-${direction}`, className || ''].filter(Boolean).join(' ')}
       style={{
         borderRadius: radius,
         ...style,
@@ -101,7 +100,10 @@ export default React.forwardRef<HTMLDivElement, AlphaProps>((props, ref) => {
         onMove={handleChange}
         onDown={handleChange}
       >
-        <Comp prefixCls={prefixCls} {...comProps} />
+        {React.createElement(pointer || Pointer, {
+          prefixCls,
+          ...comProps,
+        })}
       </Interactive>
     </div>
   );
