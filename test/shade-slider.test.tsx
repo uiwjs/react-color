@@ -3,6 +3,7 @@
  */
 import React, { useState } from 'react';
 import TestRenderer from 'react-test-renderer';
+import { screen, render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import ShadeSlider from '../packages/color-shade-slider/src';
 import { BACKGROUND_IMG } from '../packages/color-alpha/src';
@@ -23,7 +24,7 @@ it('ShadeSlider', async () => {
   let tree = component.toJSON();
   if (tree && !Array.isArray(tree)) {
     expect(tree.type).toEqual('div');
-    expect(tree.props.className).toEqual('w-color-alpha w-color-saturation ');
+    expect(tree.props.className).toEqual('w-color-alpha w-color-alpha-horizontal w-color-saturation ');
     expect(tree.props.style).toMatchObject({
       width: 320,
       height: 16,
@@ -49,4 +50,41 @@ it('ShadeSlider', async () => {
       });
     }
   }
+});
+
+it('ShadeSlider onChange', async () => {
+  render(
+    <ShadeSlider
+      innerProps={{
+        title: 'test',
+      }}
+      hsva={{ h: 0, s: 0, v: 68, a: 1 }}
+      onChange={(newShade) => {
+        expect(Object.keys(newShade)).toEqual(expect.arrayContaining(['s', 'v']));
+      }}
+    />,
+  );
+
+  const elm = screen.getByTitle('test');
+  elm.focus();
+  fireEvent.mouseDown(elm, { clientX: 1 });
+});
+
+it('ShadeSlider direction === vertical', async () => {
+  render(
+    <ShadeSlider
+      innerProps={{
+        title: 'test',
+      }}
+      direction="vertical"
+      hsva={{ h: 0, s: 0, v: 68, a: 1 }}
+      onChange={(newShade) => {
+        expect(Object.keys(newShade)).toEqual(expect.arrayContaining(['s', 'v']));
+      }}
+    />,
+  );
+
+  const elm = screen.getByTitle('test');
+  elm.focus();
+  fireEvent.mouseDown(elm, { clientX: 1 });
 });
