@@ -190,10 +190,10 @@ export const rgbaToHexa = ({ r, g, b, a }: RgbaColor): string => {
 export const hexToHsva = (hex: string): HsvaColor => rgbaToHsva(hexToRgba(hex));
 export const hexToRgba = (hex: string): RgbaColor => {
   const htemp = hex.replace('#', '');
-  if (/^#/.test(hex) && htemp.length === 3) {
+  if (/^#?/.test(hex) && htemp.length === 3) {
     hex = `#${htemp.charAt(0)}${htemp.charAt(0)}${htemp.charAt(1)}${htemp.charAt(1)}${htemp.charAt(2)}${htemp.charAt(2)}`;
   }
-  const reg = new RegExp(`[A-Za-z0-9]{${hex.length < 6 ? '1' : '2'}}`, 'g');
+  const reg = new RegExp(`[A-Za-z0-9]{2}`, 'g');
   const [r, g, b, a] = hex.match(reg)!.map((v) => parseInt(v, 16));
   return {
     r,

@@ -78,3 +78,22 @@ it('Sketch onChange color:HexColor', async () => {
   elm.focus();
   fireEvent.click(elm);
 });
+
+it('Sketch onChange presetColors', async () => {
+  render(
+    <Sketch
+      style={{ marginLeft: 20 }}
+      color="#ca1d32"
+      presetColors={['#D0021B', '#F5A623', '#f8e61b', { color: '#8B572A' }, { color: '#7ED321', title: 'Color Title' }]}
+      onChange={(color) => {
+        expect(Object.keys(color)).toEqual(expect.arrayContaining(['hex', 'hsl', 'hsv', 'rgb']));
+        expect(color.hex).toEqual('#d0021b');
+        expect(color.hexa).toEqual('#d0021bff');
+      }}
+    />,
+  );
+
+  const elm = screen.getByTitle('#D0021B');
+  elm.focus();
+  fireEvent.click(elm);
+});

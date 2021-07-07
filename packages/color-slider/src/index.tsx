@@ -13,14 +13,14 @@ export interface SliderProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 
   prefixCls?: string;
   color?: string | HsvaColor;
   lightness?: number[];
-  onChange?: (color: ColorResult) => void;
+  onChange?: (color: ColorResult, evn: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }
 
 export default React.forwardRef<HTMLDivElement, SliderProps>((props, ref) => {
   const { prefixCls = 'w-color-slider', className, style, onChange, color, lightness = [80, 65, 50, 35, 20], ...other } = props;
   const hsva = (typeof color === 'string' && validHex(color) ? hexToHsva(color) : color || {}) as HsvaColor;
-  const handleClick = (hslStr: string) => {
-    onChange && onChange(handleColor(hslStringToHsva(hslStr)));
+  const handleClick = (hslStr: string, evn: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    onChange && onChange(handleColor(hslStringToHsva(hslStr)), evn);
   };
   return (
     <div
@@ -42,7 +42,7 @@ export default React.forwardRef<HTMLDivElement, SliderProps>((props, ref) => {
             }}
           >
             <div
-              onClick={() => handleClick(colorHSL)}
+              onClick={(evn) => handleClick(colorHSL, evn)}
               style={{
                 backgroundColor: colorHSL,
                 height: 12,

@@ -61,11 +61,26 @@ it('Converts color => HEXA to ColorResult', () => {
   expect(hsva).toEqual({ h: 219.88235294117646, s: 70.53941908713693, v: 94.50980392156862, a: 0.47843137254901963 });
 });
 
+it('Converts color => HEXA to ColorResult', () => {
+  const { rgb, rgba, hex, hexa, hsl, hsla, hsv, hsva } = color('');
+  expect(hex).toBeUndefined();
+  expect(hexa).toBeUndefined();
+  expect(rgb).toBeUndefined();
+  expect(rgb).toBeUndefined();
+  expect(rgba).toBeUndefined();
+  expect(hsl).toBeUndefined();
+  expect(hsla).toBeUndefined();
+  expect(hsv).toBeUndefined();
+  expect(hsva).toBeUndefined();
+});
+
 it('Converts RGBA to HEX', () => {
   expect(rgbaToHex({ r: 208, g: 2, b: 27, a: 1 })).toEqual('#d0021b');
   expect(rgbaToHex({ r: 209, g: 2, b: 26, a: 1 })).toEqual('#d1021a');
   expect(rgbaToHex(hexToRgba('#d0021b'))).toEqual('#d0021b');
   expect(rgbaToHex(hexToRgba('#d1021a'))).toEqual('#d1021a');
+  expect(rgbaToHex(hexToRgba('#abc'))).toEqual('#aabbcc');
+  // expect(rgbaToHex(hexToRgba('abc'))).toEqual('#aabbcc');
 });
 
 it('Converts RGBA to HEXA', () => {
@@ -165,6 +180,7 @@ it('Converts HSLA string to HSVA', () => {
   test('hsla(0deg, 0%, 0%, 0.5)', { h: 0, s: 0, v: 0, a: 0.5 });
   test('hsla(200, 25%, 32%, 1)', { h: 200, s: 40, v: 40, a: 1 });
   test('hsla(.5turn 25% 32% / 50%)', { h: 180, s: 40, v: 40, a: 0.5 });
+  test('', { h: 0, s: 0, v: 0, a: 1 });
 });
 
 it('Converts HSVA to RGBA', () => {
@@ -237,6 +253,7 @@ it('Converts RGBA string to HSVA', () => {
   let test = (input: string, output: HsvaColor) => expect(rgbaStringToHsva(input)).toMatchObject(output);
   test('rgba(61, 88, 102, 0.5)', { h: 200.48780487804876, s: 40.19607843137255, v: 40, a: 0.5 });
   test('rgba(23.9% 34.5% 40% / 99%)', { h: 200.49689440993788, s: 40.25, v: 40, a: 0.99 });
+  test('', { h: 0, s: 0, v: 0, a: 1 });
 });
 
 it('Converts HSVA to HSVA string', () => {
@@ -248,6 +265,11 @@ it('Converts HSVA to HSVA string', () => {
 it('Converts HSVA to HSV string', () => {
   expect(hsvaToHsvString({ h: 0, s: 0, v: 100, a: 1 })).toBe('hsv(0, 0%, 100%)');
   expect(hsvaToHsvString({ h: 200, s: 40, v: 40, a: 1 })).toBe('hsv(200, 40%, 40%)');
+});
+
+it('Converts HSVA string to Hsva', () => {
+  expect(hsvaStringToHsva('hsv(0, 0%, 100%)')).toMatchObject({ a: 1, h: 0, s: 0, v: 100 });
+  expect(hsvaStringToHsva('')).toMatchObject({ a: 1, h: 0, s: 0, v: 0 });
 });
 
 it('Converts HSV string to HSVA', () => {
