@@ -24,7 +24,7 @@ it('Hue', async () => {
   let tree = component.toJSON();
   if (tree && !Array.isArray(tree)) {
     expect(tree.type).toEqual('div');
-    expect(tree.props.className).toEqual('w-color-alpha w-color-hue ');
+    expect(tree.props.className).toEqual('w-color-alpha w-color-alpha-horizontal w-color-hue ');
     expect(tree.props.style).toMatchObject({
       width: 320,
       height: 16,
@@ -50,26 +50,63 @@ it('Hue', async () => {
   }
 });
 
-// it('Hue onChange', async () => {
-//   const MyComponent = () => {
-//     const [hsva, setHsva] = useState({ h: 209, s: 36, v: 90, a: 1 });
-//     return (
-//       <div>
-//         <Hue
-//           hue={hsva.h}
-//           data-testid="custom-element"
-//           innerProps={{
-//             // ['data-testid']: 'custom-element',
-//           }}
-//           onChange={(newHue) => {
-//             console.log('newHue')
-//             // setHsva({ ...hsva, ...newHue });
-//           }}
-//         />
-//         <div>Load Greeting</div>
-//       </div>
-//     );
-//   };
-//   render(<MyComponent />);
-//   fireEvent.click(screen.getByTestId('custom-element'));
-// });
+it('Hue onMouseDown', async () => {
+  render(
+    <Hue
+      hue={209}
+      data-testid="custom-element"
+      innerProps={{
+        title: 'custom-element',
+      }}
+      onChange={(newHue) => {
+        expect(Object.keys(newHue)).toEqual(expect.arrayContaining(['h']));
+      }}
+    />,
+  );
+
+  const elm = screen.getByTitle('custom-element');
+  elm.focus();
+  fireEvent.mouseDown(elm, { clientX: 1 });
+});
+
+it('Hue direction === vertical', async () => {
+  render(
+    <Hue
+      hue={209}
+      direction="vertical"
+      data-testid="custom-element"
+      innerProps={{
+        title: 'custom-element',
+      }}
+      onChange={(newHue) => {
+        console.log('newHue', newHue);
+        expect(Object.keys(newHue)).toEqual(expect.arrayContaining(['h']));
+      }}
+    />,
+  );
+
+  const elm = screen.getByTitle('custom-element');
+  elm.focus();
+  fireEvent.mouseDown(elm, { clientX: 1 });
+});
+
+it('Hue direction === vertical', async () => {
+  render(
+    <Hue
+      hue={undefined!}
+      direction="vertical"
+      data-testid="custom-element"
+      innerProps={{
+        title: 'custom-element',
+      }}
+      onChange={(newHue) => {
+        console.log('newHue', newHue);
+        expect(Object.keys(newHue)).toEqual(expect.arrayContaining(['h']));
+      }}
+    />,
+  );
+
+  const elm = screen.getByTitle('custom-element');
+  elm.focus();
+  fireEvent.mouseDown(elm, { clientX: 1 });
+});
