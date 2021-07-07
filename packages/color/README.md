@@ -37,8 +37,8 @@ npm i @uiw/react-color
 [![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?logo=codesandbox)](https://codesandbox.io/embed/react-color-example-rev1n?fontsize=14&hidenavigation=1&theme=dark)
 
 ```jsx
-import { Sketch } from '@uiw/react-color';
-import { Saturation, Alpha, Hue, Slider, ShadeSlider, Compact, hsvaToHslaString } from '@uiw/react-color';
+import { Alpha, Hue, Slider, Sketch, Compact } from '@uiw/react-color';
+import { ShadeSlider, Saturation, Interactive, hsvaToHslaString } from '@uiw/react-color';
 
 function Demo() {
   const [hex, setHex] = useState("#fff");

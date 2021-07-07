@@ -130,13 +130,16 @@ export default function App() {
               </div>
             </div>
             <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center', paddingTop: 36 }}>
-              <Compact
-                style={{
-                  boxShadow: 'rgb(0 0 0 / 15%) 0px 0px 0px 1px, rgb(0 0 0 / 15%) 0px 8px 16px',
-                }}
-                color={hsva}
-                onChange={(color) => setHsva({ ...hsva, ...color.hsv })}
-              />
+              <div>
+                <Compact
+                  style={{
+                    boxShadow: 'rgb(0 0 0 / 15%) 0px 0px 0px 1px, rgb(0 0 0 / 15%) 0px 8px 16px',
+                  }}
+                  color={hsva}
+                  onChange={(color) => setHsva({ ...hsva, ...color.hsv })}
+                />
+                <Title>{`<Compact color="${hsvaToHex(hsva)}" />`}</Title>
+              </div>
             </div>
           </div>
           <Markdown source={markdownStr} style={{ padding: '0px 20px 30px' }} />
