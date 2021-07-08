@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-color-editable-input",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Color Editable Input",
   "author": "Kenny Wong <wowohoo@qq.com>",
   "main": "lib/cjs/index.js",
