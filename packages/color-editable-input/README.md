@@ -55,8 +55,11 @@ function Demo() {
 ```ts
 interface EditableInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
   prefixCls?: string;
+  value?: string | number;
   label?: string;
   labelStyle?: React.CSSProperties;
+  inputStyle?: React.CSSProperties;
+  onChange?: (evn: React.ChangeEvent<HTMLInputElement>, value: string | number) => void;
 }
 ```
 
