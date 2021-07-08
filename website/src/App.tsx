@@ -47,6 +47,7 @@ let markdownStr = mdStr
 
 export default function App() {
   const [hsva, setHsva] = useState({ h: 209, s: 36, v: 90, a: 1 });
+
   return (
     <div style={{ background: `url(${BACKGROUND_IMG}) left center` }}>
       <div className={styles.app} style={{ backgroundColor: hsvaToHslaString(hsva) }}>
@@ -126,7 +127,7 @@ export default function App() {
                 <Sketch
                   color={hsva}
                   onChange={(color) => {
-                    setHsva({ ...hsva, ...color.hsv });
+                    setHsva({ ...hsva, ...color.hsva });
                   }}
                 />
                 <Title>{`<Sketch color="${hsvaToHex(hsva)}" />`}</Title>
@@ -140,7 +141,7 @@ export default function App() {
                   style={{
                     boxShadow: 'rgb(0 0 0 / 15%) 0px 0px 0px 1px, rgb(0 0 0 / 15%) 0px 8px 16px',
                   }}
-                  color={hsva}
+                  color={hsvaToHex(hsva)}
                   onChange={(color) => setHsva({ ...hsva, ...color.hsv })}
                 />
                 <Title>{`<Compact color="${hsvaToHex(hsva)}" />`}</Title>

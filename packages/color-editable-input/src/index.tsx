@@ -60,6 +60,7 @@ export default React.forwardRef<HTMLInputElement, EditableInputProps>((props, re
         position: 'relative',
         alignItems: 'center',
         display: 'flex',
+        fontSize: 11,
         ...style,
       }}
     >
@@ -68,6 +69,7 @@ export default React.forwardRef<HTMLInputElement, EditableInputProps>((props, re
         value={value}
         onChange={handleChange}
         onBlur={handleBlur}
+        autoComplete="off"
         onFocus={() => (isFocus.current = true)}
         {...other}
         style={{
@@ -76,6 +78,7 @@ export default React.forwardRef<HTMLInputElement, EditableInputProps>((props, re
           paddingBottom: 2,
           paddingLeft: 3,
           paddingRight: 3,
+          fontSize: 11,
           boxSizing: 'border-box',
           border: 'none',
           boxShadow: 'rgb(204 204 204) 0px 0px 0px 1px inset',
@@ -84,7 +87,6 @@ export default React.forwardRef<HTMLInputElement, EditableInputProps>((props, re
       />
       <span
         style={{
-          fontSize: 11,
           color: 'rgb(153, 153, 153)',
           textTransform: 'capitalize',
           ...labelStyle,
