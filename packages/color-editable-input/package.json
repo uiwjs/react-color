@@ -1,9 +1,8 @@
 {
-  "name": "@uiw/react-color",
+  "name": "@uiw/react-color-editable-input",
   "version": "0.0.9",
-  "description": "Color Picker component for React.",
+  "description": "Color Editable Input",
   "author": "Kenny Wong <wowohoo@qq.com>",
-  "sideEffects": false,
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
   "repository": {
@@ -13,10 +12,9 @@
   "keywords": [
     "react",
     "react-color",
-    "react-color-alpha",
-    "react-color-hua",
-    "color-convert",
-    "alpha",
+    "react-color-editable-input",
+    "editable-input",
+    "editable",
     "color",
     "convert"
   ],
@@ -30,15 +28,7 @@
     "react-dom": ">=16.9.0"
   },
   "dependencies": {
-    "@uiw/color-convert": "^0.0.9",
-    "@uiw/react-color-alpha": "^0.0.9",
-    "@uiw/react-color-compact": "^0.0.9",
-    "@uiw/react-color-editable-input": "^0.0.9",
-    "@uiw/react-color-hue": "^0.0.9",
-    "@uiw/react-color-saturation": "^0.0.9",
-    "@uiw/react-color-shade-slider": "^0.0.9",
-    "@uiw/react-color-sketch": "^0.0.9",
-    "@uiw/react-color-slider": "^0.0.9"
+    "@babel/runtime": "7.14.6"
   },
   "devDependencies": {
     "@types/react": "17.0.13",

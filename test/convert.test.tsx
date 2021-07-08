@@ -116,6 +116,7 @@ it('Converts shorthand HEX to HSVA', () => {
 });
 
 it('Converts HSVA to HEX', () => {
+  expect(hsvaToHex({ h: 0, s: 0, v: 30.19607843137255, a: 0.4875 })).toBe('#4d4d4d');
   expect(hsvaToHex({ h: 0, s: 0, v: 100, a: 1 })).toBe('#ffffff');
   expect(hsvaToHex({ h: 60, s: 100, v: 100, a: 1 })).toBe('#ffff00');
   expect(hsvaToHex({ h: 0, s: 100, v: 100, a: 1 })).toBe('#ff0000');

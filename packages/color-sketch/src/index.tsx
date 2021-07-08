@@ -44,7 +44,8 @@ export default React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
   useEffect(() => {
     if (typeof color === 'string' && validHex(color)) {
       setHsva(hexToHsva(color));
-    } else if (typeof color === 'object') {
+    }
+    if (typeof color === 'object') {
       setHsva(color);
     }
   }, [color]);

@@ -1,0 +1,67 @@
+React Color Editable Input
+===
+
+[![npm bundle size](https://img.shields.io/bundlephobia/minzip/@uiw/react-color-editable-input)](https://bundlephobia.com/package/@uiw/react-color-editable-input) [![npm version](https://img.shields.io/npm/v/@uiw/react-color-editable-input.svg)](https://www.npmjs.com/package/@uiw/react-color-editable-input) [![Open in unpkg](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@uiw/react-color/file/README.md)
+
+![editable-input](https://user-images.githubusercontent.com/1680273/124878498-c1bcdf80-dffe-11eb-8164-d752a8109db9.png)
+
+## Install
+
+```bash
+npm i @uiw/react-color-editable-input
+```
+
+## Usage
+
+```js
+import { useState } from 'react';
+import { hsvaToHex } from '@uiw/color-convert';
+import EditableInput from '@uiw/react-color-editable-input';
+
+function Demo() {
+  const [hsva, setHsva] = useState({ h: 209, s: 36, v: 90, a: 1 });
+  return (
+    <div style={{ padding: '0 10px 0 20px' }}>
+      <EditableInput label="Hex" value={hsvaToHex(hsva)}
+        style={{ width: 68, flexDirection: 'column-reverse', alignItems: 'flex-start' }} />
+      <EditableInput
+        label="Hex"
+        value={hsvaToHex(hsva)}
+        labelStyle={{ position: 'relative', display: 'block' }}
+        style={{
+          width: 68,
+          flexDirection: 'column',
+          marginTop: 8,
+        }}
+      />
+      <EditableInput label="Hex" value={hsvaToHex(hsva)} style={{ width: 84, marginTop: 14, }} />
+      <EditableInput
+        label="Hex"
+        value={hsvaToHex(hsva)}
+        labelStyle={{ position: 'relative', display: 'block' }}
+        style={{
+          width: 84,
+          marginTop: 8,
+          flexDirection: 'row-reverse',
+        }}
+      />
+    </div>
+  );
+}
+```
+
+## Props
+
+```ts
+interface EditableInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
+  prefixCls?: string;
+  label?: string;
+  labelStyle?: React.CSSProperties;
+}
+```
+
+<!--footer-dividing-->
+
+## License
+
+Licensed under the MIT License.

@@ -7,6 +7,7 @@ import {
   Hue,
   Slider,
   ShadeSlider,
+  EditableInput,
   hsvaToHex,
   hsvaToHslaString,
   BACKGROUND_IMG,
@@ -139,6 +140,36 @@ export default function App() {
                   onChange={(color) => setHsva({ ...hsva, ...color.hsv })}
                 />
                 <Title>{`<Compact color="${hsvaToHex(hsva)}" />`}</Title>
+              </div>
+              <div style={{ padding: '0 10px 0 20px' }}>
+                <EditableInput
+                  label="Hex"
+                  value={hsvaToHex(hsva)}
+                  style={{ width: 68, flexDirection: 'column-reverse', alignItems: 'flex-start' }}
+                />
+                <EditableInput
+                  label="Hex"
+                  value={hsvaToHex(hsva)}
+                  labelStyle={{ position: 'relative', display: 'block' }}
+                  style={{
+                    width: 68,
+                    flexDirection: 'column',
+                    marginTop: 8,
+                  }}
+                />
+              </div>
+              <div>
+                <EditableInput label="Hex" value={hsvaToHex(hsva)} style={{ width: 84, marginTop: 14 }} />
+                <EditableInput
+                  label="Hex"
+                  value={hsvaToHex(hsva)}
+                  labelStyle={{ position: 'relative', display: 'block' }}
+                  style={{
+                    width: 84,
+                    marginTop: 8,
+                    flexDirection: 'row-reverse',
+                  }}
+                />
               </div>
             </div>
           </div>

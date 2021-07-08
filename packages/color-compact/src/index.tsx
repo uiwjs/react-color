@@ -6,6 +6,7 @@ import {
   equalColorObjects,
   validHex,
   HsvaColor,
+  hsvaToHex,
   getContrastingColor,
 } from '@uiw/color-convert';
 
@@ -78,7 +79,7 @@ export default React.forwardRef<HTMLDivElement, CompactProps>((props, ref) => {
       {...other}
     >
       {colors.map((hex, idx) => {
-        const checked = hsva ? equalColorObjects(hexToHsva(hex), hsva) : false;
+        const checked = hsva && hsvaToHex(hsva).toLocaleLowerCase() === hex.toLocaleLowerCase();
         return (
           <div
             key={hex}
