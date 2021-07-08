@@ -9,7 +9,9 @@ import {
   ShadeSlider,
   EditableInput,
   hsvaToHex,
+  hexToHsva,
   hsvaToHslaString,
+  validHex,
   BACKGROUND_IMG,
 } from '@uiw/react-color';
 import GitHubCorners from '@uiw/react-github-corners';
@@ -145,11 +147,13 @@ export default function App() {
                 <EditableInput
                   label="Hex"
                   value={hsvaToHex(hsva)}
+                  onChange={() => {}}
                   style={{ width: 68, flexDirection: 'column-reverse', alignItems: 'flex-start' }}
                 />
                 <EditableInput
-                  label="Hex"
-                  value={hsvaToHex(hsva)}
+                  label="Alpha"
+                  value={hsva.a}
+                  onChange={() => {}}
                   labelStyle={{ position: 'relative', display: 'block' }}
                   style={{
                     width: 68,
@@ -159,10 +163,24 @@ export default function App() {
                 />
               </div>
               <div>
-                <EditableInput label="Hex" value={hsvaToHex(hsva)} style={{ width: 84, marginTop: 14 }} />
                 <EditableInput
                   label="Hex"
                   value={hsvaToHex(hsva)}
+                  onChange={(evn) => {
+                    if (validHex(evn.target.value)) {
+                      setHsva(hexToHsva(evn.target.value));
+                    }
+                  }}
+                  style={{ width: 84, marginTop: 14 }}
+                />
+                <EditableInput
+                  label="Hex"
+                  value={hsvaToHex(hsva)}
+                  onChange={(evn) => {
+                    if (validHex(evn.target.value)) {
+                      setHsva(hexToHsva(evn.target.value));
+                    }
+                  }}
                   labelStyle={{ position: 'relative', display: 'block' }}
                   style={{
                     width: 84,
