@@ -25,6 +25,7 @@ import mdStrSketch from '@uiw/react-color-sketch/README.md';
 import mdStrSlider from '@uiw/react-color-slider/README.md';
 import mdStrCompact from '@uiw/react-color-compact/README.md';
 import mdStrSaturation from '@uiw/react-color-saturation/README.md';
+import mdStrEditableInput from '@uiw/react-color-editable-input/README.md';
 import mdStrAlpha from '@uiw/react-color-alpha/README.md';
 import mdStrHue from '@uiw/react-color-hue/README.md';
 import mdStrShadeSlider from '@uiw/react-color-shade-slider/README.md';
@@ -37,6 +38,7 @@ let markdownStr = mdStr
   .replace(/<!--react-color-slider-->/, mdStrSlider.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-compact-->/, mdStrCompact.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-saturation-->/, mdStrSaturation.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
+  .replace(/<!--react-color-editable-input-->/, mdStrEditableInput.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-alpha-->/, mdStrAlpha.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-hue-->/, mdStrHue.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-shade-slider-->/, mdStrShadeSlider.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
