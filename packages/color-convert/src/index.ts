@@ -194,7 +194,7 @@ export const hexToRgba = (hex: string): RgbaColor => {
     hex = `#${htemp.charAt(0)}${htemp.charAt(0)}${htemp.charAt(1)}${htemp.charAt(1)}${htemp.charAt(2)}${htemp.charAt(2)}`;
   }
   const reg = new RegExp(`[A-Za-z0-9]{2}`, 'g');
-  const [r, g, b, a] = hex.match(reg)!.map((v) => parseInt(v, 16));
+  const [r, g, b = 0, a] = hex.match(reg)!.map((v) => parseInt(v, 16));
   return {
     r,
     g,

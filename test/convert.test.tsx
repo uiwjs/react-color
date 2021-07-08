@@ -101,6 +101,7 @@ it('Converts HEX to RGBA', () => {
 });
 
 it('Converts HEX to HSVA', () => {
+  expect(hexToHsva('#aaaa')).toMatchObject({ h: 60, s: 100, v: 66.66666666666666, a: 1 });
   expect(hexToHsva('#ffffff')).toMatchObject({ h: 0, s: 0, v: 100, a: 1 });
   expect(hexToHsva('#ffff00')).toMatchObject({ h: 60, s: 100, v: 100, a: 1 });
   expect(hexToHsva('#ff0000')).toMatchObject({ h: 0, s: 100, v: 100, a: 1 });
