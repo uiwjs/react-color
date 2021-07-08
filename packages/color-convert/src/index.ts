@@ -66,7 +66,8 @@ export const rgbaToHsva = ({ r, g, b, a }: RgbaColor): HsvaColor => {
 
 export const hsvaToHslString = (hsva: HsvaColor): string => {
   const { h, s, l } = hsvaToHsla(hsva);
-  return `hsl(${h}, ${s}%, ${l}%)`;
+  // return `hsl(${h}, ${s}%, ${l}%)`;
+  return `hsl(${h}, ${Math.round(s)}%, ${Math.round(l)}%)`;
 };
 
 export const hsvaToHsvString = ({ h, s, v }: HsvaColor): string => {

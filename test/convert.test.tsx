@@ -90,7 +90,7 @@ it('Converts RGBA to HEXA', () => {
 });
 
 it('Converts HEX to RGBA', () => {
-  expect(hsvaToHslString(hexToHsva('#d0021b'))).toEqual('hsl(352.71844660194176, 98.09523809523813%, 41.17647058823529%)');
+  expect(hsvaToHslString(hexToHsva('#d0021b'))).toEqual('hsl(352.71844660194176, 98%, 41%)');
   expect(hsvaToHex(rgbaToHsva(hexToRgba('#d0021b')))).toEqual('#d0021b');
   expect(hexToRgba('#d0021b')).toMatchObject({ r: 208, g: 2, b: 27, a: 1 });
 

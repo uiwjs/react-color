@@ -66,21 +66,20 @@ export default React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
     if (typeof value === 'number') {
       if (value > 255) value = 255;
       if (type === 'a') {
-        setHsva({ ...hsva, a: value / 100 });
+        handleChange({ ...hsva, a: value / 100 });
       }
       if (type === 'r') {
-        setHsva(rgbaToHsva({ ...rgba, r: value }));
+        handleChange(rgbaToHsva({ ...rgba, r: value }));
       }
       if (type === 'g') {
-        setHsva(rgbaToHsva({ ...rgba, g: value }));
+        handleChange(rgbaToHsva({ ...rgba, g: value }));
       }
       if (type === 'b') {
-        setHsva(rgbaToHsva({ ...rgba, b: value }));
+        handleChange(rgbaToHsva({ ...rgba, b: value }));
       }
     }
-    if (typeof value === 'string' && type === 'hex' && validHex(value) && value.length === (3 || 6)) {
-      console.log(hexToHsva(`#${value}`));
-      setHsva(hexToHsva(value));
+    if (typeof value === 'string' && type === 'hex' && validHex(value) && /(3|6)/.test(String(value.length))) {
+      handleChange(hexToHsva(value));
     }
   };
 

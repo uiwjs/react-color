@@ -48,6 +48,7 @@ export default React.forwardRef<HTMLInputElement, EditableInputProps>((props, re
       onChange && onChange(evn, val);
     }
     setValue(value);
+    setValueProps(value);
   }
   function handleBlur() {
     isFocus.current = false;

@@ -3,7 +3,8 @@ import {
   ColorResult,
   color as handleColor,
   hexToHsva,
-  equalColorObjects,
+  hsvaToHsla,
+  hsvaToHslString,
   validHex,
   HsvaColor,
   hslStringToHsva,
@@ -30,8 +31,9 @@ export default React.forwardRef<HTMLDivElement, SliderProps>((props, ref) => {
       {...other}
     >
       {lightness.map((num, idx) => {
-        const colorHSL = `hsl(${hsva.h}deg 50% ${num}%)`;
-        const checked = equalColorObjects(hslStringToHsva(colorHSL), hsva);
+        const hsl = hsvaToHsla(hsva);
+        const hslStr = `hsl(${hsl.h}, 50%, ${num}%)`;
+        const checked = hslStr === hsvaToHslString(hsva);
         return (
           <div
             key={idx}
@@ -42,9 +44,9 @@ export default React.forwardRef<HTMLDivElement, SliderProps>((props, ref) => {
             }}
           >
             <div
-              onClick={(evn) => handleClick(colorHSL, evn)}
+              onClick={(evn) => handleClick(hslStr, evn)}
               style={{
-                backgroundColor: colorHSL,
+                backgroundColor: hslStr,
                 height: 12,
                 cursor: 'pointer',
                 ...(checked

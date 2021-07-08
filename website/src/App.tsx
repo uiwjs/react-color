@@ -150,13 +150,17 @@ export default function App() {
                 <EditableInput
                   label="Hex"
                   value={hsvaToHex(hsva)}
-                  onChange={() => {}}
+                  onChange={(evn, value) => {
+                    if (validHex(evn.target.value)) {
+                      setHsva(hexToHsva(evn.target.value));
+                    }
+                  }}
                   style={{ width: 68, flexDirection: 'column-reverse', alignItems: 'flex-start' }}
                 />
                 <EditableInput
                   label="Alpha"
                   value={hsva.a}
-                  onChange={() => {}}
+                  onChange={(evn, value) => setHsva({ ...hsva, a: value as number })}
                   labelStyle={{ position: 'relative', display: 'block' }}
                   style={{
                     width: 68,
