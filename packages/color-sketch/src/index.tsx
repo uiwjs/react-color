@@ -1,14 +1,17 @@
 import React, { useState, useCallback, Fragment } from 'react';
 import Saturation from '@uiw/react-color-saturation';
 import Alpha from '@uiw/react-color-alpha';
+import EditableInput from '@uiw/react-color-editable-input';
 import { PointerProps } from '@uiw/react-color-alpha/lib/cjs/Pointer';
 import Hue from '@uiw/react-color-hue';
 import {
   validHex,
   HsvaColor,
   hsvaToHex,
+  hsvaToRgba,
   hsvaToRgbaString,
   hexToHsva,
+  rgbaToHsva,
   color as handleColor,
   ColorResult,
 } from '@uiw/color-convert';
@@ -49,6 +52,7 @@ export default React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
       setHsva(color);
     }
   }, [color]);
+
   const handleChange = useCallback(
     (hsv: HsvaColor) => {
       setHsva(hsv);
@@ -56,6 +60,29 @@ export default React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
     },
     [hsva],
   );
+
+  const rgba = hsvaToRgba(hsva);
+  const handleRGBA = (value: string | number, type: 'hex' | 'r' | 'g' | 'b' | 'a') => {
+    if (typeof value === 'number') {
+      if (value > 255) value = 255;
+      if (type === 'a') {
+        setHsva({ ...hsva, a: value / 100 });
+      }
+      if (type === 'r') {
+        setHsva(rgbaToHsva({ ...rgba, r: value }));
+      }
+      if (type === 'g') {
+        setHsva(rgbaToHsva({ ...rgba, g: value }));
+      }
+      if (type === 'b') {
+        setHsva(rgbaToHsva({ ...rgba, b: value }));
+      }
+    }
+    if (typeof value === 'string' && type === 'hex' && validHex(value) && value.length === (3 || 6)) {
+      console.log(hexToHsva(`#${value}`));
+      setHsva(hexToHsva(value));
+    }
+  };
 
   return (
     <div
@@ -70,7 +97,7 @@ export default React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
         ...style,
       }}
     >
-      <div style={{ padding: 10 }}>
+      <div style={{ padding: '10px 10px 8px' }}>
         <Saturation
           hsva={hsva}
           style={{ width: 'auto', height: 150 }}
@@ -97,7 +124,9 @@ export default React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
               innerProps={{
                 style: { marginLeft: 1, marginRight: 5 },
               }}
-              onChange={(newAlpha) => handleChange({ ...hsva, ...newAlpha })}
+              onChange={(newAlpha) => {
+                handleChange({ ...hsva, ...{ a: newAlpha.a } });
+              }}
             />
           </div>
           <Alpha
@@ -119,6 +148,60 @@ export default React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
             pointer={() => <Fragment />}
           />
         </div>
+      </div>
+      <div style={{ display: 'flex', margin: '0 10px 3px 10px' }}>
+        <EditableInput
+          label="Hex"
+          value={hsvaToHex(hsva).replace(/^#/, '')}
+          onChange={(_, val) => handleRGBA(val, 'hex')}
+          style={{
+            flexDirection: 'column',
+            flex: '2 1 0%',
+          }}
+        />
+        <EditableInput
+          label="R"
+          value={rgba.r}
+          onChange={(_, val) => handleRGBA(val, 'r')}
+          style={{
+            flexDirection: 'column',
+            flex: '1 1 0%',
+            marginLeft: 6,
+          }}
+        />
+        <EditableInput
+          label="G"
+          value={rgba.g}
+          // onChange={handleRGBA}
+          onChange={(_, val) => handleRGBA(val, 'g')}
+          style={{
+            flexDirection: 'column',
+            flex: '1 1 0%',
+            marginLeft: 6,
+          }}
+        />
+        <EditableInput
+          label="B"
+          value={rgba.b}
+          // onChange={handleRGBA}
+          onChange={(_, val) => handleRGBA(val, 'b')}
+          style={{
+            flexDirection: 'column',
+            flex: '1 1 0%',
+            marginLeft: 6,
+          }}
+        />
+        <EditableInput
+          label="A"
+          value={parseInt(String(rgba.a * 100), 10)}
+          // onChange={handleRGBA}
+          onChange={(_, val) => handleRGBA(val, 'a')}
+          style={{
+            flexDirection: 'column',
+            flex: '1 1 0%',
+            marginLeft: 6,
+          }}
+        />
       </div>
       <Swatch colors={presetColors} color={hsvaToHex(hsva)} onClick={(hsva) => handleChange(hsva)} />
     </div>
