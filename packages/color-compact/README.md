@@ -22,7 +22,7 @@ function Demo() {
     <Compact
       color={hex}
       onChange={(color) => {
-        setHsva({ ...hsva, ...newShade });
+        setHex(color.hex);
       }}
     />
   );

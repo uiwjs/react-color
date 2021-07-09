@@ -62,11 +62,19 @@ export default React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
   );
 
   const rgba = hsvaToRgba(hsva);
-  const handleRGBA = (value: string | number, type: 'hex' | 'r' | 'g' | 'b' | 'a') => {
+  const handleRGBA = (value: string | number, type: 'hex' | 'r' | 'g' | 'b' | 'a', evn: React.ChangeEvent<HTMLInputElement>) => {
     if (typeof value === 'number') {
-      if (value > 255) value = 255;
       if (type === 'a') {
+        value = value > 100 ? 100 : value < 0 ? 0 : value;
         handleChange({ ...hsva, a: value / 100 });
+      }
+      if (value > 255) {
+        value = 255;
+        evn.target.value = '255';
+      }
+      if (value < 0) {
+        value = 0;
+        evn.target.value = '0';
       }
       if (type === 'r') {
         handleChange(rgbaToHsva({ ...rgba, r: value }));
@@ -82,6 +90,15 @@ export default React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
       handleChange(hexToHsva(value));
     }
   };
+  function handleBlur(evn: React.FocusEvent<HTMLInputElement>) {
+    const value = Number(evn.target.value);
+    if (value && value > 255) {
+      evn.target.value = '255';
+    }
+    if (value && value < 0) {
+      evn.target.value = '0';
+    }
+  }
 
   return (
     <div
@@ -152,7 +169,7 @@ export default React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
         <EditableInput
           label="Hex"
           value={hsvaToHex(hsva).replace(/^#/, '')}
-          onChange={(_, val) => handleRGBA(val, 'hex')}
+          onChange={(evn, val) => handleRGBA(val, 'hex', evn)}
           style={{
             flexDirection: 'column',
             flex: '2 1 0%',
@@ -161,7 +178,8 @@ export default React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
         <EditableInput
           label="R"
           value={rgba.r}
-          onChange={(_, val) => handleRGBA(val, 'r')}
+          onBlur={handleBlur}
+          onChange={(evn, val) => handleRGBA(val, 'r', evn)}
           style={{
             flexDirection: 'column',
             flex: '1 1 0%',
@@ -171,7 +189,8 @@ export default React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
         <EditableInput
           label="G"
           value={rgba.g}
-          onChange={(_, val) => handleRGBA(val, 'g')}
+          onBlur={handleBlur}
+          onChange={(evn, val) => handleRGBA(val, 'g', evn)}
           style={{
             flexDirection: 'column',
             flex: '1 1 0%',
@@ -181,7 +200,8 @@ export default React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
         <EditableInput
           label="B"
           value={rgba.b}
-          onChange={(_, val) => handleRGBA(val, 'b')}
+          onBlur={handleBlur}
+          onChange={(evn, val) => handleRGBA(val, 'b', evn)}
           style={{
             flexDirection: 'column',
             flex: '1 1 0%',
@@ -191,7 +211,15 @@ export default React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
         <EditableInput
           label="A"
           value={parseInt(String(rgba.a * 100), 10)}
-          onChange={(_, val) => handleRGBA(val, 'a')}
+          onBlur={(evn) => {
+            if (Number(evn.target.value) > 100) {
+              evn.target.value = '100';
+            }
+            if (Number(evn.target.value) < 1) {
+              evn.target.value = '0';
+            }
+          }}
+          onChange={(evn, val) => handleRGBA(val, 'a', evn)}
           style={{
             flexDirection: 'column',
             flex: '1 1 0%',

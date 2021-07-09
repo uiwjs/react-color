@@ -7,7 +7,7 @@ import { screen, render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Compact from '../packages/color-compact/src';
 
-it('Alpha', async () => {
+it('Compact', async () => {
   const MyComponent = () => {
     const [hsva, setHsva] = useState({ h: 0, s: 0, v: 68, a: 1 });
     return (
@@ -46,7 +46,7 @@ it('Alpha', async () => {
   }
 });
 
-it('Hue onChange', async () => {
+it('Compact onChange', async () => {
   const MyComponent = () => {
     return (
       <Compact
@@ -67,7 +67,7 @@ it('Hue onChange', async () => {
   );
 });
 
-it('Hue hex color checked onChange', async () => {
+it('Compact hex color onChange', async () => {
   render(
     <Compact
       color="#F44E3B"
@@ -85,7 +85,7 @@ it('Hue hex color checked onChange', async () => {
   );
 });
 
-it('Hue color === undefined', async () => {
+it('Compact color === undefined', async () => {
   render(<Compact onChange={(color) => expect(color.hex).toEqual('#f44e3b')} />);
   fireEvent(
     screen.getByTitle('#F44E3B'),

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import {
   ColorResult,
   color as handleColor,
@@ -84,30 +84,40 @@ export default React.forwardRef<HTMLDivElement, CompactProps<React.MouseEvent<HT
   };
   const rgba = (color ? hsvaToRgba(hsva) : {}) as RgbaColor;
   const hex = color ? hsvaToHex(hsva).replace(/^#/, '') : '';
-  const handleChange = (
-    value: string | number,
-    type: 'hex' | 'r' | 'g' | 'b' | 'a',
-    evn: React.ChangeEvent<HTMLInputElement>,
-  ) => {
+  const handleChangeCallback = useCallback((hsv: HsvaColor) => onChange && onChange(handleColor(hsv)), [hsva]);
+  const handleChange = (value: string | number, type: 'hex' | 'r' | 'g' | 'b', evn: React.ChangeEvent<HTMLInputElement>) => {
     if (typeof value === 'number') {
-      if (value > 255) value = 255;
-      if (type === 'a') {
-        onChange && onChange(handleColor({ ...hsva, a: value / 100 }));
+      if (value > 255) {
+        value = 255;
+        evn.target.value = '255';
+      }
+      if (value < 0) {
+        value = 0;
+        evn.target.value = '0';
       }
       if (type === 'r') {
-        onChange && onChange(handleColor(rgbaToHsva({ ...rgba, r: value })));
+        handleChangeCallback(rgbaToHsva({ ...rgba, r: value }));
       }
       if (type === 'g') {
-        onChange && onChange(handleColor(rgbaToHsva({ ...rgba, g: value })));
+        handleChangeCallback(rgbaToHsva({ ...rgba, g: value }));
       }
       if (type === 'b') {
-        onChange && onChange(handleColor(rgbaToHsva({ ...rgba, b: value })));
+        handleChangeCallback(rgbaToHsva({ ...rgba, b: value }));
       }
     }
     if (typeof value === 'string' && type === 'hex' && validHex(value) && /(3|6)/.test(String(value.length))) {
-      onChange && onChange(handleColor(hexToHsva(value)));
+      handleChangeCallback(hexToHsva(value));
     }
   };
+  function handleBlur(evn: React.FocusEvent<HTMLInputElement>) {
+    const value = Number(evn.target.value);
+    if (value && value > 255) {
+      evn.target.value = '255';
+    }
+    if (value && value < 0) {
+      evn.target.value = '0';
+    }
+  }
   return (
     <div
       ref={ref}
@@ -170,9 +180,24 @@ export default React.forwardRef<HTMLDivElement, CompactProps<React.MouseEvent<HT
           label={<div style={{ width: 8, height: 8, backgroundColor: `#${hex}` }} />}
           value={hex}
         />
-        <EditableInputRGB label="R" value={rgba.r || 0} onChange={(evn, val) => handleChange(val, 'r', evn)} />
-        <EditableInputRGB label="G" value={rgba.g || 0} onChange={(evn, val) => handleChange(val, 'g', evn)} />
-        <EditableInputRGB label="B" value={rgba.b || 0} onChange={(evn, val) => handleChange(val, 'b', evn)} />
+        <EditableInputRGB
+          label="R"
+          value={rgba.r || 0}
+          onBlur={handleBlur}
+          onChange={(evn, val) => handleChange(val, 'r', evn)}
+        />
+        <EditableInputRGB
+          label="G"
+          value={rgba.g || 0}
+          onBlur={handleBlur}
+          onChange={(evn, val) => handleChange(val, 'g', evn)}
+        />
+        <EditableInputRGB
+          label="B"
+          value={rgba.b || 0}
+          onBlur={handleBlur}
+          onChange={(evn, val) => handleChange(val, 'b', evn)}
+        />
       </div>
     </div>
   );

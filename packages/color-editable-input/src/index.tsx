@@ -23,23 +23,22 @@ export default React.forwardRef<HTMLInputElement, EditableInputProps>((props, re
     labelStyle,
     inputStyle,
     onChange,
+    onBlur,
     ...other
   } = props;
   const [value, setValue] = useState<string | number | undefined>(initValue);
-  const [valueProps, setValueProps] = useState<string | number | undefined>(initValue);
   const isFocus = useRef(false);
 
   useEffect(() => {
     if (props.value !== value) {
-      setValueProps(props.value);
       if (!isFocus.current) {
         setValue(props.value);
       }
     }
   }, [props.value]);
 
-  function handleChange(evn: React.ChangeEvent<HTMLInputElement>) {
-    const value = evn.target.value;
+  function handleChange(evn: React.FocusEvent<HTMLInputElement>, valInit?: string) {
+    const value = valInit || evn.target.value;
     if (validHex(value)) {
       onChange && onChange(evn, value);
     }
@@ -48,11 +47,12 @@ export default React.forwardRef<HTMLInputElement, EditableInputProps>((props, re
       onChange && onChange(evn, val);
     }
     setValue(value);
-    setValueProps(value);
+    // setValueProps(value);
   }
-  function handleBlur() {
+  function handleBlur(evn: React.FocusEvent<HTMLInputElement>) {
     isFocus.current = false;
-    setValue(valueProps);
+    setValue(props.value);
+    onBlur && onBlur(evn);
   }
   return (
     <div

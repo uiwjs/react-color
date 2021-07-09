@@ -8,6 +8,7 @@ import {
   Slider,
   ShadeSlider,
   EditableInput,
+  Material,
   hsvaToHex,
   hexToHsva,
   hsvaToHslaString,
@@ -24,6 +25,7 @@ import mdStr from '@uiw/react-color/README.md';
 import mdStrSketch from '@uiw/react-color-sketch/README.md';
 import mdStrSlider from '@uiw/react-color-slider/README.md';
 import mdStrCompact from '@uiw/react-color-compact/README.md';
+import mdStrMaterial from '@uiw/react-color-material/README.md';
 import mdStrSaturation from '@uiw/react-color-saturation/README.md';
 import mdStrEditableInput from '@uiw/react-color-editable-input/README.md';
 import mdStrAlpha from '@uiw/react-color-alpha/README.md';
@@ -37,6 +39,7 @@ let markdownStr = mdStr
   .replace(/<!--react-color-sketch-->/, mdStrSketch.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-slider-->/, mdStrSlider.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-compact-->/, mdStrCompact.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
+  .replace(/<!--react-color-material-->/, mdStrMaterial.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-saturation-->/, mdStrSaturation.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-editable-input-->/, mdStrEditableInput.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-alpha-->/, mdStrAlpha.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
@@ -136,13 +139,25 @@ export default function App() {
               </div>
             </div>
             <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center', paddingTop: 36 }}>
+              <div style={{ paddingRight: 20 }}>
+                <Material
+                  color={hsvaToHex(hsva)}
+                  style={{ boxShadow: 'rgb(0 0 0 / 12%) 0px 2px 10px, rgb(0 0 0 / 16%) 0px 2px 5px' }}
+                  onChange={(color) => {
+                    setHsva({ ...hsva, ...color.hsva });
+                  }}
+                />
+                <Title>{`<Material color="${hsvaToHex(hsva)}" />`}</Title>
+              </div>
               <div>
                 <Compact
                   style={{
                     boxShadow: 'rgb(0 0 0 / 15%) 0px 0px 0px 1px, rgb(0 0 0 / 15%) 0px 8px 16px',
                   }}
                   color={hsvaToHex(hsva)}
-                  onChange={(color) => setHsva({ ...hsva, ...color.hsv })}
+                  onChange={(color) => {
+                    setHsva({ ...hsva, ...color.hsva });
+                  }}
                 />
                 <Title>{`<Compact color="${hsvaToHex(hsva)}" />`}</Title>
               </div>
@@ -155,12 +170,26 @@ export default function App() {
                       setHsva(hexToHsva(evn.target.value));
                     }
                   }}
+                  onBlur={(evn) => {
+                    const value = evn.target.value;
+                    if (value.replace(/^#/, '').length > 6) {
+                      evn.target.value = value.slice(0, value.startsWith('#') ? 7 : 6);
+                    }
+                  }}
                   style={{ width: 68, flexDirection: 'column-reverse', alignItems: 'flex-start' }}
                 />
                 <EditableInput
                   label="Alpha"
                   value={hsva.a}
-                  onChange={(evn, value) => setHsva({ ...hsva, a: value as number })}
+                  onChange={(evn, value) => {
+                    let val = (value > 1 ? 1 : value) as number;
+                    setHsva({ ...hsva, a: val });
+                  }}
+                  onBlur={(evn) => {
+                    if (Number(evn.target.value) > 1) {
+                      evn.target.value = '1';
+                    }
+                  }}
                   labelStyle={{ position: 'relative', display: 'block' }}
                   style={{
                     width: 68,
