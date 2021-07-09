@@ -3,18 +3,21 @@ import {
   ColorResult,
   color as handleColor,
   hexToHsva,
-  equalColorObjects,
   validHex,
   HsvaColor,
   hsvaToHex,
   getContrastingColor,
+  hsvaToRgba,
+  RgbaColor,
+  rgbaToHsva,
 } from '@uiw/color-convert';
+import EditableInput, { EditableInputProps } from '@uiw/react-color-editable-input';
 
-export interface CompactProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'color'> {
+export interface CompactProps<T> extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'color'> {
   prefixCls?: string;
   color?: string | HsvaColor;
   colors?: string[];
-  onChange?: (color: ColorResult, evn: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+  onChange?: (color: ColorResult, evn?: T) => void;
 }
 
 const COLORS = [
@@ -56,11 +59,54 @@ const COLORS = [
   '#AB149E',
 ];
 
-export default React.forwardRef<HTMLDivElement, CompactProps>((props, ref) => {
+const EditableInputRGB = ({ style, ...props }: EditableInputProps) => (
+  <EditableInput
+    labelStyle={{ paddingRight: 5, marginTop: -1 }}
+    inputStyle={{
+      outline: 'none',
+      boxShadow: 'initial',
+      background: 'transparent',
+    }}
+    style={{
+      flexDirection: 'row-reverse',
+      flex: '1 1 0%',
+      ...style,
+    }}
+    {...props}
+  />
+);
+
+export default React.forwardRef<HTMLDivElement, CompactProps<React.MouseEvent<HTMLDivElement, MouseEvent>>>((props, ref) => {
   const { prefixCls = 'w-color-compact', className, style, onChange, color, colors = COLORS, ...other } = props;
   const hsva = (typeof color === 'string' && validHex(color) ? hexToHsva(color) : color) as HsvaColor;
   const handleClick = (hexStr: string, evn: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     onChange && onChange(handleColor(hexToHsva(hexStr)), evn);
+  };
+  const rgba = (color ? hsvaToRgba(hsva) : {}) as RgbaColor;
+  const hex = color ? hsvaToHex(hsva).replace(/^#/, '') : '';
+  const handleChange = (
+    value: string | number,
+    type: 'hex' | 'r' | 'g' | 'b' | 'a',
+    evn: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    if (typeof value === 'number') {
+      if (value > 255) value = 255;
+      if (type === 'a') {
+        onChange && onChange(handleColor({ ...hsva, a: value / 100 }));
+      }
+      if (type === 'r') {
+        onChange && onChange(handleColor(rgbaToHsva({ ...rgba, r: value })));
+      }
+      if (type === 'g') {
+        onChange && onChange(handleColor(rgbaToHsva({ ...rgba, g: value })));
+      }
+      if (type === 'b') {
+        onChange && onChange(handleColor(rgbaToHsva({ ...rgba, b: value })));
+      }
+    }
+    if (typeof value === 'string' && type === 'hex' && validHex(value) && /(3|6)/.test(String(value.length))) {
+      onChange && onChange(handleColor(hexToHsva(value)));
+    }
   };
   return (
     <div
@@ -117,6 +163,17 @@ export default React.forwardRef<HTMLDivElement, CompactProps>((props, ref) => {
           </div>
         );
       })}
+      <div style={{ display: 'flex', margin: '0 4px 3px 0' }}>
+        <EditableInputRGB
+          style={{ minWidth: 80 }}
+          onChange={(evn, val) => handleChange(val, 'hex', evn)}
+          label={<div style={{ width: 8, height: 8, backgroundColor: `#${hex}` }} />}
+          value={hex}
+        />
+        <EditableInputRGB label="R" value={rgba.r || 0} onChange={(evn, val) => handleChange(val, 'r', evn)} />
+        <EditableInputRGB label="G" value={rgba.g || 0} onChange={(evn, val) => handleChange(val, 'g', evn)} />
+        <EditableInputRGB label="B" value={rgba.b || 0} onChange={(evn, val) => handleChange(val, 'b', evn)} />
+      </div>
     </div>
   );
 });

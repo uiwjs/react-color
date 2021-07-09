@@ -171,7 +171,6 @@ export default React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
         <EditableInput
           label="G"
           value={rgba.g}
-          // onChange={handleRGBA}
           onChange={(_, val) => handleRGBA(val, 'g')}
           style={{
             flexDirection: 'column',
@@ -182,7 +181,6 @@ export default React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
         <EditableInput
           label="B"
           value={rgba.b}
-          // onChange={handleRGBA}
           onChange={(_, val) => handleRGBA(val, 'b')}
           style={{
             flexDirection: 'column',
@@ -193,7 +191,6 @@ export default React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
         <EditableInput
           label="A"
           value={parseInt(String(rgba.a * 100), 10)}
-          // onChange={handleRGBA}
           onChange={(_, val) => handleRGBA(val, 'a')}
           style={{
             flexDirection: 'column',

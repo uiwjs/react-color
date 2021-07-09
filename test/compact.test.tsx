@@ -36,7 +36,7 @@ it('Alpha', async () => {
       boxShadow: 'rgb(0 0 0 / 15%) 0px 0px 0px 1px, rgb(0 0 0 / 15%) 0px 8px 16px',
     });
     if (tree.children) {
-      expect(tree.children.length).toEqual(36);
+      expect(tree.children.length).toEqual(37);
       tree.children.forEach((child) => {
         if (typeof child === 'object') {
           expect(child.type).toEqual('div');

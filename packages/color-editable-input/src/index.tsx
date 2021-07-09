@@ -7,7 +7,7 @@ const getNumberValue = (value: string) => Number(String(value).replace(/%/g, '')
 export interface EditableInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
   prefixCls?: string;
   value?: string | number;
-  label?: string;
+  label?: React.ReactNode;
   labelStyle?: React.CSSProperties;
   inputStyle?: React.CSSProperties;
   onChange?: (evn: React.ChangeEvent<HTMLInputElement>, value: string | number) => void;
@@ -86,14 +86,16 @@ export default React.forwardRef<HTMLInputElement, EditableInputProps>((props, re
           ...inputStyle,
         }}
       />
-      <span
-        style={{
-          color: 'rgb(153, 153, 153)',
-          textTransform: 'capitalize',
-          ...labelStyle,
-        }}
-        children={label}
-      />
+      {label && (
+        <span
+          style={{
+            color: 'rgb(153, 153, 153)',
+            textTransform: 'capitalize',
+            ...labelStyle,
+          }}
+          children={label}
+        />
+      )}
     </div>
   );
 });
