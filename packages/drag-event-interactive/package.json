@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-drag-event-interactive",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "react drag event interactive",
   "author": "Kenny Wong <wowohoo@qq.com>",
   "main": "lib/cjs/index.js",
