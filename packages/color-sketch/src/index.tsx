@@ -168,7 +168,7 @@ export default React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
       <div style={{ display: 'flex', margin: '0 10px 3px 10px' }}>
         <EditableInput
           label="Hex"
-          value={hsvaToHex(hsva).replace(/^#/, '')}
+          value={hsvaToHex(hsva).replace(/^#/, '').toLocaleUpperCase()}
           onChange={(evn, val) => handleRGBA(val, 'hex', evn)}
           style={{
             flexDirection: 'column',

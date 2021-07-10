@@ -178,7 +178,7 @@ export default React.forwardRef<HTMLDivElement, CompactProps<React.MouseEvent<HT
           style={{ minWidth: 80 }}
           onChange={(evn, val) => handleChange(val, 'hex', evn)}
           label={<div style={{ width: 8, height: 8, backgroundColor: `#${hex}` }} />}
-          value={hex}
+          value={hex.toLocaleUpperCase()}
         />
         <EditableInputRGB
           label="R"
