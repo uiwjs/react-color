@@ -95,3 +95,127 @@ it('Compact color === undefined', async () => {
     }),
   );
 });
+
+it('Compact Input R onChange', async () => {
+  const MyComponent = () => {
+    return (
+      <Compact
+        color="#e27300"
+        onChange={(color) => {
+          expect(color.hex).toEqual('#ff7300');
+          expect(color.rgb.r).toEqual(255);
+          expect(Object.keys(color)).toEqual(
+            expect.arrayContaining(['rgb', 'hsl', 'hsv', 'rgba', 'hsla', 'hsva', 'hex', 'hexa']),
+          );
+        }}
+      />
+    );
+  };
+  const { getByText } = render(<MyComponent />);
+  const input = getByText('R').previousSibling;
+  if (input) {
+    expect((input as any).value).toEqual('226');
+    fireEvent.focus(input);
+    fireEvent.change(input, { target: { value: '8888' } });
+    fireEvent.blur(input);
+  }
+});
+
+it('Compact Input G onChange', async () => {
+  const MyComponent = () => {
+    return (
+      <Compact
+        color="#e27300"
+        onChange={(color) => {
+          expect(color.hex).toEqual('#e2ff00');
+          expect(color.rgb.g).toEqual(255);
+          expect(Object.keys(color)).toEqual(
+            expect.arrayContaining(['rgb', 'hsl', 'hsv', 'rgba', 'hsla', 'hsva', 'hex', 'hexa']),
+          );
+        }}
+      />
+    );
+  };
+  const { getByText } = render(<MyComponent />);
+  const input = getByText('G').previousSibling;
+  if (input) {
+    expect((input as any).value).toEqual('115');
+    fireEvent.focus(input);
+    fireEvent.change(input, { target: { value: '8888' } });
+    fireEvent.blur(input);
+  }
+});
+
+it('Compact Input B onChange', async () => {
+  const MyComponent = () => {
+    return (
+      <Compact
+        color="#e27300"
+        onChange={(color) => {
+          expect(color.hex).toEqual('#e273ff');
+          expect(color.rgb.b).toEqual(255);
+          expect(Object.keys(color)).toEqual(
+            expect.arrayContaining(['rgb', 'hsl', 'hsv', 'rgba', 'hsla', 'hsva', 'hex', 'hexa']),
+          );
+        }}
+      />
+    );
+  };
+  const { getByText } = render(<MyComponent />);
+  const input = getByText('B').previousSibling;
+  if (input) {
+    expect((input as any).value).toEqual('0');
+    fireEvent.focus(input);
+    fireEvent.change(input, { target: { value: '8888' } });
+    fireEvent.blur(input);
+  }
+});
+
+it('Compact Input B = -111 onChange', async () => {
+  const MyComponent = () => {
+    return (
+      <Compact
+        color="#e27300"
+        onChange={(color) => {
+          expect(color.hex).toEqual('#e27300');
+          expect(color.rgb.b).toEqual(0);
+          expect(Object.keys(color)).toEqual(
+            expect.arrayContaining(['rgb', 'hsl', 'hsv', 'rgba', 'hsla', 'hsva', 'hex', 'hexa']),
+          );
+        }}
+      />
+    );
+  };
+  const { getByText } = render(<MyComponent />);
+  const input = getByText('B').previousSibling;
+  if (input) {
+    expect((input as any).value).toEqual('0');
+    fireEvent.focus(input);
+    fireEvent.change(input, { target: { value: '-111' } });
+    fireEvent.blur(input);
+  }
+});
+
+it('Compact Input hex onChange', async () => {
+  const MyComponent = () => {
+    return (
+      <Compact
+        color="#ff7300"
+        onChange={(color) => {
+          expect(color.hex).toEqual('#eeeeee');
+          expect(Object.keys(color)).toEqual(
+            expect.arrayContaining(['rgb', 'hsl', 'hsv', 'rgba', 'hsla', 'hsva', 'hex', 'hexa']),
+          );
+        }}
+      />
+    );
+  };
+  const { getByText } = render(<MyComponent />);
+  const input = getByText('R').parentElement?.previousSibling?.firstChild;
+  if (input) {
+    expect((input as any).value).toEqual('FF7300');
+    fireEvent.focus(input);
+    fireEvent.change(input, { target: { value: 'eee' } });
+    fireEvent.blur(input);
+  }
+});
