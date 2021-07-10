@@ -184,7 +184,7 @@ export const rgbaToHex = ({ r, g, b }: RgbaColor): string => {
 };
 
 export const rgbaToHexa = ({ r, g, b, a }: RgbaColor): string => {
-  const alpha = a && ((a * 255) | (1 << 8)).toString(16).slice(1);
+  const alpha = typeof a === 'number' && ((a * 255) | (1 << 8)).toString(16).slice(1);
   return `${rgbaToHex({ r, g, b, a })}${alpha ? alpha : ''}`;
 };
 
