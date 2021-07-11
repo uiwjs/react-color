@@ -1,6 +1,6 @@
 <div align="center">
   <a title="React Color" href="https://uiwjs.github.io/react-color/">
-    <img src="https://user-images.githubusercontent.com/1680273/124940686-c4d6c080-e03c-11eb-8ca1-173f52f2cd4b.png" width="630" alt="@uiw/react-color" />
+    <img src="https://user-images.githubusercontent.com/1680273/125195286-96005a80-e287-11eb-855a-8c6cde7e9587.png" width="630" alt="@uiw/react-color" />
   </a>
 </div>
 
@@ -76,6 +76,7 @@ Package | Bundle size(gzip) | Version / unpkg
 <!--react-color-slider-->
 <!--react-color-compact-->
 <!--react-color-material-->
+<!--react-color-colorful-->
 <!--react-color-saturation-->
 <!--react-color-alpha-->
 <!--react-color-hue-->
