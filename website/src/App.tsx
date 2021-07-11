@@ -71,34 +71,10 @@ export default function App() {
                   }}
                 />
                 <Title>{`<Saturation />`}</Title>
-                <Alpha
-                  width={200}
-                  hsva={hsva}
-                  onChange={(newAlpha) => {
-                    setHsva({ ...hsva, ...newAlpha });
-                  }}
-                />
-                <Title>{`<Alpha />`}</Title>
-                <Hue
-                  width={200}
-                  hue={hsva.h}
-                  onChange={(newHue) => {
-                    setHsva({ ...hsva, ...newHue });
-                  }}
-                />
-                <Title>{`<Hue />`}</Title>
-                <ShadeSlider
-                  width={200}
-                  hsva={hsva}
-                  onChange={(newShade) => {
-                    setHsva({ ...hsva, ...newShade });
-                  }}
-                />
-                <Title>{`<ShadeSlider />`}</Title>
               </div>
               <Alpha
                 width={16}
-                height={310}
+                height={190}
                 direction="vertical"
                 style={{ marginLeft: 20 }}
                 hsva={hsva}
@@ -108,7 +84,7 @@ export default function App() {
               />
               <Hue
                 width={16}
-                height={310}
+                height={190}
                 direction="vertical"
                 style={{ marginLeft: 20 }}
                 hue={hsva.h}
@@ -118,7 +94,7 @@ export default function App() {
               />
               <ShadeSlider
                 width={16}
-                height={310}
+                height={190}
                 direction="vertical"
                 style={{ marginLeft: 20 }}
                 hsva={hsva}
@@ -126,7 +102,103 @@ export default function App() {
                   setHsva({ ...hsva, ...newShade });
                 }}
               />
-              <div style={{ marginLeft: 20 }}>
+              <div>
+                <div style={{ marginLeft: 20, display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
+                  <div style={{ padding: '0 10px 0 0' }}>
+                    <EditableInput
+                      label="Hex"
+                      value={hsvaToHex(hsva)}
+                      onChange={(evn, value) => {
+                        if (validHex(evn.target.value)) {
+                          setHsva(hexToHsva(evn.target.value));
+                        }
+                      }}
+                      onBlur={(evn) => {
+                        const value = evn.target.value;
+                        if (value.replace(/^#/, '').length > 6) {
+                          evn.target.value = value.slice(0, value.startsWith('#') ? 7 : 6);
+                        }
+                      }}
+                      style={{ width: 68, flexDirection: 'column-reverse', alignItems: 'flex-start' }}
+                    />
+                    <EditableInput
+                      label="Alpha"
+                      value={hsva.a}
+                      onChange={(evn, value) => {
+                        let val = (value > 1 ? 1 : value) as number;
+                        setHsva({ ...hsva, a: val });
+                      }}
+                      onBlur={(evn) => {
+                        if (Number(evn.target.value) > 1) {
+                          evn.target.value = '1';
+                        }
+                      }}
+                      labelStyle={{ position: 'relative', display: 'block' }}
+                      style={{
+                        width: 68,
+                        flexDirection: 'column',
+                        marginTop: 8,
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <EditableInput
+                      label="Hex"
+                      value={hsvaToHex(hsva)}
+                      onChange={(evn) => {
+                        if (validHex(evn.target.value)) {
+                          setHsva(hexToHsva(evn.target.value));
+                        }
+                      }}
+                      style={{ width: 84, marginTop: 14 }}
+                    />
+                    <EditableInput
+                      label="Hex"
+                      value={hsvaToHex(hsva)}
+                      onChange={(evn) => {
+                        if (validHex(evn.target.value)) {
+                          setHsva(hexToHsva(evn.target.value));
+                        }
+                      }}
+                      labelStyle={{ position: 'relative', display: 'block' }}
+                      style={{
+                        width: 84,
+                        marginTop: 8,
+                        flexDirection: 'row-reverse',
+                      }}
+                    />
+                  </div>
+                </div>
+                <div style={{ marginLeft: 20 }}>
+                  <Alpha
+                    width={180}
+                    hsva={hsva}
+                    onChange={(newAlpha) => {
+                      setHsva({ ...hsva, ...newAlpha });
+                    }}
+                  />
+                  <Title>{`<Alpha />`}</Title>
+                  <Hue
+                    width={180}
+                    hue={hsva.h}
+                    onChange={(newHue) => {
+                      setHsva({ ...hsva, ...newHue });
+                    }}
+                  />
+                  <Title>{`<Hue />`}</Title>
+                  <ShadeSlider
+                    width={180}
+                    hsva={hsva}
+                    onChange={(newShade) => {
+                      setHsva({ ...hsva, ...newShade });
+                    }}
+                  />
+                  <Title>{`<ShadeSlider />`}</Title>
+                </div>
+              </div>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center', paddingTop: 36 }}>
+              <div>
                 <Sketch
                   color={hsva}
                   onChange={(color) => {
@@ -134,21 +206,8 @@ export default function App() {
                   }}
                 />
                 <Title>{`<Sketch color="${hsvaToHex(hsva)}" />`}</Title>
-                <Slider style={{ width: 220 }} color={hsva} onChange={(color) => setHsva({ ...hsva, ...color.hsv })} />
-                <Title>{`<Slider color="${hsvaToHex(hsva)}" />`}</Title>
               </div>
-            </div>
-            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center', paddingTop: 36 }}>
-              <div style={{ paddingRight: 20 }}>
-                <Material
-                  color={hsvaToHex(hsva)}
-                  style={{ boxShadow: 'rgb(0 0 0 / 12%) 0px 2px 10px, rgb(0 0 0 / 16%) 0px 2px 5px' }}
-                  onChange={(color) => {
-                    setHsva({ ...hsva, ...color.hsva });
-                  }}
-                />
-                <Title>{`<Material color="${hsvaToHex(hsva)}" />`}</Title>
-              </div>
+              <div style={{ paddingRight: 40 }}></div>
               <div>
                 <Compact
                   style={{
@@ -160,70 +219,16 @@ export default function App() {
                   }}
                 />
                 <Title>{`<Compact color="${hsvaToHex(hsva)}" />`}</Title>
-              </div>
-              <div style={{ padding: '0 10px 0 20px' }}>
-                <EditableInput
-                  label="Hex"
-                  value={hsvaToHex(hsva)}
-                  onChange={(evn, value) => {
-                    if (validHex(evn.target.value)) {
-                      setHsva(hexToHsva(evn.target.value));
-                    }
-                  }}
-                  onBlur={(evn) => {
-                    const value = evn.target.value;
-                    if (value.replace(/^#/, '').length > 6) {
-                      evn.target.value = value.slice(0, value.startsWith('#') ? 7 : 6);
-                    }
-                  }}
-                  style={{ width: 68, flexDirection: 'column-reverse', alignItems: 'flex-start' }}
-                />
-                <EditableInput
-                  label="Alpha"
-                  value={hsva.a}
-                  onChange={(evn, value) => {
-                    let val = (value > 1 ? 1 : value) as number;
-                    setHsva({ ...hsva, a: val });
-                  }}
-                  onBlur={(evn) => {
-                    if (Number(evn.target.value) > 1) {
-                      evn.target.value = '1';
-                    }
-                  }}
-                  labelStyle={{ position: 'relative', display: 'block' }}
-                  style={{
-                    width: 68,
-                    flexDirection: 'column',
-                    marginTop: 8,
+                <Slider style={{ width: 220 }} color={hsva} onChange={(color) => setHsva({ ...hsva, ...color.hsv })} />
+                <Title>{`<Slider color="${hsvaToHex(hsva)}" />`}</Title>
+                <Material
+                  color={hsvaToHex(hsva)}
+                  style={{ boxShadow: 'rgb(0 0 0 / 12%) 0px 2px 10px, rgb(0 0 0 / 16%) 0px 2px 5px' }}
+                  onChange={(color) => {
+                    setHsva({ ...hsva, ...color.hsva });
                   }}
                 />
-              </div>
-              <div>
-                <EditableInput
-                  label="Hex"
-                  value={hsvaToHex(hsva)}
-                  onChange={(evn) => {
-                    if (validHex(evn.target.value)) {
-                      setHsva(hexToHsva(evn.target.value));
-                    }
-                  }}
-                  style={{ width: 84, marginTop: 14 }}
-                />
-                <EditableInput
-                  label="Hex"
-                  value={hsvaToHex(hsva)}
-                  onChange={(evn) => {
-                    if (validHex(evn.target.value)) {
-                      setHsva(hexToHsva(evn.target.value));
-                    }
-                  }}
-                  labelStyle={{ position: 'relative', display: 'block' }}
-                  style={{
-                    width: 84,
-                    marginTop: 8,
-                    flexDirection: 'row-reverse',
-                  }}
-                />
+                <Title>{`<Material color="${hsvaToHex(hsva)}" />`}</Title>
               </div>
             </div>
           </div>
