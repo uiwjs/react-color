@@ -26,7 +26,7 @@ it('ShadeSlider', async () => {
     expect(tree.type).toEqual('div');
     expect(tree.props.className).toEqual('w-color-alpha w-color-alpha-horizontal w-color-saturation ');
     expect(tree.props.style).toMatchObject({
-      width: 320,
+      // width: 320,
       height: 16,
       borderRadius: 0,
       position: 'relative',

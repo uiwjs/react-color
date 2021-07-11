@@ -2,6 +2,7 @@
   "name": "@uiw/react-color-slider",
   "version": "0.0.13",
   "description": "Color Slider component for React.",
+  "homepage": "https://uiwjs.github.io/react-color/#react-color-slider",
   "author": "Kenny Wong <wowohoo@qq.com>",
   "sideEffects": false,
   "main": "lib/cjs/index.js",

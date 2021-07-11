@@ -17,13 +17,13 @@ npm i @uiw/react-color-sketch
 import Sketch from '@uiw/react-color-sketch';
 
 function Demo() {
-  const [hsva, setHsva] = useState({ h: 0, s: 0, v: 68, a: 1 });
+  const [hex, setHex] = useState("#fff");
   return (
     <Sketch
       style={{ marginLeft: 20 }}
-      color={hsva}
+      color={hex}
       onChange={(color) => {
-        setHsva({ ...hsva, ...color.hsv });
+        setHex(color.hex);
       }}
     />
   );

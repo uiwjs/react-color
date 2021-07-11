@@ -1,0 +1,89 @@
+import React from 'react';
+import {
+  validHex,
+  color as handleColor,
+  hexToHsva,
+  HsvaColor,
+  ColorResult,
+  hsvaToHex,
+  hsvaToRgbaString,
+} from '@uiw/color-convert';
+import Alpha, { BACKGROUND_IMG } from '@uiw/react-color-alpha';
+import Saturation from '@uiw/react-color-saturation';
+import Hue from '@uiw/react-color-hue';
+
+export interface ColorfulProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'color'> {
+  prefixCls?: string;
+  onChange?: (color: ColorResult) => void;
+  color?: string | HsvaColor;
+}
+
+const Pointer = ({ style, color, ...props }: React.HTMLAttributes<HTMLDivElement> & { color: string }) => (
+  <div
+    {...props}
+    style={{
+      height: 28,
+      width: 28,
+      position: 'absolute',
+      ...style,
+      boxShadow: '0 2px 4px rgb(0 0 0 / 20%)',
+      borderRadius: '50%',
+      background: `url(${BACKGROUND_IMG})`,
+      backgroundColor: '#fff',
+      transform: 'translate(-14px, -4px)',
+      border: '2px solid #fff',
+    }}
+  >
+    <div
+      style={{
+        backgroundColor: color,
+        borderRadius: '50%',
+        height: ' 100%',
+        width: '100%',
+      }}
+    />
+  </div>
+);
+
+export default React.forwardRef<HTMLDivElement, ColorfulProps>((props, ref) => {
+  const { prefixCls = 'w-color-colorful', className, onChange, color, style, ...other } = props;
+  const hsva = (typeof color === 'string' && validHex(color) ? hexToHsva(color) : color || {}) as HsvaColor;
+  const handleChange = (value: HsvaColor) => onChange && onChange(handleColor(value));
+  return (
+    <div
+      ref={ref}
+      style={{
+        width: 200,
+        height: 200,
+        position: 'relative',
+        ...style,
+      }}
+      {...other}
+      className={`${prefixCls} ${className || ''}`}
+    >
+      <Saturation
+        hsva={hsva}
+        className={prefixCls}
+        radius="8px 8px 0 0"
+        style={{ width: 'auto', height: 150, minWidth: 120 }}
+        pointer={({ left, top, color }) => <Pointer style={{ left, top }} color={hsvaToHex(hsva)} />}
+        onChange={(newColor) => handleChange({ ...hsva, ...newColor })}
+      />
+      <Hue
+        hue={hsva.h}
+        height={24}
+        className={prefixCls}
+        onChange={(newHue) => handleChange({ ...hsva, ...newHue })}
+        pointer={({ left }) => <Pointer style={{ left }} color={hsvaToHex(hsva)} />}
+      />
+      <Alpha
+        hsva={hsva}
+        height={24}
+        className={prefixCls}
+        radius="0 0 8px 8px"
+        pointer={({ left }) => <Pointer style={{ left }} color={hsvaToRgbaString(hsva)} />}
+        onChange={(newAlpha) => handleChange({ ...hsva, ...newAlpha })}
+      />
+    </div>
+  );
+});

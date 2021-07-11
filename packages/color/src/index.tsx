@@ -1,6 +1,7 @@
 export * from '@uiw/color-convert';
 export * from '@uiw/react-color-alpha';
 export * from '@uiw/react-color-compact';
+export * from '@uiw/react-color-colorful';
 export * from '@uiw/react-color-editable-input';
 export * from '@uiw/react-color-hue';
 export * from '@uiw/react-color-material';
@@ -11,6 +12,7 @@ export * from '@uiw/react-color-slider';
 
 export { default as Alpha } from '@uiw/react-color-alpha';
 export { default as Compact } from '@uiw/react-color-compact';
+export { default as Colorful } from '@uiw/react-color-colorful';
 export { default as EditableInput } from '@uiw/react-color-editable-input';
 export { default as Hue } from '@uiw/react-color-hue';
 export { default as Material } from '@uiw/react-color-material';

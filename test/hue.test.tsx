@@ -26,7 +26,6 @@ it('Hue', async () => {
     expect(tree.type).toEqual('div');
     expect(tree.props.className).toEqual('w-color-alpha w-color-alpha-horizontal w-color-hue ');
     expect(tree.props.style).toMatchObject({
-      width: 320,
       height: 16,
       borderRadius: 0,
       position: 'relative',
@@ -106,5 +105,5 @@ it('Hue direction === vertical', async () => {
   const elm = screen.getByTitle('custom-element');
   elm.focus();
   fireEvent.mouseDown(elm, { clientX: 1 });
-  expect(elm.style).toHaveProperty('_values', { inset: '0', position: 'absolute' });
+  expect(elm.style).toHaveProperty('_values', { inset: '0', position: 'absolute', 'z-index': '1' });
 });

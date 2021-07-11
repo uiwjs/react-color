@@ -3,6 +3,7 @@ import {
   Saturation,
   Sketch,
   Alpha,
+  Colorful,
   Compact,
   Hue,
   Slider,
@@ -207,8 +208,7 @@ export default function App() {
                 />
                 <Title>{`<Sketch color="${hsvaToHex(hsva)}" />`}</Title>
               </div>
-              <div style={{ paddingRight: 40 }}></div>
-              <div>
+              <div style={{ paddingLeft: 20 }}>
                 <Compact
                   style={{
                     boxShadow: 'rgb(0 0 0 / 15%) 0px 0px 0px 1px, rgb(0 0 0 / 15%) 0px 8px 16px',
@@ -229,6 +229,15 @@ export default function App() {
                   }}
                 />
                 <Title>{`<Material color="${hsvaToHex(hsva)}" />`}</Title>
+              </div>
+              <div style={{ paddingLeft: 20 }}>
+                <Colorful
+                  color={hsva}
+                  onChange={(color) => {
+                    setHsva({ ...hsva, ...color.hsva });
+                  }}
+                />
+                <Title>{`<Colorful color="${hsvaToHex(hsva)}" />`}</Title>
               </div>
             </div>
           </div>

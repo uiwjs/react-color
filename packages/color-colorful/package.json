@@ -1,10 +1,9 @@
 {
-  "name": "@uiw/react-color-sketch",
+  "name": "@uiw/react-color-colorful",
   "version": "0.0.13",
-  "description": "Color Sketch component for React.",
-  "homepage": "https://uiwjs.github.io/react-color/#react-color-sketch",
+  "description": "Color Colorful",
   "author": "Kenny Wong <wowohoo@qq.com>",
-  "sideEffects": false,
+  "homepage": "https://uiwjs.github.io/react-color/#react-color-colorful",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
   "repository": {
@@ -14,9 +13,10 @@
   "keywords": [
     "react",
     "react-color",
-    "react-color-sketch",
-    "sketch",
+    "react-color-colorful",
+    "hue",
     "color",
+    "colorful",
     "convert"
   ],
   "license": "MIT",
@@ -32,7 +32,6 @@
     "@babel/runtime": "7.14.6",
     "@uiw/color-convert": "^0.0.13",
     "@uiw/react-color-alpha": "^0.0.13",
-    "@uiw/react-color-editable-input": "^0.0.13",
     "@uiw/react-color-hue": "^0.0.13",
     "@uiw/react-color-saturation": "^0.0.13"
   },

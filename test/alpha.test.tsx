@@ -25,7 +25,6 @@ it('Alpha', async () => {
     expect(tree.type).toEqual('div');
     expect(tree.props.className).toEqual('w-color-alpha w-color-alpha-horizontal');
     expect(tree.props.style).toMatchObject({
-      width: 320,
       height: 16,
       borderRadius: 0,
       position: 'relative',
