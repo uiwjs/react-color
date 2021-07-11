@@ -3,7 +3,7 @@ React Color Colorful
 
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@uiw/react-color-colorful)](https://bundlephobia.com/package/@uiw/react-color-colorful) [![npm version](https://img.shields.io/npm/v/@uiw/react-color-colorful.svg)](https://www.npmjs.com/package/@uiw/react-color-colorful) [![Open in unpkg](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@uiw/react-color-colorful/file/README.md)
 
-![image](https://user-images.githubusercontent.com/1680273/124279725-6a3fef00-db7a-11eb-95b7-fba428a7c2ba.png)
+![image](https://user-images.githubusercontent.com/1680273/125195175-1e323000-e287-11eb-9960-25d51ab68e7b.png)
 
 ## Install
 
