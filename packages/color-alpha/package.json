@@ -3,6 +3,7 @@
   "version": "0.0.13",
   "description": "Color alpha",
   "author": "Kenny Wong <wowohoo@qq.com>",
+  "homepage": "https://uiwjs.github.io/react-color/#react-color-alpha",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
   "repository": {

@@ -14,7 +14,7 @@ export interface AlphaProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
   /** React Component, Custom pointer component */
   pointer?: ({ prefixCls, left }: PointerProps) => JSX.Element;
   /** Set rounded corners. */
-  radius?: number;
+  radius?: React.CSSProperties['borderRadius'];
   /** Set the background color. */
   background?: string;
   /** Set the background element props. */
@@ -38,7 +38,7 @@ export default React.forwardRef<HTMLDivElement, AlphaProps>((props, ref) => {
     bgProps = {},
     innerProps = {},
     radius = 0,
-    width = 320,
+    width,
     height = 16,
     direction = 'horizontal',
     style,
@@ -73,8 +73,7 @@ export default React.forwardRef<HTMLDivElement, AlphaProps>((props, ref) => {
         borderRadius: radius,
         ...style,
         position: 'relative',
-        width,
-        height,
+        ...{ width, height },
         background: `url(${BACKGROUND_IMG}) left center`,
         backgroundColor: '#fff',
       }}
@@ -95,6 +94,7 @@ export default React.forwardRef<HTMLDivElement, AlphaProps>((props, ref) => {
         style={{
           ...innerProps.style,
           inset: 0,
+          zIndex: 1,
           position: 'absolute',
         }}
         onMove={handleChange}
