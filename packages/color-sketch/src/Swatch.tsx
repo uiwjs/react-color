@@ -8,26 +8,8 @@ export interface SwatchProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 
   onClick?: (hsva: HsvaColor) => void;
 }
 
-const PRESET_COLORS = [
-  '#D0021B',
-  '#F5A623',
-  '#f8e61b',
-  '#8B572A',
-  '#7ED321',
-  '#417505',
-  '#BD10E0',
-  '#9013FE',
-  '#4A90E2',
-  '#50E3C2',
-  '#B8E986',
-  '#000000',
-  '#4A4A4A',
-  '#9B9B9B',
-  '#FFFFFF',
-];
-
 export default function Swatch(props: SwatchProps) {
-  const { colors = PRESET_COLORS, onClick } = props;
+  const { colors = [], onClick } = props;
   const rectStyle: React.CSSProperties = {
     background: 'rgb(144, 19, 254)',
     height: 16,

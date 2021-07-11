@@ -282,20 +282,22 @@ it('Sketch Input A = -4444 onChange', async () => {
   }
 });
 
-// it('Saturation onChange', async () => {
-//   render(
-//     <Sketch
-//       color="#ca1d32"
-//       onChange={(color) => {
-//         expect(Object.keys(color)).toEqual(expect.arrayContaining(['rgb', 'hsl', 'hsv', 'rgba', 'hsla', 'hsva', 'hex', 'hexa']));
-//         expect(color.rgba.a).toEqual(0);
-//         expect(color.hex).toEqual('#ca1d32');
-//         expect(color.hexa).toEqual('#ca1d3200');
-//       }}
-//     />
-//   );
+it('Sketch editableDisable=false onChange', async () => {
+  const MyComponent = () => {
+    return <Sketch color="#ca1d32" editableDisable={false} />;
+  };
+  const component = TestRenderer.create(<MyComponent />);
+  let tree = component.toJSON();
+  if (tree && !Array.isArray(tree) && tree.children) {
+    expect(tree.children.length).toEqual(2);
+  }
+});
 
-//   const elm = screen.getByTitle('custom-element');
-//   elm.focus();
-//   fireEvent.mouseDown(elm, { clientX: 1 });
-// });
+it('Sketch presetColors=false onChange', async () => {
+  const MyComponent = () => <Sketch color="#ca1d32" presetColors={false} />;
+  const component = TestRenderer.create(<MyComponent />);
+  let tree = component.toJSON();
+  if (tree && !Array.isArray(tree) && tree.children) {
+    expect(tree.children.length).toEqual(2);
+  }
+});

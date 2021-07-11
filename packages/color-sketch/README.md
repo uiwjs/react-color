@@ -33,17 +33,14 @@ function Demo() {
 ## Props
 
 ```ts
-interface ColorResult {
-  hex: string;
-  hsl: HslaColor;
-  hsv: HsvColor;
-  rgb: RgbaColor;
-}
+import { ColorResult } from '@uiw/color-convert';
 export type PresetColor = { color: string; title: string } | string;
 export interface SketchProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'color'> {
+  prefixCls?: string;
   width?: number;
   color?: string | HsvaColor;
-  presetColors?: PresetColor[];
+  presetColors?: false | PresetColor[];
+  editableDisable?: boolean;
   onChange?: (newShade: ColorResult) => void;
 }
 ```

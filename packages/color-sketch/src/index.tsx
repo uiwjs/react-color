@@ -18,11 +18,30 @@ import {
 import Swatch, { PresetColor } from './Swatch';
 import { useEffect } from 'react';
 
+const PRESET_COLORS = [
+  '#D0021B',
+  '#F5A623',
+  '#f8e61b',
+  '#8B572A',
+  '#7ED321',
+  '#417505',
+  '#BD10E0',
+  '#9013FE',
+  '#4A90E2',
+  '#50E3C2',
+  '#B8E986',
+  '#000000',
+  '#4A4A4A',
+  '#9B9B9B',
+  '#FFFFFF',
+];
+
 export interface SketchProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'color'> {
   prefixCls?: string;
   width?: number;
   color?: string | HsvaColor;
-  presetColors?: PresetColor[];
+  presetColors?: false | PresetColor[];
+  editableDisable?: boolean;
   onChange?: (newShade: ColorResult) => void;
 }
 
@@ -42,7 +61,17 @@ const Bar = (props: PointerProps) => (
 );
 
 export default React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
-  const { prefixCls = 'w-color-sketch', className, onChange, width = 218, presetColors, color, style, ...other } = props;
+  const {
+    prefixCls = 'w-color-sketch',
+    className,
+    onChange,
+    width = 218,
+    presetColors = PRESET_COLORS,
+    color,
+    editableDisable = true,
+    style,
+    ...other
+  } = props;
   const [hsva, setHsva] = useState({ h: 209, s: 36, v: 90, a: 1 });
   useEffect(() => {
     if (typeof color === 'string' && validHex(color)) {
@@ -165,69 +194,73 @@ export default React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
           />
         </div>
       </div>
-      <div style={{ display: 'flex', margin: '0 10px 3px 10px' }}>
-        <EditableInput
-          label="Hex"
-          value={hsvaToHex(hsva).replace(/^#/, '').toLocaleUpperCase()}
-          onChange={(evn, val) => handleRGBA(val, 'hex', evn)}
-          style={{
-            flexDirection: 'column',
-            flex: '2 1 0%',
-          }}
-        />
-        <EditableInput
-          label="R"
-          value={rgba.r}
-          onBlur={handleBlur}
-          onChange={(evn, val) => handleRGBA(val, 'r', evn)}
-          style={{
-            flexDirection: 'column',
-            flex: '1 1 0%',
-            marginLeft: 6,
-          }}
-        />
-        <EditableInput
-          label="G"
-          value={rgba.g}
-          onBlur={handleBlur}
-          onChange={(evn, val) => handleRGBA(val, 'g', evn)}
-          style={{
-            flexDirection: 'column',
-            flex: '1 1 0%',
-            marginLeft: 6,
-          }}
-        />
-        <EditableInput
-          label="B"
-          value={rgba.b}
-          onBlur={handleBlur}
-          onChange={(evn, val) => handleRGBA(val, 'b', evn)}
-          style={{
-            flexDirection: 'column',
-            flex: '1 1 0%',
-            marginLeft: 6,
-          }}
-        />
-        <EditableInput
-          label="A"
-          value={parseInt(String(rgba.a * 100), 10)}
-          onBlur={(evn) => {
-            if (Number(evn.target.value) > 100) {
-              evn.target.value = '100';
-            }
-            if (Number(evn.target.value) < 1) {
-              evn.target.value = '0';
-            }
-          }}
-          onChange={(evn, val) => handleRGBA(val, 'a', evn)}
-          style={{
-            flexDirection: 'column',
-            flex: '1 1 0%',
-            marginLeft: 6,
-          }}
-        />
-      </div>
-      <Swatch colors={presetColors} color={hsvaToHex(hsva)} onClick={(hsva) => handleChange(hsva)} />
+      {editableDisable && (
+        <div style={{ display: 'flex', margin: '0 10px 3px 10px' }}>
+          <EditableInput
+            label="Hex"
+            value={hsvaToHex(hsva).replace(/^#/, '').toLocaleUpperCase()}
+            onChange={(evn, val) => handleRGBA(val, 'hex', evn)}
+            style={{
+              flexDirection: 'column',
+              flex: '2 1 0%',
+            }}
+          />
+          <EditableInput
+            label="R"
+            value={rgba.r}
+            onBlur={handleBlur}
+            onChange={(evn, val) => handleRGBA(val, 'r', evn)}
+            style={{
+              flexDirection: 'column',
+              flex: '1 1 0%',
+              marginLeft: 6,
+            }}
+          />
+          <EditableInput
+            label="G"
+            value={rgba.g}
+            onBlur={handleBlur}
+            onChange={(evn, val) => handleRGBA(val, 'g', evn)}
+            style={{
+              flexDirection: 'column',
+              flex: '1 1 0%',
+              marginLeft: 6,
+            }}
+          />
+          <EditableInput
+            label="B"
+            value={rgba.b}
+            onBlur={handleBlur}
+            onChange={(evn, val) => handleRGBA(val, 'b', evn)}
+            style={{
+              flexDirection: 'column',
+              flex: '1 1 0%',
+              marginLeft: 6,
+            }}
+          />
+          <EditableInput
+            label="A"
+            value={parseInt(String(rgba.a * 100), 10)}
+            onBlur={(evn) => {
+              if (Number(evn.target.value) > 100) {
+                evn.target.value = '100';
+              }
+              if (Number(evn.target.value) < 1) {
+                evn.target.value = '0';
+              }
+            }}
+            onChange={(evn, val) => handleRGBA(val, 'a', evn)}
+            style={{
+              flexDirection: 'column',
+              flex: '1 1 0%',
+              marginLeft: 6,
+            }}
+          />
+        </div>
+      )}
+      {presetColors && presetColors.length > 0 && (
+        <Swatch colors={presetColors} color={hsvaToHex(hsva)} onClick={(hsva) => handleChange(hsva)} />
+      )}
     </div>
   );
 });
