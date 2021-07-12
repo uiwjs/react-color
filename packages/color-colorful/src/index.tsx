@@ -68,7 +68,7 @@ export default React.forwardRef<HTMLDivElement, ColorfulProps>((props, ref) => {
         radius="8px 8px 0 0"
         style={{ width: 'auto', height: 150, minWidth: 120 }}
         pointer={({ left, top, color }) => (
-          <Pointer style={{ left, top, transform: 'translate(-14px, -14px)' }} color={hsvaToHex(hsva)} />
+          <Pointer style={{ left, top, transform: 'translate(-16px, -16px)' }} color={hsvaToHex(hsva)} />
         )}
         onChange={(newColor) => handleChange({ ...hsva, ...newColor })}
       />
