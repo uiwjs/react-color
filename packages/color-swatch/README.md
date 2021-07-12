@@ -3,7 +3,7 @@ React Color Swatch
 
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@uiw/react-color-swatch)](https://bundlephobia.com/package/@uiw/react-color-swatch) [![npm version](https://img.shields.io/npm/v/@uiw/react-color-swatch.svg)](https://www.npmjs.com/package/@uiw/react-color-swatch) [![Open in unpkg](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@uiw/react-color-swatch/file/README.md)
 
-![react-color-swatch](https://user-images.githubusercontent.com/1680273/125033823-681de900-e0c2-11eb-89e1-5f0597086c8d.png)
+![react-color-swatch](https://user-images.githubusercontent.com/1680273/125317798-d9cc9000-e36b-11eb-84a7-34f998957db9.png)
 
 ## Install
 
