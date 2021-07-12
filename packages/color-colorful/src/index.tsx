@@ -55,7 +55,6 @@ export default React.forwardRef<HTMLDivElement, ColorfulProps>((props, ref) => {
       ref={ref}
       style={{
         width: 200,
-        height: 200,
         position: 'relative',
         ...style,
       }}

@@ -27,7 +27,6 @@ it('Colorful', async () => {
     expect(tree.props.className).toEqual('w-color-colorful ');
     expect(tree.props.style).toMatchObject({
       width: 200,
-      height: 200,
       position: 'relative',
     });
     if (tree.children) {
