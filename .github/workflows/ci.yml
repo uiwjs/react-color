@@ -35,6 +35,7 @@ jobs:
     - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-sketch/package.json
     - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-slider/package.json
     - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-editable-input/package.json
+    - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-editable-input-rgba/package.json
     - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/drag-event-interactive/package.json
 
     - name: Create Tag
