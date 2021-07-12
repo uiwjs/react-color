@@ -30,6 +30,7 @@
   "dependencies": {
     "@babel/runtime": "7.14.6",
     "@uiw/color-convert": "^0.0.14",
+    "@uiw/react-color-editable-input": "^0.0.14",
     "@uiw/react-color-editable-input-rgba": "^0.0.14"
   },
   "devDependencies": {
