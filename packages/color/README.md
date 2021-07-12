@@ -37,7 +37,7 @@ npm i @uiw/react-color
 [![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?logo=codesandbox)](https://codesandbox.io/embed/react-color-example-rev1n?fontsize=14&hidenavigation=1&theme=dark) [![Open in Github gh-pages](https://img.shields.io/badge/Open%20In-Github%20gh--pages-blue?logo=github)](https://uiwjs.github.io/react-color/)
 
 ```jsx
-import { Slider, Sketch, Material, Colorful, Compact } from '@uiw/react-color';
+import { Slider, Sketch, Material, Colorful, Compact, Circle } from '@uiw/react-color';
 import { Alpha, Hue, ShadeSlider, Saturation, Interactive, hsvaToHslaString } from '@uiw/react-color';
 
 function Demo() {
