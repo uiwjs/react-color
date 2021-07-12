@@ -4,6 +4,7 @@ import {
   Sketch,
   Alpha,
   Colorful,
+  Circle,
   Compact,
   Swatch,
   Hue,
@@ -30,6 +31,7 @@ import mdStrSlider from '@uiw/react-color-slider/README.md';
 import mdStrCompact from '@uiw/react-color-compact/README.md';
 import mdStrMaterial from '@uiw/react-color-material/README.md';
 import mdStrColorful from '@uiw/react-color-colorful/README.md';
+import mdStrCircle from '@uiw/react-color-circle/README.md';
 import mdStrSwatch from '@uiw/react-color-swatch/README.md';
 import mdStrSaturation from '@uiw/react-color-saturation/README.md';
 import mdStrEditableInput from '@uiw/react-color-editable-input/README.md';
@@ -47,6 +49,7 @@ let markdownStr = mdStr
   .replace(/<!--react-color-compact-->/, mdStrCompact.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-material-->/, mdStrMaterial.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-colorful-->/, mdStrColorful.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
+  .replace(/<!--react-color-circle-->/, mdStrCircle.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-swatch-->/, mdStrSwatch.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-saturation-->/, mdStrSaturation.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-editable-input-->/, mdStrEditableInput.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
@@ -280,14 +283,35 @@ export default function App() {
                 <Title>{`<Compact color="${hsvaToHex(hsva)}" />`}</Title>
                 <Slider style={{ width: 220 }} color={hsva} onChange={(color) => setHsva({ ...hsva, ...color.hsv })} />
                 <Title>{`<Slider color="${hsvaToHex(hsva)}" />`}</Title>
-                <Material
-                  color={hsvaToHex(hsva)}
-                  style={{ boxShadow: 'rgb(0 0 0 / 12%) 0px 2px 10px, rgb(0 0 0 / 16%) 0px 2px 5px' }}
+
+                <Circle
+                  colors={[
+                    '#f44336',
+                    '#e91e63',
+                    '#9c27b0',
+                    '#673ab7',
+                    '#3f51b5',
+                    '#2196f3',
+                    '#03a9f4',
+                    '#00bcd4',
+                    '#009688',
+                    '#4caf50',
+                    '#8bc34a',
+                    '#cddc39',
+                    '#ffeb3b',
+                    '#ffc107',
+                    '#ff9800',
+                    '#ff5722',
+                    '#795548',
+                    '#607d8b',
+                  ]}
+                  color={hsva}
+                  style={{ width: 252, paddingTop: 16 }}
                   onChange={(color) => {
                     setHsva({ ...hsva, ...color.hsva });
                   }}
                 />
-                <Title>{`<Material color="${hsvaToHex(hsva)}" />`}</Title>
+                <Title>{`<Circle color="${hsvaToHex(hsva)}" />`}</Title>
               </div>
               <div style={{ paddingLeft: 20 }}>
                 <Colorful
@@ -297,6 +321,14 @@ export default function App() {
                   }}
                 />
                 <Title>{`<Colorful color="${hsvaToHex(hsva)}" />`}</Title>
+                <Material
+                  color={hsvaToHex(hsva)}
+                  style={{ boxShadow: 'rgb(0 0 0 / 12%) 0px 2px 10px, rgb(0 0 0 / 16%) 0px 2px 5px' }}
+                  onChange={(color) => {
+                    setHsva({ ...hsva, ...color.hsva });
+                  }}
+                />
+                <Title>{`<Material color="${hsvaToHex(hsva)}" />`}</Title>
               </div>
             </div>
           </div>
