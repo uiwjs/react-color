@@ -50,34 +50,17 @@ export default React.forwardRef<HTMLDivElement, SaturationProps>((props, ref) =>
       style={{
         position: 'absolute',
         inset: 0,
+        backgroundImage: 'linear-gradient(0deg, #000, transparent), linear-gradient(90deg, #fff, hsla(0,0%,100%,0))',
         ...containerStyle,
       }}
       ref={ref}
       onMove={handleChange}
       onDown={handleChange}
     >
-      <div
-        style={{
-          inset: 0,
-          background: 'linear-gradient(to right, rgb(255, 255, 255), rgba(255, 255, 255, 0))',
-          position: 'absolute',
-          borderRadius: radius,
-        }}
-      >
-        <div
-          style={{
-            inset: 0,
-            background: 'linear-gradient(to top, rgb(0, 0, 0), rgba(0, 0, 0, 0))',
-            position: 'absolute',
-            borderRadius: radius,
-          }}
-        >
-          {React.createElement(pointer || Pointer, {
-            prefixCls,
-            ...comProps,
-          })}
-        </div>
-      </div>
+      {React.createElement(pointer || Pointer, {
+        prefixCls,
+        ...comProps,
+      })}
     </Interactive>
   );
 });
