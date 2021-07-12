@@ -29,6 +29,7 @@ jobs:
     - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-compact/package.json
     - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-material/package.json
     - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-colorful/package.json
+    - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-circle/package.json
     - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-hue/package.json
     - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-saturation/package.json
     - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-shade-slider/package.json
