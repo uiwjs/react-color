@@ -5,6 +5,7 @@ import {
   Alpha,
   Colorful,
   Compact,
+  Swatch,
   Hue,
   Slider,
   EditableInputRGBA,
@@ -29,6 +30,7 @@ import mdStrSlider from '@uiw/react-color-slider/README.md';
 import mdStrCompact from '@uiw/react-color-compact/README.md';
 import mdStrMaterial from '@uiw/react-color-material/README.md';
 import mdStrColorful from '@uiw/react-color-colorful/README.md';
+import mdStrSwatch from '@uiw/react-color-swatch/README.md';
 import mdStrSaturation from '@uiw/react-color-saturation/README.md';
 import mdStrEditableInput from '@uiw/react-color-editable-input/README.md';
 import mdStrEditableInputRBGA from '@uiw/react-color-editable-input-rgba/README.md';
@@ -45,6 +47,7 @@ let markdownStr = mdStr
   .replace(/<!--react-color-compact-->/, mdStrCompact.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-material-->/, mdStrMaterial.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-colorful-->/, mdStrColorful.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
+  .replace(/<!--react-color-swatch-->/, mdStrSwatch.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-saturation-->/, mdStrSaturation.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-editable-input-->/, mdStrEditableInput.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-editable-input-rgba-->/, mdStrEditableInputRBGA.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
@@ -204,7 +207,30 @@ export default function App() {
                 </div>
               </div>
             </div>
-            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center', padding: '18px 0 20px 0' }}>
+            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center', padding: '10px 0 0 0' }}>
+              <Swatch
+                colors={[
+                  '#D0021B',
+                  '#F5A623',
+                  '#f8e61b',
+                  '#8B572A',
+                  '#7ED321',
+                  '#417505',
+                  '#BD10E0',
+                  '#9013FE',
+                  '#4A90E2',
+                  '#50E3C2',
+                  '#B8E986',
+                  '#000000',
+                  '#4A4A4A',
+                  '#9B9B9B',
+                  '#FFFFFF',
+                ]}
+                color={hsvaToHex(hsva)}
+                onChange={(hsva) => setHsva(hsva)}
+              />
+            </div>
+            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center', padding: '10px 0 10px 0' }}>
               <EditableInputRGBA
                 hsva={hsva}
                 style={{ width: 130, marginRight: 20 }}
@@ -231,7 +257,7 @@ export default function App() {
                 onChange={(color) => setHsva({ ...hsva, ...color.hsva })}
               />
             </div>
-            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center', paddingTop: 36 }}>
+            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center', paddingTop: 26 }}>
               <div>
                 <Sketch
                   color={hsva}

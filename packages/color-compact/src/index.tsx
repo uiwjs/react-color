@@ -8,8 +8,9 @@ import {
   hsvaToHex,
   getContrastingColor,
 } from '@uiw/color-convert';
-import EditableInput, { EditableInputProps } from '@uiw/react-color-editable-input';
+import EditableInput from '@uiw/react-color-editable-input';
 import RGBA from '@uiw/react-color-editable-input-rgba';
+import Swatch from '@uiw/react-color-swatch';
 
 export interface CompactProps<T> extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'color'> {
   prefixCls?: string;
@@ -57,29 +58,23 @@ const COLORS = [
   '#AB149E',
 ];
 
-const EditableInputHex = ({ style, ...props }: EditableInputProps) => (
-  <EditableInput
-    labelStyle={{ paddingRight: 5, marginTop: -1 }}
-    inputStyle={{
-      outline: 'none',
-      boxShadow: 'initial',
-      background: 'transparent',
-    }}
-    style={{
-      flexDirection: 'row-reverse',
-      flex: '1 1 0%',
-      ...style,
-    }}
-    {...props}
-  />
-);
+function Point(props: { color?: string; checked?: boolean }) {
+  if (!props.checked) return null;
+  return (
+    <div
+      style={{
+        height: 5,
+        width: 5,
+        borderRadius: '50%',
+        backgroundColor: getContrastingColor(props.color!),
+      }}
+    />
+  );
+}
 
 export default React.forwardRef<HTMLDivElement, CompactProps<React.MouseEvent<HTMLDivElement, MouseEvent>>>((props, ref) => {
   const { prefixCls = 'w-color-compact', className, style, onChange, color, colors = COLORS, ...other } = props;
   const hsva = (typeof color === 'string' && validHex(color) ? hexToHsva(color) : color) as HsvaColor;
-  const handleClick = (hexStr: string, evn: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    onChange && onChange(handleColor(hexToHsva(hexStr)), evn);
-  };
   const hex = color ? hsvaToHex(hsva).replace(/^#/, '') : '';
   const handleChangeCallback = useCallback((hsv: HsvaColor) => onChange && onChange(handleColor(hsv)), []);
   const handleHex = (value: string | number, evn: React.ChangeEvent<HTMLInputElement>) => {
@@ -109,51 +104,35 @@ export default React.forwardRef<HTMLDivElement, CompactProps<React.MouseEvent<HT
       className={[prefixCls, className || ''].filter(Boolean).join(' ')}
       {...other}
     >
-      {colors.map((hex, idx) => {
-        const checked = hsva && hsvaToHex(hsva).toLocaleLowerCase() === hex.toLocaleLowerCase();
-        return (
-          <div
-            key={hex}
-            style={{
-              boxSizing: 'border-box',
-            }}
-          >
-            <div
-              onClick={(evn) => handleClick(hex, evn)}
-              title={hex}
-              style={{
-                backgroundColor: hex,
-                height: 15,
-                width: 15,
-                marginRight: 5,
-                marginBottom: 5,
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderRadius: 2,
-              }}
-            >
-              {checked && (
-                <div
-                  style={{
-                    height: 5,
-                    width: 5,
-                    borderRadius: '50%',
-                    backgroundColor: getContrastingColor(hex),
-                  }}
-                />
-              )}
-            </div>
-          </div>
-        );
-      })}
+      <Swatch
+        colors={colors}
+        color={color ? hsvaToHex(hsva) : undefined}
+        rectProps={{
+          children: <Point />,
+          style: {
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          },
+        }}
+        onChange={(hsvColor) => handleChangeCallback(hsvColor)}
+      />
       <div style={{ display: 'flex', margin: '0 4px 3px 0' }}>
-        <EditableInputHex
-          style={{ minWidth: 80 }}
+        <EditableInput
           onChange={(evn, val) => handleHex(val, evn)}
-          label={<div style={{ width: 8, height: 8, backgroundColor: `#${hex}` }} />}
+          labelStyle={{ paddingRight: 5, marginTop: -1 }}
           value={hex.toLocaleUpperCase()}
+          label={<div style={{ width: 8, height: 8, backgroundColor: `#${hex}` }} />}
+          inputStyle={{
+            outline: 'none',
+            boxShadow: 'initial',
+            background: 'transparent',
+          }}
+          style={{
+            flexDirection: 'row-reverse',
+            flex: '1 1 0%',
+            minWidth: 80,
+          }}
         />
         <RGBA
           hsva={hsva}

@@ -301,3 +301,68 @@ it('Sketch presetColors=false onChange', async () => {
     expect(tree.children.length).toEqual(2);
   }
 });
+
+it('Sketch Saturation mouseDown Click', async () => {
+  const MyComponent = () => {
+    return (
+      <Sketch
+        color="#ca1d32"
+        onChange={(color) => {
+          expect(Object.keys(color)).toEqual(
+            expect.arrayContaining(['rgb', 'hsl', 'hsv', 'rgba', 'hsla', 'hsva', 'hex', 'hexa']),
+          );
+          expect(color.rgba.a).toEqual(1);
+        }}
+      />
+    );
+  };
+  const {
+    container: { firstChild },
+  } = render(<MyComponent />);
+  const elm = firstChild?.firstChild?.firstChild!;
+  fireEvent.mouseDown(elm, { clientX: 1, clientY: 10 });
+});
+
+it('Sketch Hue mouseDown Click', async () => {
+  const MyComponent = () => {
+    return (
+      <Sketch
+        color="#ca1d32"
+        onChange={(color) => {
+          expect(Object.keys(color)).toEqual(
+            expect.arrayContaining(['rgb', 'hsl', 'hsv', 'rgba', 'hsla', 'hsva', 'hex', 'hexa']),
+          );
+          expect(color.rgba.a).toEqual(1);
+        }}
+      />
+    );
+  };
+  const {
+    container: { firstChild },
+  } = render(<MyComponent />);
+  const elm = firstChild?.firstChild?.firstChild?.nextSibling?.firstChild?.firstChild?.firstChild?.nextSibling!;
+  fireEvent.mouseDown(elm, { clientX: 1, clientY: 10 });
+});
+
+it('Sketch Alpha mouseDown Click', async () => {
+  const MyComponent = () => {
+    return (
+      <Sketch
+        color="#ca1d32"
+        onChange={(color) => {
+          expect(Object.keys(color)).toEqual(
+            expect.arrayContaining(['rgb', 'hsl', 'hsv', 'rgba', 'hsla', 'hsva', 'hex', 'hexa']),
+          );
+          expect(color.hex).toEqual('#ca1d32');
+          expect(color.hexa).toEqual('#ca1d3200');
+        }}
+      />
+    );
+  };
+  const {
+    container: { firstChild },
+  } = render(<MyComponent />);
+  const elm = firstChild?.firstChild?.firstChild?.nextSibling?.firstChild?.firstChild?.nextSibling?.firstChild?.nextSibling!;
+  // console.log(elm)
+  fireEvent.mouseDown(elm, { clientX: 1, clientY: 10 });
+});

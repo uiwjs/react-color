@@ -36,8 +36,11 @@ it('Compact', async () => {
       boxShadow: 'rgb(0 0 0 / 15%) 0px 0px 0px 1px, rgb(0 0 0 / 15%) 0px 8px 16px',
     });
     if (tree.children) {
-      expect(tree.children.length).toEqual(37);
-      tree.children.forEach((child) => {
+      expect(tree.children.length).toEqual(2);
+      tree.children.forEach((child, idx) => {
+        if (idx === 0 && typeof child === 'object') {
+          expect(child.children?.length).toEqual(36);
+        }
         if (typeof child === 'object') {
           expect(child.type).toEqual('div');
         }

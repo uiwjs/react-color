@@ -14,7 +14,7 @@ import {
   color as handleColor,
   ColorResult,
 } from '@uiw/color-convert';
-import Swatch, { PresetColor } from './Swatch';
+import Swatch, { SwatchPresetColor } from '@uiw/react-color-swatch';
 import { useEffect } from 'react';
 
 const PRESET_COLORS = [
@@ -39,7 +39,7 @@ export interface SketchProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 
   prefixCls?: string;
   width?: number;
   color?: string | HsvaColor;
-  presetColors?: false | PresetColor[];
+  presetColors?: false | SwatchPresetColor[];
   editableDisable?: boolean;
   onChange?: (newShade: ColorResult) => void;
 }
@@ -171,7 +171,27 @@ export default React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
         </div>
       )}
       {presetColors && presetColors.length > 0 && (
-        <Swatch colors={presetColors} color={hsvaToHex(hsva)} onClick={(hsva) => handleChange(hsva)} />
+        <Swatch
+          style={{
+            borderTop: '1px solid rgb(238, 238, 238)',
+            paddingTop: 10,
+            paddingLeft: 10,
+          }}
+          colors={presetColors}
+          color={hsvaToHex(hsva)}
+          onChange={(hsvColor) => handleChange(hsvColor)}
+          rectProps={{
+            style: {
+              marginRight: 10,
+              marginBottom: 10,
+              borderRadius: 3,
+              boxShadow: 'rgb(0 0 0 / 15%) 0px 0px 0px 1px inset',
+              // display: 'flex',
+              // alignItems: 'center',
+              // justifyContent: 'center',
+            },
+          }}
+        />
       )}
     </div>
   );

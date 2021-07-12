@@ -78,9 +78,10 @@ Package | Bundle size(gzip) | Version / unpkg
 <!--react-color-compact-->
 <!--react-color-material-->
 <!--react-color-colorful-->
-<!--react-color-saturation-->
+<!--react-color-swatch-->
 <!--react-color-alpha-->
 <!--react-color-hue-->
+<!--react-color-saturation-->
 <!--react-color-shade-slider-->
 <!--react-color-editable-input-->
 <!--react-color-editable-input-rgba-->
