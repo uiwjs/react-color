@@ -219,3 +219,27 @@ it('Compact Input hex onChange', async () => {
     fireEvent.blur(input);
   }
 });
+
+it('Compact Input hex onChange', async () => {
+  const MyComponent = () => {
+    return (
+      <Compact
+        color="#ff7300"
+        onChange={(color) => {
+          expect(color.hex).toEqual('#eeeeee');
+          expect(Object.keys(color)).toEqual(
+            expect.arrayContaining(['rgb', 'hsl', 'hsv', 'rgba', 'hsla', 'hsva', 'hex', 'hexa']),
+          );
+        }}
+      />
+    );
+  };
+  const { getByText } = render(<MyComponent />);
+  const input = getByText('R').parentElement?.parentElement?.parentElement?.firstChild?.firstChild;
+  if (input) {
+    expect((input as any).value).toEqual('FF7300');
+    fireEvent.focus(input);
+    fireEvent.change(input, { target: { value: 'eee' } });
+    fireEvent.blur(input);
+  }
+});

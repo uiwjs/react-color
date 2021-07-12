@@ -7,6 +7,7 @@ import {
   Compact,
   Hue,
   Slider,
+  EditableInputRGBA,
   ShadeSlider,
   EditableInput,
   Material,
@@ -30,6 +31,7 @@ import mdStrMaterial from '@uiw/react-color-material/README.md';
 import mdStrColorful from '@uiw/react-color-colorful/README.md';
 import mdStrSaturation from '@uiw/react-color-saturation/README.md';
 import mdStrEditableInput from '@uiw/react-color-editable-input/README.md';
+import mdStrEditableInputRBGA from '@uiw/react-color-editable-input-rgba/README.md';
 import mdStrAlpha from '@uiw/react-color-alpha/README.md';
 import mdStrHue from '@uiw/react-color-hue/README.md';
 import mdStrShadeSlider from '@uiw/react-color-shade-slider/README.md';
@@ -45,6 +47,7 @@ let markdownStr = mdStr
   .replace(/<!--react-color-colorful-->/, mdStrColorful.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-saturation-->/, mdStrSaturation.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-editable-input-->/, mdStrEditableInput.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
+  .replace(/<!--react-color-editable-input-rgba-->/, mdStrEditableInputRBGA.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-alpha-->/, mdStrAlpha.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-hue-->/, mdStrHue.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-shade-slider-->/, mdStrShadeSlider.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
@@ -122,7 +125,36 @@ export default function App() {
                           evn.target.value = value.slice(0, value.startsWith('#') ? 7 : 6);
                         }
                       }}
-                      style={{ width: 68, flexDirection: 'column-reverse', alignItems: 'flex-start' }}
+                      placement="top"
+                      style={{ width: 68, alignItems: 'flex-start' }}
+                    />
+                    <EditableInput
+                      label="Hex"
+                      placement="right"
+                      value={hsvaToHex(hsva)}
+                      onChange={(evn) => {
+                        if (validHex(evn.target.value)) {
+                          setHsva(hexToHsva(evn.target.value));
+                        }
+                      }}
+                      labelStyle={{ position: 'relative', display: 'block' }}
+                      style={{
+                        width: 84,
+                        marginTop: 8,
+                      }}
+                    />
+                  </div>
+                  <div style={{ marginBottom: 15 }}>
+                    <EditableInput
+                      label="Hex"
+                      value={hsvaToHex(hsva)}
+                      onChange={(evn) => {
+                        if (validHex(evn.target.value)) {
+                          setHsva(hexToHsva(evn.target.value));
+                        }
+                      }}
+                      placement="left"
+                      style={{ width: 84 }}
                     />
                     <EditableInput
                       label="Alpha"
@@ -139,35 +171,7 @@ export default function App() {
                       labelStyle={{ position: 'relative', display: 'block' }}
                       style={{
                         width: 68,
-                        flexDirection: 'column',
                         marginTop: 8,
-                      }}
-                    />
-                  </div>
-                  <div>
-                    <EditableInput
-                      label="Hex"
-                      value={hsvaToHex(hsva)}
-                      onChange={(evn) => {
-                        if (validHex(evn.target.value)) {
-                          setHsva(hexToHsva(evn.target.value));
-                        }
-                      }}
-                      style={{ width: 84, marginTop: 14 }}
-                    />
-                    <EditableInput
-                      label="Hex"
-                      value={hsvaToHex(hsva)}
-                      onChange={(evn) => {
-                        if (validHex(evn.target.value)) {
-                          setHsva(hexToHsva(evn.target.value));
-                        }
-                      }}
-                      labelStyle={{ position: 'relative', display: 'block' }}
-                      style={{
-                        width: 84,
-                        marginTop: 8,
-                        flexDirection: 'row-reverse',
                       }}
                     />
                   </div>
@@ -199,6 +203,33 @@ export default function App() {
                   <Title>{`<ShadeSlider />`}</Title>
                 </div>
               </div>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center', padding: '18px 0 20px 0' }}>
+              <EditableInputRGBA
+                hsva={hsva}
+                style={{ width: 130, marginRight: 20 }}
+                onChange={(color) => setHsva({ ...hsva, ...color.hsva })}
+              />
+              <EditableInputRGBA
+                hsva={hsva}
+                placement="top"
+                style={{ width: 130 }}
+                onChange={(color) => setHsva({ ...hsva, ...color.hsva })}
+              />
+            </div>
+            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center' }}>
+              <EditableInputRGBA
+                hsva={hsva}
+                placement="left"
+                style={{ width: 158, marginRight: 20 }}
+                onChange={(color) => setHsva({ ...hsva, ...color.hsva })}
+              />
+              <EditableInputRGBA
+                hsva={hsva}
+                placement="right"
+                style={{ width: 158 }}
+                onChange={(color) => setHsva({ ...hsva, ...color.hsva })}
+              />
             </div>
             <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center', paddingTop: 36 }}>
               <div>

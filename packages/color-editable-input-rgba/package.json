@@ -1,9 +1,9 @@
 {
-  "name": "@uiw/react-color-material",
-  "version": "0.0.14",
-  "description": "Color Material",
+  "name": "@uiw/react-color-editable-input-rgba",
+  "version": "0.0.1",
+  "description": "Color Editable Input",
   "author": "Kenny Wong <wowohoo@qq.com>",
-  "homepage": "https://uiwjs.github.io/react-color/#react-color-material",
+  "homepage": "https://uiwjs.github.io/react-color/#react-color-editable-input-rgba",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
   "repository": {
@@ -13,8 +13,11 @@
   "keywords": [
     "react",
     "react-color",
-    "react-color-material",
-    "material",
+    "react-color-editable-input-rgba",
+    "editable-input-rgba",
+    "editable-input",
+    "editable",
+    "rgba",
     "color",
     "convert"
   ],
@@ -30,7 +33,7 @@
   "dependencies": {
     "@babel/runtime": "7.14.6",
     "@uiw/color-convert": "^0.0.14",
-    "@uiw/react-color-editable-input-rgba": "^0.0.14"
+    "@uiw/react-color-editable-input": "^0.0.14"
   },
   "devDependencies": {
     "@types/react": "17.0.13",

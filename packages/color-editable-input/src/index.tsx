@@ -9,6 +9,7 @@ export interface EditableInputProps extends Omit<React.InputHTMLAttributes<HTMLI
   value?: string | number;
   label?: React.ReactNode;
   labelStyle?: React.CSSProperties;
+  placement?: 'top' | 'left' | 'bottom' | 'right';
   inputStyle?: React.CSSProperties;
   onChange?: (evn: React.ChangeEvent<HTMLInputElement>, value: string | number) => void;
 }
@@ -16,6 +17,7 @@ export interface EditableInputProps extends Omit<React.InputHTMLAttributes<HTMLI
 export default React.forwardRef<HTMLInputElement, EditableInputProps>((props, ref) => {
   const {
     prefixCls = 'w-color-editable-input',
+    placement = 'bottom',
     label,
     value: initValue,
     className,
@@ -54,6 +56,16 @@ export default React.forwardRef<HTMLInputElement, EditableInputProps>((props, re
     setValue(props.value);
     onBlur && onBlur(evn);
   }
+  const placementStyle: React.CSSProperties = {};
+  if (placement === 'bottom') {
+    placementStyle['flexDirection'] = 'column';
+  }
+  if (placement === 'top') {
+    placementStyle['flexDirection'] = 'column-reverse';
+  }
+  if (placement === 'left') {
+    placementStyle['flexDirection'] = 'row-reverse';
+  }
   return (
     <div
       className={[prefixCls, className || ''].filter(Boolean).join(' ')}
@@ -62,6 +74,7 @@ export default React.forwardRef<HTMLInputElement, EditableInputProps>((props, re
         alignItems: 'center',
         display: 'flex',
         fontSize: 11,
+        ...placementStyle,
         ...style,
       }}
     >

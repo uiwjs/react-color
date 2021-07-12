@@ -1,14 +1,14 @@
-React Color Editable Input
+React Color Editable Input RGBA
 ===
 
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@uiw/react-color-editable-input)](https://bundlephobia.com/package/@uiw/react-color-editable-input) [![npm version](https://img.shields.io/npm/v/@uiw/react-color-editable-input.svg)](https://www.npmjs.com/package/@uiw/react-color-editable-input) [![Open in unpkg](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@uiw/react-color/file/README.md)
 
-![editable-input](https://user-images.githubusercontent.com/1680273/124878498-c1bcdf80-dffe-11eb-8164-d752a8109db9.png)
+![react-color-editable-input-rgba](https://user-images.githubusercontent.com/1680273/125201800-2c8e4500-e2a3-11eb-8cb0-7a65cc3ae90d.png)
 
 ## Install
 
 ```bash
-npm i @uiw/react-color-editable-input
+npm i @uiw/react-color-editable-input-rgba
 ```
 
 ## Usage
@@ -16,16 +16,17 @@ npm i @uiw/react-color-editable-input
 ```js
 import { useState } from 'react';
 import { hsvaToHex } from '@uiw/color-convert';
-import EditableInput from '@uiw/react-color-editable-input';
+import EditableInputRGBA from '@uiw/react-color-editable-input-rgba';
 
 function Demo() {
   const [hsva, setHsva] = useState({ h: 209, s: 36, v: 90, a: 1 });
   return (
     <div style={{ padding: '0 10px 0 20px' }}>
-      <EditableInput
-        label="Hex"
-        value={hsvaToHex(hsva)}
-        style={{ width: 68, alignItems: 'flex-start' }}
+      <EditableInputRGBA
+        hsva={hsva}
+        onChange={(color) => {
+          setHsva({ ...hsva, ...color.hsva });
+        }}
       />
     </div>
   );
@@ -35,14 +36,17 @@ function Demo() {
 ## Props
 
 ```ts
-interface EditableInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
+import { EditableInputProps } from '@uiw/react-color-editable-input';
+
+interface EditableInputRGBAProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   prefixCls?: string;
-  value?: string | number;
-  label?: string;
-  labelStyle?: React.CSSProperties;
+  hsva: HsvaColor;
   placement?: 'top' | 'left' | 'bottom' | 'right';
-  inputStyle?: React.CSSProperties;
-  onChange?: (evn: React.ChangeEvent<HTMLInputElement>, value: string | number) => void;
+  rProps?: EditableInputProps;
+  gProps?: EditableInputProps;
+  bProps?: EditableInputProps;
+  aProps?: EditableInputProps;
+  onChange?: (color: ColorResult) => void;
 }
 ```
 

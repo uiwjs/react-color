@@ -1,16 +1,7 @@
 import React from 'react';
-import {
-  HsvaColor,
-  ColorResult,
-  color as handleColor,
-  validHex,
-  rgbaToHsva,
-  hexToHsva,
-  hsvaToRgba,
-  hsvaToHex,
-  RgbaColor,
-} from '@uiw/color-convert';
+import { HsvaColor, ColorResult, color as handleColor, validHex, hexToHsva, hsvaToHex } from '@uiw/color-convert';
 import EditableInput from '@uiw/react-color-editable-input';
+import RGBA from '@uiw/react-color-editable-input-rgba';
 
 export * from '@uiw/color-convert';
 
@@ -34,42 +25,15 @@ const styleRBG: React.CSSProperties = {
 export default React.forwardRef<HTMLDivElement, MaterialProps>((props, ref) => {
   const { prefixCls = 'w-color-material', className, style, color, onChange, ...other } = props;
   const hsva = (typeof color === 'string' && validHex(color) ? hexToHsva(color) : color) as HsvaColor;
-  const rgba = (color ? hsvaToRgba(hsva) : {}) as RgbaColor;
   const hex = color ? hsvaToHex(hsva).replace(/^#/, '') : '';
-  const handleChange = (
-    value: string | number,
-    type: 'hex' | 'r' | 'g' | 'b' | 'a',
-    evn: React.ChangeEvent<HTMLInputElement>,
-  ) => {
-    if (typeof value === 'number') {
-      if (value > 255) {
-        value = 255;
-        evn.target.value = '255';
-      }
-      if (value < 0) {
-        value = 0;
-        evn.target.value = '0';
-      }
-      if (type === 'r') {
-        onChange && onChange(handleColor(rgbaToHsva({ ...rgba, r: value })));
-      }
-      if (type === 'g') {
-        onChange && onChange(handleColor(rgbaToHsva({ ...rgba, g: value })));
-      }
-      if (type === 'b') {
-        onChange && onChange(handleColor(rgbaToHsva({ ...rgba, b: value })));
-      }
-    }
-    if (typeof value === 'string' && type === 'hex' && validHex(value) && /(3|6)/.test(String(value.length))) {
+  const handleChange = (hsv: HsvaColor) => {
+    onChange && onChange(handleColor(hsv));
+  };
+  const handleHex = (value: string | number, evn: React.ChangeEvent<HTMLInputElement>) => {
+    if (typeof value === 'string' && validHex(value) && /(3|6)/.test(String(value.length))) {
       onChange && onChange(handleColor(hexToHsva(value)));
     }
   };
-  function handleBlur(evn: React.FocusEvent<HTMLInputElement>) {
-    const value = Number(evn.target.value);
-    if (value && value > 255) {
-      evn.target.value = '255';
-    }
-  }
   return (
     <div
       ref={ref}
@@ -80,7 +44,7 @@ export default React.forwardRef<HTMLDivElement, MaterialProps>((props, ref) => {
       <EditableInput
         label="Hex"
         value={hex.toLocaleUpperCase()}
-        onChange={(evn, val) => handleChange(val, 'hex', evn)}
+        onChange={(evn, val) => handleHex(val, evn)}
         onBlur={(evn) => {
           const value = evn.target.value;
           if (value.length > 6) {
@@ -100,38 +64,32 @@ export default React.forwardRef<HTMLDivElement, MaterialProps>((props, ref) => {
         }}
         style={{ flexDirection: 'column-reverse', alignItems: 'flex-start' }}
       />
-      <div style={{ display: 'flex', marginTop: 11 }}>
-        <EditableInput
-          label="R"
-          value={rgba.r || 0}
-          inputStyle={{
-            ...styleRBG,
-          }}
-          onBlur={handleBlur}
-          onChange={(evn, val) => handleChange(val, 'r', evn)}
-          style={{ flexDirection: 'column-reverse', alignItems: 'flex-start' }}
-        />
-        <EditableInput
-          label="G"
-          value={rgba.g || 0}
-          inputStyle={{
-            ...styleRBG,
-          }}
-          onBlur={handleBlur}
-          onChange={(evn, val) => handleChange(val, 'g', evn)}
-          style={{ marginLeft: 5, flexDirection: 'column-reverse', alignItems: 'flex-start' }}
-        />
-        <EditableInput
-          label="B"
-          value={rgba.b || 0}
-          inputStyle={{
-            ...styleRBG,
-          }}
-          onBlur={handleBlur}
-          onChange={(evn, val) => handleChange(val, 'b', evn)}
-          style={{ marginLeft: 5, flexDirection: 'column-reverse', alignItems: 'flex-start' }}
-        />
-      </div>
+
+      <RGBA
+        hsva={hsva}
+        placement="top"
+        style={{ marginTop: 11 }}
+        rProps={{
+          style: {
+            alignItems: 'flex-start',
+          },
+          inputStyle: { ...styleRBG },
+        }}
+        gProps={{
+          style: {
+            alignItems: 'flex-start',
+          },
+          inputStyle: { ...styleRBG },
+        }}
+        bProps={{
+          style: {
+            alignItems: 'flex-start',
+          },
+          inputStyle: { ...styleRBG },
+        }}
+        aProps={false}
+        onChange={(result) => handleChange(result.hsva)}
+      />
     </div>
   );
 });

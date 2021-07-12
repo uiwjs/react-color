@@ -7,11 +7,9 @@ import {
   HsvaColor,
   hsvaToHex,
   getContrastingColor,
-  hsvaToRgba,
-  RgbaColor,
-  rgbaToHsva,
 } from '@uiw/color-convert';
 import EditableInput, { EditableInputProps } from '@uiw/react-color-editable-input';
+import RGBA from '@uiw/react-color-editable-input-rgba';
 
 export interface CompactProps<T> extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'color'> {
   prefixCls?: string;
@@ -59,7 +57,7 @@ const COLORS = [
   '#AB149E',
 ];
 
-const EditableInputRGB = ({ style, ...props }: EditableInputProps) => (
+const EditableInputHex = ({ style, ...props }: EditableInputProps) => (
   <EditableInput
     labelStyle={{ paddingRight: 5, marginTop: -1 }}
     inputStyle={{
@@ -82,42 +80,19 @@ export default React.forwardRef<HTMLDivElement, CompactProps<React.MouseEvent<HT
   const handleClick = (hexStr: string, evn: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     onChange && onChange(handleColor(hexToHsva(hexStr)), evn);
   };
-  const rgba = (color ? hsvaToRgba(hsva) : {}) as RgbaColor;
   const hex = color ? hsvaToHex(hsva).replace(/^#/, '') : '';
-  const handleChangeCallback = useCallback((hsv: HsvaColor) => onChange && onChange(handleColor(hsv)), [hsva]);
-  const handleChange = (value: string | number, type: 'hex' | 'r' | 'g' | 'b', evn: React.ChangeEvent<HTMLInputElement>) => {
-    if (typeof value === 'number') {
-      if (value > 255) {
-        value = 255;
-        evn.target.value = '255';
-      }
-      if (value < 0) {
-        value = 0;
-        evn.target.value = '0';
-      }
-      if (type === 'r') {
-        handleChangeCallback(rgbaToHsva({ ...rgba, r: value }));
-      }
-      if (type === 'g') {
-        handleChangeCallback(rgbaToHsva({ ...rgba, g: value }));
-      }
-      if (type === 'b') {
-        handleChangeCallback(rgbaToHsva({ ...rgba, b: value }));
-      }
-    }
-    if (typeof value === 'string' && type === 'hex' && validHex(value) && /(3|6)/.test(String(value.length))) {
+  const handleChangeCallback = useCallback((hsv: HsvaColor) => onChange && onChange(handleColor(hsv)), []);
+  const handleHex = (value: string | number, evn: React.ChangeEvent<HTMLInputElement>) => {
+    if (typeof value === 'string' && validHex(value) && /(3|6)/.test(String(value.length))) {
       handleChangeCallback(hexToHsva(value));
     }
   };
-  function handleBlur(evn: React.FocusEvent<HTMLInputElement>) {
-    const value = Number(evn.target.value);
-    if (value && value > 255) {
-      evn.target.value = '255';
-    }
-    if (value && value < 0) {
-      evn.target.value = '0';
-    }
-  }
+  const rgbProps = {
+    style: {
+      alignItems: 'baseline',
+    },
+    inputStyle: { boxShadow: 'none', backgroundColor: 'transparent', outline: 0 },
+  };
   return (
     <div
       ref={ref}
@@ -174,29 +149,20 @@ export default React.forwardRef<HTMLDivElement, CompactProps<React.MouseEvent<HT
         );
       })}
       <div style={{ display: 'flex', margin: '0 4px 3px 0' }}>
-        <EditableInputRGB
+        <EditableInputHex
           style={{ minWidth: 80 }}
-          onChange={(evn, val) => handleChange(val, 'hex', evn)}
+          onChange={(evn, val) => handleHex(val, evn)}
           label={<div style={{ width: 8, height: 8, backgroundColor: `#${hex}` }} />}
           value={hex.toLocaleUpperCase()}
         />
-        <EditableInputRGB
-          label="R"
-          value={rgba.r || 0}
-          onBlur={handleBlur}
-          onChange={(evn, val) => handleChange(val, 'r', evn)}
-        />
-        <EditableInputRGB
-          label="G"
-          value={rgba.g || 0}
-          onBlur={handleBlur}
-          onChange={(evn, val) => handleChange(val, 'g', evn)}
-        />
-        <EditableInputRGB
-          label="B"
-          value={rgba.b || 0}
-          onBlur={handleBlur}
-          onChange={(evn, val) => handleChange(val, 'b', evn)}
+        <RGBA
+          hsva={hsva}
+          placement="left"
+          onChange={(result) => handleChangeCallback(result.hsva)}
+          aProps={false}
+          rProps={rgbProps}
+          gProps={rgbProps}
+          bProps={rgbProps}
         />
       </div>
     </div>

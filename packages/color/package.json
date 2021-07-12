@@ -43,6 +43,7 @@
     "@uiw/react-color-colorful": "^0.0.14",
     "@uiw/react-color-compact": "^0.0.14",
     "@uiw/react-color-editable-input": "^0.0.14",
+    "@uiw/react-color-editable-input-rgba": "^0.0.14",
     "@uiw/react-color-hue": "^0.0.14",
     "@uiw/react-color-material": "^0.0.14",
     "@uiw/react-color-saturation": "^0.0.14",

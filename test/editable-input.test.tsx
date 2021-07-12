@@ -51,6 +51,88 @@ it('EditableInput', async () => {
   }
 });
 
+it('EditableInput placement = top', async () => {
+  function MyComponent() {
+    const [hsva, setHsva] = useState({ h: 209, s: 36, v: 90, a: 1 });
+    return (
+      <EditableInput
+        label="Hex"
+        placement="top"
+        value={hsvaToHex(hsva)}
+        labelStyle={{ position: 'relative', display: 'block' }}
+      />
+    );
+  }
+  const component = TestRenderer.create(<MyComponent />);
+  let tree = component.toJSON();
+  if (tree && !Array.isArray(tree)) {
+    expect(tree.type).toEqual('div');
+    expect(tree.props.className).toEqual('w-color-editable-input');
+    expect(tree.props.style).toMatchObject({
+      flexDirection: 'column-reverse',
+      position: 'relative',
+      alignItems: 'center',
+      display: 'flex',
+    });
+  }
+});
+
+it('EditableInput placement = bottom', async () => {
+  function MyComponent() {
+    const [hsva, setHsva] = useState({ h: 209, s: 36, v: 90, a: 1 });
+    return <EditableInput label="Hex" placement="bottom" value={hsvaToHex(hsva)} />;
+  }
+  const component = TestRenderer.create(<MyComponent />);
+  let tree = component.toJSON();
+  if (tree && !Array.isArray(tree)) {
+    expect(tree.type).toEqual('div');
+    expect(tree.props.className).toEqual('w-color-editable-input');
+    expect(tree.props.style).toMatchObject({
+      flexDirection: 'column',
+      position: 'relative',
+      alignItems: 'center',
+      display: 'flex',
+    });
+  }
+});
+
+it('EditableInput placement = left', async () => {
+  function MyComponent() {
+    const [hsva, setHsva] = useState({ h: 209, s: 36, v: 90, a: 1 });
+    return <EditableInput label="Hex" placement="left" value={hsvaToHex(hsva)} />;
+  }
+  const component = TestRenderer.create(<MyComponent />);
+  let tree = component.toJSON();
+  if (tree && !Array.isArray(tree)) {
+    expect(tree.type).toEqual('div');
+    expect(tree.props.className).toEqual('w-color-editable-input');
+    expect(tree.props.style).toMatchObject({
+      flexDirection: 'row-reverse',
+      position: 'relative',
+      alignItems: 'center',
+      display: 'flex',
+    });
+  }
+});
+
+it('EditableInput placement = right', async () => {
+  function MyComponent() {
+    const [hsva, setHsva] = useState({ h: 209, s: 36, v: 90, a: 1 });
+    return <EditableInput label="Hex" placement="right" value={hsvaToHex(hsva)} />;
+  }
+  const component = TestRenderer.create(<MyComponent />);
+  let tree = component.toJSON();
+  if (tree && !Array.isArray(tree)) {
+    expect(tree.type).toEqual('div');
+    expect(tree.props.className).toEqual('w-color-editable-input');
+    expect(tree.props.style).toMatchObject({
+      position: 'relative',
+      alignItems: 'center',
+      display: 'flex',
+    });
+  }
+});
+
 it('EditableInput Input Hex String', async () => {
   function MyComponent() {
     const [hsva, setHsva] = useState({ h: 209, s: 36, v: 90, a: 1 });
@@ -121,6 +203,9 @@ it('EditableInput Input Number', async () => {
             expect(evn.target.value).toEqual('0.15');
             setHsva({ ...hsva, a: value as number });
           }}
+          onBlur={(evn) => {
+            expect(evn.target.tagName).toEqual('INPUT');
+          }}
           style={{
             width: 84,
             marginTop: 8,
@@ -145,6 +230,4 @@ it('EditableInput Input Number', async () => {
   elm.focus();
   fireEvent.change(elm, { target: { value: 0.15 } });
   elm.blur();
-  const input = getByTitle('test2');
-  input.focus();
 });

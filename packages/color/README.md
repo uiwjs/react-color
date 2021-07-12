@@ -37,8 +37,8 @@ npm i @uiw/react-color
 [![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?logo=codesandbox)](https://codesandbox.io/embed/react-color-example-rev1n?fontsize=14&hidenavigation=1&theme=dark)
 
 ```jsx
-import { Alpha, Hue, Slider, Sketch, Compact } from '@uiw/react-color';
-import { ShadeSlider, Saturation, Interactive, hsvaToHslaString } from '@uiw/react-color';
+import { Slider, Sketch, Material, Colorful, Compact } from '@uiw/react-color';
+import { Alpha, Hue, ShadeSlider, Saturation, Interactive, hsvaToHslaString } from '@uiw/react-color';
 
 function Demo() {
   const [hex, setHex] = useState("#fff");
@@ -71,6 +71,7 @@ Package | Bundle size(gzip) | Version / unpkg
 [`@uiw/color-convert`](https://uiwjs.github.io/react-color/#color-convert) | [![bundle size](https://badgen.net/bundlephobia/min/@uiw/color-convert?color=3789D6&label=)](https://bundlephobia.com/package/@uiw/color-convert) [![bundle size(gzip)](https://badgen.net/bundlephobia/minzip/@uiw/color-convert?color=6ead0a&label=)](https://bundlephobia.com/package/@uiw/color-convert) | [![npm version](https://img.shields.io/npm/v/@uiw/color-convert.svg)](https://www.npmjs.com/package/@uiw/color-convert) [![Open in unpkg](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@uiw/color-convert/file/README.md)
 [`@uiw/react-drag-event-interactive`](https://uiwjs.github.io/react-color/#react-drag-event-interactive) | [![bundle size](https://badgen.net/bundlephobia/min/@uiw/react-drag-event-interactive?color=3789D6&label=)](https://bundlephobia.com/package/@uiw/react-drag-event-interactive) [![bundle size(gzip)](https://badgen.net/bundlephobia/minzip/@uiw/react-drag-event-interactive?color=6ead0a&label=)](https://bundlephobia.com/package/@uiw/react-drag-event-interactive) | [![npm version](https://img.shields.io/npm/v/@uiw/react-drag-event-interactive.svg)](https://www.npmjs.com/package/@uiw/react-drag-event-interactive) [![Open in unpkg](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@uiw/react-drag-event-interactive/file/README.md)
 [`@uiw/react-color-editable-input`](https://uiwjs.github.io/react-color/#react-color-editable-input) | [![bundle size](https://badgen.net/bundlephobia/min/@uiw/react-color-editable-input?color=3789D6&label=)](https://bundlephobia.com/package/@uiw/react-color-editable-input) [![bundle size(gzip)](https://badgen.net/bundlephobia/minzip/@uiw/react-color-editable-input?color=6ead0a&label=)](https://bundlephobia.com/package/@uiw/react-color-editable-input) | [![npm version](https://img.shields.io/npm/v/@uiw/react-color-editable-input.svg)](https://www.npmjs.com/package/@uiw/react-color-editable-input) [![Open in unpkg](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@uiw/react-color-editable-input/file/README.md)
+[`@uiw/react-color-editable-input-rgba`](https://uiwjs.github.io/react-color/#react-color-editable-input-rgba) | [![bundle size](https://badgen.net/bundlephobia/min/@uiw/react-color-editable-input-rgba?color=3789D6&label=)](https://bundlephobia.com/package/@uiw/react-color-editable-input-rgba) [![bundle size(gzip)](https://badgen.net/bundlephobia/minzip/@uiw/react-color-editable-input-rgba?color=6ead0a&label=)](https://bundlephobia.com/package/@uiw/react-color-editable-input-rgba) | [![npm version](https://img.shields.io/npm/v/@uiw/react-color-editable-input-rgba.svg)](https://www.npmjs.com/package/@uiw/react-color-editable-input-rgba) [![Open in unpkg](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@uiw/react-color-editable-input-rgba/file/README.md)
 
 <!--react-color-sketch-->
 <!--react-color-slider-->
@@ -82,6 +83,7 @@ Package | Bundle size(gzip) | Version / unpkg
 <!--react-color-hue-->
 <!--react-color-shade-slider-->
 <!--react-color-editable-input-->
+<!--react-color-editable-input-rgba-->
 <!--react-drag-event-interactive-->
 <!--color-convert-->
 
