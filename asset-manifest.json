@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/static/css/main.b28fec9d.chunk.css",
-    "main.js": "/static/js/main.30e75693.chunk.js",
-    "main.js.map": "/static/js/main.30e75693.chunk.js.map",
+    "main.js": "/static/js/main.2e958055.chunk.js",
+    "main.js.map": "/static/js/main.2e958055.chunk.js.map",
     "react-vendor.js": "/static/js/react-vendor.e9faae3e.chunk.js",
     "react-vendor.js.map": "/static/js/react-vendor.e9faae3e.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.de9af4e6.js",
     "runtime-main.js.map": "/static/js/runtime-main.de9af4e6.js.map",
     "index.html": "/index.html",
     "static/css/main.b28fec9d.chunk.css.map": "/static/css/main.b28fec9d.chunk.css.map",
-    "static/js/main.30e75693.chunk.js.LICENSE.txt": "/static/js/main.30e75693.chunk.js.LICENSE.txt",
+    "static/js/main.2e958055.chunk.js.LICENSE.txt": "/static/js/main.2e958055.chunk.js.LICENSE.txt",
     "static/js/react-vendor.e9faae3e.chunk.js.LICENSE.txt": "/static/js/react-vendor.e9faae3e.chunk.js.LICENSE.txt",
     "static/media/logo.6ce24c58.svg": "/static/media/logo.6ce24c58.svg"
   },
@@ -17,6 +17,6 @@
     "static/js/runtime-main.de9af4e6.js",
     "static/js/react-vendor.e9faae3e.chunk.js",
     "static/css/main.b28fec9d.chunk.css",
-    "static/js/main.30e75693.chunk.js"
+    "static/js/main.2e958055.chunk.js"
   ]
 }
