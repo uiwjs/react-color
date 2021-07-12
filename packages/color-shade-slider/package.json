@@ -34,7 +34,7 @@
     "@uiw/react-color-alpha": "^0.0.14"
   },
   "devDependencies": {
-    "@types/react": "17.0.13",
+    "@types/react": "17.0.14",
     "@types/react-dom": "17.0.8",
     "@types/react-test-renderer": "17.0.1",
     "react": "17.0.2",
