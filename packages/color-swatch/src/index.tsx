@@ -2,16 +2,35 @@ import React from 'react';
 import { HsvaColor, hexToHsva } from '@uiw/color-convert';
 
 export type SwatchPresetColor = { color: string; title?: string } | string;
+export type SwatchRectRenderProps = {
+  key: string | number;
+  title: string;
+  color: string;
+  checked: boolean;
+  style: React.CSSProperties;
+  onClick: (evn: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+};
 export interface SwatchProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'color'> {
   prefixCls?: string;
   color?: string;
   colors?: SwatchPresetColor[];
   rectProps?: React.HTMLAttributes<HTMLDivElement>;
+  rectRender?: (props: SwatchRectRenderProps) => JSX.Element;
   onChange?: (hsva: HsvaColor) => void;
 }
 
 export default React.forwardRef<HTMLDivElement, SwatchProps>((props, ref) => {
-  const { prefixCls = 'w-color-swatch', className, color, colors = [], style, rectProps = {}, onChange, ...other } = props;
+  const {
+    prefixCls = 'w-color-swatch',
+    className,
+    color,
+    colors = [],
+    style,
+    rectProps = {},
+    onChange,
+    rectRender,
+    ...other
+  } = props;
   const rectStyle: React.CSSProperties = {
     background: 'rgb(144, 19, 254)',
     height: 15,
@@ -53,6 +72,16 @@ export default React.forwardRef<HTMLDivElement, SwatchProps>((props, ref) => {
             background = item.color;
           }
           const checked = color && color.toLocaleLowerCase() === background.toLocaleLowerCase();
+          if (rectRender) {
+            return rectRender({
+              key: idx,
+              title,
+              color: background,
+              checked: !!checked,
+              style: { ...rectStyle, background },
+              onClick: () => handleClick(background),
+            });
+          }
           const child =
             rectProps.children && React.isValidElement(rectProps.children)
               ? React.cloneElement(rectProps.children, {

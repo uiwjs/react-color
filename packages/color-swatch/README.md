@@ -64,7 +64,8 @@ export interface SwatchProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 
   color?: string;
   colors?: SwatchPresetColor[];
   rectProps?: React.HTMLAttributes<HTMLDivElement>;
-  onClick?: (hsva: HsvaColor) => void;
+  rectRender?: (props: { title: string; color: string; checked: boolean; }) => JSX.Element;
+  onChange?: (hsva: HsvaColor) => void;
 }
 ```
 
