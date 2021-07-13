@@ -19,21 +19,7 @@ export default React.forwardRef<HTMLDivElement, CircleProps>((props, ref) => {
       color={hex}
       {...other}
       className={`${prefixCls} ${className || ''}`}
-      rectProps={{
-        ...rectProps,
-        children: <Point />,
-        style: {
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          width: 28,
-          height: 28,
-          borderRadius: '50%',
-          marginRight: 12,
-          marginBottom: 12,
-          ...rectProps.style,
-        },
-      }}
+      rectRender={({ ...props }) => <Point {...props} rectProps={rectProps} />}
       onChange={(hsvColor) => {
         onChange && onChange(handleColor(hsvColor));
       }}
