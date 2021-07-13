@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-color-hue",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "Color hue",
   "author": "Kenny Wong <wowohoo@qq.com>",
   "homepage": "https://uiwjs.github.io/react-color/#react-color-hue",
@@ -29,8 +29,8 @@
   },
   "dependencies": {
     "@babel/runtime": "7.14.6",
-    "@uiw/color-convert": "^0.0.18",
-    "@uiw/react-color-alpha": "^0.0.18"
+    "@uiw/color-convert": "^0.0.19",
+    "@uiw/react-color-alpha": "^0.0.19"
   },
   "devDependencies": {
     "@types/react": "17.0.14",
