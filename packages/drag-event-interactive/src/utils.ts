@@ -1,4 +1,4 @@
-import { useRef, useEffect, useCallback } from 'react';
+import { useRef, useEffect, useCallback, useLayoutEffect } from 'react';
 
 // Saves incoming handler to the ref in order to avoid "useCallback hell"
 export function useEventCallback<T, K>(handler?: (value: T, event: K) => void): (value: T, event: K) => void {
@@ -18,7 +18,7 @@ export const isTouch = (event: MouseEvent | TouchEvent): event is TouchEvent => 
 // This workaround removes `preventDefault` call from the touch handlers.
 // https://github.com/facebook/react/issues/19651
 export const preventDefaultMove = (event: MouseEvent | TouchEvent): void => {
-  !isTouch(event) && event.preventDefault();
+  !isTouch(event) && event.preventDefault && event.preventDefault();
 };
 // Clamps a value between an upper and lower bound.
 // We use ternary operators because it makes the minified code
@@ -44,3 +44,8 @@ export const getRelativePosition = (node: HTMLDivElement, event: MouseEvent | To
     top: clamp((pointer.pageY - (rect.top + window.pageYOffset)) / rect.height),
   };
 };
+
+// React currently throws a warning when using useLayoutEffect on the server.
+// To get around it, we can conditionally useEffect on the server (no-op) and
+// useLayoutEffect in the browser.
+export const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;

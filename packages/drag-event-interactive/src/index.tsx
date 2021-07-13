@@ -1,5 +1,12 @@
-import React, { useRef, useState, useCallback, useEffect } from 'react';
-import { isTouch, preventDefaultMove, getRelativePosition, Interaction, useEventCallback } from './utils';
+import React, { useRef, useState, useCallback } from 'react';
+import {
+  isTouch,
+  preventDefaultMove,
+  getRelativePosition,
+  Interaction,
+  useEventCallback,
+  useIsomorphicLayoutEffect,
+} from './utils';
 
 export * from './utils';
 
@@ -33,7 +40,6 @@ export default React.forwardRef<HTMLDivElement, InteractiveProps>((props, ref) =
       // and `event.touches`. It allows us to detect that the user is just moving his pointer
       // without pressing it down
       const isDown = isTouch(event) ? event.touches.length > 0 : event.buttons > 0;
-
       if (isDown && container.current) {
         onMoveCallback && onMoveCallback(getRelativePosition(container.current!, event), event);
       } else {
@@ -51,7 +57,7 @@ export default React.forwardRef<HTMLDivElement, InteractiveProps>((props, ref) =
     toggleEvent(hasTouched.current ? 'touchend' : 'mouseup', handleMoveEnd);
   }, []);
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     toggleDocumentEvents(isDragging);
     return () => {
       isDragging && toggleDocumentEvents(false);
@@ -68,5 +74,16 @@ export default React.forwardRef<HTMLDivElement, InteractiveProps>((props, ref) =
     [onKeyCallback],
   );
 
-  return <div {...reset} ref={container} onMouseDown={handleMoveStart} onTouchStart={handleMoveStart} />;
+  return (
+    <div
+      {...reset}
+      style={{
+        ...reset.style,
+        touchAction: 'none',
+      }}
+      ref={container}
+      onMouseDown={handleMoveStart}
+      onTouchStart={handleMoveStart}
+    />
+  );
 });
