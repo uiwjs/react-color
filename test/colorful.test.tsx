@@ -35,7 +35,7 @@ it('Colorful', async () => {
         if (typeof child === 'object') {
           expect(child.type).toEqual('div');
           if (idx === 0) {
-            expect(child.props.className).toEqual('w-color-saturation w-color-colorful');
+            expect(child.props.className).toEqual('w-color-interactive w-color-saturation w-color-colorful');
             expect(child.props.style).toMatchObject({
               inset: 0,
               position: 'relative',

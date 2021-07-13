@@ -45,7 +45,7 @@ export default React.forwardRef<HTMLDivElement, SaturationProps>((props, ref) =>
 
   return (
     <Interactive
-      className={`${prefixCls} ${className || ''}`}
+      className={[prefixCls, className || ''].filter(Boolean).join(' ')}
       {...other}
       style={{
         position: 'absolute',

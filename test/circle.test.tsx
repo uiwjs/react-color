@@ -5,7 +5,6 @@ import React, { useState } from 'react';
 import TestRenderer from 'react-test-renderer';
 import { screen, render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import userEvent from '@testing-library/user-event';
 import * as testUtils from 'react-dom/test-utils';
 import Circle from '../packages/color-circle/src';
 
@@ -36,21 +35,12 @@ it('Circle', async () => {
 });
 
 it('Circle colors checked', async () => {
+  const handleChange = jest.fn((color) => {
+    return color;
+  });
   const MyComponent = () => {
     // const [hex, setHex] = useState('#fff');
-    return (
-      <Circle
-        colors={['#F44E3B', '#FE9200', '#FCDC00', '#DBDF00']}
-        color="#F44E3B"
-        onChange={(color) => {
-          expect(Object.keys(color)).toEqual(
-            expect.arrayContaining(['rgb', 'hsl', 'hsv', 'rgba', 'hsla', 'hsva', 'hex', 'hexa']),
-          );
-          expect(color.hex).toEqual('#f44e3b');
-          expect(color.hexa).toEqual('#f44e3bff');
-        }}
-      />
-    );
+    return <Circle colors={['#F44E3B', '#FE9200', '#FCDC00', '#DBDF00']} color="#F44E3B" onChange={handleChange} />;
   };
   const { getByTitle } = render(<MyComponent />);
   fireEvent(
@@ -60,6 +50,27 @@ it('Circle colors checked', async () => {
       cancelable: true,
     }),
   );
+
+  expect(handleChange).toHaveReturnedWith({
+    rgb: { r: 244, g: 78, b: 59 },
+    hsl: { h: 6.162162162162162, s: 89.37198067632849, l: 59.41176470588235 },
+    hsv: { h: 6.162162162162162, s: 75.81967213114754, v: 95.68627450980392 },
+    rgba: { r: 244, g: 78, b: 59, a: 1 },
+    hsla: {
+      h: 6.162162162162162,
+      s: 89.37198067632849,
+      l: 59.41176470588235,
+      a: 1,
+    },
+    hsva: {
+      h: 6.162162162162162,
+      s: 75.81967213114754,
+      v: 95.68627450980392,
+      a: 1,
+    },
+    hex: '#f44e3b',
+    hexa: '#f44e3bff',
+  });
 });
 
 it('Circle colors === undefind', async () => {
@@ -73,40 +84,26 @@ it('Circle colors === undefind', async () => {
   }
 });
 
-it('Circle mouseenter', async () => {
+it('Circle mouseEnter', async () => {
   const MyComponent = () => {
     return <Circle colors={['#F44E3B', '#FE9200', '#FCDC00', '#DBDF00']} color="#F44E3B" />;
   };
   const { getByTitle } = render(<MyComponent />);
-  userEvent.hover(getByTitle('#F44E3B'));
   const elm = getByTitle('#F44E3B');
-  fireEvent.mouseOver(elm);
+  testUtils.act(() => {
+    testUtils.Simulate.mouseEnter(elm);
+    expect(elm.style.transform).toEqual('scale(1.2)');
+  });
 });
 
-// testUtils.act(() => {
-//   const MyComponent = () => {
-//     // const [hex, setHex] = useState('#fff');
-//     return (
-//       <Circle
-//         colors={[ '#F44E3B', '#FE9200', '#FCDC00', '#DBDF00' ]}
-//         color="#F44E3B"
-//         onChange={(color) => {
-//           console.log(color)
-//           expect(Object.keys(color)).toEqual(expect.arrayContaining(['rgb', 'hsl', 'hsv', 'rgba', 'hsla', 'hsva', 'hex', 'hexa']));
-//           expect(color.hex).toEqual('#f44e3b');
-//           expect(color.hexa).toEqual('#f44e3bff');
-//         }}
-//       />
-//     );
-//   };
-//   const { getByTitle } = render(<MyComponent />);
-//   userEvent.hover(getByTitle('#F44E3B'));
-//   const elm = getByTitle('#F44E3B');
-//   // fireEvent.mouseOver(elm);
-//   // fireEvent.mouseEnter(elm);
-
-//   testUtils.Simulate.mouseEnter(elm)
-
-//   console.log(elm)
-
-// })
+it('Circle mouseOut', async () => {
+  const MyComponent = () => {
+    return <Circle colors={['#F44E3B', '#FE9200', '#FCDC00', '#DBDF00']} color="#F44E3B" />;
+  };
+  const { getByTitle } = render(<MyComponent />);
+  const elm = getByTitle('#F44E3B');
+  testUtils.act(() => {
+    testUtils.Simulate.mouseOut(elm);
+    expect(elm.style.transform).toEqual('scale(1)');
+  });
+});

@@ -39,178 +39,87 @@ it('Material', async () => {
 });
 
 it('Material hex onChange', async () => {
-  const MyComponent = () => {
-    return (
-      <Material
-        color="#333"
-        onChange={(color) => {
-          expect(Object.keys(color)).toEqual(expect.arrayContaining(['hex', 'hsl', 'hsv', 'rgb']));
-          expect(color.hex).toEqual('#f5a623');
-        }}
-      />
-    );
-  };
-  const { getByText } = render(<MyComponent />);
-  const input = getByText('Hex').previousSibling;
-  if (input) {
-    expect((input as any).value).toEqual('333333');
-    fireEvent.change(input, { target: { value: 'f5a623' } });
-  }
+  const handleChange = jest.fn((color) => color.hex);
+  render(<Material color="#e27300" onChange={handleChange} />);
+  const input = screen.getByText('Hex').previousSibling;
+  expect((input as any).value).toEqual('E27300');
+  fireEvent.change(input!, { target: { value: '333333' } });
+  expect(handleChange).toHaveReturnedWith('#333333');
+});
+
+it('Material hex.length > 6 onChange', async () => {
+  const handleChange = jest.fn((color) => color.hex);
+  render(<Material color="#e27300" onChange={handleChange} />);
+  const input = screen.getByText('Hex').previousSibling;
+  expect((input as any).value).toEqual('E27300');
+  fireEvent.change(input!, { target: { value: 'd1021axxxxx' } });
+  expect((input as any).value).toEqual('d1021axxxxx');
+  fireEvent.blur(input!);
+  expect((input as any).value).toEqual('E27300');
+  expect(handleChange).toHaveReturnedWith('#d1021a');
 });
 
 it('Material hex onChange', async () => {
-  const MyComponent = () => {
-    return (
-      <Material
-        color=""
-        onChange={(color) => {
-          expect(Object.keys(color)).toEqual(expect.arrayContaining(['hex', 'hsl', 'hsv', 'rgb']));
-          expect(color.hex).toEqual('#f5a623');
-        }}
-      />
-    );
-  };
-  const { getByText } = render(<MyComponent />);
-  const input = getByText('Hex').previousSibling;
-  if (input) {
-    fireEvent.change(input, { target: { value: 'f5a623' } });
-    fireEvent.blur(input);
-  }
+  const handleChange = jest.fn((color) => color.hex);
+  render(<Material color="#e27300" onChange={handleChange} />);
+  const input = screen.getByText('Hex').previousSibling;
+  expect((input as any).value).toEqual('E27300');
+  fireEvent.change(input!, { target: { value: '#333333' } });
+  expect((input as any).value).toEqual('#333333');
+  fireEvent.blur(input!);
+  expect((input as any).value).toEqual('E27300');
+});
+
+it('Material color === "" onChange', async () => {
+  const handleChange = jest.fn((color) => color.hex);
+  render(<Material color="" onChange={handleChange} />);
+  const input = screen.getByText('Hex').previousSibling;
+  expect((input as any).value).toEqual('');
+  fireEvent.change(input!, { target: { value: 'f5a623' } });
+  expect(handleChange).toHaveReturnedWith('#f5a623');
 });
 
 it('Material R onChange', async () => {
-  const MyComponent = () => {
-    return (
-      <Material
-        color="#333"
-        onChange={(color) => {
-          expect(Object.keys(color)).toEqual(expect.arrayContaining(['hex', 'hsl', 'hsv', 'rgb']));
-          expect(color.hex).toEqual('#423333');
-        }}
-      />
-    );
-  };
-  const { getByText } = render(<MyComponent />);
-  const input = getByText('R').previousSibling;
-  if (input) {
-    expect((input as any).value).toEqual('51');
-    fireEvent.change(input, { target: { value: '66' } });
-    expect((input as any).value).toEqual('66');
-  }
+  const handleChange = jest.fn((color) => color.hex);
+  render(<Material color="#333" onChange={handleChange} />);
+  const input = screen.getByText('R').previousSibling;
+  expect((input as any).value).toEqual('51');
+  fireEvent.change(input!, { target: { value: '66' } });
+  expect(handleChange).toHaveReturnedWith('#423333');
 });
 
 it('Material G onChange', async () => {
-  const MyComponent = () => {
-    return (
-      <Material
-        color="#333"
-        onChange={(color) => {
-          expect(Object.keys(color)).toEqual(expect.arrayContaining(['hex', 'hsl', 'hsv', 'rgb']));
-          expect(color.hex).toEqual('#334233');
-        }}
-      />
-    );
-  };
-  const { getByText } = render(<MyComponent />);
-  const input = getByText('G').previousSibling;
-  if (input) {
-    expect((input as any).value).toEqual('51');
-    fireEvent.change(input, { target: { value: '66' } });
-    expect((input as any).value).toEqual('66');
-  }
+  const handleChange = jest.fn((color) => color.hex);
+  render(<Material color="#333" onChange={handleChange} />);
+  const input = screen.getByText('G').previousSibling;
+  expect((input as any).value).toEqual('51');
+  fireEvent.change(input!, { target: { value: '66' } });
+  expect(handleChange).toHaveReturnedWith('#334233');
 });
 
 it('Material B onChange', async () => {
-  const MyComponent = () => {
-    return (
-      <Material
-        color="#333"
-        onChange={(color) => {
-          expect(Object.keys(color)).toEqual(expect.arrayContaining(['hex', 'hsl', 'hsv', 'rgb']));
-          expect(color.hex).toEqual('#3333ff');
-        }}
-      />
-    );
-  };
-  const { getByText } = render(<MyComponent />);
-  const input = getByText('B').previousSibling;
-  if (input) {
-    expect((input as any).value).toEqual('51');
-    fireEvent.focus(input);
-    fireEvent.change(input, { target: { value: '6666' } });
-    fireEvent.blur(input);
-  }
+  const handleChange = jest.fn((color) => color.hex);
+  render(<Material color="#333" onChange={handleChange} />);
+  const input = screen.getByText('B').previousSibling;
+  expect((input as any).value).toEqual('51');
+  fireEvent.change(input!, { target: { value: '6666' } });
+  expect(handleChange).toHaveReturnedWith('#3333ff');
 });
 
 it('Material B = -22 onChange', async () => {
-  const MyComponent = () => {
-    return (
-      <Material
-        color="#93BEE6"
-        onChange={(color) => {
-          expect(Object.keys(color)).toEqual(expect.arrayContaining(['hex', 'hsl', 'hsv', 'rgb']));
-          expect(color.hex).toEqual('#93be00');
-          expect(color.rgb.b).toEqual(0);
-        }}
-      />
-    );
-  };
-  const { getByText } = render(<MyComponent />);
-  const input = getByText('B').previousSibling;
-  if (input) {
-    expect((input as any).value).toEqual('230');
-    fireEvent.focus(input);
-    fireEvent.change(input, { target: { value: '-22' } });
-    fireEvent.blur(input);
-  }
+  const handleChange = jest.fn((color) => color.hex);
+  render(<Material color="#333" onChange={handleChange} />);
+  const input = screen.getByText('B').previousSibling;
+  expect((input as any).value).toEqual('51');
+  fireEvent.change(input!, { target: { value: '-22' } });
+  expect(handleChange).toHaveReturnedWith('#333300');
 });
 
 it('Material B = 8888 onChange', async () => {
-  const MyComponent = () => {
-    return (
-      <Material
-        color="#93BEE6"
-        onChange={(color) => {
-          expect(Object.keys(color)).toEqual(expect.arrayContaining(['hex', 'hsl', 'hsv', 'rgb']));
-          expect(color.hex).toEqual('#93beff');
-          expect(color.rgb.b).toEqual(255);
-        }}
-      />
-    );
-  };
-  const { getByText } = render(<MyComponent />);
-  const input = getByText('B').previousSibling;
-  if (input) {
-    expect((input as any).value).toEqual('230');
-    fireEvent.focus(input);
-    fireEvent.change(input, { target: { value: '8888' } });
-    fireEvent.blur(input);
-  }
-});
-
-// ==========>=
-
-it('Material #333333333 onChange', async () => {
-  const MyComponent = () => {
-    return (
-      <Material
-        color="#ccc"
-        onChange={(color) => {
-          console.log('color:', color);
-          // expect(Object.keys(color)).toEqual(expect.arrayContaining(['hex', 'hsl', 'hsv', 'rgb']));
-          // expect(color.hex).toEqual('#f5a623');
-        }}
-      />
-    );
-  };
-  const { getByText } = render(<MyComponent />);
-  const input = getByText('Hex').previousSibling;
-  if (input) {
-    // fireEvent.change(input, { target: { value: '#333333333' } });
-    fireEvent.input(input, { target: { value: '#333333333' } });
-    // console.log('-->', input.value)
-    fireEvent.blur(input);
-    // console.log('-->', input.value)
-    // fireEvent.change(input, { target: { value: '' } });
-  }
+  const handleChange = jest.fn((color) => color.hex);
+  render(<Material color="#93BEE6" onChange={handleChange} />);
+  const input = screen.getByText('B').previousSibling;
+  expect((input as any).value).toEqual('230');
+  fireEvent.change(input!, { target: { value: '8888' } });
+  expect(handleChange).toHaveReturnedWith('#93beff');
 });

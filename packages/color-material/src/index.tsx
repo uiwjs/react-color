@@ -47,9 +47,8 @@ export default React.forwardRef<HTMLDivElement, MaterialProps>((props, ref) => {
         onChange={(evn, val) => handleHex(val, evn)}
         onBlur={(evn) => {
           const value = evn.target.value;
-          if (value.length > 6) {
-            evn.target.value = value.slice(0, 6);
-          }
+          evn.target.value = value.slice(0, 6);
+          handleHex(value.slice(0, 6), evn);
         }}
         inputStyle={{
           outline: 0,

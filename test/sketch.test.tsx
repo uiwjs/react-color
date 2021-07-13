@@ -62,27 +62,20 @@ it('Sketch onChange color:HsvaColor', async () => {
 });
 
 it('Sketch onChange color:HexColor', async () => {
-  render(
-    <Sketch
-      style={{ marginLeft: 20 }}
-      color="#ca1d32"
-      onChange={(color) => {
-        expect(Object.keys(color)).toEqual(expect.arrayContaining(['hex', 'hsl', 'hsv', 'rgb']));
-        expect(color.hex).toEqual('#d0021b');
-        expect(color.hexa).toEqual('#d0021bff');
-      }}
-    />,
-  );
-
-  const elm = screen.getByTitle('#D0021B');
-  elm.focus();
+  const handleChange = jest.fn((color) => color.hex);
+  const {
+    getByTitle,
+    container: { firstChild },
+  } = render(<Sketch color="#ca1d32" onChange={handleChange} />);
+  const elm = getByTitle('#D0021B');
   fireEvent.click(elm);
+  expect(handleChange).toHaveReturnedWith('#d0021b');
 });
 
 it('Sketch onChange presetColors', async () => {
-  render(
+  const handleChange = jest.fn((color) => color.hex);
+  const { getByTitle } = render(
     <Sketch
-      style={{ marginLeft: 20 }}
       color="#ca1d32"
       presetColors={[
         { color: '#D0021B' },
@@ -92,17 +85,12 @@ it('Sketch onChange presetColors', async () => {
         { color: '#8B572A' },
         { color: '#7ED321', title: 'Color Title' },
       ]}
-      onChange={(color) => {
-        expect(Object.keys(color)).toEqual(expect.arrayContaining(['rgb', 'hsl', 'hsv', 'rgba', 'hsla', 'hsva', 'hex', 'hexa']));
-        expect(color.hex).toEqual('#d0021b');
-        expect(color.hexa).toEqual('#d0021bff');
-      }}
+      onChange={handleChange}
     />,
   );
-
-  const elm = screen.getByTitle('#D0021B');
-  elm.focus();
+  const elm = getByTitle('#D0021B');
   fireEvent.click(elm);
+  expect(handleChange).toHaveReturnedWith('#d0021b');
 });
 
 it('Sketch Input hex onChange', async () => {
@@ -303,66 +291,34 @@ it('Sketch presetColors=false onChange', async () => {
 });
 
 it('Sketch Saturation mouseDown Click', async () => {
-  const MyComponent = () => {
-    return (
-      <Sketch
-        color="#ca1d32"
-        onChange={(color) => {
-          expect(Object.keys(color)).toEqual(
-            expect.arrayContaining(['rgb', 'hsl', 'hsv', 'rgba', 'hsla', 'hsva', 'hex', 'hexa']),
-          );
-          expect(color.rgba.a).toEqual(1);
-        }}
-      />
-    );
-  };
+  const handleChange = jest.fn((color) => color.hex);
   const {
     container: { firstChild },
-  } = render(<MyComponent />);
+  } = render(<Sketch color="#ca1d32" onChange={handleChange} />);
   const elm = firstChild?.firstChild?.firstChild!;
-  fireEvent.mouseDown(elm, { clientX: 1, clientY: 10 });
+  fireEvent.click(elm, { clientX: 0, clientY: 10 });
+  fireEvent.mouseDown(elm, { clientX: 0, clientY: 10 });
+  expect(handleChange).toHaveReturnedWith('#000000');
 });
 
 it('Sketch Hue mouseDown Click', async () => {
-  const MyComponent = () => {
-    return (
-      <Sketch
-        color="#ca1d32"
-        onChange={(color) => {
-          expect(Object.keys(color)).toEqual(
-            expect.arrayContaining(['rgb', 'hsl', 'hsv', 'rgba', 'hsla', 'hsva', 'hex', 'hexa']),
-          );
-          expect(color.rgba.a).toEqual(1);
-        }}
-      />
-    );
-  };
+  const handleChange = jest.fn((color) => color.hex);
   const {
     container: { firstChild },
-  } = render(<MyComponent />);
+  } = render(<Sketch color="#ca1d32" onChange={handleChange} />);
   const elm = firstChild?.firstChild?.firstChild?.nextSibling?.firstChild?.firstChild?.firstChild?.nextSibling!;
-  fireEvent.mouseDown(elm, { clientX: 1, clientY: 10 });
+  fireEvent.click(elm, { clientX: 0, clientY: 10 });
+  fireEvent.mouseDown(elm, { clientX: 0, clientY: 10 });
+  expect(handleChange).toHaveReturnedWith('#000000');
 });
 
 it('Sketch Alpha mouseDown Click', async () => {
-  const MyComponent = () => {
-    return (
-      <Sketch
-        color="#ca1d32"
-        onChange={(color) => {
-          expect(Object.keys(color)).toEqual(
-            expect.arrayContaining(['rgb', 'hsl', 'hsv', 'rgba', 'hsla', 'hsva', 'hex', 'hexa']),
-          );
-          expect(color.hex).toEqual('#ca1d32');
-          expect(color.hexa).toEqual('#ca1d3200');
-        }}
-      />
-    );
-  };
+  const handleChange = jest.fn((color) => color.hex);
   const {
     container: { firstChild },
-  } = render(<MyComponent />);
+  } = render(<Sketch color="#ca1d32" onChange={handleChange} />);
   const elm = firstChild?.firstChild?.firstChild?.nextSibling?.firstChild?.firstChild?.nextSibling?.firstChild?.nextSibling!;
-  // console.log(elm)
-  fireEvent.mouseDown(elm, { clientX: 1, clientY: 10 });
+  fireEvent.click(elm, { clientX: 0, clientY: 10 });
+  fireEvent.mouseDown(elm, { clientX: 0, clientY: 10 });
+  expect(handleChange).toHaveReturnedWith('#ca1d32');
 });

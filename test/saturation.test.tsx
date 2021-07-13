@@ -23,7 +23,7 @@ it('Saturation', async () => {
   let tree = component.toJSON();
   if (tree && !Array.isArray(tree)) {
     expect(tree.type).toEqual('div');
-    expect(tree.props.className).toEqual('w-color-saturation ');
+    expect(tree.props.className).toEqual('w-color-interactive w-color-saturation');
     expect(tree.props.style).toMatchObject({
       width: 200,
       height: 200,

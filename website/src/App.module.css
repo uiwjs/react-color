@@ -55,3 +55,26 @@
   margin: 0 auto;
   padding-bottom: 40px;
 }
+
+.example {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.exampleWarp {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 26px;
+}
+@media screen and (max-width:600px) {
+
+  .example {
+    flex-direction: column;
+    align-items: center;
+  }
+  .exampleWarp {
+    flex-direction: column;
+    align-items: center;
+  }
+}

@@ -73,7 +73,7 @@ export default function App() {
             <h1>React Color</h1>
           </header>
           <div className={styles.content}>
-            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center' }}>
+            <div className={styles.example}>
               <div>
                 <Saturation
                   hsva={hsva}
@@ -260,7 +260,7 @@ export default function App() {
                 onChange={(color) => setHsva({ ...hsva, ...color.hsva })}
               />
             </div>
-            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center', paddingTop: 26 }}>
+            <div className={styles.exampleWarp} style={{}}>
               <div>
                 <Sketch
                   color={hsva}

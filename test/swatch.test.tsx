@@ -3,7 +3,8 @@
  */
 import React, { useState } from 'react';
 import TestRenderer from 'react-test-renderer';
-import { screen, render, fireEvent } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
+import * as testUtils from 'react-dom/test-utils';
 import '@testing-library/jest-dom';
 import Swatch from '../packages/color-swatch/src';
 
@@ -173,4 +174,35 @@ it('Swatch colors', async () => {
       cancelable: true,
     }),
   );
+});
+
+it('Swatch rectRender', async () => {
+  const MyComponent = () => (
+    <Swatch
+      colors={['#F44E3B', '#FE9200', { color: '#FCDC00', title: 'test title' }, { color: '#DBDF00' }]}
+      color="#F44E3B"
+      onChange={(hsvColor) => {
+        expect(hsvColor).toEqual({
+          h: 6.162162162162162,
+          s: 75.81967213114754,
+          v: 95.68627450980392,
+          a: 1,
+        });
+      }}
+      rectRender={({ key, color, checked, onClick }) => {
+        return (
+          <div key={key} onClick={onClick} data-checked={checked} title="test">
+            {color}
+          </div>
+        );
+      }}
+    />
+  );
+
+  const { getByText } = render(<MyComponent />);
+  const elm = getByText(/#F44E3B/i);
+  expect(elm).toHaveAttribute('title', 'test');
+  testUtils.act(() => {
+    testUtils.Simulate.click(elm);
+  });
 });

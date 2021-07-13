@@ -49,200 +49,69 @@ it('Compact', async () => {
   }
 });
 
-it('Compact onChange', async () => {
-  const MyComponent = () => {
-    return (
-      <Compact
-        color="#e27300"
-        onChange={(color) => {
-          expect(color.hex).toEqual('#4d4d4d');
-        }}
-      />
-    );
-  };
-  render(<MyComponent />);
-  fireEvent(
-    screen.getByTitle('#4D4D4D'),
-    new MouseEvent('click', {
-      bubbles: true,
-      cancelable: true,
-    }),
-  );
-});
-
 it('Compact hex color onChange', async () => {
-  render(
-    <Compact
-      color="#F44E3B"
-      onChange={(color, evn) => {
-        expect(color.hex).toEqual('#f44e3b');
-      }}
-    />,
-  );
-  fireEvent(
-    screen.getByTitle('#F44E3B'),
-    new MouseEvent('click', {
-      bubbles: true,
-      cancelable: true,
-    }),
-  );
+  const handleChange = jest.fn((color) => color.hex);
+  render(<Compact color="#e27300" onChange={handleChange} />);
+  const elm = screen.getByTitle('#4D4D4D');
+  fireEvent.click(elm);
+  expect(handleChange).toHaveReturnedWith('#4d4d4d');
 });
 
 it('Compact color === undefined', async () => {
-  render(<Compact onChange={(color) => expect(color.hex).toEqual('#f44e3b')} />);
-  fireEvent(
-    screen.getByTitle('#F44E3B'),
-    new MouseEvent('click', {
-      bubbles: true,
-      cancelable: true,
-    }),
-  );
+  const handleChange = jest.fn((color) => color.hex);
+  render(<Compact onChange={handleChange} />);
+  const elm = screen.getByTitle('#4D4D4D');
+  fireEvent.click(elm);
+  expect(handleChange).toHaveReturnedWith('#4d4d4d');
 });
 
 it('Compact Input R onChange', async () => {
-  const MyComponent = () => {
-    return (
-      <Compact
-        color="#e27300"
-        onChange={(color) => {
-          expect(color.hex).toEqual('#ff7300');
-          expect(color.rgb.r).toEqual(255);
-          expect(Object.keys(color)).toEqual(
-            expect.arrayContaining(['rgb', 'hsl', 'hsv', 'rgba', 'hsla', 'hsva', 'hex', 'hexa']),
-          );
-        }}
-      />
-    );
-  };
-  const { getByText } = render(<MyComponent />);
+  const handleChange = jest.fn((color) => color.hex);
+  const { getByText } = render(<Compact color="#e27300" onChange={handleChange} />);
   const input = getByText('R').previousSibling;
-  if (input) {
-    expect((input as any).value).toEqual('226');
-    fireEvent.focus(input);
-    fireEvent.change(input, { target: { value: '8888' } });
-    fireEvent.blur(input);
-  }
+  fireEvent.change(input!, { target: { value: '8888' } });
+  expect(handleChange).toHaveReturnedWith('#ff7300');
 });
 
 it('Compact Input G onChange', async () => {
-  const MyComponent = () => {
-    return (
-      <Compact
-        color="#e27300"
-        onChange={(color) => {
-          expect(color.hex).toEqual('#e2ff00');
-          expect(color.rgb.g).toEqual(255);
-          expect(Object.keys(color)).toEqual(
-            expect.arrayContaining(['rgb', 'hsl', 'hsv', 'rgba', 'hsla', 'hsva', 'hex', 'hexa']),
-          );
-        }}
-      />
-    );
-  };
-  const { getByText } = render(<MyComponent />);
+  const handleChange = jest.fn((color) => color.hex);
+  const { getByText } = render(<Compact color="#e27300" onChange={handleChange} />);
   const input = getByText('G').previousSibling;
-  if (input) {
-    expect((input as any).value).toEqual('115');
-    fireEvent.focus(input);
-    fireEvent.change(input, { target: { value: '8888' } });
-    fireEvent.blur(input);
-  }
+  expect((input as any).value).toEqual('115');
+  fireEvent.change(input!, { target: { value: '8888' } });
+  expect(handleChange).toHaveReturnedWith('#e2ff00');
 });
 
 it('Compact Input B onChange', async () => {
-  const MyComponent = () => {
-    return (
-      <Compact
-        color="#e27300"
-        onChange={(color) => {
-          expect(color.hex).toEqual('#e273ff');
-          expect(color.rgb.b).toEqual(255);
-          expect(Object.keys(color)).toEqual(
-            expect.arrayContaining(['rgb', 'hsl', 'hsv', 'rgba', 'hsla', 'hsva', 'hex', 'hexa']),
-          );
-        }}
-      />
-    );
-  };
-  const { getByText } = render(<MyComponent />);
+  const handleChange = jest.fn((color) => color.hex);
+  const { getByText } = render(<Compact color="#e273ff" onChange={handleChange} />);
   const input = getByText('B').previousSibling;
-  if (input) {
-    expect((input as any).value).toEqual('0');
-    fireEvent.focus(input);
-    fireEvent.change(input, { target: { value: '8888' } });
-    fireEvent.blur(input);
-  }
+  expect((input as any).value).toEqual('255');
+  fireEvent.change(input!, { target: { value: '8888' } });
+  expect(handleChange).toHaveReturnedWith('#e273ff');
 });
 
 it('Compact Input B = -111 onChange', async () => {
-  const MyComponent = () => {
-    return (
-      <Compact
-        color="#e27300"
-        onChange={(color) => {
-          expect(color.hex).toEqual('#e27300');
-          expect(color.rgb.b).toEqual(0);
-          expect(Object.keys(color)).toEqual(
-            expect.arrayContaining(['rgb', 'hsl', 'hsv', 'rgba', 'hsla', 'hsva', 'hex', 'hexa']),
-          );
-        }}
-      />
-    );
-  };
-  const { getByText } = render(<MyComponent />);
+  const handleChange = jest.fn((color) => color.hex);
+  const { getByText } = render(<Compact color="#e27300" onChange={handleChange} />);
   const input = getByText('B').previousSibling;
-  if (input) {
-    expect((input as any).value).toEqual('0');
-    fireEvent.focus(input);
-    fireEvent.change(input, { target: { value: '-111' } });
-    fireEvent.blur(input);
-  }
+  expect((input as any).value).toEqual('0');
+  fireEvent.change(input!, { target: { value: '-111' } });
+  expect(handleChange).toHaveReturnedWith('#e27300');
 });
 
 it('Compact Input hex onChange', async () => {
-  const MyComponent = () => {
-    return (
-      <Compact
-        color="#ff7300"
-        onChange={(color) => {
-          expect(color.hex).toEqual('#eeeeee');
-          expect(Object.keys(color)).toEqual(
-            expect.arrayContaining(['rgb', 'hsl', 'hsv', 'rgba', 'hsla', 'hsva', 'hex', 'hexa']),
-          );
-        }}
-      />
-    );
-  };
-  const { getByText } = render(<MyComponent />);
-  const input = getByText('R').parentElement?.previousSibling?.firstChild;
-  if (input) {
-    expect((input as any).value).toEqual('FF7300');
-    fireEvent.focus(input);
-    fireEvent.change(input, { target: { value: 'eee' } });
-    fireEvent.blur(input);
-  }
+  const handleChange = jest.fn((color) => color.hex);
+  const { getByText } = render(<Compact color="#ff7300" onChange={handleChange} />);
+  const input = getByText('R').parentElement?.parentElement?.previousSibling?.firstChild;
+  fireEvent.change(input!, { target: { value: 'eee' } });
+  expect(handleChange).toHaveReturnedWith('#eeeeee');
 });
 
-it('Compact Input hex onChange', async () => {
-  const MyComponent = () => {
-    return (
-      <Compact
-        color="#ff7300"
-        onChange={(color) => {
-          expect(color.hex).toEqual('#eeeeee');
-          expect(Object.keys(color)).toEqual(
-            expect.arrayContaining(['rgb', 'hsl', 'hsv', 'rgba', 'hsla', 'hsva', 'hex', 'hexa']),
-          );
-        }}
-      />
-    );
-  };
-  const { getByText } = render(<MyComponent />);
-  const input = getByText('R').parentElement?.parentElement?.parentElement?.firstChild?.firstChild;
-  if (input) {
-    expect((input as any).value).toEqual('FF7300');
-    fireEvent.focus(input);
-    fireEvent.change(input, { target: { value: 'eee' } });
-    fireEvent.blur(input);
-  }
+it('Compact Input value === "" onChange', async () => {
+  const handleChange = jest.fn((color) => color.hex);
+  const { getByText } = render(<Compact color="#ff7300" onChange={handleChange} />);
+  const input = getByText('R').parentElement?.parentElement?.previousSibling?.firstChild;
+  fireEvent.change(input!, { target: { value: '' } });
+  expect(handleChange).not.toHaveReturned();
 });
