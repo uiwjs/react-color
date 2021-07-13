@@ -21,7 +21,7 @@ export default React.forwardRef<HTMLDivElement, InteractiveProps>((props, ref) =
   // If we detected a touch interaction before, we prefer reacting to touch events only.
   const isValid = (event: MouseEvent | TouchEvent): boolean => {
     if (hasTouched.current && !isTouch(event)) return false;
-    if (!hasTouched.current) hasTouched.current = isTouch(event);
+    hasTouched.current = isTouch(event);
     return true;
   };
 

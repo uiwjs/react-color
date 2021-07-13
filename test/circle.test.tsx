@@ -107,3 +107,26 @@ it('Circle mouseOut', async () => {
     expect(elm.style.transform).toEqual('scale(1)');
   });
 });
+
+it('Circle mouseEnter/mouseLeave', async () => {
+  const handleChange = jest.fn((color) => color.hex);
+  const { getByTitle } = render(
+    <Circle colors={['#F44E3B', '#FE9200', '#FCDC00', '#DBDF00']} color="#F44E3B" onChange={handleChange} />,
+  );
+  const elm = getByTitle('#F44E3B');
+  fireEvent.mouseEnter(elm);
+  expect(elm.style.transform).toEqual('scale(1.2)');
+  fireEvent.mouseLeave(elm);
+  expect(elm.style.transform).toEqual('scale(1)');
+  expect(handleChange).not.toHaveReturned();
+});
+
+it('Circle mouseOut', async () => {
+  const handleChange = jest.fn((color) => color.hex);
+  const { getByTitle } = render(
+    <Circle colors={['#F44E3B', '#FE9200', '#FCDC00', '#DBDF00']} color="#F44E3B" onChange={handleChange} />,
+  );
+  const elm = getByTitle('#F44E3B');
+  fireEvent.click(elm);
+  expect(handleChange).toHaveReturnedWith('#f44e3b');
+});
