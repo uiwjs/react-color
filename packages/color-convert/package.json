@@ -4,6 +4,7 @@
   "description": "Color Convert",
   "author": "Kenny Wong <wowohoo@qq.com>",
   "homepage": "https://uiwjs.github.io/react-color/#color-convert",
+  "sideEffects": false,
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
   "repository": {

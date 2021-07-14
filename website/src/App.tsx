@@ -333,7 +333,7 @@ export default function App() {
                     setHsva({ ...hsva, ...color.hsva });
                   }}
                 />
-                <Title>{`<Wheel color="${hsvaToHex(hsva)}" />`}</Title>
+                <Title style={{ textAlign: 'center' }}>{`<Wheel color="${hsvaToHex(hsva)}" />`}</Title>
               </div>
               <div style={{ marginLeft: 25 }}>
                 <Material

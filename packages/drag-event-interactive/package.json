@@ -3,6 +3,7 @@
   "version": "0.0.20",
   "description": "react drag event interactive",
   "homepage": "https://uiwjs.github.io/react-color/#react-drag-event-interactive",
+  "sideEffects": false,
   "author": "Kenny Wong <wowohoo@qq.com>",
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",

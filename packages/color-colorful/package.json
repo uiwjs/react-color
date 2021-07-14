@@ -4,6 +4,7 @@
   "description": "Color Colorful",
   "author": "Kenny Wong <wowohoo@qq.com>",
   "homepage": "https://uiwjs.github.io/react-color/#react-color-colorful",
+  "sideEffects": false,
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
   "repository": {
