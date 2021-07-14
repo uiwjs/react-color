@@ -98,7 +98,6 @@ export default React.forwardRef<HTMLDivElement, WheelProps>((props, ref) => {
           backgroundColor: '#000',
           borderRadius: '50%',
           position: 'absolute',
-          margin: -1,
           inset: 0,
           opacity: typeof hsva.v === 'number' ? 1 - hsva.v / 100 : 0,
         }}
