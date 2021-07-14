@@ -71,11 +71,11 @@ export default React.forwardRef<HTMLDivElement, AlphaProps>((props, ref) => {
       className={[prefixCls, `${prefixCls}-${direction}`, className || ''].filter(Boolean).join(' ')}
       style={{
         borderRadius: radius,
+        background: `url(${BACKGROUND_IMG}) left center`,
+        backgroundColor: '#fff',
         ...style,
         position: 'relative',
         ...{ width, height },
-        background: `url(${BACKGROUND_IMG}) left center`,
-        backgroundColor: '#fff',
       }}
       ref={ref}
     >
