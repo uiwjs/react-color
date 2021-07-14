@@ -1,6 +1,6 @@
 <div align="center">
   <a title="React Color" href="https://uiwjs.github.io/react-color/">
-    <img src="https://user-images.githubusercontent.com/1680273/125594268-6e69993b-4f66-4db5-b29c-65e20e7e4148.png" width="630" alt="@uiw/react-color" />
+    <img src="https://user-images.githubusercontent.com/1680273/125600625-2a24253a-563a-4778-becf-7ecb65d6f9c8.png" width="630" alt="@uiw/react-color" />
   </a>
 </div>
 
