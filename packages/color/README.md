@@ -25,7 +25,7 @@
 </div>
 
 <div align="center">
-  <strong>react-color</strong> is a tiny color picker component for React apps.
+  <strong>react-color</strong> is a tiny color picker widget component for React apps. These components can be installed and used separately.
 </div>
 
 ## Getting Started
