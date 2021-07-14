@@ -6,6 +6,7 @@ import {
   Colorful,
   Circle,
   Compact,
+  Wheel,
   Swatch,
   Hue,
   Slider,
@@ -32,6 +33,7 @@ import mdStrCompact from '@uiw/react-color-compact/README.md';
 import mdStrMaterial from '@uiw/react-color-material/README.md';
 import mdStrColorful from '@uiw/react-color-colorful/README.md';
 import mdStrCircle from '@uiw/react-color-circle/README.md';
+import mdStrWheel from '@uiw/react-color-wheel/README.md';
 import mdStrSwatch from '@uiw/react-color-swatch/README.md';
 import mdStrSaturation from '@uiw/react-color-saturation/README.md';
 import mdStrEditableInput from '@uiw/react-color-editable-input/README.md';
@@ -49,6 +51,7 @@ let markdownStr = mdStr
   .replace(/<!--react-color-compact-->/, mdStrCompact.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-material-->/, mdStrMaterial.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-colorful-->/, mdStrColorful.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
+  .replace(/<!--react-color-wheel-->/, mdStrWheel.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-circle-->/, mdStrCircle.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-swatch-->/, mdStrSwatch.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-saturation-->/, mdStrSaturation.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
@@ -283,7 +286,6 @@ export default function App() {
                 <Title>{`<Compact color="${hsvaToHex(hsva)}" />`}</Title>
                 <Slider style={{ width: 220 }} color={hsva} onChange={(color) => setHsva({ ...hsva, ...color.hsv })} />
                 <Title>{`<Slider color="${hsvaToHex(hsva)}" />`}</Title>
-
                 <Circle
                   colors={[
                     '#f44336',
@@ -321,6 +323,19 @@ export default function App() {
                   }}
                 />
                 <Title>{`<Colorful color="${hsvaToHex(hsva)}" />`}</Title>
+              </div>
+            </div>
+            <div className={styles.exampleWarp}>
+              <div>
+                <Wheel
+                  color={hsva}
+                  onChange={(color) => {
+                    setHsva({ ...hsva, ...color.hsva });
+                  }}
+                />
+                <Title>{`<Wheel color="${hsvaToHex(hsva)}" />`}</Title>
+              </div>
+              <div style={{ marginLeft: 25 }}>
                 <Material
                   color={hsvaToHex(hsva)}
                   style={{ boxShadow: 'rgb(0 0 0 / 12%) 0px 2px 10px, rgb(0 0 0 / 16%) 0px 2px 5px' }}
@@ -328,7 +343,7 @@ export default function App() {
                     setHsva({ ...hsva, ...color.hsva });
                   }}
                 />
-                <Title>{`<Material color="${hsvaToHex(hsva)}" />`}</Title>
+                <Title style={{ minWidth: 180 }}>{`<Material color="${hsvaToHex(hsva)}" />`}</Title>
               </div>
             </div>
           </div>

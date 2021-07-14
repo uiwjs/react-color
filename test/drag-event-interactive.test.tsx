@@ -95,7 +95,7 @@ it('Interactive mouseDown', async () => {
   fireEvent(elm, new FakeMouseEvent('mousedown', { pageX: 20, pageY: 10 }));
   fireEvent(elm, new FakeMouseEvent('mousemove', { pageX: 10, pageY: 10 }));
   fireEvent(elm, new FakeMouseEvent('mousemove', { pageX: 1, pageY: 50, buttons: 0 }));
-  expect(handleChange).toHaveReturnedWith({ left: 0.15, top: 0.05 });
+  expect(handleChange).toHaveReturnedWith({ height: 100, left: 0.15, top: 0.05, width: 100, x: 15, y: 5 });
 });
 
 it('Interactive touchStart/touchMove', async () => {
@@ -125,7 +125,7 @@ it('Interactive touchStart/touchMove', async () => {
     fireEvent(elm, new FakeMouseEvent('mousedown', { pageX: 35, pageY: 0 }));
     fireEvent(elm, new FakeMouseEvent('mousemove', { pageX: 105, pageY: 0 }));
     fireEvent(elm, new FakeMouseEvent('mouseup', { pageX: 105, pageY: 0 }));
-    expect(handleChange).toHaveReturnedWith({ left: 0.05, top: 0.05 });
+    expect(handleChange).toHaveReturnedWith({ height: 100, left: 0.05, top: 0.05, width: 100, x: 5, y: 5 });
     expect(elm.getAttribute('tabindex')).toEqual('0');
   });
 });
@@ -149,5 +149,5 @@ it('Interactive touchstart/touchmove/touchend', async () => {
   fireEvent(elm, new FakeTouchEvent('touchstart', { pageX: 10, pageY: 10 }));
   fireEvent(elm, new FakeTouchEvent('touchmove', { pageX: 20, pageY: 10 }));
   fireEvent(elm, new FakeTouchEvent('touchend', { pageX: 20, pageY: 10 }));
-  expect(handleChange).toHaveReturnedWith({ left: 0.05, top: 0.05 });
+  expect(handleChange).toHaveReturnedWith({ height: 100, left: 0.05, top: 0.05, width: 100, x: 5, y: 5 });
 });

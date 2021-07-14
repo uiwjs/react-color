@@ -52,7 +52,8 @@
     "@uiw/react-color-shade-slider": "^0.0.20",
     "@uiw/react-color-sketch": "^0.0.20",
     "@uiw/react-color-slider": "^0.0.20",
-    "@uiw/react-color-swatch": "^0.0.20"
+    "@uiw/react-color-swatch": "^0.0.20",
+    "@uiw/react-color-wheel": "^0.0.20"
   },
   "devDependencies": {
     "@types/react": "17.0.14",

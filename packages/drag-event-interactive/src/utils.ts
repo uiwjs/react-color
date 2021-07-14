@@ -30,6 +30,10 @@ export const clamp = (number: number, min = 0, max = 1): number => {
 export interface Interaction {
   left: number;
   top: number;
+  width: number;
+  height: number;
+  x: number;
+  y: number;
 }
 
 // Returns a relative position of the pointer inside the node's bounding box
@@ -42,5 +46,9 @@ export const getRelativePosition = (node: HTMLDivElement, event: MouseEvent | To
   return {
     left: clamp((pointer.pageX - (rect.left + window.pageXOffset)) / rect.width),
     top: clamp((pointer.pageY - (rect.top + window.pageYOffset)) / rect.height),
+    width: rect.width,
+    height: rect.height,
+    x: pointer.pageX - (rect.left + window.pageXOffset),
+    y: pointer.pageY - (rect.top + window.pageYOffset),
   };
 };
