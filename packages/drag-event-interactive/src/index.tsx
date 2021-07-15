@@ -9,7 +9,7 @@ export interface InteractiveProps extends React.HTMLAttributes<HTMLDivElement> {
   onDown?: (offset: Interaction, event: MouseEvent | TouchEvent) => void;
 }
 
-export default React.forwardRef<HTMLDivElement, InteractiveProps>((props, ref) => {
+const Interactive = React.forwardRef<HTMLDivElement, InteractiveProps>((props, ref) => {
   const { prefixCls = 'w-color-interactive', className, onMove, onDown, ...reset } = props;
   const container = useRef<HTMLDivElement>(null);
   const hasTouched = useRef(false);
@@ -82,3 +82,7 @@ export default React.forwardRef<HTMLDivElement, InteractiveProps>((props, ref) =
     />
   );
 });
+
+Interactive.displayName = 'Interactive';
+
+export default Interactive;

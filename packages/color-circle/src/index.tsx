@@ -8,7 +8,7 @@ export interface CircleProps extends Omit<SwatchProps, 'color' | 'onChange'> {
   onChange?: (color: ColorResult) => void;
 }
 
-export default React.forwardRef<HTMLDivElement, CircleProps>((props, ref) => {
+const Circle = React.forwardRef<HTMLDivElement, CircleProps>((props, ref) => {
   const { prefixCls = 'w-color-circle', className, color, colors = [], rectProps = {}, onChange, ...other } = props;
   const hsva = (typeof color === 'string' && validHex(color) ? hexToHsva(color) : color || {}) as HsvaColor;
   const hex = color ? hsvaToHex(hsva) : '';
@@ -26,3 +26,7 @@ export default React.forwardRef<HTMLDivElement, CircleProps>((props, ref) => {
     />
   );
 });
+
+Circle.displayName = 'Circle';
+
+export default Circle;

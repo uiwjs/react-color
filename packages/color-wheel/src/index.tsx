@@ -21,7 +21,7 @@ export interface WheelProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
 const HUE_GRADIENT_CLOCKWISE = 'conic-gradient(red, yellow, lime, aqua, blue, magenta, red)';
 const HUE_GRADIENT_ANTICLOCKWISE = 'conic-gradient(red, magenta, blue, aqua, lime, yellow, red)';
 
-export default React.forwardRef<HTMLDivElement, WheelProps>((props, ref) => {
+const Wheel = React.forwardRef<HTMLDivElement, WheelProps>((props, ref) => {
   const {
     prefixCls = 'w-color-wheel',
     radius = 0,
@@ -105,3 +105,7 @@ export default React.forwardRef<HTMLDivElement, WheelProps>((props, ref) => {
     </Interactive>
   );
 });
+
+Wheel.displayName = 'Wheel';
+
+export default Wheel;

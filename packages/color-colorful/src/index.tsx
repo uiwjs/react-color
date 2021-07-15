@@ -46,7 +46,7 @@ const Pointer = ({ style, color, ...props }: React.HTMLAttributes<HTMLDivElement
   </div>
 );
 
-export default React.forwardRef<HTMLDivElement, ColorfulProps>((props, ref) => {
+const Colorful = React.forwardRef<HTMLDivElement, ColorfulProps>((props, ref) => {
   const { prefixCls = 'w-color-colorful', className, onChange, color, style, ...other } = props;
   const hsva = (typeof color === 'string' && validHex(color) ? hexToHsva(color) : color || {}) as HsvaColor;
   const handleChange = (value: HsvaColor) => onChange && onChange(handleColor(value));
@@ -89,3 +89,7 @@ export default React.forwardRef<HTMLDivElement, ColorfulProps>((props, ref) => {
     </div>
   );
 });
+
+Colorful.displayName = 'Colorful';
+
+export default Colorful;

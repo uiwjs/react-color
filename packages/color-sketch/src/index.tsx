@@ -59,7 +59,7 @@ const Bar = (props: PointerProps) => (
   />
 );
 
-export default React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
+const Sketch = React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
   const {
     prefixCls = 'w-color-sketch',
     className,
@@ -196,3 +196,7 @@ export default React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
     </div>
   );
 });
+
+Sketch.displayName = 'Sketch';
+
+export default Sketch;

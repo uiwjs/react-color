@@ -29,7 +29,7 @@ export interface AlphaProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
 export const BACKGROUND_IMG =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4T2NkYGAQYcAP3uCTZhw1gGGYhAGBZIA/nYDCgBDAm9BGDWAAJyRCgLaBCAAgXwixzAS0pgAAAABJRU5ErkJggg==';
 
-export default React.forwardRef<HTMLDivElement, AlphaProps>((props, ref) => {
+const Aplha = React.forwardRef<HTMLDivElement, AlphaProps>((props, ref) => {
   const {
     prefixCls = 'w-color-alpha',
     className,
@@ -108,3 +108,7 @@ export default React.forwardRef<HTMLDivElement, AlphaProps>((props, ref) => {
     </div>
   );
 });
+
+Aplha.displayName = 'Aplha';
+
+export default Aplha;

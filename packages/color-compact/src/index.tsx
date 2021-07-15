@@ -72,7 +72,7 @@ function Point(props: { color?: string; checked?: boolean }) {
   );
 }
 
-export default React.forwardRef<HTMLDivElement, CompactProps<React.MouseEvent<HTMLDivElement, MouseEvent>>>((props, ref) => {
+const Compact = React.forwardRef<HTMLDivElement, CompactProps<React.MouseEvent<HTMLDivElement, MouseEvent>>>((props, ref) => {
   const { prefixCls = 'w-color-compact', className, style, onChange, color, colors = COLORS, ...other } = props;
   const hsva = (typeof color === 'string' && validHex(color) ? hexToHsva(color) : color) as HsvaColor;
   const hex = color ? hsvaToHex(hsva).replace(/^#/, '') : '';
@@ -147,3 +147,7 @@ export default React.forwardRef<HTMLDivElement, CompactProps<React.MouseEvent<HT
     </div>
   );
 });
+
+Compact.displayName = 'Compact';
+
+export default Compact;

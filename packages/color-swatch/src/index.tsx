@@ -19,7 +19,7 @@ export interface SwatchProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 
   onChange?: (hsva: HsvaColor) => void;
 }
 
-export default React.forwardRef<HTMLDivElement, SwatchProps>((props, ref) => {
+const Swatch = React.forwardRef<HTMLDivElement, SwatchProps>((props, ref) => {
   const {
     prefixCls = 'w-color-swatch',
     className,
@@ -104,3 +104,7 @@ export default React.forwardRef<HTMLDivElement, SwatchProps>((props, ref) => {
     </div>
   );
 });
+
+Swatch.displayName = 'Swatch';
+
+export default Swatch;

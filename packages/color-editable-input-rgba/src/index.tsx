@@ -13,7 +13,7 @@ export interface EditableInputRGBAProps extends Omit<React.HTMLAttributes<HTMLDi
   onChange?: (color: ColorResult) => void;
 }
 
-export default React.forwardRef<HTMLDivElement, EditableInputRGBAProps>((props, ref) => {
+const EditableInputRGBA = React.forwardRef<HTMLDivElement, EditableInputRGBAProps>((props, ref) => {
   const {
     prefixCls = 'w-color-editable-input-rgba',
     hsva,
@@ -114,3 +114,7 @@ export default React.forwardRef<HTMLDivElement, EditableInputRGBAProps>((props, 
     </div>
   );
 });
+
+EditableInputRGBA.displayName = 'EditableInputRGBA';
+
+export default EditableInputRGBA;

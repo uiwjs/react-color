@@ -6,7 +6,7 @@ export interface ShadeSliderProps extends Omit<AlphaProps, 'onChange'> {
   onChange?: (newShade: { v: number; s: number }) => void;
 }
 
-export default React.forwardRef<HTMLDivElement, ShadeSliderProps>((props, ref) => {
+const ShadeSlider = React.forwardRef<HTMLDivElement, ShadeSliderProps>((props, ref) => {
   const { prefixCls = 'w-color-saturation', className, onChange, direction = 'horizontal', hsva, ...other } = props;
   const colorFrom = hsvaToHslaString(Object.assign({}, hsva, { a: 1, s: 100, v: 100 }));
   return (
@@ -24,3 +24,7 @@ export default React.forwardRef<HTMLDivElement, ShadeSliderProps>((props, ref) =
     />
   );
 });
+
+ShadeSlider.displayName = 'ShadeSlider';
+
+export default ShadeSlider;

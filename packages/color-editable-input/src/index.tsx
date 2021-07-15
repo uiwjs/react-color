@@ -14,7 +14,7 @@ export interface EditableInputProps extends Omit<React.InputHTMLAttributes<HTMLI
   onChange?: (evn: React.ChangeEvent<HTMLInputElement>, value: string | number) => void;
 }
 
-export default React.forwardRef<HTMLInputElement, EditableInputProps>((props, ref) => {
+const EditableInput = React.forwardRef<HTMLInputElement, EditableInputProps>((props, ref) => {
   const {
     prefixCls = 'w-color-editable-input',
     placement = 'bottom',
@@ -112,3 +112,7 @@ export default React.forwardRef<HTMLInputElement, EditableInputProps>((props, re
     </div>
   );
 });
+
+EditableInput.displayName = 'EditableInput';
+
+export default EditableInput;

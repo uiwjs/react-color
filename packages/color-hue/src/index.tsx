@@ -6,7 +6,7 @@ export interface HueProps extends Omit<AlphaProps, 'hsva' | 'onChange'> {
   hue: number;
 }
 
-export default React.forwardRef<HTMLDivElement, HueProps>((props, ref) => {
+const Hue = React.forwardRef<HTMLDivElement, HueProps>((props, ref) => {
   const { prefixCls = 'w-color-hue', className, hue = 0, onChange, direction = 'horizontal', ...other } = props;
   return (
     <Alpha
@@ -24,3 +24,7 @@ export default React.forwardRef<HTMLDivElement, HueProps>((props, ref) => {
     />
   );
 });
+
+Hue.displayName = 'Hue';
+
+export default Hue;

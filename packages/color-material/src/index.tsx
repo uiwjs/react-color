@@ -22,7 +22,7 @@ const styleRBG: React.CSSProperties = {
   padding: 0,
 };
 
-export default React.forwardRef<HTMLDivElement, MaterialProps>((props, ref) => {
+const Material = React.forwardRef<HTMLDivElement, MaterialProps>((props, ref) => {
   const { prefixCls = 'w-color-material', className, style, color, onChange, ...other } = props;
   const hsva = (typeof color === 'string' && validHex(color) ? hexToHsva(color) : color) as HsvaColor;
   const hex = color ? hsvaToHex(hsva).replace(/^#/, '') : '';
@@ -92,3 +92,7 @@ export default React.forwardRef<HTMLDivElement, MaterialProps>((props, ref) => {
     </div>
   );
 });
+
+Material.displayName = 'Material';
+
+export default Material;
