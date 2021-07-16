@@ -16,7 +16,7 @@ it('Circle', async () => {
   let tree = component.toJSON();
   if (tree && !Array.isArray(tree)) {
     expect(tree.type).toEqual('div');
-    expect(tree.props.className).toEqual('w-color-swatch w-color-circle ');
+    expect(tree.props.className).toEqual('w-color-swatch w-color-circle');
     expect(tree.props.style).toMatchObject({
       display: 'flex',
       flexWrap: 'wrap',

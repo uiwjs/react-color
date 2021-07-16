@@ -35,7 +35,7 @@ const Block = React.forwardRef<HTMLDivElement, BlockProps>((props, ref) => {
   return (
     <div
       ref={ref}
-      className={[prefixCls, className || ''].filter(Boolean).join(' ')}
+      className={[prefixCls, className].filter(Boolean).join(' ')}
       style={{
         width: 170,
         borderRadius: 6,

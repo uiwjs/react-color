@@ -1,7 +1,7 @@
 /**
  * @jest-environment jsdom
  */
-import React, { useState } from 'react';
+import React from 'react';
 import TestRenderer from 'react-test-renderer';
 import { screen, render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';

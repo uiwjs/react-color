@@ -18,7 +18,7 @@ const Circle = React.forwardRef<HTMLDivElement, CircleProps>((props, ref) => {
       colors={colors}
       color={hex}
       {...other}
-      className={`${prefixCls} ${className || ''}`}
+      className={[prefixCls, className].filter(Boolean).join(' ')}
       rectRender={({ ...props }) => <Point {...props} rectProps={rectProps} />}
       onChange={(hsvColor) => {
         onChange && onChange(handleColor(hsvColor));
