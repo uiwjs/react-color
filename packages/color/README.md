@@ -88,6 +88,7 @@ Package | Bundle size(gzip) | Version / unpkg
 <!--react-color-material-->
 <!--react-color-colorful-->
 <!--react-color-wheel-->
+<!--react-color-block-->
 <!--react-color-circle-->
 <!--react-color-swatch-->
 <!--react-color-alpha-->
