@@ -23,7 +23,6 @@ const Saturation = React.forwardRef<HTMLDivElement, SaturationProps>((props, ref
     borderRadius: radius,
     ...style,
     position: 'relative',
-    backgroundColor: `hsl(${hsva.h},100%, 50%)`,
   };
 
   const handleChange = (interaction: Interaction, event: MouseEvent | TouchEvent) => {
@@ -50,7 +49,7 @@ const Saturation = React.forwardRef<HTMLDivElement, SaturationProps>((props, ref
       style={{
         position: 'absolute',
         inset: 0,
-        backgroundImage: 'linear-gradient(0deg, #000, transparent), linear-gradient(90deg, #fff, hsla(0,0%,100%,0))',
+        backgroundImage: `linear-gradient(0deg, #000, transparent), linear-gradient(90deg, #fff, hsl(${hsva.h}, 100%, 50%))`,
         ...containerStyle,
       }}
       ref={ref}

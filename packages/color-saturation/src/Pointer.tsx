@@ -22,23 +22,14 @@ export const Pointer = ({ className, color, left, top, prefixCls }: PointerProps
         <div
           className={`${prefixCls}-fill`}
           style={{
-            width: 5,
-            height: 5,
-            transform: 'translate(-3px, -3px)',
+            width: 6,
+            height: 6,
+            transform: 'translate(-4px, -4px)',
             boxShadow: BOXSHADOW,
             borderRadius: '50%',
-            backgroundColor: '#fff',
+            backgroundColor: color,
           }}
-        >
-          <div
-            style={{
-              inset: 0,
-              borderRadius: '50%',
-              position: 'absolute',
-              backgroundColor: color,
-            }}
-          />
-        </div>
+        />
       </div>
     ),
     [top, left, color, className, prefixCls],

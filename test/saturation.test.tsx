@@ -24,11 +24,14 @@ it('Saturation', async () => {
   if (tree && !Array.isArray(tree)) {
     expect(tree.type).toEqual('div');
     expect(tree.props.className).toEqual('w-color-interactive w-color-saturation');
-    expect(tree.props.style).toMatchObject({
+    expect(tree.props.style).toEqual({
       width: 200,
       height: 200,
+      borderRadius: 0,
+      inset: 0,
       position: 'relative',
-      backgroundColor: 'hsl(0,100%, 50%)',
+      touchAction: 'none',
+      backgroundImage: 'linear-gradient(0deg, #000, transparent), linear-gradient(90deg, #fff, hsl(0, 100%, 50%))',
     });
   }
 });
