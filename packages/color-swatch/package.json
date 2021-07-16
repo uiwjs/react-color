@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-color-swatch",
-  "version": "0.0.28",
+  "version": "0.0.29",
   "description": "Color swatch component for React.",
   "homepage": "https://uiwjs.github.io/react-color/#react-color-swatch",
   "author": "Kenny Wong <wowohoo@qq.com>",
@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@babel/runtime": "7.14.6",
-    "@uiw/color-convert": "^0.0.28"
+    "@uiw/color-convert": "^0.0.29"
   },
   "devDependencies": {
     "@types/react": "17.0.14",
