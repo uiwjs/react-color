@@ -3,7 +3,7 @@ React Color Material
 
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@uiw/react-color-material)](https://bundlephobia.com/package/@uiw/react-color-material) [![npm version](https://img.shields.io/npm/v/@uiw/react-color-material.svg)](https://www.npmjs.com/package/@uiw/react-color-material) [![Open in unpkg](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@uiw/react-color-material/file/README.md)
 
-![react-color-material](https://user-images.githubusercontent.com/1680273/125121610-c1b7ff00-e126-11eb-8928-0b2817f07e1a.png)
+![react-color-material](https://user-images.githubusercontent.com/1680273/125949704-6fdaa53b-6cae-4ef5-8e5d-f12a09152528.png)
 
 ## Install
 

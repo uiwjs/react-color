@@ -3,7 +3,7 @@ React Color Hue
 
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@uiw/react-color-hue)](https://bundlephobia.com/package/@uiw/react-color-hue) [![npm version](https://img.shields.io/npm/v/@uiw/react-color-hue.svg)](https://www.npmjs.com/package/@uiw/react-color-hue) [![Open in unpkg](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@uiw/react-color-hue/file/README.md)
 
-![image](https://user-images.githubusercontent.com/1680273/124279725-6a3fef00-db7a-11eb-95b7-fba428a7c2ba.png)
+![react-color-hue](https://user-images.githubusercontent.com/1680273/125951739-e38dad1a-5d11-4e4b-a146-3365bd0d98fb.png)
 
 ## Install
 

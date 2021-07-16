@@ -3,7 +3,7 @@ React Color Swatch
 
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@uiw/react-color-circle)](https://bundlephobia.com/package/@uiw/react-color-circle) [![npm version](https://img.shields.io/npm/v/@uiw/react-color-circle.svg)](https://www.npmjs.com/package/@uiw/react-color-circle) [![Open in unpkg](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@uiw/react-color-circle/file/README.md)
 
-![react-color-circle](https://user-images.githubusercontent.com/1680273/125335431-2077b580-e37f-11eb-8027-22e1d7a200eb.png)
+![react-color-circle](https://user-images.githubusercontent.com/1680273/125948967-87e1d2eb-ed51-46c8-9378-9bf964b093ea.png)
 
 ## Install
 

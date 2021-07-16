@@ -3,7 +3,7 @@ React Color Editable Input
 
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@uiw/react-color-editable-input)](https://bundlephobia.com/package/@uiw/react-color-editable-input) [![npm version](https://img.shields.io/npm/v/@uiw/react-color-editable-input.svg)](https://www.npmjs.com/package/@uiw/react-color-editable-input) [![Open in unpkg](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@uiw/react-color/file/README.md)
 
-![editable-input](https://user-images.githubusercontent.com/1680273/124878498-c1bcdf80-dffe-11eb-8164-d752a8109db9.png)
+![editable-input](https://user-images.githubusercontent.com/1680273/125950802-3feb68a9-23ca-4395-9477-72ade831dc0b.png)
 
 ## Install
 

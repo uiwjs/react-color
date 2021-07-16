@@ -3,7 +3,7 @@ React Color Alpha
 
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@uiw/react-color-alpha)](https://bundlephobia.com/package/@uiw/react-color-alpha) [![npm version](https://img.shields.io/npm/v/@uiw/react-color-alpha.svg)](https://www.npmjs.com/package/@uiw/react-color-alpha) [![Open in unpkg](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@uiw/react-color/file/README.md)
 
-![image](https://user-images.githubusercontent.com/1680273/124279988-b723c580-db7a-11eb-976f-9cecf2960b5f.png)
+![react-color-alpha](https://user-images.githubusercontent.com/1680273/125951872-e44340be-8406-4c80-8037-0c22d63708ee.png)
 
 ## Install
 
