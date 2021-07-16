@@ -25,20 +25,21 @@ jobs:
     - run: npm install @jsdevtools/npm-publish -g
     - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color/package.json
     - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-alpha/package.json
+    - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-block/package.json
     - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-convert/package.json
     - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-compact/package.json
-    - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-material/package.json
     - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-colorful/package.json
     - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-circle/package.json
-    - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-wheel/package.json
+    - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-editable-input/package.json
+    - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-editable-input-rgba/package.json
     - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-hue/package.json
+    - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-material/package.json
     - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-saturation/package.json
     - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-shade-slider/package.json
     - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-sketch/package.json
     - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-slider/package.json
     - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-swatch/package.json
-    - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-editable-input/package.json
-    - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-editable-input-rgba/package.json
+    - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-wheel/package.json
     - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/drag-event-interactive/package.json
 
     - name: Create Tag

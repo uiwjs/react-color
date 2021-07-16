@@ -3,6 +3,7 @@ import {
   Saturation,
   Sketch,
   Alpha,
+  Block,
   Colorful,
   Circle,
   Compact,
@@ -34,6 +35,7 @@ import mdStrMaterial from '@uiw/react-color-material/README.md';
 import mdStrColorful from '@uiw/react-color-colorful/README.md';
 import mdStrCircle from '@uiw/react-color-circle/README.md';
 import mdStrWheel from '@uiw/react-color-wheel/README.md';
+import mdStrBlock from '@uiw/react-color-block/README.md';
 import mdStrSwatch from '@uiw/react-color-swatch/README.md';
 import mdStrSaturation from '@uiw/react-color-saturation/README.md';
 import mdStrEditableInput from '@uiw/react-color-editable-input/README.md';
@@ -52,6 +54,7 @@ let markdownStr = mdStr
   .replace(/<!--react-color-material-->/, mdStrMaterial.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-colorful-->/, mdStrColorful.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-wheel-->/, mdStrWheel.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
+  .replace(/<!--react-color-block-->/, mdStrBlock.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-circle-->/, mdStrCircle.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-swatch-->/, mdStrSwatch.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-saturation-->/, mdStrSaturation.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
@@ -344,6 +347,15 @@ export default function App() {
                   }}
                 />
                 <Title style={{ minWidth: 180 }}>{`<Material color="${hsvaToHex(hsva)}" />`}</Title>
+              </div>
+              <div>
+                <Block
+                  color={hsva}
+                  onChange={(color) => {
+                    setHsva({ ...hsva, ...color.hsva });
+                  }}
+                />
+                <Title>{`<Block color="${hsvaToHex(hsva)}" />`}</Title>
               </div>
             </div>
           </div>

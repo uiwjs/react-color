@@ -3,8 +3,6 @@ import { HsvaColor, ColorResult, color as handleColor, validHex, hexToHsva, hsva
 import EditableInput from '@uiw/react-color-editable-input';
 import RGBA from '@uiw/react-color-editable-input-rgba';
 
-export * from '@uiw/color-convert';
-
 export interface MaterialProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'color'> {
   prefixCls?: string;
   color?: string | HsvaColor;
@@ -38,7 +36,7 @@ const Material = React.forwardRef<HTMLDivElement, MaterialProps>((props, ref) =>
     <div
       ref={ref}
       className={[prefixCls, className || ''].filter(Boolean).join(' ')}
-      style={{ padding: 16, width: 98, fontFamily: 'Roboto', ...style }}
+      style={{ padding: 16, width: 98, fontFamily: 'Roboto', backgroundColor: '#fff', ...style }}
       {...other}
     >
       <EditableInput

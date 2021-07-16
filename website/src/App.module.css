@@ -17,7 +17,6 @@
 .header {
   background-color: #282c34;
   color: #fff;
-  margin-bottom: 70px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -54,6 +53,9 @@
   padding: 0px 20px;
   margin: 0 auto;
   padding-bottom: 40px;
+  padding-top: 70px;
+  margin-bottom: 40px;
+  background: #eee;
 }
 
 .example {

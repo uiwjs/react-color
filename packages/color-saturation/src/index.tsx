@@ -3,8 +3,6 @@ import { HsvaColor, hsvaToHslaString } from '@uiw/color-convert';
 import Interactive, { Interaction } from '@uiw/react-drag-event-interactive';
 import { Pointer, PointerProps } from './Pointer';
 
-export * from '@uiw/color-convert';
-
 export interface SaturationProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   prefixCls?: string;
   /** hsva => `{ h: 0, s: 75, v: 82, a: 1 }` */
