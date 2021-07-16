@@ -24,7 +24,7 @@ export const Pointer = ({ className, color, left, top, prefixCls }: PointerProps
           style={{
             width: 6,
             height: 6,
-            transform: 'translate(-4px, -4px)',
+            transform: 'translate(-3px, -3px)',
             boxShadow: BOXSHADOW,
             borderRadius: '50%',
             backgroundColor: color,
