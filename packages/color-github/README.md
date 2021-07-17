@@ -34,7 +34,23 @@ function Demo() {
 ```ts
 import { SwatchProps } from '@uiw/react-color-swatch';
 
-interface GithubProps extends Omit<SwatchProps, 'color' | 'onChange'> {
+export enum GithubPlacement {
+  Left = 'L',
+  LeftTop = 'LT',
+  LeftBotton = 'LB',
+  Right = 'R',
+  RightTop = 'RT',
+  RightBotton = 'RB',
+  Top = 'T',
+  TopRight = 'TR',
+  TopLeft = 'TL',
+  Botton = 'B',
+  BottonLeft = 'BL',
+  BottonRight = 'BR',
+}
+
+export interface GithubProps extends Omit<SwatchProps, 'color' | 'onChange'> {
+  placement?: GithubPlacement;
   color?: string | HsvaColor;
   onChange?: (color: ColorResult) => void;
 }
