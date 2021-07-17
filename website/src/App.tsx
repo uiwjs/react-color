@@ -245,7 +245,7 @@ export default function App() {
                 onChange={(hsva) => setHsva(hsva)}
               />
             </div>
-            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center', padding: '10px 0 10px 0' }}>
+            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center', padding: '10px 0 0 0' }}>
               <EditableInputHSLA
                 hsva={hsva}
                 style={{ width: 150, marginRight: 20 }}
@@ -281,6 +281,15 @@ export default function App() {
             </div>
             <div className={styles.exampleWarp} style={{}}>
               <div>
+                <Colorful
+                  color={hsva}
+                  onChange={(color) => {
+                    setHsva({ ...hsva, ...color.hsva });
+                  }}
+                />
+                <Title>{`<Colorful color="${hsvaToHex(hsva)}" />`}</Title>
+              </div>
+              <div style={{ margin: '0 30px' }}>
                 <Sketch
                   color={hsva}
                   onChange={(color) => {
@@ -289,19 +298,18 @@ export default function App() {
                 />
                 <Title>{`<Sketch color="${hsvaToHex(hsva)}" />`}</Title>
               </div>
-              <div style={{ paddingLeft: 20 }}>
-                <Compact
-                  style={{
-                    boxShadow: 'rgb(0 0 0 / 15%) 0px 0px 0px 1px, rgb(0 0 0 / 15%) 0px 8px 16px',
-                  }}
-                  color={hsvaToHex(hsva)}
+              <div>
+                <Block
+                  color={hsva}
                   onChange={(color) => {
                     setHsva({ ...hsva, ...color.hsva });
                   }}
                 />
-                <Title>{`<Compact color="${hsvaToHex(hsva)}" />`}</Title>
-                <Slider style={{ width: 220 }} color={hsva} onChange={(color) => setHsva({ ...hsva, ...color.hsv })} />
-                <Title>{`<Slider color="${hsvaToHex(hsva)}" />`}</Title>
+                <Title>{`<Block color="${hsvaToHex(hsva)}" />`}</Title>
+              </div>
+            </div>
+            <div className={styles.exampleWarp} style={{}}>
+              <div>
                 <Circle
                   colors={[
                     '#f44336',
@@ -324,7 +332,7 @@ export default function App() {
                     '#607d8b',
                   ]}
                   color={hsva}
-                  style={{ width: 252, paddingTop: 16 }}
+                  style={{ width: 252 }}
                   onChange={(color) => {
                     setHsva({ ...hsva, ...color.hsva });
                   }}
@@ -332,43 +340,29 @@ export default function App() {
                 <Title>{`<Circle color="${hsvaToHex(hsva)}" />`}</Title>
               </div>
               <div style={{ paddingLeft: 20 }}>
-                <Colorful
-                  color={hsva}
+                <Compact
+                  style={{
+                    boxShadow: 'rgb(0 0 0 / 15%) 0px 0px 0px 1px, rgb(0 0 0 / 15%) 0px 8px 16px',
+                  }}
+                  color={hsvaToHex(hsva)}
                   onChange={(color) => {
                     setHsva({ ...hsva, ...color.hsva });
                   }}
                 />
-                <Title>{`<Colorful color="${hsvaToHex(hsva)}" />`}</Title>
-              </div>
-            </div>
-            <div className={styles.exampleWarp}>
-              <div>
-                <Wheel
-                  color={hsva}
-                  onChange={(color) => {
-                    setHsva({ ...hsva, ...color.hsva });
-                  }}
-                />
-                <Title style={{ textAlign: 'center' }}>{`<Wheel color="${hsvaToHex(hsva)}" />`}</Title>
+                <Title>{`<Compact color="${hsvaToHex(hsva)}" />`}</Title>
+                <Slider style={{ width: 220 }} color={hsva} onChange={(color) => setHsva({ ...hsva, ...color.hsv })} />
+                <Title>{`<Slider color="${hsvaToHex(hsva)}" />`}</Title>
               </div>
               <div style={{ marginLeft: 25 }}>
-                <Material
-                  color={hsvaToHex(hsva)}
-                  style={{ boxShadow: 'rgb(0 0 0 / 12%) 0px 2px 10px, rgb(0 0 0 / 16%) 0px 2px 5px' }}
-                  onChange={(color) => {
-                    setHsva({ ...hsva, ...color.hsva });
-                  }}
-                />
-                <Title style={{ minWidth: 180 }}>{`<Material color="${hsvaToHex(hsva)}" />`}</Title>
-              </div>
-              <div>
-                <Block
+                <Wheel
                   color={hsva}
+                  width={140}
+                  height={140}
                   onChange={(color) => {
                     setHsva({ ...hsva, ...color.hsva });
                   }}
                 />
-                <Title>{`<Block color="${hsvaToHex(hsva)}" />`}</Title>
+                <Title style={{ textAlign: 'center', minWidth: 180 }}>{`<Wheel color="..." />`}</Title>
               </div>
             </div>
             <div className={styles.exampleWarp}>
@@ -380,6 +374,16 @@ export default function App() {
                   }}
                 />
                 <Title>{`<Github color="${hsvaToHex(hsva)}" />`}</Title>
+              </div>
+              <div style={{ marginLeft: 25 }}>
+                <Material
+                  color={hsvaToHex(hsva)}
+                  style={{ boxShadow: 'rgb(0 0 0 / 12%) 0px 2px 10px, rgb(0 0 0 / 16%) 0px 2px 5px' }}
+                  onChange={(color) => {
+                    setHsva({ ...hsva, ...color.hsva });
+                  }}
+                />
+                <Title style={{ minWidth: 180 }}>{`<Material color="${hsvaToHex(hsva)}" />`}</Title>
               </div>
             </div>
           </div>
