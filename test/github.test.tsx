@@ -60,6 +60,17 @@ it('Github mouseEnter/mouseLeave checked', async () => {
   expect(handleChange).not.toHaveReturned();
 });
 
+it('Github rectRender props', async () => {
+  const { getByTitle } = render(
+    <Github
+      colors={['#F44E3B', '#FE9200', '#FCDC00', '#DBDF00']}
+      rectRender={({ key, color }) => <div key={key} title={color} data-uiw="title" />}
+    />,
+  );
+  const elm = getByTitle('#F44E3B');
+  expect(elm.dataset.uiw).toEqual('title');
+});
+
 it('Github mouseEnter/mouseLeave color = undefined', async () => {
   const handleChange = jest.fn((color) => color.hex);
   const { getByTitle } = render(<Github colors={['#F44E3B', '#FE9200', '#FCDC00', '#DBDF00']} onChange={handleChange} />);

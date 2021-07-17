@@ -177,37 +177,30 @@ it('Swatch colors', async () => {
 });
 
 it('Swatch rectRender', async () => {
-  const MyComponent = () => (
+  const handleChange = jest.fn((color) => color);
+  const { getByTitle } = render(
     <Swatch
       colors={['#F44E3B', '#FE9200', { color: '#FCDC00', title: 'test title' }, { color: '#DBDF00' }]}
       color="#F44E3B"
-      onChange={(hsvColor) => {
-        expect(hsvColor).toEqual({
-          h: 6.162162162162162,
-          s: 75.81967213114754,
-          v: 95.68627450980392,
-          a: 1,
-        });
-      }}
-      rectRender={({ key, color, checked, onClick }) => {
-        return (
-          <div key={key} onClick={onClick} data-checked={checked} title="test">
-            {color}
-          </div>
-        );
-      }}
-    />
+      onChange={handleChange}
+      rectRender={({ key, color, checked, onClick }) => (
+        <div key={key} onClick={onClick} data-checked={checked} title={color}>
+          {color}
+        </div>
+      )}
+    />,
   );
-
-  const { getByText } = render(<MyComponent />);
-  const elm = getByText(/#F44E3B/i);
-  expect(elm).toHaveAttribute('title', 'test');
-  testUtils.act(() => {
-    testUtils.Simulate.click(elm);
+  const elm = getByTitle('#F44E3B');
+  fireEvent.click(elm);
+  expect(handleChange).toHaveReturnedWith({
+    h: 6.162162162162162,
+    s: 75.81967213114754,
+    v: 95.68627450980392,
+    a: 1,
   });
 });
 
-it('Github rectRender props', async () => {
+it('Swatch rectRender props', async () => {
   const { getByTitle } = render(
     <Swatch colors={undefined} color="#fff" addonBefore={<div title="before" />} addonAfter={<div title="test" />} />,
   );
