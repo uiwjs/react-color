@@ -206,3 +206,13 @@ it('Swatch rectRender', async () => {
     testUtils.Simulate.click(elm);
   });
 });
+
+it('Github rectRender props', async () => {
+  const { getByTitle } = render(
+    <Swatch colors={undefined} color="#fff" addonBefore={<div title="before" />} addonAfter={<div title="test" />} />,
+  );
+  const elm = getByTitle('test');
+  expect(elm).toHaveAttribute('title', 'test');
+  const elmbefore = getByTitle('before');
+  expect(elmbefore).toHaveAttribute('title', 'before');
+});

@@ -17,6 +17,8 @@ export interface SwatchProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 
   rectProps?: React.HTMLAttributes<HTMLDivElement>;
   rectRender?: (props: SwatchRectRenderProps) => JSX.Element;
   onChange?: (hsva: HsvaColor) => void;
+  addonAfter?: React.ReactNode;
+  addonBefore?: React.ReactNode;
 }
 
 const Swatch = React.forwardRef<HTMLDivElement, SwatchProps>((props, ref) => {
@@ -28,6 +30,8 @@ const Swatch = React.forwardRef<HTMLDivElement, SwatchProps>((props, ref) => {
     style,
     rectProps = {},
     onChange,
+    addonAfter,
+    addonBefore,
     rectRender,
     ...other
   } = props;
@@ -58,6 +62,7 @@ const Swatch = React.forwardRef<HTMLDivElement, SwatchProps>((props, ref) => {
         ...style,
       }}
     >
+      {addonBefore && React.isValidElement(addonBefore) && addonBefore}
       {colors &&
         Array.isArray(colors) &&
         colors.map((item, idx) => {
@@ -101,6 +106,7 @@ const Swatch = React.forwardRef<HTMLDivElement, SwatchProps>((props, ref) => {
             />
           );
         })}
+      {addonAfter && React.isValidElement(addonAfter) && addonAfter}
     </div>
   );
 });
