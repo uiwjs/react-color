@@ -1,9 +1,9 @@
 {
-  "name": "@uiw/react-color-editable-input-rgba",
+  "name": "@uiw/react-color-editable-input-hsla",
   "version": "0.0.30",
-  "description": "Color Editable Input RGBA",
+  "description": "Color Editable Input HSLA",
   "author": "Kenny Wong <wowohoo@qq.com>",
-  "homepage": "https://uiwjs.github.io/react-color/#react-color-editable-input-rgba",
+  "homepage": "https://uiwjs.github.io/react-color/#react-color-editable-input-hsla",
   "sideEffects": false,
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
@@ -14,11 +14,11 @@
   "keywords": [
     "react",
     "react-color",
-    "react-color-editable-input-rgba",
-    "editable-input-rgba",
+    "react-color-editable-input-hsla",
+    "editable-input-hsla",
     "editable-input",
     "editable",
-    "rgba",
+    "hsla",
     "color",
     "convert"
   ],
@@ -34,7 +34,7 @@
   "dependencies": {
     "@babel/runtime": "7.14.6",
     "@uiw/color-convert": "^0.0.30",
-    "@uiw/react-color-editable-input": "^0.0.30"
+    "@uiw/react-color-editable-input-rgba": "^0.0.30"
   },
   "devDependencies": {
     "@types/react": "17.0.14",

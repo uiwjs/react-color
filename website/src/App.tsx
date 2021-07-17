@@ -13,6 +13,7 @@ import {
   Hue,
   Slider,
   EditableInputRGBA,
+  EditableInputHSLA,
   ShadeSlider,
   EditableInput,
   Material,
@@ -42,6 +43,7 @@ import mdStrSwatch from '@uiw/react-color-swatch/README.md';
 import mdStrSaturation from '@uiw/react-color-saturation/README.md';
 import mdStrEditableInput from '@uiw/react-color-editable-input/README.md';
 import mdStrEditableInputRBGA from '@uiw/react-color-editable-input-rgba/README.md';
+import mdStrEditableInputHSLA from '@uiw/react-color-editable-input-hsla/README.md';
 import mdStrAlpha from '@uiw/react-color-alpha/README.md';
 import mdStrHue from '@uiw/react-color-hue/README.md';
 import mdStrShadeSlider from '@uiw/react-color-shade-slider/README.md';
@@ -63,6 +65,7 @@ let markdownStr = mdStr
   .replace(/<!--react-color-saturation-->/, mdStrSaturation.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-editable-input-->/, mdStrEditableInput.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-editable-input-rgba-->/, mdStrEditableInputRBGA.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
+  .replace(/<!--react-color-editable-input-hsla-->/, mdStrEditableInputHSLA.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-alpha-->/, mdStrAlpha.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-hue-->/, mdStrHue.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-shade-slider-->/, mdStrShadeSlider.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
@@ -240,6 +243,13 @@ export default function App() {
                 ]}
                 color={hsvaToHex(hsva)}
                 onChange={(hsva) => setHsva(hsva)}
+              />
+            </div>
+            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center', padding: '10px 0 10px 0' }}>
+              <EditableInputHSLA
+                hsva={hsva}
+                style={{ width: 150, marginRight: 20 }}
+                onChange={(color) => setHsva({ ...hsva, ...color.hsva })}
               />
             </div>
             <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center', padding: '10px 0 10px 0' }}>

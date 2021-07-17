@@ -65,6 +65,7 @@ const EditableInputRGBA = React.forwardRef<HTMLDivElement, EditableInputRGBAProp
   };
   return (
     <div
+      ref={ref}
       className={[prefixCls, className || ''].filter(Boolean).join(' ')}
       {...other}
       style={{

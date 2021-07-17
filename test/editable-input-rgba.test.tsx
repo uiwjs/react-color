@@ -6,7 +6,6 @@ import TestRenderer from 'react-test-renderer';
 import { screen, render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import EditableInputRGBA from '../packages/color-editable-input-rgba/src';
-import { hsvaToHex, hexToHsva, HsvaColor } from '../packages/color-convert/src';
 
 it('EditableInputRGBA', async () => {
   function MyComponent() {
