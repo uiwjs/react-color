@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-color-circle",
-  "version": "0.0.30",
+  "version": "0.0.31",
   "description": "Color swatch component for React.",
   "homepage": "https://uiwjs.github.io/react-color/#react-color-circle",
   "author": "Kenny Wong <wowohoo@qq.com>",
@@ -30,8 +30,8 @@
   },
   "dependencies": {
     "@babel/runtime": "7.14.6",
-    "@uiw/color-convert": "^0.0.30",
-    "@uiw/react-color-swatch": "^0.0.30"
+    "@uiw/color-convert": "^0.0.31",
+    "@uiw/react-color-swatch": "^0.0.31"
   },
   "devDependencies": {
     "@types/react": "17.0.14",
