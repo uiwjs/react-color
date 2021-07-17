@@ -76,7 +76,7 @@ const Colorful = React.forwardRef<HTMLDivElement, ColorfulProps>((props, ref) =>
         height={24}
         className={prefixCls}
         onChange={(newHue) => handleChange({ ...hsva, ...newHue })}
-        pointer={({ left }) => <Pointer style={{ left }} color={hsvaToHex(hsva)} />}
+        pointer={({ left }) => <Pointer style={{ left }} color={`hsl(${hsva.h || 0}deg 100% 50%)`} />}
       />
       <Alpha
         hsva={hsva}
