@@ -1,6 +1,6 @@
 import { color, getContrastingColor } from '../packages/color-convert/src';
 // HEX
-import { hexToHsva, hexToRgba, hsvaToHex } from '../packages/color-convert/src';
+import { hexToHsva, hexToRgba, hsvaToHex, hsvaToHexa } from '../packages/color-convert/src';
 import { equalHex } from '../packages/color-convert/src/utils';
 // HSLA
 import { hsvaToHsla, hslaToHsva, HsvaColor, HslaColor } from '../packages/color-convert/src';
@@ -123,6 +123,15 @@ it('Converts HSVA to HEX', () => {
   expect(hsvaToHex({ h: 0, s: 100, v: 100, a: 1 })).toBe('#ff0000');
   expect(hsvaToHex({ h: 0, s: 0, v: 0, a: 1 })).toBe('#000000');
   expect(hsvaToHex({ h: 284, s: 93, v: 73, a: 1 })).toBe('#8c0dba');
+});
+
+it('Converts HSVA to HEXA', () => {
+  expect(hsvaToHexa({ h: 0, s: 0, v: 30.19607843137255, a: 0.4875 })).toBe('#4d4d4d7c');
+  expect(hsvaToHexa({ h: 0, s: 0, v: 100, a: 1 })).toBe('#ffffffff');
+  expect(hsvaToHexa({ h: 60, s: 100, v: 100, a: 1 })).toBe('#ffff00ff');
+  expect(hsvaToHexa({ h: 0, s: 100, v: 100, a: 1 })).toBe('#ff0000ff');
+  expect(hsvaToHexa({ h: 0, s: 0, v: 0, a: 1 })).toBe('#000000ff');
+  expect(hsvaToHexa({ h: 284, s: 93, v: 73, a: 1 })).toBe('#8c0dbaff');
 });
 
 it('Converts HSVA to HSLA', () => {

@@ -35,6 +35,12 @@ hexToHsva("#ffffff") //=> { h: 0, s: 0, v: 100, a: 1 }
 hsvaToHex({ h: 0, s: 0, v: 100, a: 1 }) // => "#ffffff"
 ```
 
+#### `hsvaToHexa`
+
+```js
+hsvaToHex({ h: 0, s: 0, v: 100, a: 1 }) // => "#ffffff"
+```
+
 #### `hsvaToHsla`
 
 ```js

@@ -271,6 +271,7 @@ export const hsvaToRgbaString = (hsva: HsvaColor): string => {
 export const rgbaToRgb = ({ r, g, b }: RgbaColor): RgbColor => ({ r, g, b });
 export const hslaToHsl = ({ h, s, l }: HslaColor): HslColor => ({ h, s, l });
 export const hsvaToHex = (hsva: HsvaColor): string => rgbaToHex(hsvaToRgba(hsva));
+export const hsvaToHexa = (hsva: HsvaColor): string => rgbaToHexa(hsvaToRgba(hsva));
 export const hsvaToHsv = ({ h, s, v }: HsvaColor): HsvColor => ({ h, s, v });
 
 export const color = (str: string | HsvaColor): ColorResult => {
