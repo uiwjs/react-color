@@ -30,6 +30,8 @@ jobs:
     - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-compact/package.json
     - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-colorful/package.json
     - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-circle/package.json
+    - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-github/package.json
+    - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-chrome/package.json
     - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-editable-input/package.json
     - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-editable-input-rgba/package.json
     - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color-hue/package.json
