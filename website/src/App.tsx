@@ -80,7 +80,10 @@ export default function App() {
 
   return (
     <div style={{ background: `url(${BACKGROUND_IMG}) left center` }}>
-      <div className={styles.app} style={{ backgroundColor: hsvaToHslaString(hsva) }}>
+      <div
+        className={styles.app}
+        style={{ backgroundColor: hsvaToHslaString(hsva), transition: 'background-color 0.3s ease 0s' }}
+      >
         <GitHubCorners fixed size={56} target="_blank" href="https://github.com/uiwjs/react-color" />
         <div className={styles.warpper}>
           <header className={styles.header}>
