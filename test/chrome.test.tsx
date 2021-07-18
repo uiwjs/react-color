@@ -5,10 +5,10 @@ import React from 'react';
 import TestRenderer from 'react-test-renderer';
 import { render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import Chorme from '../packages/color-chrome/src';
+import Chrome from '../packages/color-chrome/src';
 
-it('Chorme', async () => {
-  const component = TestRenderer.create(<Chorme />);
+it('Chrome', async () => {
+  const component = TestRenderer.create(<Chrome />);
   let tree = component.toJSON();
   if (tree && !Array.isArray(tree)) {
     expect(tree.type).toEqual('div');
@@ -30,22 +30,22 @@ it('Chorme', async () => {
   }
 });
 
-it('Chorme saturation click', async () => {
+it('Chrome saturation click', async () => {
   const handleChange = jest.fn((color) => color.hex);
   const {
     container: { firstChild },
-  } = render(<Chorme color="#F44E3B" onChange={handleChange} />);
+  } = render(<Chrome color="#F44E3B" onChange={handleChange} />);
   const elm = firstChild?.firstChild?.nextSibling?.nextSibling;
   fireEvent.mouseDown(elm!, { clientX: 1 });
   expect(handleChange).toHaveReturnedWith('#000000');
 });
 
-it('Chorme Switch Input', async () => {
+it('Chrome Switch Input', async () => {
   const handleChange = jest.fn((color) => color.hex);
   const {
     container: { firstChild },
     getByText,
-  } = render(<Chorme color="#F44E3B" onChange={handleChange} />);
+  } = render(<Chrome color="#F44E3B" onChange={handleChange} />);
   const input = getByText('R').previousSibling;
   expect((input as any).value).toEqual('244');
   const elm = firstChild?.lastChild?.lastChild;
@@ -61,11 +61,11 @@ it('Chorme Switch Input', async () => {
   expect(handleChange).not.toHaveReturned();
 });
 
-it('Chorme Switch Input Button Style', async () => {
+it('Chrome Switch Input Button Style', async () => {
   const handleChange = jest.fn((color) => color.hex);
   const {
     container: { firstChild },
-  } = render(<Chorme color="#F44E3B" onChange={handleChange} />);
+  } = render(<Chrome color="#F44E3B" onChange={handleChange} />);
   const elm = firstChild?.lastChild?.lastChild;
   fireEvent.mouseEnter(elm!);
   expect((elm as any).style['background-color']).toEqual('rgb(232, 232, 232)');
@@ -73,24 +73,24 @@ it('Chorme Switch Input Button Style', async () => {
   expect((elm as any).style['background-color']).toEqual('transparent');
 });
 
-it('Chorme RGBA Input onChange', async () => {
+it('Chrome RGBA Input onChange', async () => {
   const handleChange = jest.fn((color) => color.hex);
   const {
     container: { firstChild },
     getByText,
-  } = render(<Chorme color="#F44E3B" onChange={handleChange} />);
+  } = render(<Chrome color="#F44E3B" onChange={handleChange} />);
   const input = getByText('R').previousSibling;
   expect((input as any).value).toEqual('244');
   fireEvent.change(input!, { target: { value: '4444' } });
   expect(handleChange).toHaveReturnedWith('#ff4e3b');
 });
 
-it('Chorme HSLA Input onChange', async () => {
+it('Chrome HSLA Input onChange', async () => {
   const handleChange = jest.fn((color) => color.hexa);
   const {
     container: { firstChild },
     getByText,
-  } = render(<Chorme color="#F44E3B" onChange={handleChange} />);
+  } = render(<Chrome color="#F44E3B" onChange={handleChange} />);
   const elm = firstChild?.lastChild?.lastChild;
   fireEvent.click(elm!);
   const inputHsla = getByText('A').previousSibling;
@@ -98,12 +98,12 @@ it('Chorme HSLA Input onChange', async () => {
   expect(handleChange).toHaveReturnedWith('#f44e3b56');
 });
 
-it('Chorme HSLA Input "#93BEE699" onChange', async () => {
+it('Chrome HSLA Input "#93BEE699" onChange', async () => {
   const handleChange = jest.fn((color) => color.hexa);
   const {
     container: { firstChild },
     getByText,
-  } = render(<Chorme color="#F44E3B" onChange={handleChange} />);
+  } = render(<Chrome color="#F44E3B" onChange={handleChange} />);
   const elm = firstChild?.lastChild?.lastChild;
   fireEvent.click(elm!);
   fireEvent.click(elm!);
@@ -112,12 +112,12 @@ it('Chorme HSLA Input "#93BEE699" onChange', async () => {
   expect(handleChange).toHaveReturnedWith('#93bee699');
 });
 
-it('Chorme HEX Input onChange', async () => {
+it('Chrome HEX Input onChange', async () => {
   const handleChange = jest.fn((color) => color.hexa);
   const {
     container: { firstChild },
     getByText,
-  } = render(<Chorme color="#93BEE699" onChange={handleChange} />);
+  } = render(<Chrome color="#93BEE699" onChange={handleChange} />);
   const elm = firstChild?.lastChild?.lastChild;
   fireEvent.click(elm!);
   fireEvent.click(elm!);
@@ -137,20 +137,20 @@ class FakeMouseEvent extends MouseEvent {
   }
 }
 
-it('Chorme HUE MouseClick onChange', async () => {
+it('Chrome HUE MouseClick onChange', async () => {
   const handleChange = jest.fn((color) => color.hexa);
   const {
     container: { firstChild },
-  } = render(<Chorme color="#93BEE699" onChange={handleChange} />);
+  } = render(<Chrome color="#93BEE699" onChange={handleChange} />);
   const elm = firstChild?.lastChild?.previousSibling?.lastChild?.firstChild?.lastChild;
   fireEvent(elm!, new FakeMouseEvent('mousedown', { pageX: 1, pageY: 12 }));
   expect(handleChange).toHaveReturnedWith('#e6939399');
 });
-it('Chorme ALPHA MouseClick onChange', async () => {
+it('Chrome ALPHA MouseClick onChange', async () => {
   const handleChange = jest.fn((color) => color.hexa);
   const {
     container: { firstChild },
-  } = render(<Chorme color="#93BEE699" onChange={handleChange} />);
+  } = render(<Chrome color="#93BEE699" onChange={handleChange} />);
   const elm = firstChild?.lastChild?.previousSibling?.lastChild?.lastChild?.lastChild;
   fireEvent(elm!, new FakeMouseEvent('mousedown', { pageX: 0.3, pageY: 1 }));
   expect(handleChange).toHaveReturnedWith('#93bee6ff');

@@ -1,7 +1,7 @@
 export * from '@uiw/color-convert';
 export * from '@uiw/react-color-alpha';
 export * from '@uiw/react-color-compact';
-export * from '@uiw/react-color-chorme';
+export * from '@uiw/react-color-chrome';
 export * from '@uiw/react-color-colorful';
 export * from '@uiw/react-color-circle';
 export * from '@uiw/react-color-block';
@@ -21,7 +21,7 @@ export * from '@uiw/react-color-wheel';
 export { default as Alpha } from '@uiw/react-color-alpha';
 export { default as Block } from '@uiw/react-color-block';
 export { default as Compact } from '@uiw/react-color-compact';
-export { default as Chorme } from '@uiw/react-color-chorme';
+export { default as Chrome } from '@uiw/react-color-chrome';
 export { default as Colorful } from '@uiw/react-color-colorful';
 export { default as Circle } from '@uiw/react-color-circle';
 export { default as EditableInput } from '@uiw/react-color-editable-input';

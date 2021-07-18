@@ -1,9 +1,9 @@
 {
-  "name": "@uiw/react-color-chorme",
+  "name": "@uiw/react-color-chrome",
   "version": "0.0.31",
   "description": "Color Github Picker",
   "author": "Kenny Wong <wowohoo@qq.com>",
-  "homepage": "https://uiwjs.github.io/react-color/#react-color-chorme",
+  "homepage": "https://uiwjs.github.io/react-color/#react-color-chrome",
   "sideEffects": false,
   "main": "lib/cjs/index.js",
   "module": "lib/esm/index.js",
@@ -14,8 +14,8 @@
   "keywords": [
     "react",
     "react-color",
-    "react-color-chorme",
-    "chorme",
+    "react-color-chrome",
+    "chrome",
     "picker",
     "color",
     "convert"

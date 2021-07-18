@@ -7,7 +7,7 @@ import {
   Colorful,
   Circle,
   Compact,
-  Chorme,
+  Chrome,
   Wheel,
   Swatch,
   Github,
@@ -15,7 +15,6 @@ import {
   Slider,
   EditableInputRGBA,
   EditableInputHSLA,
-  GithubPlacement,
   ShadeSlider,
   EditableInput,
   Material,
@@ -38,7 +37,7 @@ import mdStrCompact from '@uiw/react-color-compact/README.md';
 import mdStrMaterial from '@uiw/react-color-material/README.md';
 import mdStrColorful from '@uiw/react-color-colorful/README.md';
 import mdStrCircle from '@uiw/react-color-circle/README.md';
-import mdStrChorme from '@uiw/react-color-chorme/README.md';
+import mdStrChrome from '@uiw/react-color-chrome/README.md';
 import mdStrWheel from '@uiw/react-color-wheel/README.md';
 import mdStrBlock from '@uiw/react-color-block/README.md';
 import mdStrGithub from '@uiw/react-color-github/README.md';
@@ -64,7 +63,7 @@ let markdownStr = mdStr
   .replace(/<!--react-color-block-->/, mdStrBlock.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-github-->/, mdStrGithub.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-circle-->/, mdStrCircle.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
-  .replace(/<!--react-color-chorme-->/, mdStrChorme.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
+  .replace(/<!--react-color-chrome-->/, mdStrChrome.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-swatch-->/, mdStrSwatch.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-saturation-->/, mdStrSaturation.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-editable-input-->/, mdStrEditableInput.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
@@ -390,13 +389,13 @@ export default function App() {
                 <Title style={{ minWidth: 180 }}>{`<Material color="${hsvaToHex(hsva)}" />`}</Title>
               </div>
               <div style={{ marginLeft: 25 }}>
-                <Chorme
+                <Chrome
                   color={hsva}
                   onChange={(color) => {
                     setHsva({ ...hsva, ...color.hsva });
                   }}
                 />
-                <Title>{`<Chorme color="${hsvaToHex(hsva)}" />`}</Title>
+                <Title>{`<Chrome color="${hsvaToHex(hsva)}" />`}</Title>
               </div>
             </div>
           </div>
