@@ -2,14 +2,20 @@ import React from 'react';
 import EditableInputRGBA, { EditableInputRGBAProps } from '@uiw/react-color-editable-input-rgba';
 import { HslaColor, color as handleColor, hsvaToHsla, hslaToHsva } from '@uiw/color-convert';
 
-export interface EditableInputHSLAProps extends EditableInputRGBAProps {}
+export interface EditableInputHSLAProps extends Omit<EditableInputRGBAProps, 'rProps' | 'gProps' | 'bProps'> {
+  hProps?: EditableInputRGBAProps['gProps'];
+  sProps?: EditableInputRGBAProps['gProps'];
+  lProps?: EditableInputRGBAProps['gProps'];
+  aProps?: EditableInputRGBAProps['aProps'];
+}
+
 const EditableInputHSLA = React.forwardRef<HTMLDivElement, EditableInputHSLAProps>((props, ref) => {
   const {
     prefixCls = 'w-color-editable-input-hsla',
     hsva,
-    rProps = {},
-    gProps = {},
-    bProps = {},
+    hProps = {},
+    sProps = {},
+    lProps = {},
     aProps = {},
     className,
     onChange,
@@ -47,19 +53,19 @@ const EditableInputHSLA = React.forwardRef<HTMLDivElement, EditableInputHSLAProp
       rProps={{
         label: 'H',
         value: Math.round(hsla.h),
-        ...rProps,
+        ...hProps,
         onChange: (evn, val) => handleChange(val, 'h', evn),
       }}
       gProps={{
         label: 'S',
         value: `${Math.round(hsla.s)}%`,
-        ...gProps,
+        ...sProps,
         onChange: (evn, val) => handleChange(val, 's', evn),
       }}
       bProps={{
         label: 'L',
         value: `${Math.round(hsla.l)}%`,
-        ...bProps,
+        ...lProps,
         onChange: (evn, val) => handleChange(val, 'l', evn),
       }}
       aProps={{

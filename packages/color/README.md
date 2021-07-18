@@ -1,6 +1,6 @@
 <div align="center">
   <a title="React Color" href="https://uiwjs.github.io/react-color/">
-    <img src="https://user-images.githubusercontent.com/1680273/126026078-0d3de181-70ff-40e1-84a1-baffbc25df41.png" width="630" alt="@uiw/react-color" />
+    <img src="https://user-images.githubusercontent.com/1680273/126048210-964aa087-8641-428e-a4e4-67cdca812159.png" alt="@uiw/react-color" />
   </a>
 </div>
 
@@ -37,7 +37,7 @@ npm i @uiw/react-color
 [![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?logo=codesandbox)](https://codesandbox.io/embed/react-color-example-rev1n?fontsize=14&hidenavigation=1&theme=dark) [![Open in Github gh-pages](https://img.shields.io/badge/Open%20In-Github%20gh--pages-blue?logo=github)](https://uiwjs.github.io/react-color/)
 
 ```jsx
-import { Slider, Sketch, Material, Colorful, Compact, Circle, Wheel, Block, Github } from '@uiw/react-color';
+import { Slider, Sketch, Material, Colorful, Compact, Circle, Wheel, Block, Github, Chorme } from '@uiw/react-color';
 import { Alpha, Hue, ShadeSlider, Saturation, Interactive, hsvaToHslaString } from '@uiw/react-color';
 import { EditableInput, EditableInputRGBA, EditableInputHSLA } from '@uiw/react-color';
 
@@ -68,6 +68,7 @@ Package | Bundle size(gzip) | Version / unpkg
 [`@uiw/react-color-wheel`](https://uiwjs.github.io/react-color/#react-color-wheel) | [![bundle size](https://img.shields.io/bundlephobia/min/@uiw/react-color-wheel?color=3789D6&label=)](https://bundlephobia.com/package/@uiw/react-color-wheel) [![bundle size(gzip)](https://img.shields.io/bundlephobia/minzip/@uiw/react-color-wheel?color=6ead0a&label=)](https://bundlephobia.com/package/@uiw/react-color-wheel) | [![npm version](https://img.shields.io/npm/v/@uiw/react-color-wheel.svg)](https://www.npmjs.com/package/@uiw/react-color-wheel) [![Open in unpkg](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@uiw/react-color-wheel/file/README.md)
 [`@uiw/react-color-circle`](https://uiwjs.github.io/react-color/#react-color-circle) | [![bundle size](https://img.shields.io/bundlephobia/min/@uiw/react-color-circle?color=3789D6&label=)](https://bundlephobia.com/package/@uiw/react-color-circle) [![bundle size(gzip)](https://img.shields.io/bundlephobia/minzip/@uiw/react-color-circle?color=6ead0a&label=)](https://bundlephobia.com/package/@uiw/react-color-circle) | [![npm version](https://img.shields.io/npm/v/@uiw/react-color-circle.svg)](https://www.npmjs.com/package/@uiw/react-color-circle) [![Open in unpkg](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@uiw/react-color-circle/file/README.md)
 [`@uiw/react-color-block`](https://uiwjs.github.io/react-color/#react-color-block) | [![bundle size](https://img.shields.io/bundlephobia/min/@uiw/react-color-block?color=3789D6&label=)](https://bundlephobia.com/package/@uiw/react-color-block) [![bundle size(gzip)](https://img.shields.io/bundlephobia/minzip/@uiw/react-color-block?color=6ead0a&label=)](https://bundlephobia.com/package/@uiw/react-color-block) | [![npm version](https://img.shields.io/npm/v/@uiw/react-color-block.svg)](https://www.npmjs.com/package/@uiw/react-color-block) [![Open in unpkg](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@uiw/react-color-block/file/README.md)
+[`@uiw/react-color-chorme`](https://uiwjs.github.io/react-color/#react-color-chorme) | [![bundle size](https://img.shields.io/bundlephobia/min/@uiw/react-color-chorme?color=3789D6&label=)](https://bundlephobia.com/package/@uiw/react-color-chorme) [![bundle size(gzip)](https://img.shields.io/bundlephobia/minzip/@uiw/react-color-chorme?color=6ead0a&label=)](https://bundlephobia.com/package/@uiw/react-color-chorme) | [![npm version](https://img.shields.io/npm/v/@uiw/react-color-chorme.svg)](https://www.npmjs.com/package/@uiw/react-color-chorme) [![Open in unpkg](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@uiw/react-color-chorme/file/README.md)
 [`@uiw/react-color-github`](https://uiwjs.github.io/react-color/#react-color-github) | [![bundle size](https://img.shields.io/bundlephobia/min/@uiw/react-color-github?color=3789D6&label=)](https://bundlephobia.com/package/@uiw/react-color-github) [![bundle size(gzip)](https://img.shields.io/bundlephobia/minzip/@uiw/react-color-github?color=6ead0a&label=)](https://bundlephobia.com/package/@uiw/react-color-github) | [![npm version](https://img.shields.io/npm/v/@uiw/react-color-github.svg)](https://www.npmjs.com/package/@uiw/react-color-github) [![Open in unpkg](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@uiw/react-color-github/file/README.md)
 
 #### `Base Components`
@@ -93,6 +94,7 @@ Package | Bundle size(gzip) | Version / unpkg
 <!--react-color-wheel-->
 <!--react-color-block-->
 <!--react-color-github-->
+<!--react-color-chorme-->
 <!--react-color-circle-->
 <!--react-color-swatch-->
 <!--react-color-alpha-->

@@ -126,7 +126,7 @@ it('Converts HSVA to HEX', () => {
 });
 
 it('Converts HSVA to HEXA', () => {
-  expect(hsvaToHexa({ h: 0, s: 0, v: 30.19607843137255, a: 0.4875 })).toBe('#4d4d4d7c');
+  expect(hsvaToHexa({ h: 0, s: 0, v: 30, a: 0.4875 })).toBe('#4d4d4d7c');
   expect(hsvaToHexa({ h: 0, s: 0, v: 100, a: 1 })).toBe('#ffffffff');
   expect(hsvaToHexa({ h: 60, s: 100, v: 100, a: 1 })).toBe('#ffff00ff');
   expect(hsvaToHexa({ h: 0, s: 100, v: 100, a: 1 })).toBe('#ff0000ff');

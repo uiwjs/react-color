@@ -38,7 +38,7 @@ hsvaToHex({ h: 0, s: 0, v: 100, a: 1 }) // => "#ffffff"
 #### `hsvaToHexa`
 
 ```js
-hsvaToHex({ h: 0, s: 0, v: 100, a: 1 }) // => "#ffffff"
+hsvaToHex({ h: 0, s: 0, v: 30, a: 0.4875 }) // => "#4d4d4d7c"
 ```
 
 #### `hsvaToHsla`

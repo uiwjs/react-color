@@ -59,13 +59,23 @@ function Demo() {
 import { ColorResult, HsvaColor } from '@uiw/color-convert';
 
 export type SwatchPresetColor = { color: string; title?: string } | string;
-export interface SwatchProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick' | 'color'> {
+export type SwatchRectRenderProps = {
+  key: string | number;
+  title: string;
+  color: string;
+  checked: boolean;
+  style: React.CSSProperties;
+  onClick: (evn: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+};
+export interface SwatchProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'color'> {
   prefixCls?: string;
   color?: string;
   colors?: SwatchPresetColor[];
   rectProps?: React.HTMLAttributes<HTMLDivElement>;
-  rectRender?: (props: { title: string; color: string; checked: boolean; }) => JSX.Element;
+  rectRender?: (props: SwatchRectRenderProps) => JSX.Element;
   onChange?: (hsva: HsvaColor) => void;
+  addonAfter?: React.ReactNode;
+  addonBefore?: React.ReactNode;
 }
 ```
 

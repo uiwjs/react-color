@@ -37,17 +37,10 @@ it('Saturation', async () => {
 });
 
 it('Saturation onChange', async () => {
-  render(
-    <Saturation
-      title="custom-element"
-      hsva={{ h: 0, s: 0, v: 68, a: 1 }}
-      onChange={(newColor) => {
-        expect(Object.keys(newColor)).toEqual(expect.arrayContaining(['h', 's', 'v', 'a']));
-      }}
-    />,
-  );
-
+  const handleChange = jest.fn((color) => Object.keys(color));
+  render(<Saturation title="custom-element" hsva={{ h: 0, s: 0, v: 68, a: 1 }} onChange={handleChange} />);
   const elm = screen.getByTitle('custom-element');
   elm.focus();
   fireEvent.mouseDown(elm, { clientX: 1 });
+  expect(handleChange).toHaveReturnedWith(['h', 's', 'v', 'a']);
 });
