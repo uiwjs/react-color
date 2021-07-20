@@ -1,0 +1,32 @@
+{
+  "name": "@uiw/react-color-name",
+  "version": "0.0.32",
+  "description": "Color Name to Hex",
+  "author": "Kenny Wong <wowohoo@qq.com>",
+  "homepage": "https://uiwjs.github.io/react-color/#react-color-name",
+  "sideEffects": false,
+  "main": "lib/cjs/index.js",
+  "module": "lib/esm/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uiwjs/react-color.git"
+  },
+  "keywords": [
+    "react",
+    "react-color",
+    "react-color-name",
+    "name",
+    "color",
+    "color-name",
+    "convert"
+  ],
+  "license": "MIT",
+  "files": [
+    "lib",
+    "src"
+  ],
+  "dependencies": {
+    "@babel/runtime": "7.14.6",
+    "@uiw/color-convert": "^0.0.32"
+  }
+}
