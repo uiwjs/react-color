@@ -47,6 +47,7 @@ const Saturation = React.forwardRef<HTMLDivElement, SaturationProps>((props, ref
       style={{
         position: 'absolute',
         inset: 0,
+        cursor: 'crosshair',
         backgroundImage: `linear-gradient(0deg, #000, transparent), linear-gradient(90deg, #fff, hsl(${hsva.h}, 100%, 50%))`,
         ...containerStyle,
       }}
