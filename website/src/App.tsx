@@ -50,6 +50,7 @@ import mdStrAlpha from '@uiw/react-color-alpha/README.md';
 import mdStrHue from '@uiw/react-color-hue/README.md';
 import mdStrShadeSlider from '@uiw/react-color-shade-slider/README.md';
 import mdStrConvert from '@uiw/color-convert/README.md';
+import mdStrColorName from '@uiw/react-color-name/README.md';
 import mdStrDragEventInteractive from '@uiw/react-drag-event-interactive/README.md';
 
 let markdownStr = mdStr
@@ -73,6 +74,7 @@ let markdownStr = mdStr
   .replace(/<!--react-color-hue-->/, mdStrHue.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-color-shade-slider-->/, mdStrShadeSlider.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--color-convert-->/, mdStrConvert.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
+  .replace(/<!--react-color-name-->/, mdStrColorName.replace(/<!--footer-dividing-->([\s\S]*)/, ''))
   .replace(/<!--react-drag-event-interactive-->/, mdStrDragEventInteractive.replace(/<!--footer-dividing-->([\s\S]*)/, ''));
 
 export default function App() {
