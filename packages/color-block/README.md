@@ -3,6 +3,8 @@ React Color Block
 
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@uiw/react-color-block)](https://bundlephobia.com/package/@uiw/react-color-block) [![npm version](https://img.shields.io/npm/v/@uiw/react-color-block.svg)](https://www.npmjs.com/package/@uiw/react-color-block) [![Open in unpkg](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@uiw/react-color-block/file/README.md)
 
+Block is a subcomponent of [**`@react-color`**](https://uiwjs.github.io/react-color).
+
 ![react-color-block](https://user-images.githubusercontent.com/1680273/125902022-0b18f481-2931-441e-b854-79b924b6c190.png)
 
 ## Install

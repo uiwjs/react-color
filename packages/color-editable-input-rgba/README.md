@@ -3,6 +3,8 @@ React Color Editable Input RGBA
 
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@uiw/react-color-editable-input-rgba)](https://bundlephobia.com/package/@uiw/react-color-editable-input-rgba) [![npm version](https://img.shields.io/npm/v/@uiw/react-color-editable-input-rgba.svg)](https://www.npmjs.com/package/@uiw/react-color-editable-input-rgba) [![Open in unpkg](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@uiw/react-color-editable-input-rgba/file/README.md)
 
+EditableInputRGBA Component is a subcomponent of [**`@react-color`**](https://uiwjs.github.io/react-color).
+
 ![react-color-editable-input-rgba](https://user-images.githubusercontent.com/1680273/125950920-96bbfc1e-031a-4ea2-bfa2-28fab4d3c9d3.png)
 
 ## Install

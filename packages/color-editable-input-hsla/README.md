@@ -3,6 +3,8 @@ React Color Editable Input HSLA
 
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@uiw/react-color-editable-input-hsla)](https://bundlephobia.com/package/@uiw/react-color-editable-input-hsla) [![npm version](https://img.shields.io/npm/v/@uiw/react-color-editable-input-hsla.svg)](https://www.npmjs.com/package/@uiw/react-color-editable-input-hsla) [![Open in unpkg](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@uiw/react-color-editable-input-hsla/file/README.md)
 
+EditableInputHSLA Component is a subcomponent of [**`@react-color`**](https://uiwjs.github.io/react-color).
+
 ![react-color-editable-input-rgba](https://user-images.githubusercontent.com/1680273/126024611-516a5174-4cf2-4986-af36-ddc4d3d620bb.png)
 
 ## Install

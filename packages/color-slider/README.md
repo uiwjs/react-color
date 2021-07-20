@@ -3,6 +3,8 @@ React Color Slider
 
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@uiw/react-color-slider)](https://bundlephobia.com/package/@uiw/react-color-slider) [![npm version](https://img.shields.io/npm/v/@uiw/react-color-slider.svg)](https://www.npmjs.com/package/@uiw/react-color-slider) [![Open in unpkg](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@uiw/react-color-slider/file/README.md)
 
+Slider Component is a subcomponent of [**`@react-color`**](https://uiwjs.github.io/react-color).
+
 ![react-color-slider](https://user-images.githubusercontent.com/1680273/125950115-1ef0c47b-e856-481a-b57e-d8168d41872b.png)
 
 ## Install
