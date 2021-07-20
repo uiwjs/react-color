@@ -28,6 +28,7 @@ it('Saturation', async () => {
       width: 200,
       height: 200,
       borderRadius: 0,
+      cursor: 'crosshair',
       inset: 0,
       position: 'relative',
       touchAction: 'none',
