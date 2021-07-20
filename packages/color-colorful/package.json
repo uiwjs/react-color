@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-color-colorful",
-  "version": "0.0.33",
+  "version": "0.0.34",
   "description": "Color Colorful",
   "author": "Kenny Wong <wowohoo@qq.com>",
   "homepage": "https://uiwjs.github.io/react-color/#react-color-colorful",
@@ -31,10 +31,10 @@
   },
   "dependencies": {
     "@babel/runtime": "7.14.6",
-    "@uiw/color-convert": "^0.0.33",
-    "@uiw/react-color-alpha": "^0.0.33",
-    "@uiw/react-color-hue": "^0.0.33",
-    "@uiw/react-color-saturation": "^0.0.33"
+    "@uiw/color-convert": "^0.0.34",
+    "@uiw/react-color-alpha": "^0.0.34",
+    "@uiw/react-color-hue": "^0.0.34",
+    "@uiw/react-color-saturation": "^0.0.34"
   },
   "devDependencies": {
     "@types/react": "17.0.14",
