@@ -83,6 +83,11 @@ export const hsvaToHslaString = (hsva: HsvaColor): string => {
   return `hsla(${h}, ${s}%, ${l}%, ${a})`;
 };
 
+export const hslStringToHsla = (str: string): HslaColor => {
+  const [h, s, l, a] = (str.match(/\d+/g) || []).map(Number);
+  return { h, s, l, a };
+};
+
 export const hslaStringToHsva = (hslString: string): HsvaColor => {
   const matcher =
     /hsla?\(?\s*(-?\d*\.?\d+)(deg|rad|grad|turn)?[,\s]+(-?\d*\.?\d+)%?[,\s]+(-?\d*\.?\d+)%?,?\s*[/\s]*(-?\d*\.?\d+)?(%)?\s*\)?/i;

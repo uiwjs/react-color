@@ -9,7 +9,7 @@ import { hslaToHsl } from '../packages/color-convert/src';
 // HSL string
 import { hsvaToHslString, hslStringToHsva } from '../packages/color-convert/src';
 // HSLA string
-import { hslaStringToHsva } from '../packages/color-convert/src';
+import { hslaStringToHsva, hslStringToHsla } from '../packages/color-convert/src';
 // RGBA
 import { hsvaToRgba, rgbaToHsva, RgbaColor } from '../packages/color-convert/src';
 // RGBA string
@@ -32,6 +32,12 @@ it('Converts color => getContrastingColor', () => {
   expect(getContrastingColor('#fff')).toEqual('#000');
   expect(getContrastingColor(undefined!)).toEqual('#fff');
   expect(getContrastingColor(null!)).toEqual('#fff');
+});
+
+it('Converts color => hslString To Hsl', () => {
+  expect(hslStringToHsla('')).toEqual({ h: undefined, s: undefined, l: undefined, a: undefined });
+  expect(hslStringToHsla('hsl(50, 10%, 10%)')).toEqual({ h: 50, s: 10, l: 10 });
+  expect(hslStringToHsla('hsl(49deg 90% 65% / 39%)')).toEqual({ h: 49, s: 90, l: 65, a: 39 });
 });
 
 it('Converts color => HEX to ColorResult', () => {

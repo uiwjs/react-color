@@ -38,7 +38,9 @@ hsvaToHex({ h: 0, s: 0, v: 100, a: 1 }) // => "#ffffff"
 #### `hsvaToHexa`
 
 ```js
-hsvaToHex({ h: 0, s: 0, v: 30, a: 0.4875 }) // => "#4d4d4d7c"
+hsvaToHexa({ h: 0, s: 0, v: 30, a: 0.4875 }) // => '#4d4d4d7c'
+hsvaToHexa({ h: 0, s: 0, v: 100, a: 1 }) // => '#ffffffff'
+hsvaToHexa({ h: 60, s: 100, v: 100, a: 1 }) // => '#ffff00ff'
 ```
 
 #### `hsvaToHsla`
@@ -50,13 +52,27 @@ hsvaToHsla({ h: 0, s: 0, v: 100, a: 1 }) // => { h: 0, s: 0, l: 100, a: 1 }
 #### `hslaToHsva`
 
 ```js
-hsvaToHsla({ h: 0, s: 0, l: 100, a: 1 }) // => { h: 0, s: 0, v: 100, a: 1 }
+hslaToHsva({ h: 0, s: 100, l: 50, a: 1 }) // => { h: 0, s: 100, v: 100, a: 1 }
+hslaToHsva({ h: 0, s: 0, l: 0, a: 1 }) // => { h: 0, s: 0, v: 0, a: 1 }
+hslaToHsva({ h: 200, s: 25, l: 32, a: 1 }) // => { h: 200, s: 40, v: 40, a: 1 }
+```
+
+#### `hslStringToHsla`
+
+```js
+hslStringToHsla('')
+// => { h: undefined, s: undefined, l: undefined, a: undefined }
+hslStringToHsla('hsl(50, 10%, 10%)')
+// => { h: 50, s: 10, l: 10 }
+hslStringToHsla('hsl(49deg 90% 65% / 39%)')
+// => { h: 49, s: 90, l: 65, a: 39 }
 ```
 
 #### `hsvaToHslString`
 
 ```js
-hsvaToHsla({ h: 200, s: 40, v: 40, a: 1 }) // => hsl(200, 25%, 32%)
+hsvaToHslString({ h: 200, s: 40, v: 40, a: 1 }) // => 'hsl(200, 25%, 32%)'
+hsvaToHslString({ h: 0, s: 0, v: 0, a: 1 }) // => 'hsl(0, 0%, 0%)'
 ```
 
 #### `hslStringToHsva`
@@ -68,13 +84,17 @@ hslStringToHsva('hsl(0, 0%, 100%)') // => { h: 0, s: 0, v: 100, a: 1 }
 #### `hslaStringToHsva`
 
 ```js
-hslStringToHsva('hsla(0deg, 0%, 0%, 0.5)') // => { h: 0, s: 0, v: 0, a: 0.5 }
+hslaStringToHsva('hsla(0deg, 0%, 0%, 0.5)') // => { h: 0, s: 0, v: 0, a: 0.5 }
+hslaStringToHsva('hsla(200, 25%, 32%, 1)') // => { h: 200, s: 40, v: 40, a: 1 }
+hslaStringToHsva('hsla(.5turn 25% 32% / 50%)') // => { h: 180, s: 40, v: 40, a: 0.5 }
 ```
 
 #### `hsvaToRgba`
 
 ```js
-hslStringToHsva({ h: 0, s: 0, v: 100, a: 1 }) // => { r: 255, g: 255, b: 255, a: 1 }
+hsvaToRgba({ h: 0, s: 0, v: 100, a: 1 }) //=> { r: 255, g: 255, b: 255, a: 1 }
+hsvaToRgba({ h: 128, s: 0, v: 100, a: 1 }) //=> { r: 255, g: 255, b: 255, a: 1 }
+hsvaToRgba({ h: 0, s: 100, v: 100, a: 0.567 }) //=> { r: 255, g: 0, b: 0, a: 0.567 }
 ```
 
 #### `rgbaToHsva`
@@ -122,7 +142,9 @@ hsvaToHsvString({ h: 0, s: 0, v: 100, a: 1 }) // => hsv(0, 0%, 100%)
 #### `hsvStringToHsva`
 
 ```js
-hsvaToHsvString('hsva(0, 11%, 0, 0.5)') // => { h: 0, s: 11, v: 0, a: 0.5 }
+hsvStringToHsva('hsv(0, 11%, 0%)') //=> { h: 0, s: 11, v: 0, a: 1, }
+hsvStringToHsva('hsv(90deg 20% 10%)') //=> { h: 90, s: 20, v: 10, a: 1, }
+hsvStringToHsva('hsv(100grad 20% 10%)') //=> { h: 90, s: 20, v: 10, a: 1, }
 ```
 
 #### `rgbaToRgb`
@@ -131,7 +153,7 @@ hsvaToHsvString('hsva(0, 11%, 0, 0.5)') // => { h: 0, s: 11, v: 0, a: 0.5 }
 rgbaToRgb({ r: 0, g: 0, b: 0, a: 1 }) //=> { r: 0, g: 0, b: 0 }
 ```
 
-#### `rgbaToRgb`
+#### `hslaToHsl`
 
 ```js
 hslaToHsl({ h: 0, s: 0, l: 0, a: 1 }) //=> { h: 0, s: 0, l: 0 }
