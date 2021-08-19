@@ -42,7 +42,7 @@
   "devDependencies": {
     "@kkt/less-modules": "6.10.4",
     "@kkt/raw-modules": "6.10.4",
-    "@types/react": "17.0.14",
+    "@types/react": "17.0.19",
     "@types/react-dom": "17.0.9",
     "@uiw/react-github-corners": "1.4.0",
     "kkt": "6.10.4"
