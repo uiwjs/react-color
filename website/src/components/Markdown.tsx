@@ -52,6 +52,13 @@ export default class Markdown extends Component<MarkdownProps, MarkdownState> {
           <a href="https://www.npmjs.com/package/@uiw/react-color" target="__blank">
             <img src="https://img.shields.io/npm/v/@uiw/react-color.svg" alt="npm" />
           </a>
+          <p>
+            Copyright © 2021{' '}
+            <a href="https://github.com/uiwjs" target="__blank">
+              uiwjs
+            </a>
+            . All rights reserved.
+          </p>
         </div>
       </div>
     );
