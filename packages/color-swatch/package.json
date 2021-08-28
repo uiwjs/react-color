@@ -29,7 +29,7 @@
     "react-dom": ">=16.9.0"
   },
   "dependencies": {
-    "@babel/runtime": "7.14.6",
+    "@babel/runtime": "7.15.3",
     "@uiw/color-convert": "^0.1.0"
   },
   "devDependencies": {
