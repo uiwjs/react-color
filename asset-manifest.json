@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/static/css/main.7a9598a0.chunk.css",
-    "main.js": "/static/js/main.802153a9.chunk.js",
-    "main.js.map": "/static/js/main.802153a9.chunk.js.map",
-    "react-vendor.js": "/static/js/react-vendor.d4206c32.chunk.js",
-    "react-vendor.js.map": "/static/js/react-vendor.d4206c32.chunk.js.map",
+    "main.js": "/static/js/main.64991870.chunk.js",
+    "main.js.map": "/static/js/main.64991870.chunk.js.map",
+    "react-vendor.js": "/static/js/react-vendor.92ff3d44.chunk.js",
+    "react-vendor.js.map": "/static/js/react-vendor.92ff3d44.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.5ec8a209.js",
     "runtime-main.js.map": "/static/js/runtime-main.5ec8a209.js.map",
     "index.html": "/index.html",
     "static/css/main.7a9598a0.chunk.css.map": "/static/css/main.7a9598a0.chunk.css.map",
-    "static/js/main.802153a9.chunk.js.LICENSE.txt": "/static/js/main.802153a9.chunk.js.LICENSE.txt",
-    "static/js/react-vendor.d4206c32.chunk.js.LICENSE.txt": "/static/js/react-vendor.d4206c32.chunk.js.LICENSE.txt",
+    "static/js/main.64991870.chunk.js.LICENSE.txt": "/static/js/main.64991870.chunk.js.LICENSE.txt",
+    "static/js/react-vendor.92ff3d44.chunk.js.LICENSE.txt": "/static/js/react-vendor.92ff3d44.chunk.js.LICENSE.txt",
     "static/media/logo.6ce24c58.svg": "/static/media/logo.6ce24c58.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.5ec8a209.js",
-    "static/js/react-vendor.d4206c32.chunk.js",
+    "static/js/react-vendor.92ff3d44.chunk.js",
     "static/css/main.7a9598a0.chunk.css",
-    "static/js/main.802153a9.chunk.js"
+    "static/js/main.64991870.chunk.js"
   ]
 }
