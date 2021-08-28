@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-color-alpha",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Color alpha",
   "author": "Kenny Wong <wowohoo@qq.com>",
   "homepage": "https://uiwjs.github.io/react-color/#react-color-alpha",
@@ -30,8 +30,8 @@
   },
   "dependencies": {
     "@babel/runtime": "7.15.3",
-    "@uiw/color-convert": "^0.1.0",
-    "@uiw/react-drag-event-interactive": "^0.1.0"
+    "@uiw/color-convert": "^1.0.0",
+    "@uiw/react-drag-event-interactive": "^1.0.0"
   },
   "devDependencies": {
     "@types/react": "17.0.19",

@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-color-compact",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Color Compact component for React.",
   "homepage": "https://uiwjs.github.io/react-color/#react-color-compact",
   "author": "Kenny Wong <wowohoo@qq.com>",
@@ -30,10 +30,10 @@
   },
   "dependencies": {
     "@babel/runtime": "7.15.3",
-    "@uiw/color-convert": "^0.1.0",
-    "@uiw/react-color-editable-input": "^0.1.0",
-    "@uiw/react-color-editable-input-rgba": "^0.1.0",
-    "@uiw/react-color-swatch": "^0.1.0"
+    "@uiw/color-convert": "^1.0.0",
+    "@uiw/react-color-editable-input": "^1.0.0",
+    "@uiw/react-color-editable-input-rgba": "^1.0.0",
+    "@uiw/react-color-swatch": "^1.0.0"
   },
   "devDependencies": {
     "@types/react": "17.0.19",
