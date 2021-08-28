@@ -8,7 +8,7 @@
     "static/css/2.8406ffd3.chunk.css": "/static/css/2.8406ffd3.chunk.css",
     "static/js/2.0caadb50.chunk.js": "/static/js/2.0caadb50.chunk.js",
     "static/js/2.0caadb50.chunk.js.map": "/static/js/2.0caadb50.chunk.js.map",
-    "main.css": "/static/css/main.8262c182.chunk.css",
+    "main.css": "/static/css/main.12b269de.chunk.css",
     "main.js": "/static/js/main.487c5d60.chunk.js",
     "main.js.map": "/static/js/main.487c5d60.chunk.js.map",
     "react-vendor.js": "/static/js/react-vendor.93569ab1.chunk.js",
@@ -148,7 +148,7 @@
     "static/css/7.8406ffd3.chunk.css.map": "/static/css/7.8406ffd3.chunk.css.map",
     "static/css/8.8406ffd3.chunk.css.map": "/static/css/8.8406ffd3.chunk.css.map",
     "static/css/9.8406ffd3.chunk.css.map": "/static/css/9.8406ffd3.chunk.css.map",
-    "static/css/main.8262c182.chunk.css.map": "/static/css/main.8262c182.chunk.css.map",
+    "static/css/main.12b269de.chunk.css.map": "/static/css/main.12b269de.chunk.css.map",
     "static/js/1.0b068677.chunk.js.LICENSE.txt": "/static/js/1.0b068677.chunk.js.LICENSE.txt",
     "static/js/main.487c5d60.chunk.js.LICENSE.txt": "/static/js/main.487c5d60.chunk.js.LICENSE.txt",
     "static/js/prismjs-vendor.3733ea97.chunk.js.LICENSE.txt": "/static/js/prismjs-vendor.3733ea97.chunk.js.LICENSE.txt",
@@ -158,7 +158,7 @@
   "entrypoints": [
     "static/js/runtime-main.5ed6a3e7.js",
     "static/js/react-vendor.93569ab1.chunk.js",
-    "static/css/main.8262c182.chunk.css",
+    "static/css/main.12b269de.chunk.css",
     "static/js/main.487c5d60.chunk.js"
   ]
 }
