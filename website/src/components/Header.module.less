@@ -1,0 +1,48 @@
+.header {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 21px 0;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  a {
+    margin: 6px 10px;
+    padding: 4px 10px;
+    background-color: #e6e6e6;
+    box-shadow: rgb(0 0 0 / 15%) 0px 3px 12px;
+    border-radius: 3px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    color: #333;
+    &.comps {
+      background: #10b316;
+      color: white !important;
+    }
+    &:global(.active) {
+      color: white;
+      background: #333 !important;
+    }
+    svg {
+      margin-right: 5px;
+    }
+  }
+}
+
+.warpper {
+  backdrop-filter: saturate(180%) blur(0.4rem);
+  background-color: hsla(0, 0%, 100%, 0.75);
+}
+
+.logo {
+  text-align: center;
+  font-size: 124px;
+  padding: 100px 0 32px 0;
+}
+
+.detail {
+  text-align: center;
+  max-width: 560px;
+  margin: 0 auto;
+}

@@ -87,28 +87,6 @@ Package | Bundle size(gzip) | Version / unpkg
 [`@uiw/color-convert`](https://uiwjs.github.io/react-color/#color-convert) | [![bundle size](https://img.shields.io/bundlephobia/min/@uiw/color-convert?color=3789D6&label=)](https://bundlephobia.com/package/@uiw/color-convert) [![bundle size(gzip)](https://img.shields.io/bundlephobia/minzip/@uiw/color-convert?color=6ead0a&label=)](https://bundlephobia.com/package/@uiw/color-convert) | [![npm version](https://img.shields.io/npm/v/@uiw/color-convert.svg)](https://www.npmjs.com/package/@uiw/color-convert) [![Open in unpkg](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@uiw/color-convert/file/README.md)
 [`@uiw/react-color-name`](https://uiwjs.github.io/react-color/#react-color-name) | [![bundle size](https://img.shields.io/bundlephobia/min/@uiw/react-color-name?color=3789D6&label=)](https://bundlephobia.com/package/@uiw/react-color-name) [![bundle size(gzip)](https://img.shields.io/bundlephobia/minzip/@uiw/react-color-name?color=6ead0a&label=)](https://bundlephobia.com/package/@uiw/react-color-name) | [![npm version](https://img.shields.io/npm/v/@uiw/react-color-name.svg)](https://www.npmjs.com/package/@uiw/react-color-name) [![Open in unpkg](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@uiw/react-color-name/file/README.md)
 
-<!--react-color-sketch-->
-<!--react-color-slider-->
-<!--react-color-compact-->
-<!--react-color-material-->
-<!--react-color-colorful-->
-<!--react-color-wheel-->
-<!--react-color-block-->
-<!--react-color-github-->
-<!--react-color-chrome-->
-<!--react-color-circle-->
-<!--react-color-swatch-->
-<!--react-color-alpha-->
-<!--react-color-hue-->
-<!--react-color-saturation-->
-<!--react-color-shade-slider-->
-<!--react-color-editable-input-->
-<!--react-color-editable-input-rgba-->
-<!--react-color-editable-input-hsla-->
-<!--react-drag-event-interactive-->
-<!--color-convert-->
-<!--react-color-name-->
-
 ## License
 
 Licensed under the MIT License.

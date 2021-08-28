@@ -23,8 +23,8 @@ function Demo() {
   return (
     <Slider
       color={hsva}
-      onChange={(newShade) => {
-        setHsva({ ...hsva, ...newShade });
+      onChange={(color) => {
+        setHsva({ ...hsva, ...color.hsv });
       }}
     />
   );
