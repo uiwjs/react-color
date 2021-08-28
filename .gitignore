@@ -1,4 +1,5 @@
 build
+esm
 lib
 coverage
 node_modules

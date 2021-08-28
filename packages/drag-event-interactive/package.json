@@ -5,8 +5,8 @@
   "homepage": "https://uiwjs.github.io/react-color/#react-drag-event-interactive",
   "sideEffects": false,
   "author": "Kenny Wong <wowohoo@qq.com>",
-  "main": "lib/cjs/index.js",
-  "module": "lib/esm/index.js",
+  "main": "lib/index.js",
+  "module": "esm/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/uiwjs/react-color.git"
