@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-color-swatch",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Color swatch component for React.",
   "homepage": "https://uiwjs.github.io/react-color/#react-color-swatch",
   "author": "Kenny Wong <wowohoo@qq.com>",
