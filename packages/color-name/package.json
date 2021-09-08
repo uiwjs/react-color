@@ -26,7 +26,7 @@
     "src"
   ],
   "dependencies": {
-    "@babel/runtime": "7.15.3",
+    "@babel/runtime": "7.15.4",
     "@uiw/color-convert": "^1.0.0"
   }
 }
