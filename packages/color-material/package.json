@@ -5,7 +5,7 @@
   "author": "Kenny Wong <wowohoo@qq.com>",
   "homepage": "https://uiwjs.github.io/react-color/#react-color-material",
   "sideEffects": false,
-  "main": "lib/index.js",
+  "main": "cjs/index.js",
   "module": "esm/index.js",
   "repository": {
     "type": "git",
