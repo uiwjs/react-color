@@ -20,7 +20,8 @@
   ],
   "license": "MIT",
   "files": [
-    "lib",
+    "esm",
+    "cjs",
     "src"
   ],
   "peerDependencies": {

@@ -1,5 +1,6 @@
 build
 esm
+cjs
 lib
 coverage
 node_modules

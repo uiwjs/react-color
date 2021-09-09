@@ -1,9 +1,8 @@
 {
   "extends": "../../tsconfig",
-  "include": ["src/**/*"],
+  "include": ["./src"],
   "compilerOptions": {
-    "jsx": "react",
-    "baseUrl": "./",
+    "outDir": "./cjs",
     "emitDeclarationOnly": true,
     "noEmit": false
   }
