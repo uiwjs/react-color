@@ -38,7 +38,7 @@ export default class Markdown extends Component<MarkdownProps, MarkdownState> {
             <img src="https://img.shields.io/badge/Open%20in-unpkg-blue" alt="Open in unpkg" />
           </a>
           <a href="https://github.com/uiwjs/react-color/issues" target="__blank">
-            <img src="https://img.shields.io/github/issues/uiwjs/react-color.svg" alt="Github Issues" />
+            <img src="https://img.shields.io/github/issues/uiwjs/react-color" alt="Github Issues" />
           </a>
           <a href="https://github.com/uiwjs/react-color/stargazers" target="__blank">
             <img src="https://img.shields.io/github/stars/uiwjs/react-color.svg" alt="Github Stars" />
