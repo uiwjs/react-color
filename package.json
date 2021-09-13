@@ -16,7 +16,7 @@
     "clean": "lerna clean",
     "prepare": "husky install",
     "publish": "lerna publish from-package --yes --no-verify-access",
-    "version": "lerna version --no-changelog --no-push --no-git-tag-version --yes",
+    "version": "lerna version --exact --force-publish --no-push --no-git-tag-version",
     "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'"
   },
   "lint-staged": {
