@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-color-editable-input-rgba",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Color Editable Input RGBA",
   "author": "Kenny Wong <wowohoo@qq.com>",
   "homepage": "https://uiwjs.github.io/react-color/#react-color-editable-input-rgba",
@@ -34,8 +34,8 @@
   },
   "dependencies": {
     "@babel/runtime": "7.15.4",
-    "@uiw/color-convert": "1.0.3",
-    "@uiw/react-color-editable-input": "1.0.3"
+    "@uiw/color-convert": "1.0.4",
+    "@uiw/react-color-editable-input": "1.0.4"
   },
   "devDependencies": {
     "@types/react": "17.0.20",
