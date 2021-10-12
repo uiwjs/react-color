@@ -5,7 +5,7 @@ React Color Colorful
 
 Colorful Component is a subcomponent of [**`@react-color`**](https://uiwjs.github.io/react-color).
 
-![react-color-colorful](https://user-images.githubusercontent.com/1680273/125949419-cdcac5cb-f5a9-47af-956f-4056630503c9.png)
+[![react-color-colorful](https://user-images.githubusercontent.com/1680273/125949419-cdcac5cb-f5a9-47af-956f-4056630503c9.png)](https://uiwjs.github.io/react-color/#colorful)
 
 ## Install
 

@@ -2,7 +2,7 @@
   "name": "@uiw/react-color-compact",
   "version": "1.0.4",
   "description": "Color Compact component for React.",
-  "homepage": "https://uiwjs.github.io/react-color/#react-color-compact",
+  "homepage": "https://uiwjs.github.io/react-color/#compact",
   "author": "Kenny Wong <wowohoo@qq.com>",
   "sideEffects": false,
   "main": "cjs/index.js",

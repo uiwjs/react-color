@@ -5,7 +5,7 @@ React Color Editable Input HSLA
 
 EditableInputHSLA Component is a subcomponent of [**`@react-color`**](https://uiwjs.github.io/react-color).
 
-![react-color-editable-input-rgba](https://user-images.githubusercontent.com/1680273/126024611-516a5174-4cf2-4986-af36-ddc4d3d620bb.png)
+[![react-color-editable-input-rgba](https://user-images.githubusercontent.com/1680273/126024611-516a5174-4cf2-4986-af36-ddc4d3d620bb.png)](https://uiwjs.github.io/react-color/#editable-input-hsla)
 
 ## Install
 

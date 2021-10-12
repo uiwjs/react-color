@@ -5,7 +5,7 @@ React Color Shade Slider
 
 ShadeSlider Component is a subcomponent of [**`@react-color`**](https://uiwjs.github.io/react-color).
 
-![react-color-shade-slider](https://user-images.githubusercontent.com/1680273/125951397-89e90c05-1de2-4da7-81ed-4b77980482a0.png)
+[![react-color-shade-slider](https://user-images.githubusercontent.com/1680273/125951397-89e90c05-1de2-4da7-81ed-4b77980482a0.png)](https://uiwjs.github.io/react-color/#shade-slider)
 
 ## Install
 

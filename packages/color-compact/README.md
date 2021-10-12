@@ -5,7 +5,7 @@ React Color Compact
 
 Compact Component is a subcomponent of [**`@react-color`**](https://uiwjs.github.io/react-color).
 
-![react-color-compact](https://user-images.githubusercontent.com/1680273/125949911-bb919f60-2bf3-487b-9aad-5aef82bcd5ed.png)
+[![react-color-compact](https://user-images.githubusercontent.com/1680273/125949911-bb919f60-2bf3-487b-9aad-5aef82bcd5ed.png)](https://uiwjs.github.io/react-color/#compact)
 
 ## Install
 

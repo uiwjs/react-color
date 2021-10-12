@@ -3,7 +3,7 @@
   "version": "1.0.4",
   "description": "Color Block Picker",
   "author": "Kenny Wong <wowohoo@qq.com>",
-  "homepage": "https://uiwjs.github.io/react-color/#react-color-block",
+  "homepage": "https://uiwjs.github.io/react-color/#block",
   "sideEffects": false,
   "main": "cjs/index.js",
   "module": "esm/index.js",

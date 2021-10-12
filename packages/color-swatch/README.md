@@ -5,7 +5,7 @@ React Color Swatch
 
 Swatch Component is a subcomponent of [**`@react-color`**](https://uiwjs.github.io/react-color).
 
-![react-color-swatch](https://user-images.githubusercontent.com/1680273/125950289-f965e6c2-c21f-4b5c-a05c-a27aa07e738f.png)
+[![react-color-swatch](https://user-images.githubusercontent.com/1680273/125950289-f965e6c2-c21f-4b5c-a05c-a27aa07e738f.png)](https://uiwjs.github.io/react-color/#swatch)
 
 ## Install
 

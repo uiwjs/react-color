@@ -5,7 +5,7 @@ React Color Slider
 
 Slider Component is a subcomponent of [**`@react-color`**](https://uiwjs.github.io/react-color).
 
-![react-color-slider](https://user-images.githubusercontent.com/1680273/125950115-1ef0c47b-e856-481a-b57e-d8168d41872b.png)
+[![react-color-slider](https://user-images.githubusercontent.com/1680273/125950115-1ef0c47b-e856-481a-b57e-d8168d41872b.png)](https://uiwjs.github.io/react-color/#slider)
 
 ## Install
 

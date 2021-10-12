@@ -5,7 +5,7 @@ React Color Alpha
 
 Alpha is a subcomponent of [**`@react-color`**](https://uiwjs.github.io/react-color).
 
-![react-color-alpha](https://user-images.githubusercontent.com/1680273/125951872-e44340be-8406-4c80-8037-0c22d63708ee.png)
+[![react-color-alpha](https://user-images.githubusercontent.com/1680273/125951872-e44340be-8406-4c80-8037-0c22d63708ee.png)](https://uiwjs.github.io/react-color/#alpha)
 
 ## Install
 

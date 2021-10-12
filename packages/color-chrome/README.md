@@ -5,7 +5,9 @@ React Color Chrome
 
 Chrome Component is a subcomponent of [**`@react-color`**](https://uiwjs.github.io/react-color).
 
-<img src="https://user-images.githubusercontent.com/1680273/126048126-172abdc2-f7cf-4519-8974-f815c102e2de.png" width="210" alt="react-color-chrome" />
+<a href="https://uiwjs.github.io/react-color/#chrome">
+  <img src="https://user-images.githubusercontent.com/1680273/126048126-172abdc2-f7cf-4519-8974-f815c102e2de.png" width="210" alt="react-color-chrome" />
+</a>
 
 ## Install
 

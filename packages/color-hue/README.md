@@ -5,7 +5,7 @@ React Color Hue
 
 Hue Component is a subcomponent of [**`@react-color`**](https://uiwjs.github.io/react-color).
 
-![react-color-hue](https://user-images.githubusercontent.com/1680273/125951739-e38dad1a-5d11-4e4b-a146-3365bd0d98fb.png)
+[![react-color-hue](https://user-images.githubusercontent.com/1680273/125951739-e38dad1a-5d11-4e4b-a146-3365bd0d98fb.png)](https://uiwjs.github.io/react-color/#github)
 
 ## Install
 

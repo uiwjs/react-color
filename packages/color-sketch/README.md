@@ -5,7 +5,7 @@ React Color Sketch
 
 Sketch Component is a subcomponent of [**`@react-color`**](https://uiwjs.github.io/react-color).
 
-![react-color-sketch](https://user-images.githubusercontent.com/1680273/125952146-290199b4-8810-4552-944b-3ee673fb4350.png)
+[![react-color-sketch](https://user-images.githubusercontent.com/1680273/125952146-290199b4-8810-4552-944b-3ee673fb4350.png)](https://uiwjs.github.io/react-color/#sketch)
 
 ## Install
 

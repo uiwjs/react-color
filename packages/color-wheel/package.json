@@ -3,7 +3,7 @@
   "version": "1.0.4",
   "description": "Color wheel",
   "author": "Kenny Wong <wowohoo@qq.com>",
-  "homepage": "https://uiwjs.github.io/react-color/#react-color-wheel",
+  "homepage": "https://uiwjs.github.io/react-color/#wheel",
   "sideEffects": false,
   "main": "cjs/index.js",
   "module": "esm/index.js",

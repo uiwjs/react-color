@@ -5,7 +5,7 @@ React Color Github
 
 Github Component is a subcomponent of [**`@react-color`**](https://uiwjs.github.io/react-color).
 
-![react-color-github](https://user-images.githubusercontent.com/1680273/125949553-67c1adef-b37f-43e2-9414-3ffb77c26ba0.png)
+[![react-color-github](https://user-images.githubusercontent.com/1680273/125949553-67c1adef-b37f-43e2-9414-3ffb77c26ba0.png)](https://uiwjs.github.io/react-color/#github)
 
 ## Install
 

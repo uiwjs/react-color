@@ -5,7 +5,7 @@ React Color Swatch
 
 Circle Component is a subcomponent of [**`@react-color`**](https://uiwjs.github.io/react-color).
 
-![react-color-circle](https://user-images.githubusercontent.com/1680273/125948967-87e1d2eb-ed51-46c8-9378-9bf964b093ea.png)
+[![react-color-circle](https://user-images.githubusercontent.com/1680273/125948967-87e1d2eb-ed51-46c8-9378-9bf964b093ea.png)](https://uiwjs.github.io/react-color/#circle)
 
 ## Install
 
