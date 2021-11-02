@@ -39,7 +39,7 @@
     ]
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "5.14.1",
+    "@testing-library/jest-dom": "5.15.0",
     "lint-staged": "11.2.3",
     "lerna": "4.0.0",
     "husky": "7.0.2",
