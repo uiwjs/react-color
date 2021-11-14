@@ -8,7 +8,7 @@ import { routes } from '../../router';
 import Header from '../../components/Header';
 
 const Loading = (
-  <div style={{ padding: 30 }}>
+  <div style={{ padding: 30, textAlign: 'center' }}>
     <Loader tip="loading..." />
   </div>
 );
@@ -20,47 +20,24 @@ export default function Root() {
       <div style={{ backgroundColor: hsvaToHslaString(hsva), transition: 'background-color 0.3s ease 0s', minHeight: '100%' }}>
         <GitHubCorners fixed zIndex={99} size={60} target="__blank" href="https://github.com/uiwjs/react-color" />
         <Header menus={routes} />
-        <Suspense
-          fallback={
-            <div style={{ padding: 30, textAlign: 'center' }}>
-              <Loader tip="loading..." />
-            </div>
-          }
-        >
-          <Routes>
-            {routes.map(({ component: Child, path }, idx) => {
-              // @ts-ignore
-              const Com = Child as any;
-              return (
-                <Route
-                  key={idx}
-                  path={path}
-                  element={
-                    <Suspense fallback={Loading}>
-                      <Com />
-                    </Suspense>
-                  }
-                />
-              );
-              // if (route.divider) {
-              //   return null;
-              // }
-              // return <RouteWithSubRoutes key={idx} {...route} />;
-            })}
-          </Routes>
-        </Suspense>
+        <Routes>
+          {routes.map(({ component: Child, path }, idx) => {
+            // @ts-ignore
+            const Com = Child as any;
+            return (
+              <Route
+                key={idx}
+                path={path}
+                element={
+                  <Suspense fallback={Loading}>
+                    <Com />
+                  </Suspense>
+                }
+              />
+            );
+          })}
+        </Routes>
       </div>
     </HashRouter>
   );
 }
-
-// function RouteWithSubRoutes(route: any) {
-//   return (
-//     <Route
-//       path={route.path}
-//       render={(props) => {
-//         return <route.component {...props} routes={route.routes} />;
-//       }}
-//     />
-//   );
-// }
