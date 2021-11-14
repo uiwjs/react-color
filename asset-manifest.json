@@ -9,8 +9,8 @@
     "static/js/2.cdd5c619.chunk.js": "/static/js/2.cdd5c619.chunk.js",
     "static/js/2.cdd5c619.chunk.js.map": "/static/js/2.cdd5c619.chunk.js.map",
     "main.css": "/static/css/main.3908dae2.chunk.css",
-    "main.js": "/static/js/main.04912fb1.chunk.js",
-    "main.js.map": "/static/js/main.04912fb1.chunk.js.map",
+    "main.js": "/static/js/main.97da2f3e.chunk.js",
+    "main.js.map": "/static/js/main.97da2f3e.chunk.js.map",
     "react-vendor.js": "/static/js/react-vendor.ea3a50e7.chunk.js",
     "react-vendor.js.map": "/static/js/react-vendor.ea3a50e7.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.62e371cb.js",
@@ -150,7 +150,7 @@
     "static/css/9.8406ffd3.chunk.css.map": "/static/css/9.8406ffd3.chunk.css.map",
     "static/css/main.3908dae2.chunk.css.map": "/static/css/main.3908dae2.chunk.css.map",
     "static/js/1.c8161fec.chunk.js.LICENSE.txt": "/static/js/1.c8161fec.chunk.js.LICENSE.txt",
-    "static/js/main.04912fb1.chunk.js.LICENSE.txt": "/static/js/main.04912fb1.chunk.js.LICENSE.txt",
+    "static/js/main.97da2f3e.chunk.js.LICENSE.txt": "/static/js/main.97da2f3e.chunk.js.LICENSE.txt",
     "static/js/prismjs-vendor.fdc1fffa.chunk.js.LICENSE.txt": "/static/js/prismjs-vendor.fdc1fffa.chunk.js.LICENSE.txt",
     "static/js/react-vendor.ea3a50e7.chunk.js.LICENSE.txt": "/static/js/react-vendor.ea3a50e7.chunk.js.LICENSE.txt",
     "static/media/home.7d51f25c.svg": "/static/media/home.7d51f25c.svg"
@@ -159,6 +159,6 @@
     "static/js/runtime-main.62e371cb.js",
     "static/js/react-vendor.ea3a50e7.chunk.js",
     "static/css/main.3908dae2.chunk.css",
-    "static/js/main.04912fb1.chunk.js"
+    "static/js/main.97da2f3e.chunk.js"
   ]
 }
