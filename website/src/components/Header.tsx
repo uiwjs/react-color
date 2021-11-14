@@ -22,7 +22,7 @@ export default function Header(props: HeaderProps) {
             return null;
           }
           return (
-            <NavLink exact strict key={idx} to={item.path} className={item.isComp ? styles.comps : ''}>
+            <NavLink key={idx} to={item.path} className={item.isComp ? styles.comps : ''}>
               {item.path === '/' && <Home />}
               <span>{item.label}</span>
             </NavLink>

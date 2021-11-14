@@ -2,10 +2,16 @@ import { Suspense, useContext } from 'react';
 import GitHubCorners from '@uiw/react-github-corners';
 import Loader from '@uiw/react-loader';
 import { hsvaToHslaString } from '@uiw/react-color';
-import { HashRouter, Switch, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { Context } from '../../Store';
 import { routes } from '../../router';
 import Header from '../../components/Header';
+
+const Loading = (
+  <div style={{ padding: 30 }}>
+    <Loader tip="loading..." />
+  </div>
+);
 
 export default function Root() {
   const { hsva } = useContext(Context);
@@ -21,27 +27,40 @@ export default function Root() {
             </div>
           }
         >
-          <Switch>
-            {routes.map((route, idx) => {
-              if (route.divider) {
-                return null;
-              }
-              return <RouteWithSubRoutes key={idx} {...route} />;
+          <Routes>
+            {routes.map(({ component: Child, path }, idx) => {
+              // @ts-ignore
+              const Com = Child as any;
+              return (
+                <Route
+                  key={idx}
+                  path={path}
+                  element={
+                    <Suspense fallback={Loading}>
+                      <Com />
+                    </Suspense>
+                  }
+                />
+              );
+              // if (route.divider) {
+              //   return null;
+              // }
+              // return <RouteWithSubRoutes key={idx} {...route} />;
             })}
-          </Switch>
+          </Routes>
         </Suspense>
       </div>
     </HashRouter>
   );
 }
 
-function RouteWithSubRoutes(route: any) {
-  return (
-    <Route
-      path={route.path}
-      render={(props) => {
-        return <route.component {...props} routes={route.routes} />;
-      }}
-    />
-  );
-}
+// function RouteWithSubRoutes(route: any) {
+//   return (
+//     <Route
+//       path={route.path}
+//       render={(props) => {
+//         return <route.component {...props} routes={route.routes} />;
+//       }}
+//     />
+//   );
+// }
