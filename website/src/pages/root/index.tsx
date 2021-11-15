@@ -24,6 +24,7 @@ export default function Root() {
           {routes.map(({ component: Child, path }, idx) => {
             // @ts-ignore
             const Com = Child as any;
+            if (!Com) return null;
             return (
               <Route
                 key={idx}
