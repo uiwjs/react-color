@@ -9,7 +9,7 @@ import Header from '../../components/Header';
 
 const Loading = (
   <div style={{ padding: 30, textAlign: 'center' }}>
-    <Loader tip="loading..." />
+    <Loader tip="loading..." style={{ backgroundColor: '#ffffff85', padding: '10px 30px' }} />
   </div>
 );
 
