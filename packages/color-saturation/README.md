@@ -5,7 +5,7 @@ React Color Saturation
 
 Saturation Component is a subcomponent of [**`@react-color`**](https://uiwjs.github.io/react-color).
 
-[![react-color-saturation](https://user-images.githubusercontent.com/1680273/125951532-ee5bb5df-1d1f-43ed-a4be-e7e8818bf897.png)](https://uiwjs.github.io/react-color/#saturation)
+[![react-color-saturation](https://user-images.githubusercontent.com/1680273/125951532-ee5bb5df-1d1f-43ed-a4be-e7e8818bf897.png)](https://uiwjs.github.io/react-color/#/saturation)
 
 ## Install
 

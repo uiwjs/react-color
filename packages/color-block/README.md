@@ -5,7 +5,7 @@ React Color Block
 
 Block is a subcomponent of [**`@react-color`**](https://uiwjs.github.io/react-color).
 
-[![react-color-block](https://user-images.githubusercontent.com/1680273/125902022-0b18f481-2931-441e-b854-79b924b6c190.png)](https://uiwjs.github.io/react-color/#block)
+[![react-color-block](https://user-images.githubusercontent.com/1680273/125902022-0b18f481-2931-441e-b854-79b924b6c190.png)](https://uiwjs.github.io/react-color/#/block)
 
 ## Install
 

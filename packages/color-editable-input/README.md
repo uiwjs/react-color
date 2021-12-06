@@ -5,7 +5,7 @@ React Color Editable Input
 
 EditableInput Component is a subcomponent of [**`@react-color`**](https://uiwjs.github.io/react-color).
 
-[![editable-input](https://user-images.githubusercontent.com/1680273/125950802-3feb68a9-23ca-4395-9477-72ade831dc0b.png)](https://uiwjs.github.io/react-color/#editable-input)
+[![editable-input](https://user-images.githubusercontent.com/1680273/125950802-3feb68a9-23ca-4395-9477-72ade831dc0b.png)](https://uiwjs.github.io/react-color/#/editable-input)
 
 ## Install
 

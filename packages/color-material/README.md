@@ -5,7 +5,7 @@ React Color Material
 
 Material Component is a subcomponent of [**`@react-color`**](https://uiwjs.github.io/react-color).
 
-[![react-color-material](https://user-images.githubusercontent.com/1680273/125949704-6fdaa53b-6cae-4ef5-8e5d-f12a09152528.png)](https://uiwjs.github.io/react-color/#material)
+[![react-color-material](https://user-images.githubusercontent.com/1680273/125949704-6fdaa53b-6cae-4ef5-8e5d-f12a09152528.png)](https://uiwjs.github.io/react-color/#/material)
 
 ## Install
 

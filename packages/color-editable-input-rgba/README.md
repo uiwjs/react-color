@@ -5,7 +5,7 @@ React Color Editable Input RGBA
 
 EditableInputRGBA Component is a subcomponent of [**`@react-color`**](https://uiwjs.github.io/react-color).
 
-[![react-color-editable-input-rgba](https://user-images.githubusercontent.com/1680273/125950920-96bbfc1e-031a-4ea2-bfa2-28fab4d3c9d3.png)](https://uiwjs.github.io/react-color/#editable-input-rgba)
+[![react-color-editable-input-rgba](https://user-images.githubusercontent.com/1680273/125950920-96bbfc1e-031a-4ea2-bfa2-28fab4d3c9d3.png)](https://uiwjs.github.io/react-color/#/editable-input-rgba)
 
 ## Install
 

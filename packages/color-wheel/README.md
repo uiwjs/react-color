@@ -5,7 +5,7 @@ React Color Wheel
 
 Wheel Component is a subcomponent of [**`@react-color`**](https://uiwjs.github.io/react-color).
 
-[![react-color-wheel](https://user-images.githubusercontent.com/1680273/125949147-ab96c3d8-1490-4418-b2cf-3f347993bdcb.png)](https://uiwjs.github.io/react-color/#wheel)
+[![react-color-wheel](https://user-images.githubusercontent.com/1680273/125949147-ab96c3d8-1490-4418-b2cf-3f347993bdcb.png)](https://uiwjs.github.io/react-color/#/wheel)
 
 ## Install
 
