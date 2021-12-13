@@ -29,7 +29,7 @@
     "react-dom": ">=16.9.0"
   },
   "dependencies": {
-    "@babel/runtime": "7.15.4"
+    "@babel/runtime": "7.16.5"
   },
   "devDependencies": {
     "@types/react": "17.0.27",
