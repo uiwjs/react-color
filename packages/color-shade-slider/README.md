@@ -34,10 +34,13 @@ function Demo() {
 ## Props
 
 ```ts
+import React from 'react';
 import { AlphaProps } from '@uiw/react-color-alpha';
-
-interface ShadeSliderProps extends Omit<AlphaProps, 'onChange'> {
-  onChange?: (newShade: { v: number; s: number }) => void;
+export interface ShadeSliderProps extends Omit<AlphaProps, 'onChange'> {
+  onChange?: (newShade: {
+      v: number;
+      s: number;
+  }) => void;
 }
 ```
 

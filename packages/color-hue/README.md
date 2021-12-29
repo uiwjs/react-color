@@ -34,10 +34,10 @@ function Demo() {
 ## Props
 
 ```ts
+import React from 'react';
 import { AlphaProps } from '@uiw/react-color-alpha';
-
-interface HueProps extends Omit<AlphaProps, 'hsva' | 'onChange'> {
-  onChange?: (newHue: { h: number }) => void;
+export interface HueProps extends Omit<AlphaProps, 'hsva' | 'onChange'> {
+  onChange?: (newHue: { h: number; }) => void;
   hue: number;
 }
 ```

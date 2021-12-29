@@ -34,13 +34,13 @@ function Demo() {
 ## Props
 
 ```ts
+import React from 'react';
 import { ColorResult, HsvaColor } from '@uiw/color-convert';
-
-interface CompactProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'color'> {
+export interface CompactProps<T> extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'color'> {
   prefixCls?: string;
   color?: string | HsvaColor;
   colors?: string[];
-  onChange?: (color: ColorResult, evn: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+  onChange?: (color: ColorResult, evn?: T) => void;
 }
 ```
 

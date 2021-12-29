@@ -34,12 +34,22 @@ function Demo() {
 ## Props
 
 ```ts
+import React from 'react';
 import { HsvaColor } from '@uiw/color-convert';
-
-interface SaturationProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
+export interface PointerProps extends React.HTMLAttributes<HTMLDivElement> {
+  prefixCls?: string;
+  top?: string;
+  left: string;
+  color?: string;
+}
+export declare const Pointer: ({ className, color, left, top, prefixCls }: PointerProps) => JSX.Element;
+export interface SaturationProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   prefixCls?: string;
   /** hsva => `{ h: 0, s: 75, v: 82, a: 1 }` */
   hsva: HsvaColor;
+  radius?: React.CSSProperties['borderRadius'];
+  /** React Component, Custom pointer component */
+  pointer?: ({ prefixCls, left, top, color }: PointerProps) => JSX.Element;
   onChange?: (newColor: HsvaColor) => void;
 }
 ```

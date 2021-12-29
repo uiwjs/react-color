@@ -38,14 +38,13 @@ function Demo() {
 ## Props
 
 ```ts
+import React from 'react';
 import { GithubProps } from '@uiw/react-color-github';
-
-export enum ChromeInputType {
+export declare enum ChromeInputType {
   HEXA = 'hexa',
   RGBA = 'rgba',
   HSLA = 'hsla',
 }
-
 export interface ChromeProps extends Omit<GithubProps, 'colors'> {
   inputType?: ChromeInputType;
 }

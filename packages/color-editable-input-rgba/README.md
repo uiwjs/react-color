@@ -38,16 +38,17 @@ function Demo() {
 ## Props
 
 ```ts
+import React from 'react';
 import { EditableInputProps } from '@uiw/react-color-editable-input';
-
-interface EditableInputRGBAProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
+import { HsvaColor, ColorResult } from '@uiw/color-convert';
+export interface EditableInputRGBAProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   prefixCls?: string;
   hsva: HsvaColor;
   placement?: 'top' | 'left' | 'bottom' | 'right';
   rProps?: EditableInputProps;
   gProps?: EditableInputProps;
   bProps?: EditableInputProps;
-  aProps?: EditableInputProps;
+  aProps?: false | EditableInputProps;
   onChange?: (color: ColorResult) => void;
 }
 ```

@@ -37,10 +37,11 @@ function Demo() {
 ## Props
 
 ```ts
-interface EditableInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
+import React from 'react';
+export interface EditableInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
   prefixCls?: string;
   value?: string | number;
-  label?: string;
+  label?: React.ReactNode;
   labelStyle?: React.CSSProperties;
   placement?: 'top' | 'left' | 'bottom' | 'right';
   inputStyle?: React.CSSProperties;

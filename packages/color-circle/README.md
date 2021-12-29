@@ -35,10 +35,10 @@ function Demo() {
 ## Props
 
 ```ts
+import React from 'react';
+import { HsvaColor, ColorResult } from '@uiw/color-convert';
 import { SwatchProps } from '@uiw/react-color-swatch';
-import { ColorResult, HsvaColor } from '@uiw/color-convert';
-
-interface CircleProps extends Omit<SwatchProps, 'color' | 'onChange'> {
+export interface CircleProps extends Omit<SwatchProps, 'color' | 'onChange'> {
   color?: string | HsvaColor;
   onChange?: (color: ColorResult) => void;
 }

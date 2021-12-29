@@ -34,9 +34,16 @@ function Demo() {
 ## Props
 
 ```ts
+import React from 'react';
 import { HsvaColor, ColorResult } from '@uiw/color-convert';
-
-interface WheelProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'color'> {
+export interface PointerProps extends React.HTMLAttributes<HTMLDivElement> {
+  prefixCls?: string;
+  top?: string;
+  left: string;
+  color?: string;
+}
+export declare const Pointer: ({ className, color, left, top, style, prefixCls }: PointerProps) => JSX.Element;
+export interface WheelProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'color'> {
   prefixCls?: string;
   color?: string | HsvaColor;
   width?: number;
@@ -48,12 +55,6 @@ interface WheelProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChang
   direction?: 'clockwise' | 'anticlockwise';
   pointer?: ({ prefixCls, left, top, color }: PointerProps) => JSX.Element;
   onChange?: (color: ColorResult) => void;
-}
-interface PointerProps extends React.HTMLAttributes<HTMLDivElement> {
-  prefixCls?: string;
-  top?: string;
-  left: string;
-  color?: string;
 }
 ```
 

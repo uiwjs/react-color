@@ -34,23 +34,26 @@ function Demo() {
 ## Props
 
 ```ts
-import { SwatchProps } from '@uiw/react-color-swatch';
-
-export enum GithubPlacement {
-  Left = 'L',
-  LeftTop = 'LT',
-  LeftBotton = 'LB',
-  Right = 'R',
-  RightTop = 'RT',
-  RightBotton = 'RB',
-  Top = 'T',
-  TopRight = 'TR',
-  TopLeft = 'TL',
-  Botton = 'B',
-  BottonLeft = 'BL',
-  BottonRight = 'BR',
+import React from 'react';
+import { HsvaColor, ColorResult } from '@uiw/color-convert';
+import { SwatchProps, SwatchRectRenderProps } from '@uiw/react-color-swatch';
+export declare enum GithubPlacement {
+  Left = "L",
+  LeftTop = "LT",
+  LeftBotton = "LB",
+  Right = "R",
+  RightTop = "RT",
+  RightBotton = "RB",
+  Top = "T",
+  TopRight = "TR",
+  TopLeft = "TL",
+  Botton = "B",
+  BottonLeft = "BL",
+  BottonRight = "BR"
 }
-
+export interface GithubRectRenderProps extends SwatchRectRenderProps {
+  arrow?: JSX.Element;
+}
 export interface GithubProps extends Omit<SwatchProps, 'color' | 'onChange'> {
   placement?: GithubPlacement;
   color?: string | HsvaColor;

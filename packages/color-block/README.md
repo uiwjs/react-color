@@ -34,8 +34,8 @@ function Demo() {
 ## Props
 
 ```ts
+import React from 'react';
 import { HsvaColor, ColorResult } from '@uiw/color-convert';
-
 interface BlockProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'color'> {
   prefixCls?: string;
   color?: string | HsvaColor;

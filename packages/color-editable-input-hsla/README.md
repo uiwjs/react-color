@@ -38,9 +38,9 @@ function Demo() {
 ## Props
 
 ```ts
+import React from 'react';
 import { EditableInputRGBAProps } from '@uiw/react-color-editable-input-rgba';
-
-interface EditableInputHSLAProps extends Omit<EditableInputRGBAProps, 'rProps' | 'gProps' | 'bProps'> {
+export interface EditableInputHSLAProps extends Omit<EditableInputRGBAProps, 'rProps' | 'gProps' | 'bProps'> {
   hProps?: EditableInputRGBAProps['gProps'];
   sProps?: EditableInputRGBAProps['gProps'];
   lProps?: EditableInputRGBAProps['gProps'];

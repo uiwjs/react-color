@@ -217,6 +217,89 @@ const { rgb, rgba, hsl, hsv, hsla, hsva } = color('#d1021a');
 
 <!--footer-dividing-->
 
+## type
+
+```ts
+export declare const equalColorObjects: (first: ObjectColor, second: ObjectColor) => boolean;
+export declare const equalColorString: (first: string, second: string) => boolean;
+export declare const equalHex: (first: string, second: string) => boolean;
+export declare const validHex: (hex: string) => boolean;
+export declare const getContrastingColor: (str: string | HsvaColor) => "#fff" | "#000";
+export declare type ObjectColor = RgbColor | HslColor | HsvColor | RgbaColor | HslaColor | HsvaColor;
+export declare type ColorResult = {
+  rgb: RgbColor;
+  hsl: HslColor;
+  hsv: HsvColor;
+  rgba: RgbaColor;
+  hsla: HslaColor;
+  hsva: HsvaColor;
+  hex: string;
+  hexa: string;
+};
+export interface HsvColor {
+  h: number;
+  s: number;
+  v: number;
+}
+export interface HsvaColor extends HsvColor {
+  a: number;
+}
+export interface RgbColor {
+  r: number;
+  g: number;
+  b: number;
+}
+export interface RgbaColor extends RgbColor {
+  a: number;
+}
+/**
+ * ```js
+ * rgbaToHsva({ r: 255, g: 255, b: 255, a: 1 }) //=> { h: 0, s: 0, v: 100, a: 1 }
+ * ```
+ */
+export declare const rgbaToHsva: ({ r, g, b, a }: RgbaColor) => HsvaColor;
+export declare const hsvaToHslString: (hsva: HsvaColor) => string;
+export declare const hsvaToHsvString: ({ h, s, v }: HsvaColor) => string;
+export declare const hsvaToHsvaString: ({ h, s, v, a }: HsvaColor) => string;
+export declare const hsvaToHslaString: (hsva: HsvaColor) => string;
+export declare const hslStringToHsla: (str: string) => HslaColor;
+export declare const hslaStringToHsva: (hslString: string) => HsvaColor;
+export declare const hslStringToHsva: (hslString: string) => HsvaColor;
+export declare const hslaToHsva: ({ h, s, l, a }: HslaColor) => HsvaColor;
+export interface HslColor {
+  h: number;
+  s: number;
+  l: number;
+}
+export interface HslaColor extends HslColor {
+  a: number;
+}
+export declare const hsvaToHsla: ({ h, s, v, a }: HsvaColor) => HslaColor;
+export declare const hsvaStringToHsva: (hsvString: string) => HsvaColor;
+export declare const parseHue: (value: string, unit?: string) => number;
+export declare const hsvStringToHsva: (hsvString: string) => HsvaColor;
+export declare const rgbaStringToHsva: (rgbaString: string) => HsvaColor;
+export declare const rgbStringToHsva: (rgbaString: string) => HsvaColor;
+/** Converts an RGBA color plus alpha transparency to hex */
+export declare const rgbaToHex: ({ r, g, b }: RgbaColor) => string;
+export declare const rgbaToHexa: ({ r, g, b, a }: RgbaColor) => string;
+export declare const hexToHsva: (hex: string) => HsvaColor;
+export declare const hexToRgba: (hex: string) => RgbaColor;
+/**
+ * Converts HSVA to RGBA. Based on formula from https://en.wikipedia.org/wiki/HSL_and_HSV
+ * @param color HSVA color as an array [0-360, 0-1, 0-1, 0-1]
+ */
+export declare const hsvaToRgba: ({ h, s, v, a }: HsvaColor) => RgbaColor;
+export declare const hsvaToRgbString: (hsva: HsvaColor) => string;
+export declare const hsvaToRgbaString: (hsva: HsvaColor) => string;
+export declare const rgbaToRgb: ({ r, g, b }: RgbaColor) => RgbColor;
+export declare const hslaToHsl: ({ h, s, l }: HslaColor) => HslColor;
+export declare const hsvaToHex: (hsva: HsvaColor) => string;
+export declare const hsvaToHexa: (hsva: HsvaColor) => string;
+export declare const hsvaToHsv: ({ h, s, v }: HsvaColor) => HsvColor;
+export declare const color: (str: string | HsvaColor) => ColorResult;
+```
+
 ## License
 
 Licensed under the MIT License.

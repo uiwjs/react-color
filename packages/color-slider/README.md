@@ -34,13 +34,13 @@ function Demo() {
 ## Props
 
 ```ts
+import React from 'react';
 import { ColorResult, HsvaColor } from '@uiw/color-convert';
-
-interface SliderProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'color'> {
+export interface SliderProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'color'> {
   prefixCls?: string;
   color?: string | HsvaColor;
   lightness?: number[];
-  onChange?: (color: ColorResult) => void;
+  onChange?: (color: ColorResult, evn: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }
 ```
 

@@ -26,14 +26,22 @@ function Demo() {
 ## Props
 
 ```ts
-import { Interaction } from '@uiw/react-drag-event-interactive';
-
-interface Interaction {
+import React from 'react';
+export declare function useEventCallback<T, K>(handler?: (value: T, event: K) => void): (value: T, event: K) => void;
+export declare const isTouch: (event: MouseEvent | TouchEvent) => event is TouchEvent;
+export declare const preventDefaultMove: (event: MouseEvent | TouchEvent) => void;
+export declare const clamp: (number: number, min?: number, max?: number) => number;
+export interface Interaction {
   left: number;
   top: number;
+  width: number;
+  height: number;
+  x: number;
+  y: number;
 }
-
-interface InteractiveProps extends React.HTMLAttributes<HTMLDivElement> {
+export declare const getRelativePosition: (node: HTMLDivElement, event: MouseEvent | TouchEvent) => Interaction;
+export interface InteractiveProps extends React.HTMLAttributes<HTMLDivElement> {
+  prefixCls?: string;
   onMove?: (interaction: Interaction, event: MouseEvent | TouchEvent) => void;
   onDown?: (offset: Interaction, event: MouseEvent | TouchEvent) => void;
 }

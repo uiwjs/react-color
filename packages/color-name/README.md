@@ -29,7 +29,6 @@ colorNameToHex('white');    // => #ffffff
 ## Props
 
 ```ts
-export default function colorNameToHex(name: keyof typeof colorKeywords): string;
 export declare const colorKeywordsBase: {
     aqua: string;
     black: string;
@@ -201,6 +200,7 @@ export declare const colorKeywords: {
     white: string;
     yellow: string;
 };
+export default function colorNameToHex(name: keyof typeof colorKeywords): string;
 ```
 
 <!--footer-dividing-->

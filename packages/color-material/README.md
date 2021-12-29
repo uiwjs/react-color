@@ -34,9 +34,9 @@ function Demo() {
 ## Props
 
 ```ts
+import React from 'react';
 import { HsvaColor, ColorResult } from '@uiw/color-convert';
-
-interface MaterialProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'color'> {
+export interface MaterialProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'color'> {
   prefixCls?: string;
   color?: string | HsvaColor;
   onChange?: (color: ColorResult) => void;

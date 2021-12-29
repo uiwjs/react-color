@@ -58,10 +58,13 @@ function Demo() {
 ## Props
 
 ```ts
-import { ColorResult, HsvaColor } from '@uiw/color-convert';
-
-export type SwatchPresetColor = { color: string; title?: string } | string;
-export type SwatchRectRenderProps = {
+import React from 'react';
+import { HsvaColor } from '@uiw/color-convert';
+export declare type SwatchPresetColor = {
+  color: string;
+  title?: string;
+} | string;
+export declare type SwatchRectRenderProps = {
   key: string | number;
   title: string;
   color: string;

@@ -35,24 +35,29 @@ function Demo() {
 
 ```ts
 import { HsvaColor } from '@uiw/color-convert';
+import { Interaction } from '@uiw/react-drag-event-interactive';
 declare const BACKGROUND_IMG = 'data:image/png;base64,....'
 interface AlphaProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   prefixCls?: string;
   /** String, Pixel value for picker width. Default `316px` */
-  width?: number;
+  width?: React.CSSProperties['width'];
   /** String, Pixel value for picker height. Default `16px` */
-  height?: number;
+  height?: React.CSSProperties['height'];
   /** hsva => `{ h: 0, s: 75, v: 82, a: 1 }` */
   hsva: HsvaColor;
   /** React Component, Custom pointer component */
   pointer?: ({ prefixCls, left }: PointerProps) => JSX.Element;
   /** Set rounded corners. */
-  radius?: number;
+  radius?: React.CSSProperties['borderRadius'];
   /** Set the background color. */
   background?: string;
+  /** Set the background element props. */
+  bgProps?: React.HTMLAttributes<HTMLDivElement>;
+  /** Set the interactive element props. */
+  innerProps?: React.HTMLAttributes<HTMLDivElement>;
   /** String Enum, horizontal or vertical. Default `horizontal` */
   direction?: 'vertical' | 'horizontal';
-  onChange?: (newAlpha: { a: number }, offset: Interaction) => void;
+  onChange?: (newAlpha: { a: number; }, offset: Interaction) => void;
 }
 interface PointerProps extends React.HTMLAttributes<HTMLDivElement> {
   prefixCls?: string;
