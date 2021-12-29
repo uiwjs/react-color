@@ -92,6 +92,7 @@ Package | Bundle size(gzip) | Version / unpkg
 ```bash
 npm install       # Installation dependencies
 npm run bootstrap # Install dependencies in sub-packages
+npm run hoist     # Install dependencies in sub-packages
 ```
 
 ```bash
