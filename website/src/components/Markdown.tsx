@@ -7,6 +7,19 @@ interface MarkdownState {
   mdStr: string;
 }
 
+const EditorUrl = ({ editorUrl }: { editorUrl?: string }) => {
+  return editorUrl ? (
+    <a
+      className={styles.editor}
+      target="_blank"
+      rel="noreferrer"
+      href={`https://github.com/uiwjs/react-color/edit/main${editorUrl}`}
+    >
+      Edit this page
+    </a>
+  ) : null;
+};
+
 export default class Markdown extends Component<MarkdownProps, MarkdownState> {
   constructor(props: MarkdownProps) {
     super(props);
@@ -32,6 +45,7 @@ export default class Markdown extends Component<MarkdownProps, MarkdownState> {
         <div className={styles.markdown}>
           {this.example && <div className={styles.example}>{this.example}</div>}
           <MarkdownPreview source={this.state.mdStr.replace(/([\s\S]*)<!--dividing-->/, '')} style={{ padding: '20px 26px' }} />
+          <EditorUrl editorUrl={this.editorUrl} />
         </div>
         <div className={styles.footer}>
           <a href="https://uiwjs.github.io/npm-unpkg/#/pkg/@uiw/react-color/file/README.md" target="__blank">
