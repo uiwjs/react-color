@@ -43,8 +43,12 @@ export default class Markdown extends Component<MarkdownProps, MarkdownState> {
     return (
       <div className={styles.warpper}>
         <div className={styles.markdown}>
+          <EditorUrl editorUrl={this.editorUrl} />
           {this.example && <div className={styles.example}>{this.example}</div>}
-          <MarkdownPreview source={this.state.mdStr.replace(/([\s\S]*)<!--dividing-->/, '')} style={{ padding: '20px 26px' }} />
+          <MarkdownPreview
+            source={this.state.mdStr.replace(/([\s\S]*)<!--dividing-->/, '')}
+            style={{ padding: '20px 26px', minHeight: 120 }}
+          />
           <EditorUrl editorUrl={this.editorUrl} />
         </div>
         <div className={styles.footer}>
