@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-color-wheel",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Color wheel",
   "author": "Kenny Wong <wowohoo@qq.com>",
   "homepage": "https://uiwjs.github.io/react-color/#wheel",
@@ -31,8 +31,8 @@
   },
   "dependencies": {
     "@babel/runtime": "7.16.5",
-    "@uiw/color-convert": "1.0.6",
-    "@uiw/react-drag-event-interactive": "1.0.6"
+    "@uiw/color-convert": "1.0.7",
+    "@uiw/react-drag-event-interactive": "1.0.7"
   },
   "devDependencies": {
     "@types/react": "17.0.38",
