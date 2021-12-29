@@ -1,11 +1,14 @@
 **/*.md
 **/*.svg
 **/*.ejs
+**/*.d.ts
 **/*.html
 package.json
 dist
 build
-website/web/build
 lib
+cjs
+esm
+website/web/build
 coverage
 node_modules
