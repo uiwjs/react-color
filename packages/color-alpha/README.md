@@ -35,7 +35,7 @@ function Demo() {
 
 ```ts
 import { HsvaColor } from '@uiw/color-convert';
-
+declare const BACKGROUND_IMG = 'data:image/png;base64,....'
 interface AlphaProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   prefixCls?: string;
   /** String, Pixel value for picker width. Default `316px` */
