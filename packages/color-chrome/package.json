@@ -31,7 +31,7 @@
     "react-dom": ">=16.9.0"
   },
   "dependencies": {
-    "@babel/runtime": "7.16.5",
+    "@babel/runtime": "7.16.7",
     "@uiw/color-convert": "1.0.7",
     "@uiw/react-color-alpha": "1.0.7",
     "@uiw/react-color-editable-input": "1.0.7",
