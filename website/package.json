@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "@kkt/less-modules": "7.0.4",
-    "@kkt/raw-modules": "7.0.4",
+    "@kkt/raw-modules": "7.0.5",
     "@types/react": "17.0.38",
     "@types/react-dom": "17.0.11",
     "@types/react-router-dom": "5.3.2",
