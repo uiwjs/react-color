@@ -29,19 +29,10 @@
   "jest": {
     "testMatch": [
       "<rootDir>/test/*.{ts,tsx}"
-    ],
-    "collectCoverageFrom": [
-      "**/*.{tsx,ts}",
-      "!**/*.{js,d.ts}",
-      "!**/node_modules/**",
-      "!**/coverage/**",
-      "!**/website/**",
-      "!**/vendor/**"
     ]
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "5.16.1",
-    "lint-staged": "12.1.5",
+    "lint-staged": "12.1.7",
     "lerna": "4.0.0",
     "husky": "7.0.4",
     "prettier": "2.5.1",
