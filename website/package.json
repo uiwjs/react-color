@@ -37,7 +37,7 @@
     "@uiw/react-drag-event-interactive": "1.0.7",
     "@uiw/react-github-corners": "1.5.3",
     "@uiw/react-loader": "4.9.7",
-    "@uiw/react-markdown-preview": "3.4.6",
+    "@uiw/react-markdown-preview": "3.4.7",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-router-dom": "6.2.1"
