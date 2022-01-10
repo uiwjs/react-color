@@ -21,6 +21,9 @@ jobs:
     - run: npm run build
     - run: npm run doc
     - run: npm run coverage
+    - run: npm i coverage-badges-cli -g
+    - run: coverage-badges
+    - run: cp -rp coverage website/build
 
     - run: npm install @jsdevtools/npm-publish -g
     - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./packages/color/package.json
@@ -48,14 +51,13 @@ jobs:
 
     - name: Create Tag
       id: create_tag
-      uses: jaywcjlove/create-tag-action@v1.2.0
+      uses: jaywcjlove/create-tag-action@v1.3.5
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
         package-path: ./packages/color/package.json
 
     - name: Generate Changelog
       id: changelog
-      uses: jaywcjlove/changelog-generator@v1.4.3
+      uses: jaywcjlove/changelog-generator@v1.4.8
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         head-ref: ${{steps.create_tag.outputs.version}}
@@ -86,7 +88,7 @@ jobs:
 
           ${{ steps.changelog.outputs.changelog }}
 
-    - name: Coveralls
-      uses: coverallsapp/github-action@master
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+    # - name: Coveralls
+    #   uses: coverallsapp/github-action@master
+    #   with:
+    #     github-token: ${{ secrets.GITHUB_TOKEN }}

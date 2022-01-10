@@ -10,8 +10,8 @@
   <a href="https://github.com/uiwjs/react-color/actions/workflows/ci.yml">
     <img alt="Build & Deploy" src="https://github.com/uiwjs/react-color/actions/workflows/ci.yml/badge.svg" />
   </a>
-  <a href="https://coveralls.io/github/uiwjs/react-color?branch=main">
-    <img alt="Coverage Status" src="https://coveralls.io/repos/github/uiwjs/react-color/badge.svg?branch=main" />
+  <a href="https://uiwjs.github.io/react-color/coverage/lcov-report/">
+    <img alt="Coverage Status" src="https://uiwjs.github.io/react-color/coverage/badges.svg" />
   </a>
   <a href="https://uiwjs.github.io/npm-unpkg/#/pkg/@uiw/react-color/file/README.md">
     <img alt="Open in unpkg" src="https://img.shields.io/badge/Open%20in-unpkg-blue" />
