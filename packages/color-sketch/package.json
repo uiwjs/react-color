@@ -2,7 +2,7 @@
   "name": "@uiw/react-color-sketch",
   "version": "1.0.8",
   "description": "Color Sketch component for React.",
-  "homepage": "https://uiwjs.github.io/react-color/#sketch",
+  "homepage": "https://uiwjs.github.io/react-color/#/sketch",
   "author": "Kenny Wong <wowohoo@qq.com>",
   "sideEffects": false,
   "main": "cjs/index.js",

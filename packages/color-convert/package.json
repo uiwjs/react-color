@@ -3,7 +3,7 @@
   "version": "1.0.8",
   "description": "Color Convert",
   "author": "Kenny Wong <wowohoo@qq.com>",
-  "homepage": "https://uiwjs.github.io/react-color/#convert",
+  "homepage": "https://uiwjs.github.io/react-color/#/convert",
   "sideEffects": false,
   "main": "cjs/index.js",
   "module": "esm/index.js",

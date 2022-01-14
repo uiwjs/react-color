@@ -2,7 +2,7 @@
   "name": "@uiw/react-color-shade-slider",
   "version": "1.0.8",
   "description": "Color ShadeSlider component for React.",
-  "homepage": "https://uiwjs.github.io/react-color/#shade-slider",
+  "homepage": "https://uiwjs.github.io/react-color/#/shade-slider",
   "author": "Kenny Wong <wowohoo@qq.com>",
   "sideEffects": false,
   "main": "cjs/index.js",

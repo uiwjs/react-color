@@ -2,7 +2,7 @@
   "name": "@uiw/react-color-swatch",
   "version": "1.0.8",
   "description": "Color swatch component for React.",
-  "homepage": "https://uiwjs.github.io/react-color/#swatch",
+  "homepage": "https://uiwjs.github.io/react-color/#/swatch",
   "author": "Kenny Wong <wowohoo@qq.com>",
   "sideEffects": false,
   "main": "cjs/index.js",

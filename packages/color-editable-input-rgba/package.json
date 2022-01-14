@@ -3,7 +3,7 @@
   "version": "1.0.8",
   "description": "Color Editable Input RGBA",
   "author": "Kenny Wong <wowohoo@qq.com>",
-  "homepage": "https://uiwjs.github.io/react-color/#editable-input-rgba",
+  "homepage": "https://uiwjs.github.io/react-color/#/editable-input-rgba",
   "sideEffects": false,
   "main": "cjs/index.js",
   "module": "esm/index.js",

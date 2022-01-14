@@ -3,7 +3,7 @@
   "version": "1.0.8",
   "description": "Color Saturation",
   "author": "Kenny Wong <wowohoo@qq.com>",
-  "homepage": "https://uiwjs.github.io/react-color/#saturation",
+  "homepage": "https://uiwjs.github.io/react-color/#/saturation",
   "sideEffects": false,
   "main": "cjs/index.js",
   "module": "esm/index.js",

@@ -3,7 +3,7 @@
   "version": "1.0.8",
   "description": "Color Github Picker",
   "author": "Kenny Wong <wowohoo@qq.com>",
-  "homepage": "https://uiwjs.github.io/react-color/#chrome",
+  "homepage": "https://uiwjs.github.io/react-color/#/chrome",
   "sideEffects": false,
   "main": "cjs/index.js",
   "module": "esm/index.js",
