@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-color-slider",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Color Slider component for React.",
   "homepage": "https://uiwjs.github.io/react-color/#/slider",
   "author": "Kenny Wong <wowohoo@qq.com>",
@@ -31,8 +31,8 @@
   },
   "dependencies": {
     "@babel/runtime": "7.16.7",
-    "@uiw/color-convert": "1.0.8",
-    "@uiw/react-color-alpha": "1.0.8"
+    "@uiw/color-convert": "1.0.9",
+    "@uiw/react-color-alpha": "1.0.9"
   },
   "devDependencies": {
     "@types/react": "17.0.38",

@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-drag-event-interactive",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "react drag event interactive",
   "homepage": "https://uiwjs.github.io/react-color/#/drag-event-interactive",
   "sideEffects": false,
