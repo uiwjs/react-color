@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-color-github",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Color Github Picker",
   "author": "Kenny Wong <wowohoo@qq.com>",
   "homepage": "https://uiwjs.github.io/react-color/#/github",
@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@babel/runtime": "~7.17.2",
-    "@uiw/color-convert": "1.0.9",
-    "@uiw/react-color-swatch": "1.0.9"
+    "@uiw/color-convert": "1.0.10",
+    "@uiw/react-color-swatch": "1.0.10"
   }
 }

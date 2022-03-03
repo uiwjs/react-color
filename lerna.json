@@ -4,5 +4,5 @@
     "yarnClientArgs": ["--no-yarn-lock", "--no-package-lock"],
     "forceLocal": true
   },
-  "version": "1.0.9"
+  "version": "1.0.10"
 }
