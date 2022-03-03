@@ -20,8 +20,9 @@ jobs:
     - run: npm run bundle:min
     - run: npm run doc
     - run: npm run coverage
-    - run: npm i coverage-badges-cli -g
-    - run: coverage-badges
+    
+    - uses: jaywcjlove/coverage-badges-cli@main
+
     - run: cp -rp coverage website/build
 
     - run: npm install @jsdevtools/npm-publish -g

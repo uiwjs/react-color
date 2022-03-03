@@ -15,7 +15,7 @@
     "bootstrap": "lerna bootstrap",
     "hoist": "lerna bootstrap --hoist",
     "test": "tsbb test --env=jsdom",
-    "coverage": "tsbb test --coverage",
+    "coverage": "tsbb test --coverage --bail",
     "prepare": "husky install",
     "publish": "lerna publish from-package --yes --no-verify-access",
     "version": "lerna version --exact --force-publish --no-push --no-git-tag-version",
