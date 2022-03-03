@@ -4,9 +4,6 @@ on:
     branches:
       - main
 
-env:
-  SKIP_PREFLIGHT_CHECK: true
-
 jobs:
   build-deploy:
     runs-on: ubuntu-18.04
@@ -19,6 +16,8 @@ jobs:
     - run: npm install
     - run: npm run hoist
     - run: npm run build
+    - run: npm run bundle
+    - run: npm run bundle:min
     - run: npm run doc
     - run: npm run coverage
     - run: npm i coverage-badges-cli -g
@@ -51,24 +50,29 @@ jobs:
 
     - name: Create Tag
       id: create_tag
-      uses: jaywcjlove/create-tag-action@v1.3.5
+      uses: jaywcjlove/create-tag-action@v1.3.6
       with:
         package-path: ./packages/color/package.json
 
-    - name: Generate Changelog
-      id: changelog
-      uses: jaywcjlove/changelog-generator@v1.4.8
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        head-ref: ${{steps.create_tag.outputs.version}}
-        filter-author: (jaywcjlove|小弟调调™|dependabot\[bot\]|Renovate Bot)
-        filter: '[R|r]elease[d]\s+[v|V]\d(\.\d+){0,2}'
+    - name: get tag version
+      id: tag_version
+      uses: jaywcjlove/changelog-generator@v1.5.0
 
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:
+        commit_message: ${{steps.tag_version.outputs.tag}} ${{ github.event.head_commit.message }}
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./website/build
+
+    - name: Generate Changelog
+      id: changelog
+      uses: jaywcjlove/changelog-generator@v1.5.0
+      if: steps.create_tag.outputs.successful
+      with:
+        head-ref: ${{steps.create_tag.outputs.version}}
+        filter-author: (jaywcjlove|小弟调调™|dependabot\[bot\]|Renovate Bot)
+        filter: '[R|r]elease[d]\s+[v|V]\d(\.\d+){0,2}'
 
     - name: Create Release
       uses: ncipollo/release-action@v1
@@ -80,11 +84,12 @@ jobs:
         body: |
           [![](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@uiw/react-color@${{steps.create_tag.outputs.versionNumber}}/file/README.md) [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@uiw/react-color)](https://bundlephobia.com/result?p=@uiw/react-color@${{steps.create_tag.outputs.versionNumber}})
           
+          Documentation ${{ steps.changelog.outputs.tag }}: https://raw.githack.com/uiwjs/react-color/${{ steps.changelog.outputs.gh-pages-short-hash }}/index.html  
+          Comparing Changes: ${{ steps.changelog.outputs.compareurl }}  
+
           ```bash
           npm i @uiw/react-color@${{steps.create_tag.outputs.versionNumber}}
           ```
-
-          ${{ steps.changelog.outputs.compareurl }}
 
           ${{ steps.changelog.outputs.changelog }}
 
