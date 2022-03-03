@@ -38,13 +38,5 @@
     "@uiw/react-color-hue": "1.0.9",
     "@uiw/react-color-saturation": "1.0.9",
     "@uiw/react-color-swatch": "1.0.9"
-  },
-  "devDependencies": {
-    "@types/react": "17.0.38",
-    "@types/react-dom": "17.0.11",
-    "@types/react-test-renderer": "17.0.1",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "react-test-renderer": "17.0.2"
   }
 }

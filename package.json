@@ -1,6 +1,9 @@
 {
   "private": true,
   "scripts": {
+    "bundle": "lerna exec \"ncc build src/index.tsx --target web --filename color\" --scope @uiw/react-color",
+    "bundle:watch": "lerna exec \"ncc watch src/index.tsx --target web --filename color\" --scope @uiw/react-color",
+    "bundle:min": "lerna exec \"ncc build src/index.tsx --target web --filename color --minify\" --scope @uiw/react-color",
     "⬇️⬇️⬇️⬇️⬇️ watch ⬇️⬇️⬇️⬇️⬇️": "▼▼▼▼▼ watch::package ▼▼▼▼▼",
     "watch:all": "lerna exec --parallel --scope @uiw/* -- tsbb watch",
     "watch:color": "lerna exec --parallel --scope @uiw/react-color -- tsbb watch",
@@ -32,10 +35,18 @@
     ]
   },
   "devDependencies": {
-    "lint-staged": "12.1.7",
-    "lerna": "4.0.0",
-    "husky": "7.0.4",
-    "prettier": "2.5.1",
-    "tsbb": "3.5.4"
+    "@kkt/less-modules": "~7.1.1",
+    "@kkt/ncc": "~1.0.8",
+    "@types/react": "~17.0.39",
+    "@types/react-dom": "~17.0.13",
+    "@types/react-test-renderer": "~17.0.1",
+    "husky": "~7.0.4",
+    "lint-staged": "~12.3.4",
+    "lerna": "~4.0.0",
+    "prettier": "~2.5.1",
+    "react": "~17.0.2",
+    "react-dom": "~17.0.2",
+    "react-test-renderer": "~17.0.2",
+    "tsbb": "~3.7.0"
   }
 }

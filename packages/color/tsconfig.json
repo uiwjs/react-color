@@ -1,6 +1,6 @@
 {
   "extends": "../../tsconfig",
-  "include": ["./src"],
+  "include": ["./src", ".kktrc.ts"],
   "compilerOptions": {
     "outDir": "./cjs",
     "emitDeclarationOnly": true,
