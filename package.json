@@ -30,6 +30,10 @@
   },
   "license": "MIT",
   "jest": {
+    "coverageReporters": [
+      "lcov",
+      "json-summary"
+    ],
     "testMatch": [
       "<rootDir>/test/*.{ts,tsx}"
     ]
