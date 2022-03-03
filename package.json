@@ -30,6 +30,10 @@
   },
   "license": "MIT",
   "jest": {
+    "collectCoverageFrom": [
+      "<rootDir>/packages/**/*.{tsx,ts}",
+      "!**/*.{js,d.ts}"
+    ],
     "coverageReporters": [
       "lcov",
       "json-summary"
