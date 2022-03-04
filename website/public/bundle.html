@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://unpkg.com/@babel/standalone@7.17.5/babel.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react@17.x/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17.x/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@uiw/codepen-require-polyfill/index.js" crossorigin></script>
+  </head>
+  <body>
+    <div id="container" style="padding: 24px"></div>
+    <script src="https://unpkg.com/@uiw/react-color/dist/color.min.js"></script>
+    <script type="text/babel">
+      import { Slider, Sketch, Material, Colorful, Compact, Circle, Wheel, Block, Github, Chrome } from '@uiw/react-color';
+
+
+      function Demo() {
+        const [hsva, setHsva] = React.useState({ h: 214, s: 43, v: 90, a: 1 });
+        return (
+          <div style={{ display: 'flex' }}>
+            <Sketch
+              style={{ marginLeft: 20 }}
+              color={hsva}
+              onChange={(color) => {
+                setHsva({ ...hsva, ...color.hsva });
+              }}
+            />
+            <Colorful
+              style={{ marginLeft: 20 }}
+              color={hsva}
+              onChange={(color) => {
+                setHsva({ ...hsva, ...color.hsva });
+              }}
+            />
+          </div>
+        );
+      }
+
+      ReactDOM.render(<Demo />, document.getElementById('container'));
+    </script>
+  </body>
+</html>
