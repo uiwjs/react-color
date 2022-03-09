@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.5d72ea7e.css",
-    "main.js": "/static/js/main.7d958ad7.js",
+    "main.js": "/static/js/main.53721e1b.js",
     "static/css/704.942f3978.chunk.css": "/static/css/704.942f3978.chunk.css",
     "static/js/704.7592e7d8.chunk.js": "/static/js/704.7592e7d8.chunk.js",
     "static/css/171.23ba3ea6.chunk.css": "/static/css/171.23ba3ea6.chunk.css",
@@ -70,12 +70,12 @@
     "static/js/46.f64c301d.chunk.js": "/static/js/46.f64c301d.chunk.js",
     "refractor-vendor.js": "/static/js/refractor-vendor.b5d5e6d4.chunk.js",
     "react-vendor.js": "/static/js/react-vendor.8c727079.js",
-    "static/js/979.8cd89d81.chunk.js": "/static/js/979.8cd89d81.chunk.js",
+    "static/js/979.dfada4e6.chunk.js": "/static/js/979.dfada4e6.chunk.js",
     "static/js/482.da43bbd2.chunk.js": "/static/js/482.da43bbd2.chunk.js",
     "index.html": "/index.html",
     "static/media/home.svg": "/static/media/home.7d51f25c64fe597ec540c3e724748f4e.svg",
     "main.5d72ea7e.css.map": "/static/css/main.5d72ea7e.css.map",
-    "main.7d958ad7.js.map": "/static/js/main.7d958ad7.js.map",
+    "main.53721e1b.js.map": "/static/js/main.53721e1b.js.map",
     "704.942f3978.chunk.css.map": "/static/css/704.942f3978.chunk.css.map",
     "704.7592e7d8.chunk.js.map": "/static/js/704.7592e7d8.chunk.js.map",
     "171.23ba3ea6.chunk.css.map": "/static/css/171.23ba3ea6.chunk.css.map",
@@ -144,12 +144,12 @@
     "46.f64c301d.chunk.js.map": "/static/js/46.f64c301d.chunk.js.map",
     "refractor-vendor.b5d5e6d4.chunk.js.map": "/static/js/refractor-vendor.b5d5e6d4.chunk.js.map",
     "react-vendor.8c727079.js.map": "/static/js/react-vendor.8c727079.js.map",
-    "979.8cd89d81.chunk.js.map": "/static/js/979.8cd89d81.chunk.js.map",
+    "979.dfada4e6.chunk.js.map": "/static/js/979.dfada4e6.chunk.js.map",
     "482.da43bbd2.chunk.js.map": "/static/js/482.da43bbd2.chunk.js.map"
   },
   "entrypoints": [
     "static/js/react-vendor.8c727079.js",
     "static/css/main.5d72ea7e.css",
-    "static/js/main.7d958ad7.js"
+    "static/js/main.53721e1b.js"
   ]
 }
