@@ -1,8 +1,5 @@
 {
+  "version": "1.0.10",
   "packages": ["packages/*", "website"],
-  "bootstrap": {
-    "yarnClientArgs": ["--no-yarn-lock", "--no-package-lock"],
-    "forceLocal": true
-  },
-  "version": "1.0.10"
+  "useWorkspaces": true
 }

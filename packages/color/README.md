@@ -91,17 +91,17 @@ Package | Bundle size(gzip) | Version / unpkg
 
 ```bash
 npm install       # Installation dependencies
-npm run bootstrap # Install dependencies in sub-packages
-npm run hoist     # Install dependencies in sub-packages
+npm run build     # Compile all package
 ```
 
 ```bash
-npm run build     # Compile package
+cd packages/color-block
 # listen to the component compile and output the .js file
 # listen for compilation output type .d.ts file
-npm run watch:color # Monitor the compiled package `@uiw/react-color`
-npm run watch:alpha # Monitor the compiled package `@uiw/react-alpha`
+npm run watch # Monitor the compiled package `@uiw/react-block`
+```
 
+```bash
 npm run start     # development mode, listen to compile preview website instance
 ```
 

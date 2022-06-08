@@ -11,6 +11,10 @@
     "type": "git",
     "url": "https://github.com/uiwjs/react-color.git"
   },
+  "scripts": {
+    "build": "tsbb build",
+    "watch": "tsbb watch"
+  },
   "keywords": [
     "color",
     "convert"

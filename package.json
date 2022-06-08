@@ -6,14 +6,12 @@
     "bundle:min": "lerna exec \"ncc build src/index.tsx --target web --filename color --minify\" --scope @uiw/react-color",
     "⬇️⬇️⬇️⬇️⬇️ watch ⬇️⬇️⬇️⬇️⬇️": "▼▼▼▼▼ watch::package ▼▼▼▼▼",
     "watch:all": "lerna exec --parallel --scope @uiw/* -- tsbb watch",
-    "watch:color": "lerna exec --parallel --scope @uiw/react-color -- tsbb watch",
+    "watch:color": "lerna exec --parallel --scope @uiw/react-color-block -- tsbb watch",
     "watch:alpha": "lerna exec --parallel --scope @uiw/react-alpha -- tsbb watch",
     "⬆️⬆️⬆️⬆️⬆️ watch ⬆️⬆️⬆️⬆️⬆️": "▲▲▲▲▲ watch::package ▲▲▲▲▲",
     "build": "lerna exec --scope @uiw/* -- tsbb build",
     "start": "lerna exec --scope website -- npm run start",
     "doc": "lerna exec --scope website -- npm run build",
-    "bootstrap": "lerna bootstrap",
-    "hoist": "lerna bootstrap --hoist",
     "test": "tsbb test --env=jsdom",
     "coverage": "tsbb test --coverage --bail",
     "prepare": "husky install",
@@ -42,15 +40,23 @@
       "<rootDir>/test/*.{ts,tsx}"
     ]
   },
+  "workspaces": [
+    "packages/**",
+    "website"
+  ],
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "devDependencies": {
+    "@testing-library/react": "~12.1.5",
     "@kkt/less-modules": "~7.1.1",
-    "@kkt/ncc": "~1.0.8",
+    "@kkt/ncc": "^1.0.13",
     "@types/react": "~17.0.39",
     "@types/react-dom": "~17.0.13",
     "@types/react-test-renderer": "~17.0.1",
     "husky": "~7.0.4",
     "lint-staged": "~12.3.4",
-    "lerna": "~4.0.0",
+    "lerna": "^5.1.0",
     "prettier": "~2.5.1",
     "react": "~17.0.2",
     "react-dom": "~17.0.2",
