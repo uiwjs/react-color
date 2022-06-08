@@ -28,7 +28,7 @@ const Block = React.forwardRef<HTMLDivElement, BlockProps>((props, ref) => {
     onChange && onChange(handleColor(hsv));
   };
   const handleHex = (value: string | number, evn: React.ChangeEvent<HTMLInputElement>) => {
-    if (typeof value === 'string' && validHex(value) && /(3|6)/.test(String(value.length))) {
+    if (typeof value === 'string' && validHex(value) && /(3|6)/.test(String(value.replace(/^#/, '').length))) {
       onChange && onChange(handleColor(hexToHsva(value)));
     }
   };
