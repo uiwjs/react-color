@@ -12,7 +12,7 @@ Chrome Component is a subcomponent of [**`@react-color`**](https://uiwjs.github.
 ## Install
 
 ```bash
-npm i @uiw/react-color-chorme
+npm i @uiw/react-color-chrome
 ```
 
 ## Usage
