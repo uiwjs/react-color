@@ -1,12 +1,12 @@
-import React, { lazy } from 'react';
+import { lazy } from 'react';
 
-export type Routes = {
+export type Routes<T = unknown> = {
   label?: string;
   path?: string;
   exact?: boolean;
   isComp?: boolean;
   divider?: boolean;
-  component?: React.ReactNode;
+  component?: T;
 };
 
 export const routes: Array<Routes> = [

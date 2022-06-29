@@ -1,5 +1,5 @@
-import React, { useEffect, useReducer } from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
+import { useEffect, useReducer } from 'react';
 import { BACKGROUND_IMG } from '@uiw/react-color';
 import Root from './pages/root';
 import { reducer, Context, defaultContext } from './Store';
@@ -18,9 +18,6 @@ function App() {
   );
 }
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root'),
-);
+const container = document.getElementById('root');
+const root = createRoot(container!);
+root.render(<App />);
