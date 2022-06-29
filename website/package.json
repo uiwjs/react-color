@@ -36,7 +36,7 @@
     "@uiw/react-color-wheel": "1.0.11",
     "@uiw/react-drag-event-interactive": "1.0.11",
     "@uiw/react-github-corners": "~1.5.3",
-    "@uiw/react-loader": "~4.13.5",
+    "@uiw/react-loader": "~4.21.0",
     "@uiw/react-markdown-preview": "^4.0.18",
     "@wcj/dark-mode": "^1.0.14",
     "react": "~17.0.2",
