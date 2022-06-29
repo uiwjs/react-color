@@ -61,7 +61,7 @@ const Chrome = React.forwardRef<HTMLDivElement, ChromeProps>((props, ref) => {
     <Github
       ref={ref}
       color={hsva}
-      style={{ borderRadius: 0, flexDirection: 'column', width: 230, padding: 0 }}
+      style={{ borderRadius: 0, flexDirection: 'column', width: 230, padding: 0, ...style }}
       colors={undefined}
       className={[prefixCls, className].filter(Boolean).join(' ')}
       placement={GithubPlacement.TopLeft}
