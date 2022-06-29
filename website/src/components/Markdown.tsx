@@ -1,10 +1,13 @@
 import { Component } from 'react';
-import MarkdownPreview from '@uiw/react-markdown-preview';
+import { CodeBlockData } from 'markdown-react-code-preview-loader';
+import '@wcj/dark-mode';
 import styles from './Markdown.module.less';
+import Preview from './MarkdownPreview';
 
 interface MarkdownProps {}
 interface MarkdownState {
   mdStr: string;
+  mdObj?: CodeBlockData;
 }
 
 const EditorUrl = ({ editorUrl }: { editorUrl?: string }) => {
@@ -34,21 +37,21 @@ export default class Markdown extends Component<MarkdownProps, MarkdownState> {
     if (this.getMdStr) {
       this.getMdStr().then((str: any) => {
         this.setState({
-          mdStr: str.default || str,
+          mdStr: str.default.source,
+          mdObj: str.default,
         });
       });
     }
   }
   render() {
+    const { source, components, data } = this.state.mdObj || {};
     return (
-      <div className={styles.warpper}>
+      <div className={[styles.warpper, 'wmde-markdown-var'].join(' ')}>
+        <dark-mode light="Dark" dark="Light"></dark-mode>
         <div className={styles.markdown}>
           <EditorUrl editorUrl={this.editorUrl} />
           {this.example && <div className={styles.example}>{this.example}</div>}
-          <MarkdownPreview
-            source={this.state.mdStr.replace(/([\s\S]*)<!--dividing-->/, '')}
-            style={{ padding: '20px 26px', minHeight: 120 }}
-          />
+          <Preview source={source || ''} components={components || {}} data={data || {}} />
           <EditorUrl editorUrl={this.editorUrl} />
         </div>
         <div className={styles.footer}>

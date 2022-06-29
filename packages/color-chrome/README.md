@@ -17,22 +17,37 @@ npm i @uiw/react-color-chrome
 
 ## Usage
 
-```js
+```jsx mdx:preview
+import React, { useState } from 'react';
 import Chrome from '@uiw/react-color-chrome';
 import { GithubPlacement } from '@uiw/react-color-github';
 
 function Demo() {
-  const [hex, setHex] = useState("#fff");
+  const [hex, setHex] = useState("#d29c9c53");
   return (
-    <Chrome
-      color={hex}
-      placement={GithubPlacement.Right}
-      onChange={(color) => {
-        setHex(color.hex);
-      }}
-    />
+    <>
+      <Chrome
+        color={hex}
+        style={{ float: 'left' }}
+        placement={GithubPlacement.Right}
+        onChange={(color) => {
+          setHex(color.hexa);
+        }}
+      />
+      <Chrome
+        color={hex}
+        placement={GithubPlacement.TopRight}
+        onChange={(color) => {
+          setHex(color.hexa);
+        }}
+      />
+      <div style={{ background: hex, marginTop: 30, padding: 10 }}>
+        {hex}
+      </div>
+    </>
   );
 }
+export default Demo;
 ```
 
 ## Props
@@ -47,6 +62,20 @@ export declare enum ChromeInputType {
 }
 export interface ChromeProps extends Omit<GithubProps, 'colors'> {
   inputType?: ChromeInputType;
+}
+export declare enum GithubPlacement {
+  Left = "L",
+  LeftTop = "LT",
+  LeftBotton = "LB",
+  Right = "R",
+  RightTop = "RT",
+  RightBotton = "RB",
+  Top = "T",
+  TopRight = "TR",
+  TopLeft = "TL",
+  Botton = "B",
+  BottonLeft = "BL",
+  BottonRight = "BR"
 }
 ```
 

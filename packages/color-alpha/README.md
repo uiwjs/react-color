@@ -15,20 +15,29 @@ npm i @uiw/react-color-alpha
 
 ## Usage
 
-```js
+```jsx mdx:preview
+import React, { useState } from 'react';
+import { hsvaToRgbaString } from '@uiw/color-convert';
 import Alpha from '@uiw/react-color-alpha';
 
 function Demo() {
   const [hsva, setHsva] = useState({ h: 0, s: 0, v: 68, a: 1 });
   return (
-    <Alpha
-      hsva={hsva}
-      onChange={(newAlpha) => {
-        setHsva({ ...hsva, ...newAlpha });
-      }}
-    />
+    <>
+      <Alpha
+        hsva={hsva}
+        onChange={(newAlpha) => {
+          setHsva({ ...hsva, ...newAlpha });
+        }}
+      />
+      <div style={{ background: hsvaToRgbaString(hsva), marginTop: 30, padding: 10 }}>
+        {JSON.stringify(hsva)}
+      </div>
+    </>
   );
 }
+
+export default Demo;
 ```
 
 ## Props
@@ -66,7 +75,6 @@ interface PointerProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 ```
 
-<!--footer-dividing-->
 
 ## License
 

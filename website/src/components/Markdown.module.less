@@ -1,5 +1,5 @@
 .markdown {
-  background-color: #fff;
+  background-color: var(--color-theme-bg);
   box-shadow: 0 0 0 1px rgb(0 0 0 / 15%), 0 8px 16px rgb(0 0 0 / 15%);
   border-radius: 16px;
   max-width: 860px;
@@ -11,7 +11,7 @@
     right: 20px;
     padding: 3px 8px 4px 8px;
     background: #333333;
-    border-radius: 0 0 3px 3px;
+    border-radius: 0 0 6px 6px;
     text-decoration: initial;
     color: #fff;
     transition: all 0.3s;
@@ -26,9 +26,14 @@
   padding-bottom: 120px;
 }
 
+dark-mode {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+}
+
 .example {
-  border-bottom: 1px solid #eaecef;
-  background-color: #f9f9f9;
+  border-bottom: 1px solid var(--color-border-default);
   border-radius: 16px 16px 0 0;
   padding: 28px;
 }

@@ -8,6 +8,10 @@ body {
 }
 
 html, body, #root {
-  height: 100%;
   min-height: 100%;
+}
+
+[data-color-mode*='dark'], [data-color-mode*='dark'] body {
+  color-scheme: none !important;
+  background-color: transparent !important;
 }

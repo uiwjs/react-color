@@ -13,8 +13,10 @@ export default function Header(props: HeaderProps) {
     <div>
       <div className={styles.logo}>🎨</div>
       <div className={styles.detail}>
-        <b>react-color</b> is a tiny color picker widget component for react apps. These components can be installed and used
-        separately.
+        <span>
+          <b>react-color</b> is a tiny color picker widget component for react apps. These components can be installed and used
+          separately.
+        </span>
       </div>
       <div className={styles.header}>
         {menus.map((item, idx) => {

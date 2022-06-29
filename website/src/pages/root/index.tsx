@@ -17,7 +17,7 @@ export default function Root() {
   const { hsva } = useContext(Context);
   return (
     <HashRouter>
-      <div style={{ backgroundColor: hsvaToHslaString(hsva), transition: 'background-color 0.3s ease 0s', minHeight: '100%' }}>
+      <div style={{ backgroundColor: hsvaToHslaString(hsva), transition: 'background-color 0.3s ease 0s', minHeight: '100vh' }}>
         <GitHubCorners fixed zIndex={99} size={60} target="__blank" href="https://github.com/uiwjs/react-color" />
         <Header menus={routes} />
         <Routes>

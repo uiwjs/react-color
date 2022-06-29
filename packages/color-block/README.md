@@ -15,20 +15,26 @@ npm i @uiw/react-color-block
 
 ## Usage
 
-```js
+```jsx mdx:preview
+import React, { useState } from 'react';
 import Block from '@uiw/react-color-block';
 
 function Demo() {
   const [hex, setHex] = useState("#fff");
   return (
-    <Block
-      color={hex}
-      onChange={(color) => {
-        setHex(color.hex);
-      }}
-    />
+    <>
+      <Block
+        color={hex}
+        onChange={(color) => setHex(color.hex)}
+      />
+      <div style={{ background: hex, marginTop: 30, padding: 10 }}>
+        {hex}
+      </div>
+    </>
   );
 }
+
+export default Demo;
 ```
 
 ## Props
