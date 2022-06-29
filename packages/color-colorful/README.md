@@ -15,20 +15,27 @@ npm i @uiw/react-color-colorful
 
 ## Usage
 
-```js
+```jsx mdx:preview
+import React, { useState } from 'react';
 import Colorful from '@uiw/react-color-colorful';
 
 function Demo() {
-  const [hex, setHex] = useState("#fff");
+  const [hex, setHex] = useState("#59c09a");
   return (
-    <Colorful
-      color={hex}
-      onChange={(color) => {
-        setHex(color.hex);
-      }}
-    />
+    <>
+      <Colorful
+        color={hex}
+        onChange={(color) => {
+          setHex(color.hexa);
+        }}
+      />
+      <div style={{ background: hex, marginTop: 30, padding: 10 }}>
+        {hex}
+      </div>
+    </>
   );
 }
+export default Demo;
 ```
 
 ## Props

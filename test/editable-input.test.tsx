@@ -229,5 +229,5 @@ it('EditableInput Input Number', async () => {
   const elm = getByTitle('test');
   elm.focus();
   fireEvent.change(elm, { target: { value: 0.15 } });
-  elm.blur();
+  // elm.blur();
 });
