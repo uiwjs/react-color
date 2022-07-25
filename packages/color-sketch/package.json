@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-color-sketch",
-  "version": "1.0.12",
+  "version": "1.1.0",
   "description": "Color Sketch component for React.",
   "homepage": "https://uiwjs.github.io/react-color/#/sketch",
   "author": "Kenny Wong <wowohoo@qq.com>",
@@ -35,12 +35,12 @@
   },
   "dependencies": {
     "@babel/runtime": "~7.18.0",
-    "@uiw/color-convert": "1.0.12",
-    "@uiw/react-color-alpha": "1.0.12",
-    "@uiw/react-color-editable-input": "1.0.12",
-    "@uiw/react-color-editable-input-rgba": "1.0.12",
-    "@uiw/react-color-hue": "1.0.12",
-    "@uiw/react-color-saturation": "1.0.12",
-    "@uiw/react-color-swatch": "1.0.12"
+    "@uiw/color-convert": "1.1.0",
+    "@uiw/react-color-alpha": "1.1.0",
+    "@uiw/react-color-editable-input": "1.1.0",
+    "@uiw/react-color-editable-input-rgba": "1.1.0",
+    "@uiw/react-color-hue": "1.1.0",
+    "@uiw/react-color-saturation": "1.1.0",
+    "@uiw/react-color-swatch": "1.1.0"
   }
 }
