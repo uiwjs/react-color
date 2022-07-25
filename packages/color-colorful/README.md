@@ -48,8 +48,12 @@ function Demo() {
   return (
     <>
       <label>
-        <input type="checkbox" checked={disableAlpha} onChange={(evn) => setDisableAlpha(evn.target.checked)} />
-        {disableAlpha ? "隐藏" : "显示"} Alpha
+        <input
+          type="checkbox"
+          checked={disableAlpha}
+          onChange={(evn) => setDisableAlpha(evn.target.checked)}
+        />
+        {disableAlpha ? "Hide" : "Show"} Alpha
       </label>
       <Colorful
         color={hex}
