@@ -16,6 +16,7 @@ export interface ColorfulProps extends Omit<React.HTMLAttributes<HTMLDivElement>
   prefixCls?: string;
   onChange?: (color: ColorResult) => void;
   color?: string | HsvaColor;
+  disableAlpha?: boolean;
 }
 
 const Pointer = ({ style, color, ...props }: React.HTMLAttributes<HTMLDivElement> & { color: string }) => (
@@ -47,7 +48,7 @@ const Pointer = ({ style, color, ...props }: React.HTMLAttributes<HTMLDivElement
 );
 
 const Colorful = React.forwardRef<HTMLDivElement, ColorfulProps>((props, ref) => {
-  const { prefixCls = 'w-color-colorful', className, onChange, color, style, ...other } = props;
+  const { prefixCls = 'w-color-colorful', className, onChange, color, style, disableAlpha, ...other } = props;
   const hsva = (typeof color === 'string' && validHex(color) ? hexToHsva(color) : color || {}) as HsvaColor;
   const handleChange = (value: HsvaColor) => onChange && onChange(handleColor(value));
   return (
@@ -74,18 +75,21 @@ const Colorful = React.forwardRef<HTMLDivElement, ColorfulProps>((props, ref) =>
       <Hue
         hue={hsva.h}
         height={24}
+        radius={disableAlpha ? '0 0 8px 8px' : 0}
         className={prefixCls}
         onChange={(newHue) => handleChange({ ...hsva, ...newHue })}
         pointer={({ left }) => <Pointer style={{ left }} color={`hsl(${hsva.h || 0}deg 100% 50%)`} />}
       />
-      <Alpha
-        hsva={hsva}
-        height={24}
-        className={prefixCls}
-        radius="0 0 8px 8px"
-        pointer={({ left }) => <Pointer style={{ left }} color={hsvaToRgbaString(hsva)} />}
-        onChange={(newAlpha) => handleChange({ ...hsva, ...newAlpha })}
-      />
+      {!disableAlpha && (
+        <Alpha
+          hsva={hsva}
+          height={24}
+          className={prefixCls}
+          radius="0 0 8px 8px"
+          pointer={({ left }) => <Pointer style={{ left }} color={hsvaToRgbaString(hsva)} />}
+          onChange={(newAlpha) => handleChange({ ...hsva, ...newAlpha })}
+        />
+      )}
     </div>
   );
 });

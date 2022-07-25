@@ -38,6 +38,36 @@ function Demo() {
 export default Demo;
 ```
 
+```jsx mdx:preview
+import React, { useState } from 'react';
+import Colorful from '@uiw/react-color-colorful';
+
+function Demo() {
+  const [hex, setHex] = useState("#59c09a");
+  const [disableAlpha, setDisableAlpha] = useState(false);
+  return (
+    <>
+      <label>
+        <input type="checkbox" checked={disableAlpha} onChange={(evn) => setDisableAlpha(evn.target.checked)} />
+        {disableAlpha ? "隐藏" : "显示"} Alpha
+      </label>
+      <Colorful
+        color={hex}
+        disableAlpha={disableAlpha}
+        onChange={(color) => {
+          setHex(color.hexa);
+        }}
+      />
+      <div style={{ background: hex, marginTop: 30, padding: 10 }}>
+        {hex}
+      </div>
+    </>
+  );
+}
+export default Demo;
+```
+
+
 ## Props
 
 ```ts
@@ -47,6 +77,7 @@ export interface ColorfulProps extends Omit<React.HTMLAttributes<HTMLDivElement>
   prefixCls?: string;
   onChange?: (color: ColorResult) => void;
   color?: string | HsvaColor;
+  disableAlpha?: boolean;
 }
 ```
 
