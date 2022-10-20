@@ -17,31 +17,29 @@ export const Pointer = ({ className, color, left, top, style, prefixCls }: Point
     top,
     left,
   };
-  return useMemo(
-    () => (
-      <div className={`${prefixCls}-pointer ${className || ''}`} style={styleWarp}>
+  const cls = `${prefixCls}-pointer ${className || ''}`;
+  return (
+    <div className={cls} style={styleWarp}>
+      <div
+        className={`${prefixCls}-fill`}
+        style={{
+          width: 10,
+          height: 10,
+          transform: 'translate(-5px, -5px)',
+          boxShadow: BOXSHADOW,
+          borderRadius: '50%',
+          backgroundColor: '#fff',
+        }}
+      >
         <div
-          className={`${prefixCls}-fill`}
           style={{
-            width: 10,
-            height: 10,
-            transform: 'translate(-5px, -5px)',
-            boxShadow: BOXSHADOW,
+            inset: 0,
             borderRadius: '50%',
-            backgroundColor: '#fff',
+            position: 'absolute',
+            backgroundColor: color,
           }}
-        >
-          <div
-            style={{
-              inset: 0,
-              borderRadius: '50%',
-              position: 'absolute',
-              backgroundColor: color,
-            }}
-          />
-        </div>
+        />
       </div>
-    ),
-    [top, left, color, className, prefixCls],
+    </div>
   );
 };

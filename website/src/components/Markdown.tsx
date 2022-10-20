@@ -47,7 +47,7 @@ export default class Markdown extends Component<MarkdownProps, MarkdownState> {
     const { source, components, data } = this.state.mdObj || {};
     return (
       <div className={[styles.warpper, 'wmde-markdown-var'].join(' ')}>
-        <dark-mode light="Dark" dark="Light"></dark-mode>
+        <dark-mode permanent light="Dark" dark="Light"></dark-mode>
         <div className={styles.markdown}>
           <EditorUrl editorUrl={this.editorUrl} />
           {this.example && <div className={styles.example}>{this.example}</div>}
