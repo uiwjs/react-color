@@ -59,10 +59,10 @@ const Wheel = React.forwardRef<HTMLDivElement, WheelProps>((props, ref) => {
       className={[prefixCls, className || ''].filter(Boolean).join(' ')}
       {...other}
       style={{
-        ...style,
         position: 'relative',
         width,
         height,
+        ...style,
       }}
       ref={ref}
       onMove={handleChange}
