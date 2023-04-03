@@ -66,5 +66,8 @@
     "@uiw/react-color-slider": "1.1.2",
     "@uiw/react-color-swatch": "1.1.2",
     "@uiw/react-color-wheel": "1.1.2"
+  },
+  "devDependencies": {
+    "@babel/runtime": "^7.21.0"
   }
 }

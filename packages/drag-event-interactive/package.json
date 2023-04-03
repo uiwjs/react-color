@@ -32,5 +32,8 @@
     "@babel/runtime": ">=7.19.0",
     "react": ">=16.9.0",
     "react-dom": ">=16.9.0"
+  },
+  "devDependencies": {
+    "@babel/runtime": "^7.21.0"
   }
 }

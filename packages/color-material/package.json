@@ -38,5 +38,8 @@
     "@uiw/color-convert": "1.1.2",
     "@uiw/react-color-editable-input": "1.1.2",
     "@uiw/react-color-editable-input-rgba": "1.1.2"
+  },
+  "devDependencies": {
+    "@babel/runtime": "^7.21.0"
   }
 }

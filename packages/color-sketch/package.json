@@ -42,5 +42,8 @@
     "@uiw/react-color-hue": "1.1.2",
     "@uiw/react-color-saturation": "1.1.2",
     "@uiw/react-color-swatch": "1.1.2"
+  },
+  "devDependencies": {
+    "@babel/runtime": "^7.21.0"
   }
 }

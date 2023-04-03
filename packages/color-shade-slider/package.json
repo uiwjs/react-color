@@ -37,5 +37,8 @@
   "dependencies": {
     "@uiw/color-convert": "1.1.2",
     "@uiw/react-color-alpha": "1.1.2"
+  },
+  "devDependencies": {
+    "@babel/runtime": "^7.21.0"
   }
 }

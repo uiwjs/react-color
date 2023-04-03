@@ -27,5 +27,8 @@
   ],
   "peerDependencies": {
     "@babel/runtime": ">=7.19.0"
+  },
+  "devDependencies": {
+    "@babel/runtime": "^7.21.0"
   }
 }
