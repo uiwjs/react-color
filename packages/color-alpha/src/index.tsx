@@ -3,6 +3,8 @@ import { HsvaColor, hsvaToHslaString } from '@uiw/color-convert';
 import Interactive, { Interaction } from '@uiw/react-drag-event-interactive';
 import { Pointer, PointerProps } from './Pointer';
 
+export * from './Pointer';
+
 export interface AlphaProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   prefixCls?: string;
   /** String, Pixel value for picker width. Default `316px` */

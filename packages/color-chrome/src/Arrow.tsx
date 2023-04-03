@@ -5,11 +5,11 @@ interface ArrowProps extends React.HTMLAttributes<HTMLDivElement> {}
 export default function Arrow(props: ArrowProps) {
   const { style, ...other } = props;
   const btn = useRef<HTMLDivElement>(null);
-  const handleMouseEnter = useCallback((evn) => {
+  const handleMouseEnter = useCallback(() => {
     btn.current!.style['backgroundColor'] = '#e8e8e8';
   }, []);
 
-  const handleMouseLeave = useCallback((evn) => {
+  const handleMouseLeave = useCallback(() => {
     btn.current!.style['backgroundColor'] = 'transparent';
   }, []);
   return (

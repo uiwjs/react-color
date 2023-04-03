@@ -8,11 +8,11 @@ interface PointProps extends SwatchRectRenderProps {
 
 export default function Point({ style, title, checked, color, onClick, rectProps }: PointProps) {
   const btn = useRef<HTMLDivElement>(null);
-  const handleMouseEnter = useCallback((evn) => {
+  const handleMouseEnter = useCallback(() => {
     btn.current!.style['transform'] = 'scale(1.2)';
   }, []);
 
-  const handleMouseLeave = useCallback((evn) => {
+  const handleMouseLeave = useCallback(() => {
     btn.current!.style['transform'] = 'scale(1)';
   }, []);
 

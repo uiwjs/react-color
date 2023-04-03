@@ -1,9 +1,8 @@
 import React, { useState, useCallback, Fragment } from 'react';
 import Saturation from '@uiw/react-color-saturation';
-import Alpha from '@uiw/react-color-alpha';
+import Alpha, { PointerProps } from '@uiw/react-color-alpha';
 import EditableInput from '@uiw/react-color-editable-input';
 import RGBA from '@uiw/react-color-editable-input-rgba';
-import { PointerProps } from '@uiw/react-color-alpha/lib/cjs/Pointer';
 import Hue from '@uiw/react-color-hue';
 import {
   validHex,
