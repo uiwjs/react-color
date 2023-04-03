@@ -1,6 +1,6 @@
 {
   "name": "@uiw/color-convert",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "Color Convert",
   "author": "Kenny Wong <wowohoo@qq.com>",
   "homepage": "https://uiwjs.github.io/react-color/#/convert",
