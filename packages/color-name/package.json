@@ -30,8 +30,10 @@
     "cjs",
     "src"
   ],
+  "peerDependencies": {
+    "@babel/runtime": ">=7.19.0"
+  },
   "dependencies": {
-    "@babel/runtime": "~7.19.0",
     "@uiw/color-convert": "1.1.2"
   }
 }

@@ -24,5 +24,8 @@
     "esm",
     "cjs",
     "src"
-  ]
+  ],
+  "peerDependencies": {
+    "@babel/runtime": ">=7.19.0"
+  }
 }

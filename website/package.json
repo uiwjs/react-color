@@ -13,6 +13,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@babel/runtime": "^7.21.0",
     "@uiw/color-convert": "1.1.2",
     "@uiw/react-color": "1.1.2",
     "@uiw/react-color-alpha": "1.1.2",
