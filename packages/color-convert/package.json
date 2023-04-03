@@ -12,8 +12,8 @@
     "url": "https://github.com/uiwjs/react-color.git"
   },
   "scripts": {
-    "build": "tsbb build",
-    "watch": "tsbb watch"
+    "build": "tsbb build src/*.tsx --use-babel --cjs cjs",
+    "watch": "tsbb watch src/*.tsx --use-babel --cjs cjs"
   },
   "keywords": [
     "color",

@@ -5,11 +5,11 @@
     "bundle:watch": "lerna exec \"ncc watch src/index.tsx --target web --filename color\" --scope @uiw/react-color",
     "bundle:min": "lerna exec \"ncc build src/index.tsx --target web --filename color --minify\" --scope @uiw/react-color",
     "⬇️⬇️⬇️⬇️⬇️ watch ⬇️⬇️⬇️⬇️⬇️": "▼▼▼▼▼ watch::package ▼▼▼▼▼",
-    "watch:all": "lerna exec --parallel --scope @uiw/* -- tsbb watch",
-    "watch:color": "lerna exec --parallel --scope @uiw/react-color-block -- tsbb watch",
-    "watch:alpha": "lerna exec --parallel --scope @uiw/react-alpha -- tsbb watch",
+    "watch:all": "lerna exec --parallel --scope @uiw/* -- tsbb watch src/*.tsx --use-babel --cjs cjs",
+    "watch:color": "lerna exec --parallel --scope @uiw/react-color-block -- tsbb watch src/*.tsx --use-babel --cjs cjs",
+    "watch:alpha": "lerna exec --parallel --scope @uiw/react-alpha -- tsbb watch src/*.tsx --use-babel --cjs cjs",
     "⬆️⬆️⬆️⬆️⬆️ watch ⬆️⬆️⬆️⬆️⬆️": "▲▲▲▲▲ watch::package ▲▲▲▲▲",
-    "build": "lerna exec --scope @uiw/* -- tsbb build",
+    "build": "lerna exec --scope @uiw/* -- tsbb build src/*.tsx --use-babel --cjs cjs",
     "start": "lerna exec --scope website -- npm run start",
     "doc": "lerna exec --scope website -- npm run build",
     "test": "tsbb test --env=jsdom",
@@ -55,12 +55,15 @@
     "@types/react-dom": "~18.0.0",
     "@types/react-test-renderer": "~18.0.0",
     "husky": "~8.0.0",
+    "jest": "^29.5.0",
+    "jest-watch-typeahead": "^2.2.2",
+    "jest-environment-jsdom": "^29.5.0",
     "lint-staged": "~13.0.0",
     "lerna": "^6.0.0",
     "prettier": "~2.7.0",
     "react": "~18.2.0",
     "react-dom": "~18.2.0",
     "react-test-renderer": "~18.2.0",
-    "tsbb": "~3.7.0"
+    "tsbb": "^4.1.0"
   }
 }
