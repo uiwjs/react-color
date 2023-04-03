@@ -89,7 +89,7 @@ const Swatch = React.forwardRef<HTMLDivElement, SwatchProps>((props, ref) => {
           }
           const child =
             rectProps.children && React.isValidElement(rectProps.children)
-              ? React.cloneElement(rectProps.children, {
+              ? React.cloneElement<any>(rectProps.children, {
                   color: background,
                   checked,
                 })
