@@ -3,7 +3,11 @@ import CodeLayout from 'react-code-preview-layout';
 import { getCodeString } from 'rehype-rewrite';
 import { getMetaId, isMeta, getURLParameters, CodeBlockData } from 'markdown-react-code-preview-loader';
 
-export default function Preview(data: CodeBlockData) {
+const Preview = CodeLayout.Preview;
+const Code = CodeLayout.Code;
+const Toolbar = CodeLayout.Toolbar;
+
+export default function PreviewDemo(data: CodeBlockData) {
   return (
     <MarkdownPreview
       disableCopy={true}
@@ -22,8 +26,14 @@ export default function Preview(data: CodeBlockData) {
             const code = getCodeString(node.children);
             const param = getURLParameters(meta);
             return (
-              <CodeLayout toolbar={param.title || 'Example Display'} code={<code {...rest} />} text={code}>
-                <Child />
+              <CodeLayout>
+                <Preview>
+                  <Child />
+                </Preview>
+                <Toolbar text={code}>{param.title || 'Example Display'}</Toolbar>
+                <Code>
+                  <code {...rest} />
+                </Code>
               </CodeLayout>
             );
           }
