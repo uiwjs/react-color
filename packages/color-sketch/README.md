@@ -15,21 +15,31 @@ npm i @uiw/react-color-sketch
 
 ## Usage
 
-```js
+```jsx mdx:preview
+import React, { useState } from 'react';
 import Sketch from '@uiw/react-color-sketch';
 
 function Demo() {
   const [hex, setHex] = useState("#fff");
+  const [disableAlpha, setDisableAlpha] = useState(false);
   return (
-    <Sketch
-      style={{ marginLeft: 20 }}
-      color={hex}
-      onChange={(color) => {
-        setHex(color.hex);
-      }}
-    />
+    <div>
+      <Sketch
+        style={{ marginLeft: 20 }}
+        color={hex}
+        disableAlpha={disableAlpha}
+        onChange={(color) => {
+          setHex(color.hex);
+        }}
+      />
+      <button onClick={() => setDisableAlpha(!disableAlpha)}>
+        disableAlpha={disableAlpha.toString()}
+      </button>
+    </div>
   );
 }
+
+export default Demo;
 ```
 
 ## Props
@@ -44,6 +54,7 @@ export interface SketchProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 
   color?: string | HsvaColor;
   presetColors?: false | SwatchPresetColor[];
   editableDisable?: boolean;
+  disableAlpha?: boolean;
   onChange?: (newShade: ColorResult) => void;
 }
 ```

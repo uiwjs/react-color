@@ -40,6 +40,7 @@ export interface SketchProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 
   color?: string | HsvaColor;
   presetColors?: false | SwatchPresetColor[];
   editableDisable?: boolean;
+  disableAlpha?: boolean;
   onChange?: (newShade: ColorResult) => void;
 }
 
@@ -67,6 +68,7 @@ const Sketch = React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
     presetColors = PRESET_COLORS,
     color,
     editableDisable = true,
+    disableAlpha = false,
     style,
     ...other
   } = props;
@@ -124,38 +126,42 @@ const Sketch = React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
               }}
               onChange={(newHue) => handleChange({ ...hsva, ...newHue })}
             />
-            <Alpha
-              width="auto"
-              height={10}
-              hsva={hsva}
-              pointer={Bar}
-              style={{ marginTop: 4 }}
-              innerProps={{
-                style: { marginLeft: 1, marginRight: 5 },
-              }}
-              onChange={(newAlpha) => {
-                handleChange({ ...hsva, ...{ a: newAlpha.a } });
-              }}
-            />
+            {!disableAlpha && (
+              <Alpha
+                width="auto"
+                height={10}
+                hsva={hsva}
+                pointer={Bar}
+                style={{ marginTop: 4 }}
+                innerProps={{
+                  style: { marginLeft: 1, marginRight: 5 },
+                }}
+                onChange={(newAlpha) => {
+                  handleChange({ ...hsva, ...{ a: newAlpha.a } });
+                }}
+              />
+            )}
           </div>
-          <Alpha
-            width={24}
-            height={24}
-            hsva={hsva}
-            radius={2}
-            style={{
-              marginLeft: 4,
-            }}
-            bgProps={{ style: { background: 'transparent' } }}
-            innerProps={{
-              style: {
-                borderRadius: 2,
-                background: hsvaToRgbaString(hsva),
-                boxShadow: 'rgb(0 0 0 / 15%) 0px 0px 0px 1px inset, rgb(0 0 0 / 25%) 0px 0px 4px inset',
-              },
-            }}
-            pointer={() => <Fragment />}
-          />
+          {!disableAlpha && (
+            <Alpha
+              width={24}
+              height={24}
+              hsva={hsva}
+              radius={2}
+              style={{
+                marginLeft: 4,
+              }}
+              bgProps={{ style: { background: 'transparent' } }}
+              innerProps={{
+                style: {
+                  borderRadius: 2,
+                  background: hsvaToRgbaString(hsva),
+                  boxShadow: 'rgb(0 0 0 / 15%) 0px 0px 0px 1px inset, rgb(0 0 0 / 25%) 0px 0px 4px inset',
+                },
+              }}
+              pointer={() => <Fragment />}
+            />
+          )}
         </div>
       </div>
       {editableDisable && (
