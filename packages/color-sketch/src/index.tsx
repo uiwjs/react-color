@@ -82,19 +82,18 @@ const Sketch = React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
     }
   }, [color]);
 
-  const handleChange = useCallback(
-    (hsv: HsvaColor) => {
-      setHsva(hsv);
-      onChange && onChange(handleColor(hsv));
-    },
-    [hsva],
-  );
+  const handleChange = (hsv: HsvaColor) => {
+    setHsva(hsv);
+    onChange && onChange(handleColor(hsv));
+  };
 
   const handleHex = (value: string | number, evn: React.ChangeEvent<HTMLInputElement>) => {
     if (typeof value === 'string' && validHex(value) && /(3|6)/.test(String(value.length))) {
       handleChange(hexToHsva(value));
     }
   };
+  const handleAlphaChange = (newAlpha: { a: number }) => handleChange({ ...hsva, ...{ a: newAlpha.a } });
+  const handleSaturationChange = (newColor: HsvaColor) => handleChange({ ...hsva, ...newColor, a: hsva.a });
   return (
     <div
       {...other}
@@ -109,11 +108,7 @@ const Sketch = React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
       }}
     >
       <div style={{ padding: '10px 10px 8px' }}>
-        <Saturation
-          hsva={hsva}
-          style={{ width: 'auto', height: 150 }}
-          onChange={(newColor) => handleChange({ ...hsva, ...newColor, a: hsva.a })}
-        />
+        <Saturation hsva={hsva} style={{ width: 'auto', height: 150 }} onChange={handleSaturationChange} />
         <div style={{ display: 'flex', marginTop: 4 }}>
           <div style={{ flex: 1 }}>
             <Hue
@@ -136,9 +131,7 @@ const Sketch = React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
                 innerProps={{
                   style: { marginLeft: 1, marginRight: 5 },
                 }}
-                onChange={(newAlpha) => {
-                  handleChange({ ...hsva, ...{ a: newAlpha.a } });
-                }}
+                onChange={handleAlphaChange}
               />
             )}
           </div>
@@ -172,7 +165,12 @@ const Sketch = React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
             onChange={(evn, val) => handleHex(val, evn)}
             style={{ minWidth: 58 }}
           />
-          <RGBA hsva={hsva} style={{ marginLeft: 6 }} onChange={(result) => handleChange(result.hsva)} />
+          <RGBA
+            hsva={hsva}
+            style={{ marginLeft: 6 }}
+            aProps={!disableAlpha ? {} : false}
+            onChange={(result) => handleChange(result.hsva)}
+          />
         </div>
       )}
       {presetColors && presetColors.length > 0 && (
