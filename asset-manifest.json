@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.48264b5a.css",
-    "main.js": "/static/js/main.8f6bd455.js",
+    "main.js": "/static/js/main.66919993.js",
     "static/css/67.08f1357f.chunk.css": "/static/css/67.08f1357f.chunk.css",
     "static/js/67.ed3b2f3b.chunk.js": "/static/js/67.ed3b2f3b.chunk.js",
     "static/css/158.78c909ab.chunk.css": "/static/css/158.78c909ab.chunk.css",
@@ -76,7 +76,7 @@
     "index.html": "/index.html",
     "static/media/home.svg": "/static/media/home.7d51f25c64fe597ec540c3e724748f4e.svg",
     "main.48264b5a.css.map": "/static/css/main.48264b5a.css.map",
-    "main.8f6bd455.js.map": "/static/js/main.8f6bd455.js.map",
+    "main.66919993.js.map": "/static/js/main.66919993.js.map",
     "67.08f1357f.chunk.css.map": "/static/css/67.08f1357f.chunk.css.map",
     "67.ed3b2f3b.chunk.js.map": "/static/js/67.ed3b2f3b.chunk.js.map",
     "158.78c909ab.chunk.css.map": "/static/css/158.78c909ab.chunk.css.map",
@@ -152,6 +152,6 @@
   "entrypoints": [
     "static/js/react-vendor.19ebb7f3.js",
     "static/css/main.48264b5a.css",
-    "static/js/main.8f6bd455.js"
+    "static/js/main.66919993.js"
   ]
 }
