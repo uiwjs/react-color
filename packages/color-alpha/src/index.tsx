@@ -49,12 +49,9 @@ const Aplha = React.forwardRef<HTMLDivElement, AlphaProps>((props, ref) => {
     ...other
   } = props;
 
-  const handleChange = useCallback(
-    (offset: Interaction) => {
-      onChange && onChange({ ...hsva, a: direction === 'horizontal' ? offset.left : offset.top }, offset);
-    },
-    [hsva],
-  );
+  const handleChange = (offset: Interaction) => {
+    onChange && onChange({ ...hsva, a: direction === 'horizontal' ? offset.left : offset.top }, offset);
+  };
 
   const colorTo = hsvaToHslaString(Object.assign({}, hsva, { a: 1 }));
   const innerBackground = `linear-gradient(to ${
