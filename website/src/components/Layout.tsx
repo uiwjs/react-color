@@ -7,6 +7,8 @@ import { reducer, Context, defaultContext } from '../Store';
 import { routes } from '../router';
 import Header from '../components/Header';
 
+import styles from './Layout.module.less';
+
 export default function Root() {
   const [state, dispatch] = useReducer(reducer, defaultContext);
   useEffect(() => {
@@ -17,6 +19,7 @@ export default function Root() {
       <div
         style={{ backgroundColor: hsvaToHslaString(state.hsva), transition: 'background-color 0.3s ease 0s', minHeight: '100vh' }}
       >
+        <div className={styles.version}>v{VERSION}</div>
         <GitHubCorners fixed zIndex={99} size={60} target="__blank" href="https://github.com/uiwjs/react-color" />
         <Header menus={routes.children || []} />
         <Outlet />
