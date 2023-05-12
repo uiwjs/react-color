@@ -1,10 +1,16 @@
+<!--rehype:ignore:start-->
+<br/><br/><br/>
 <div align="center">
   <a title="React Color" href="https://uiwjs.github.io/react-color/">
-    <img src="https://user-images.githubusercontent.com/1680273/126048210-964aa087-8641-428e-a4e4-67cdca812159.png" alt="@uiw/react-color" />
+    <img src="https://github.com/uiwjs/react-color/assets/1680273/da32cf40-46fa-4da8-bd8e-fe6ad2ce3b1f" alt="@uiw/react-color" />
   </a>
 </div>
+<br/><br/>
 
-<!--dividing-->
+<h1 align="center">React Color</h1>
+
+
+<!--rehype:ignore:end-->
 
 <div align="center">
   <a href="https://github.com/uiwjs/react-color/actions/workflows/ci.yml">
@@ -27,6 +33,17 @@
 <div align="center">
   <strong>react-color</strong> is a tiny color picker widget component for React apps. These components can be installed and used separately.
 </div>
+
+<!--rehype:ignore:start-->
+<br/><br/>
+<div align="center">
+  <a title="React Color" href="https://uiwjs.github.io/react-color/">
+    <img src="https://user-images.githubusercontent.com/1680273/126048210-964aa087-8641-428e-a4e4-67cdca812159.png" alt="@uiw/react-color" />
+  </a>
+</div>
+<br/><br/>
+
+<!--rehype:ignore:end-->
 
 ## Getting Started
 
