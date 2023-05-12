@@ -1,7 +1,7 @@
 <!--rehype:ignore:start-->
 <br/><br/><br/>
 <p align="center">
-  <a align="center" title="React Color" href="https://uiwjs.github.io/react-color/">
+  <a title="React Color" href="https://uiwjs.github.io/react-color/">
     <img src="https://github.com/uiwjs/react-color/assets/1680273/da32cf40-46fa-4da8-bd8e-fe6ad2ce3b1f" alt="@uiw/react-color" />
   </a>
 </p>
