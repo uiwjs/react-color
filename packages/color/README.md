@@ -1,10 +1,10 @@
 <!--rehype:ignore:start-->
 <br/><br/><br/>
-<div align="center">
-  <a title="React Color" href="https://uiwjs.github.io/react-color/">
+<p align="center">
+  <a align="center" title="React Color" href="https://uiwjs.github.io/react-color/">
     <img src="https://github.com/uiwjs/react-color/assets/1680273/da32cf40-46fa-4da8-bd8e-fe6ad2ce3b1f" alt="@uiw/react-color" />
   </a>
-</div>
+</p>
 <br/><br/>
 
 <h1 align="center">React Color</h1>
@@ -36,11 +36,11 @@
 
 <!--rehype:ignore:start-->
 <br/><br/>
-<div align="center">
+<p align="center">
   <a title="React Color" href="https://uiwjs.github.io/react-color/">
     <img src="https://user-images.githubusercontent.com/1680273/126048210-964aa087-8641-428e-a4e4-67cdca812159.png" alt="@uiw/react-color" />
   </a>
-</div>
+</p>
 <br/><br/>
 
 <!--rehype:ignore:end-->
