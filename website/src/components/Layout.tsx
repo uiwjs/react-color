@@ -1,9 +1,9 @@
 import GitHubCorners from '@uiw/react-github-corners';
 import { BACKGROUND_IMG } from '@uiw/react-color';
-import { reducer, Context, defaultContext } from '../Store';
 import { useEffect, useReducer } from 'react';
 import { Outlet, ScrollRestoration } from 'react-router-dom';
 import { hsvaToHslaString } from '@uiw/react-color';
+import { reducer, Context, defaultContext } from '../Store';
 import { routes } from '../router';
 import Header from '../components/Header';
 
