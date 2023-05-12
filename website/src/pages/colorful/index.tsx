@@ -25,7 +25,8 @@ function Example() {
   );
 }
 
-export default class Page extends Markdown {
+export class Component extends Markdown {
+  displayName = 'colorful-Page';
   editorUrl = '/packages/color-colorful/README.md';
   getMdStr = () => import('@uiw/react-color-colorful/README.md');
   example = (<Example />);

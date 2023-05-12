@@ -37,7 +37,7 @@ function Example() {
   );
 }
 
-export default class Page extends Markdown {
+export class Component extends Markdown {
   editorUrl = '/packages/color-circle/README.md';
   getMdStr = () => import('@uiw/react-color-circle/README.md');
   example = (<Example />);

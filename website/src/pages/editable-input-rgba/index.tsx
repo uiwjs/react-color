@@ -46,7 +46,7 @@ function Example() {
   );
 }
 
-export default class Page extends Markdown {
+export class Component extends Markdown {
   editorUrl = '/packages/color-editable-input-rgba/README.md';
   getMdStr = () => import('@uiw/react-color-editable-input-rgba/README.md');
   example = (<Example />);

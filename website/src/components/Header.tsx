@@ -1,10 +1,10 @@
 import { NavLink } from 'react-router-dom';
-import { Routes } from '../router';
+import { MenuRouteObject } from '../router';
 import styles from './Header.module.less';
 import { ReactComponent as Home } from '../assets/home.svg';
 
 interface HeaderProps {
-  menus: Routes[];
+  menus: MenuRouteObject[];
 }
 
 export default function Header(props: HeaderProps) {

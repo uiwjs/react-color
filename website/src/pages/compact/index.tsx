@@ -20,7 +20,7 @@ function Example() {
   );
 }
 
-export default class Page extends Markdown {
+export class Component extends Markdown {
   editorUrl = '/packages/color-compact/README.md';
   getMdStr = () => import('@uiw/react-color-compact/README.md');
   example = (<Example />);

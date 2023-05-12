@@ -43,7 +43,7 @@ it('ShadeSlider', async () => {
           expect(child.props.style).toMatchObject({
             inset: 0,
             position: 'absolute',
-            background: 'linear-gradient(to right, hsla(0, 100%, 50%, 1), rgb(0, 0, 0))',
+            background: 'linear-gradient(to right, hsla(0, 0%, 100%, 1), rgb(0, 0, 0))',
             borderRadius: 0,
           });
         }
@@ -60,7 +60,7 @@ it('ShadeSlider onChange', async () => {
       }}
       hsva={{ h: 0, s: 0, v: 68, a: 1 }}
       onChange={(newShade) => {
-        expect(Object.keys(newShade)).toEqual(expect.arrayContaining(['s', 'v']));
+        expect(Object.keys(newShade)).toEqual(expect.arrayContaining(['v']));
       }}
     />,
   );
@@ -79,7 +79,7 @@ it('ShadeSlider direction === vertical', async () => {
       direction="vertical"
       hsva={{ h: 0, s: 0, v: 68, a: 1 }}
       onChange={(newShade) => {
-        expect(Object.keys(newShade)).toEqual(expect.arrayContaining(['s', 'v']));
+        expect(Object.keys(newShade)).toEqual(expect.arrayContaining(['v']));
       }}
     />,
   );

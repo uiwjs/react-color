@@ -17,7 +17,7 @@ function Example() {
   );
 }
 
-export default class Page extends Markdown {
+export class Component extends Markdown {
   editorUrl = '/packages/color-wheel/README.md';
   getMdStr = () => import('@uiw/react-color-wheel/README.md');
   example = (<Example />);

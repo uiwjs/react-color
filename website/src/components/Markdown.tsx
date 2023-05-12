@@ -50,7 +50,12 @@ export default class Markdown extends Component<MarkdownProps, MarkdownState> {
         <dark-mode permanent light="Dark" dark="Light"></dark-mode>
         <div className={styles.markdown}>
           <EditorUrl editorUrl={this.editorUrl} />
-          {this.example && <div className={styles.example}>{this.example}</div>}
+          {this.example && (
+            <div className={styles.example}>
+              <h3>Example</h3>
+              {this.example}
+            </div>
+          )}
           <Preview source={source || ''} components={components || {}} data={data || {}} />
           <EditorUrl editorUrl={this.editorUrl} />
         </div>

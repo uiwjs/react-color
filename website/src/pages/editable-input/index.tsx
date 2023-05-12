@@ -56,7 +56,7 @@ function Example() {
         label="Alpha"
         value={hsva.a}
         onChange={(evn, value) => {
-          let val = (value > 1 ? 1 : value) as number;
+          let val = (Number(value) > 1 ? 1 : value) as number;
           dispatch!({ hsva: { ...hsva, a: val } });
         }}
         onBlur={(evn) => {
@@ -74,7 +74,7 @@ function Example() {
   );
 }
 
-export default class Page extends Markdown {
+export class Component extends Markdown {
   editorUrl = '/packages/color-editable-input/README.md';
   getMdStr = () => import('@uiw/react-color-editable-input/README.md');
   example = (<Example />);

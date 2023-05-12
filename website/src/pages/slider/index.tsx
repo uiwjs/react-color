@@ -17,7 +17,7 @@ function Example() {
   );
 }
 
-export default class Page extends Markdown {
+export class Component extends Markdown {
   editorUrl = '/packages/color-slider/README.md';
   getMdStr = () => import('@uiw/react-color-slider/README.md');
   example = (<Example />);
