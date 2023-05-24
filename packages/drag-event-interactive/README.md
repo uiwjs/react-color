@@ -13,14 +13,37 @@ npm i @uiw/react-drag-event-interactive
 
 ## Usage
 
-```js
+```jsx mdx:preview
+import React, { useState } from 'react';
 import Interactive from '@uiw/react-drag-event-interactive';
 
+const pointStyle = { width: 5, height: 5, backgroundColor: '#fff', position: 'absolute', borderRadius: 3, border: '1px solid rgb(51, 51, 51)' }
+const wrapper = { width: 120, height: 120, background: 'red', position: 'relative' }
+
 function Demo() {
+  const [data, setData] = useState({
+    left: 0.10,
+    top: 0.10,
+  })
+  const handleChange = (interaction, event) => setData(interaction);
+  const point = { left: `${data.left * 100}%`, top: `${data.top * 100}%`, ...pointStyle }
   return (
-    <Interactive hsva={{ h: 0, s: 75, v: 82, a: 1 }} />
+    <div>
+      <Interactive
+        style={wrapper}
+        onMove={handleChange}
+        onDown={handleChange}
+      >
+        <div style={point} />
+      </Interactive>
+      <pre>
+        {JSON.stringify(data, null, 2)}
+      </pre>
+    </div>
   );
 }
+
+export default Demo;
 ```
 
 ## Props

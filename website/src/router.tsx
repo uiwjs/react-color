@@ -128,7 +128,7 @@ export const routes: MenuRouteObject = {
     },
     {
       path: '/drag-event-interactive',
-      label: 'drag-event-interactive',
+      label: 'Interactive',
       lazy: () => import('./pages/drag-event-interactive'),
     },
     {
