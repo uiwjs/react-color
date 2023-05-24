@@ -59,12 +59,12 @@ function Demo() {
 
 ```ts
 import React from 'react';
-import { HsvaColor } from '@uiw/color-convert';
-export declare type SwatchPresetColor = {
+import { HsvaColor, ColorResult } from '@uiw/color-convert';
+export type SwatchPresetColor = {
   color: string;
   title?: string;
 } | string;
-export declare type SwatchRectRenderProps = {
+export type SwatchRectRenderProps = {
   key: string | number;
   title: string;
   color: string;
@@ -78,10 +78,12 @@ export interface SwatchProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 
   colors?: SwatchPresetColor[];
   rectProps?: React.HTMLAttributes<HTMLDivElement>;
   rectRender?: (props: SwatchRectRenderProps) => JSX.Element;
-  onChange?: (hsva: HsvaColor) => void;
+  onChange?: (hsva: HsvaColor, color: ColorResult, evn: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
   addonAfter?: React.ReactNode;
   addonBefore?: React.ReactNode;
 }
+declare const Swatch: React.ForwardRefExoticComponent<SwatchProps & React.RefAttributes<HTMLDivElement>>;
+export default Swatch;
 ```
 
 <!--footer-dividing-->
