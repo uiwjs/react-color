@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-color-block",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Color Block Picker",
   "author": "Kenny Wong <wowohoo@qq.com>",
   "homepage": "https://uiwjs.github.io/react-color/#/block",
@@ -36,9 +36,9 @@
     "react-dom": ">=16.9.0"
   },
   "dependencies": {
-    "@uiw/color-convert": "1.2.3",
-    "@uiw/react-color-editable-input": "1.2.3",
-    "@uiw/react-color-swatch": "1.2.3"
+    "@uiw/color-convert": "1.2.4",
+    "@uiw/react-color-editable-input": "1.2.4",
+    "@uiw/react-color-swatch": "1.2.4"
   },
   "devDependencies": {
     "@babel/runtime": "^7.21.0"

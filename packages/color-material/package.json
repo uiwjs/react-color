@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-color-material",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Color Material",
   "author": "Kenny Wong <wowohoo@qq.com>",
   "homepage": "https://uiwjs.github.io/react-color/#/material",
@@ -35,9 +35,9 @@
     "react-dom": ">=16.9.0"
   },
   "dependencies": {
-    "@uiw/color-convert": "1.2.3",
-    "@uiw/react-color-editable-input": "1.2.3",
-    "@uiw/react-color-editable-input-rgba": "1.2.3"
+    "@uiw/color-convert": "1.2.4",
+    "@uiw/react-color-editable-input": "1.2.4",
+    "@uiw/react-color-editable-input-rgba": "1.2.4"
   },
   "devDependencies": {
     "@babel/runtime": "^7.21.0"
