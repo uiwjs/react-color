@@ -1,5 +1,5 @@
 import React from 'react';
-import { HsvaColor, hexToHsva } from '@uiw/color-convert';
+import { HsvaColor, hexToHsva, color as handleColor, ColorResult } from '@uiw/color-convert';
 
 export type SwatchPresetColor = { color: string; title?: string } | string;
 export type SwatchRectRenderProps = {
@@ -16,7 +16,7 @@ export interface SwatchProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 
   colors?: SwatchPresetColor[];
   rectProps?: React.HTMLAttributes<HTMLDivElement>;
   rectRender?: (props: SwatchRectRenderProps) => JSX.Element;
-  onChange?: (hsva: HsvaColor) => void;
+  onChange?: (hsva: HsvaColor, color: ColorResult, evn: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
   addonAfter?: React.ReactNode;
   addonBefore?: React.ReactNode;
 }
@@ -47,8 +47,8 @@ const Swatch = React.forwardRef<HTMLDivElement, SwatchProps>((props, ref) => {
     borderRadius: 2,
     ...rectProps.style,
   };
-  const handleClick = (hex: string) => {
-    onChange && onChange(hexToHsva(hex));
+  const handleClick = (hex: string, evn: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    onChange && onChange(hexToHsva(hex), handleColor(hexToHsva(hex)), evn);
   };
   return (
     <div
@@ -84,7 +84,7 @@ const Swatch = React.forwardRef<HTMLDivElement, SwatchProps>((props, ref) => {
               color: background,
               checked: !!checked,
               style: { ...rectStyle, background },
-              onClick: () => handleClick(background),
+              onClick: (evn) => handleClick(background, evn),
             });
           }
           const child =
@@ -99,7 +99,7 @@ const Swatch = React.forwardRef<HTMLDivElement, SwatchProps>((props, ref) => {
               tabIndex={0}
               key={idx}
               title={title}
-              onClick={() => handleClick(background)}
+              onClick={(evn) => handleClick(background, evn)}
               {...rectProps}
               children={child}
               style={{ ...rectStyle, background }}
