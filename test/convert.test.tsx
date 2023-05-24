@@ -27,11 +27,11 @@ import { hsvaToHsvString, hsvStringToHsva } from '../packages/color-convert/src'
 import { equalColorString, equalColorObjects, validHex } from '../packages/color-convert/src/utils';
 
 it('Converts color => getContrastingColor', () => {
-  expect(getContrastingColor('#d0021b')).toEqual('#fff');
-  expect(getContrastingColor('#000')).toEqual('#fff');
-  expect(getContrastingColor('#fff')).toEqual('#000');
-  expect(getContrastingColor(undefined!)).toEqual('#fff');
-  expect(getContrastingColor(null!)).toEqual('#fff');
+  expect(getContrastingColor('#d0021b')).toEqual('#ffffff');
+  expect(getContrastingColor('#000')).toEqual('#ffffff');
+  expect(getContrastingColor('#fff')).toEqual('#000000');
+  expect(getContrastingColor(undefined!)).toEqual('#ffffff');
+  expect(getContrastingColor(null!)).toEqual('#ffffff');
 });
 
 it('Converts color => hslString To Hsl', () => {
