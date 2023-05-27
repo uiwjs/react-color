@@ -1,4 +1,4 @@
-import React, { useState, useCallback, Fragment } from 'react';
+import React, { useState, useCallback, Fragment, CSSProperties } from 'react';
 import Saturation from '@uiw/react-color-saturation';
 import Alpha, { PointerProps } from '@uiw/react-color-alpha';
 import EditableInput from '@uiw/react-color-editable-input';
@@ -94,19 +94,36 @@ const Sketch = React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
   };
   const handleAlphaChange = (newAlpha: { a: number }) => handleChange({ ...hsva, ...{ a: newAlpha.a } });
   const handleSaturationChange = (newColor: HsvaColor) => handleChange({ ...hsva, ...newColor, a: hsva.a });
+  const styleMain = {
+    '--sketch-background': 'rgb(255, 255, 255)',
+    '--sketch-box-shadow': 'rgb(0 0 0 / 15%) 0px 0px 0px 1px, rgb(0 0 0 / 15%) 0px 8px 16px',
+    '--sketch-swatch-box-shadow': 'rgb(0 0 0 / 15%) 0px 0px 0px 1px inset',
+    '--sketch-alpha-box-shadow': 'rgb(0 0 0 / 15%) 0px 0px 0px 1px inset, rgb(0 0 0 / 25%) 0px 0px 4px inset',
+    '--sketch-swatch-border-top': '1px solid rgb(238, 238, 238)',
+    background: 'var(--sketch-background)',
+    borderRadius: 4,
+    boxShadow: 'var(--sketch-box-shadow)',
+    width,
+    ...style,
+  } as CSSProperties;
+  const styleAlpha = {
+    borderRadius: 2,
+    background: hsvaToRgbaString(hsva),
+    boxShadow: 'var(--sketch-alpha-box-shadow)',
+  } as CSSProperties;
+  const styleSwatch = {
+    borderTop: 'var(--sketch-swatch-border-top)',
+    paddingTop: 10,
+    paddingLeft: 10,
+  } as CSSProperties;
+  const styleSwatchRect = {
+    marginRight: 10,
+    marginBottom: 10,
+    borderRadius: 3,
+    boxShadow: 'var(--sketch-swatch-box-shadow)',
+  } as CSSProperties;
   return (
-    <div
-      {...other}
-      className={`${prefixCls} ${className || ''}`}
-      ref={ref}
-      style={{
-        background: 'rgb(255, 255, 255)',
-        borderRadius: 4,
-        boxShadow: 'rgb(0 0 0 / 15%) 0px 0px 0px 1px, rgb(0 0 0 / 15%) 0px 8px 16px',
-        width,
-        ...style,
-      }}
-    >
+    <div {...other} className={`${prefixCls} ${className || ''}`} ref={ref} style={styleMain}>
       <div style={{ padding: '10px 10px 8px' }}>
         <Saturation hsva={hsva} style={{ width: 'auto', height: 150 }} onChange={handleSaturationChange} />
         <div style={{ display: 'flex', marginTop: 4 }}>
@@ -146,11 +163,7 @@ const Sketch = React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
               }}
               bgProps={{ style: { background: 'transparent' } }}
               innerProps={{
-                style: {
-                  borderRadius: 2,
-                  background: hsvaToRgbaString(hsva),
-                  boxShadow: 'rgb(0 0 0 / 15%) 0px 0px 0px 1px inset, rgb(0 0 0 / 25%) 0px 0px 4px inset',
-                },
+                style: styleAlpha,
               }}
               pointer={() => <Fragment />}
             />
@@ -175,24 +188,12 @@ const Sketch = React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
       )}
       {presetColors && presetColors.length > 0 && (
         <Swatch
-          style={{
-            borderTop: '1px solid rgb(238, 238, 238)',
-            paddingTop: 10,
-            paddingLeft: 10,
-          }}
+          style={styleSwatch}
           colors={presetColors}
           color={hsvaToHex(hsva)}
           onChange={(hsvColor) => handleChange(hsvColor)}
           rectProps={{
-            style: {
-              marginRight: 10,
-              marginBottom: 10,
-              borderRadius: 3,
-              boxShadow: 'rgb(0 0 0 / 15%) 0px 0px 0px 1px inset',
-              // display: 'flex',
-              // alignItems: 'center',
-              // justifyContent: 'center',
-            },
+            style: styleSwatchRect,
           }}
         />
       )}

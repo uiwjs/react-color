@@ -15,20 +15,28 @@ npm i @uiw/react-color-github
 
 ## Usage
 
-```js
+```jsx mdx:preview
+import React, { useState } from 'react';
 import Github from '@uiw/react-color-github';
 
 function Demo() {
   const [hex, setHex] = useState("#fff");
   return (
-    <Github
-      color={hex}
-      onChange={(color) => {
-        setHex(color.hex);
-      }}
-    />
+    <>
+      <Github
+        color={hex}
+        style={{
+          '--github-background-color': '#d1eff9'
+        }}
+        onChange={(color) => {
+          setHex(color.hex);
+        }}
+      />
+      <div style={{ width: 120, height: 50, backgroundColor: hex }} />
+    </>
   );
 }
+export default Demo;
 ```
 
 ## Props

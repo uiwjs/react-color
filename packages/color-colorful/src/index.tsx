@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import {
   validHex,
   color as handleColor,
@@ -19,33 +19,35 @@ export interface ColorfulProps extends Omit<React.HTMLAttributes<HTMLDivElement>
   disableAlpha?: boolean;
 }
 
-const Pointer = ({ style, color, ...props }: React.HTMLAttributes<HTMLDivElement> & { color: string }) => (
-  <div
-    {...props}
-    style={{
-      height: 28,
-      width: 28,
-      position: 'absolute',
-      transform: 'translate(-14px, -4px)',
-      boxShadow: '0 2px 4px rgb(0 0 0 / 20%)',
-      borderRadius: '50%',
-      background: `url(${BACKGROUND_IMG})`,
-      backgroundColor: '#fff',
-      border: '2px solid #fff',
-      zIndex: 1,
-      ...style,
-    }}
-  >
-    <div
-      style={{
-        backgroundColor: color,
-        borderRadius: '50%',
-        height: ' 100%',
-        width: '100%',
-      }}
-    />
-  </div>
-);
+const Pointer = ({ style, color, ...props }: React.HTMLAttributes<HTMLDivElement> & { color: string }) => {
+  const stylePointer = {
+    '--colorful-pointer-background-color': '#fff',
+    '--colorful-pointer-border': '2px solid #fff',
+    height: 28,
+    width: 28,
+    position: 'absolute',
+    transform: 'translate(-14px, -4px)',
+    boxShadow: '0 2px 4px rgb(0 0 0 / 20%)',
+    borderRadius: '50%',
+    background: `url(${BACKGROUND_IMG})`,
+    backgroundColor: 'var(--colorful-pointer-background-color)',
+    border: 'var(--colorful-pointer-border)',
+    zIndex: 1,
+    ...style,
+  } as CSSProperties;
+  return (
+    <div {...props} style={stylePointer}>
+      <div
+        style={{
+          backgroundColor: color,
+          borderRadius: '50%',
+          height: ' 100%',
+          width: '100%',
+        }}
+      />
+    </div>
+  );
+};
 
 const Colorful = React.forwardRef<HTMLDivElement, ColorfulProps>((props, ref) => {
   const { prefixCls = 'w-color-colorful', className, onChange, color, style, disableAlpha, ...other } = props;

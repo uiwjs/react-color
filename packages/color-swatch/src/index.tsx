@@ -35,8 +35,9 @@ const Swatch = React.forwardRef<HTMLDivElement, SwatchProps>((props, ref) => {
     rectRender,
     ...other
   } = props;
-  const rectStyle: React.CSSProperties = {
-    background: 'rgb(144, 19, 254)',
+  const rectStyle = {
+    '--swatch-background-color': 'rgb(144, 19, 254)',
+    background: 'var(--swatch-background-color)',
     height: 15,
     width: 15,
     marginRight: 5,
@@ -46,7 +47,7 @@ const Swatch = React.forwardRef<HTMLDivElement, SwatchProps>((props, ref) => {
     outline: 'none',
     borderRadius: 2,
     ...rectProps.style,
-  };
+  } as React.CSSProperties;
   const handleClick = (hex: string, evn: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     onChange && onChange(hexToHsva(hex), handleColor(hexToHsva(hex)), evn);
   };

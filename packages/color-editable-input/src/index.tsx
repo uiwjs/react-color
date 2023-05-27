@@ -66,18 +66,33 @@ const EditableInput = React.forwardRef<HTMLInputElement, EditableInputProps>((pr
   if (placement === 'left') {
     placementStyle['flexDirection'] = 'row-reverse';
   }
+  const wrapperStyle = {
+    '--editable-input-label-color': 'rgb(153, 153, 153)',
+    '--editable-input-box-shadow': 'rgb(204 204 204) 0px 0px 0px 1px inset',
+    '--editable-input-color': '#666',
+    position: 'relative',
+    alignItems: 'center',
+    display: 'flex',
+    fontSize: 11,
+    ...placementStyle,
+    ...style,
+  } as React.CSSProperties;
+  const editableStyle = {
+    width: '100%',
+    paddingTop: 2,
+    paddingBottom: 2,
+    paddingLeft: 3,
+    paddingRight: 3,
+    fontSize: 11,
+    background: 'transparent',
+    boxSizing: 'border-box',
+    border: 'none',
+    color: 'var(--editable-input-color)',
+    boxShadow: 'var(--editable-input-box-shadow)',
+    ...inputStyle,
+  } as React.CSSProperties;
   return (
-    <div
-      className={[prefixCls, className || ''].filter(Boolean).join(' ')}
-      style={{
-        position: 'relative',
-        alignItems: 'center',
-        display: 'flex',
-        fontSize: 11,
-        ...placementStyle,
-        ...style,
-      }}
-    >
+    <div className={[prefixCls, className || ''].filter(Boolean).join(' ')} style={wrapperStyle}>
       <input
         ref={ref}
         value={value}
@@ -86,23 +101,12 @@ const EditableInput = React.forwardRef<HTMLInputElement, EditableInputProps>((pr
         autoComplete="off"
         onFocus={() => (isFocus.current = true)}
         {...other}
-        style={{
-          width: '100%',
-          paddingTop: 2,
-          paddingBottom: 2,
-          paddingLeft: 3,
-          paddingRight: 3,
-          fontSize: 11,
-          boxSizing: 'border-box',
-          border: 'none',
-          boxShadow: 'rgb(204 204 204) 0px 0px 0px 1px inset',
-          ...inputStyle,
-        }}
+        style={editableStyle}
       />
       {label && (
         <span
           style={{
-            color: 'rgb(153, 153, 153)',
+            color: 'var(--editable-input-label-color)',
             textTransform: 'capitalize',
             ...labelStyle,
           }}

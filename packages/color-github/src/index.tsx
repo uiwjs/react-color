@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { CSSProperties, Fragment } from 'react';
 import { HsvaColor, ColorResult, color as handleColor, validHex, hexToHsva, hsvaToHex } from '@uiw/color-convert';
 import Swatch, { SwatchProps, SwatchRectRenderProps } from '@uiw/react-color-swatch';
 import Point from './Point';
@@ -63,6 +63,21 @@ const Github = React.forwardRef<HTMLDivElement, GithubProps>((props, ref) => {
   const hex = color ? hsvaToHex(hsva) : '';
   const handleChange = (hsv: HsvaColor) => onChange && onChange(handleColor(hsv));
 
+  const styleWrapper = {
+    '--github-border': '1px solid rgba(0, 0, 0, 0.2)',
+    '--github-background-color': '#fff',
+    '--github-box-shadow': 'rgb(0 0 0 / 15%) 0px 3px 12px',
+    '--github-arrow-border-color': 'rgba(0, 0, 0, 0.15)',
+    width: 200,
+    borderRadius: 4,
+    background: 'var(--github-background-color)',
+    boxShadow: 'var(--github-box-shadow)',
+    border: 'var(--github-border)',
+    position: 'relative',
+    padding: 5,
+    ...style,
+  } as CSSProperties;
+
   const rStyle: React.CSSProperties = {
     borderStyle: 'solid',
     position: 'absolute',
@@ -71,9 +86,9 @@ const Github = React.forwardRef<HTMLDivElement, GithubProps>((props, ref) => {
   let arrStyl: React.CSSProperties = { ...rStyle };
   if (/^T/.test(placement)) {
     arrBrStyl.borderWidth = '0 8px 8px';
-    arrBrStyl.borderColor = 'transparent transparent rgba(0, 0, 0, 0.15)';
+    arrBrStyl.borderColor = 'transparent transparent var(--github-arrow-border-color)';
     arrStyl.borderWidth = '0 7px 7px';
-    arrStyl.borderColor = 'transparent transparent #fff';
+    arrStyl.borderColor = 'transparent transparent var(--github-background-color)';
   }
   if (placement === GithubPlacement.TopRight) {
     arrBrStyl.top = -8;
@@ -89,9 +104,9 @@ const Github = React.forwardRef<HTMLDivElement, GithubProps>((props, ref) => {
   }
   if (/^B/.test(placement)) {
     arrBrStyl.borderWidth = '8px 8px 0 ';
-    arrBrStyl.borderColor = 'rgba(0, 0, 0, 0.15) transparent transparent';
+    arrBrStyl.borderColor = 'var(--github-arrow-border-color) transparent transparent';
     arrStyl.borderWidth = '7px 7px 0px';
-    arrStyl.borderColor = '#fff transparent transparent';
+    arrStyl.borderColor = 'var(--github-background-color) transparent transparent';
     if (placement === GithubPlacement.BottonRight) {
       arrBrStyl.top = '100%';
       arrStyl.top = '100%';
@@ -123,17 +138,17 @@ const Github = React.forwardRef<HTMLDivElement, GithubProps>((props, ref) => {
   }
   if (/^L/.test(placement)) {
     arrBrStyl.borderWidth = '8px 8px 8px 0px';
-    arrBrStyl.borderColor = 'transparent rgba(0, 0, 0, 0.15) transparent transparent';
+    arrBrStyl.borderColor = 'transparent var(--github-arrow-border-color) transparent transparent';
     arrStyl.borderWidth = '7px 7px 7px 0px';
-    arrStyl.borderColor = 'transparent #fff transparent transparent';
+    arrStyl.borderColor = 'transparent var(--github-background-color) transparent transparent';
     arrBrStyl.left = -8;
     arrStyl.left = -7;
   }
   if (/^R/.test(placement)) {
     arrBrStyl.borderWidth = '8px 0px 8px 8px';
-    arrBrStyl.borderColor = 'transparent transparent transparent rgba(0, 0, 0, 0.15)';
+    arrBrStyl.borderColor = 'transparent transparent transparent var(--github-arrow-border-color)';
     arrStyl.borderWidth = '7px 0px 7px 7px';
-    arrStyl.borderColor = 'transparent transparent transparent #fff';
+    arrStyl.borderColor = 'transparent transparent transparent var(--github-background-color)';
     arrBrStyl.right = -8;
     arrStyl.right = -7;
   }
@@ -166,16 +181,7 @@ const Github = React.forwardRef<HTMLDivElement, GithubProps>((props, ref) => {
       }}
       {...other}
       onChange={handleChange}
-      style={{
-        width: 200,
-        borderRadius: 4,
-        background: '#fff',
-        boxShadow: 'rgb(0 0 0 / 15%) 0px 3px 12px',
-        border: '1px solid rgba(0, 0, 0, 0.2)',
-        position: 'relative',
-        padding: 5,
-        ...style,
-      }}
+      style={styleWrapper}
       rectProps={{
         style: {
           marginRight: 0,

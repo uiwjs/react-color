@@ -1,6 +1,5 @@
 import { Component } from 'react';
 import { CodeBlockData } from 'markdown-react-code-preview-loader';
-import '@wcj/dark-mode';
 import styles from './Markdown.module.less';
 import Preview from './MarkdownPreview';
 
@@ -47,7 +46,6 @@ export default class Markdown extends Component<MarkdownProps, MarkdownState> {
     const { source, components, data } = this.state.mdObj || {};
     return (
       <div className={[styles.warpper, 'wmde-markdown-var'].join(' ')}>
-        <dark-mode permanent light="Dark" dark="Light"></dark-mode>
         <div className={styles.markdown}>
           <EditorUrl editorUrl={this.editorUrl} />
           {this.example && (

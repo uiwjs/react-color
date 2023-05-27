@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import {
   HsvaColor,
   ColorResult,
@@ -32,20 +32,18 @@ const Block = React.forwardRef<HTMLDivElement, BlockProps>((props, ref) => {
       onChange && onChange(handleColor(hexToHsva(value)));
     }
   };
+  const stylePointer = {
+    '--block-background-color': 'rgb(255, 255, 255)',
+    '--block-box-shadow': 'rgb(0 0 0 / 10%) 0 1px',
+    width: 170,
+    borderRadius: 6,
+    background: 'var(--block-background-color)',
+    boxShadow: 'var(--block-box-shadow)',
+    position: 'relative',
+    ...style,
+  } as CSSProperties;
   return (
-    <div
-      ref={ref}
-      className={[prefixCls, className].filter(Boolean).join(' ')}
-      style={{
-        width: 170,
-        borderRadius: 6,
-        background: 'rgb(255, 255, 255)',
-        boxShadow: 'rgb(0 0 0 / 10%) 0 1px',
-        position: 'relative',
-        ...style,
-      }}
-      {...other}
-    >
+    <div ref={ref} className={[prefixCls, className].filter(Boolean).join(' ')} style={stylePointer} {...other}>
       <div
         style={{
           width: 0,
@@ -104,7 +102,6 @@ const Block = React.forwardRef<HTMLDivElement, BlockProps>((props, ref) => {
           height: 22,
           outline: 0,
           borderRadius: 3,
-          color: '#666',
           padding: '0 7px',
         }}
         style={{

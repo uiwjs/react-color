@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { CSSProperties, useCallback } from 'react';
 import {
   ColorResult,
   color as handleColor,
@@ -88,22 +88,19 @@ const Compact = React.forwardRef<HTMLDivElement, CompactProps<React.MouseEvent<H
     },
     inputStyle: { boxShadow: 'none', backgroundColor: 'transparent', outline: 0 },
   };
+  const wrapperStyle = {
+    '--compact-background-color': '#f6f6f6',
+    background: 'var(--compact-background-color)',
+    borderRadius: 3,
+    display: 'flex',
+    width: 240,
+    flexWrap: 'wrap',
+    paddingTop: 5,
+    paddingLeft: 5,
+    ...style,
+  } as CSSProperties;
   return (
-    <div
-      ref={ref}
-      style={{
-        background: '#f6f6f6',
-        borderRadius: 3,
-        display: 'flex',
-        width: 240,
-        flexWrap: 'wrap',
-        paddingTop: 5,
-        paddingLeft: 5,
-        ...style,
-      }}
-      className={[prefixCls, className || ''].filter(Boolean).join(' ')}
-      {...other}
-    >
+    <div ref={ref} style={wrapperStyle} className={[prefixCls, className || ''].filter(Boolean).join(' ')} {...other}>
       <Swatch
         colors={colors}
         color={color ? hsvaToHex(hsva) : undefined}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import { useMemo } from 'react';
 
 export interface PointerProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -7,28 +7,24 @@ export interface PointerProps extends React.HTMLAttributes<HTMLDivElement> {
   top?: string;
 }
 
-const BOXSHADOW = 'rgb(0 0 0 / 37%) 0px 1px 4px 0px';
-
 export const Pointer = ({ className, prefixCls, left, top }: PointerProps): JSX.Element => {
   const style: React.CSSProperties = {
     position: 'absolute',
     left,
     top,
   };
+  const stylePointer = {
+    width: 18,
+    height: 18,
+    transform: left ? 'translate(-9px, -1px)' : 'translate(-1px, -9px)',
+    boxShadow: 'var(--alpha-pointer-box-shadow)',
+    borderRadius: '50%',
+    backgroundColor: 'var(--alpha-pointer-background-color)',
+  } as CSSProperties;
   return useMemo(
     () => (
       <div className={`${prefixCls}-pointer ${className || ''}`} style={style}>
-        <div
-          className={`${prefixCls}-fill`}
-          style={{
-            width: 18,
-            height: 18,
-            transform: left ? 'translate(-9px, -1px)' : 'translate(-1px, -9px)',
-            boxShadow: BOXSHADOW,
-            borderRadius: '50%',
-            backgroundColor: 'rgb(248, 248, 248)',
-          }}
-        />
+        <div className={`${prefixCls}-fill`} style={stylePointer} />
       </div>
     ),
     [className, left, top, prefixCls],

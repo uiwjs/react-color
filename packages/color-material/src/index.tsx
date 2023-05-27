@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import { HsvaColor, ColorResult, color as handleColor, validHex, hexToHsva, hsvaToHex } from '@uiw/color-convert';
 import EditableInput from '@uiw/react-color-editable-input';
 import RGBA from '@uiw/react-color-editable-input-rgba';
@@ -9,16 +9,16 @@ export interface MaterialProps extends Omit<React.HTMLAttributes<HTMLDivElement>
   onChange?: (color: ColorResult) => void;
 }
 
-const styleRBG: React.CSSProperties = {
+const styleRBG = {
   boxShadow: 'initial',
   borderWidth: '0 0 1px 0',
-  borderBottomColor: '#eee',
+  borderBottomColor: 'var(--material-border-bottom-color)',
   borderBottomStyle: 'solid',
   height: 30,
   outline: 0,
   fontSize: 15,
   padding: 0,
-};
+} as CSSProperties;
 
 const Material = React.forwardRef<HTMLDivElement, MaterialProps>((props, ref) => {
   const { prefixCls = 'w-color-material', className, style, color, onChange, ...other } = props;
@@ -32,13 +32,19 @@ const Material = React.forwardRef<HTMLDivElement, MaterialProps>((props, ref) =>
       onChange && onChange(handleColor(hexToHsva(value)));
     }
   };
+
+  const styleWrapper = {
+    '--material-border-bottom-color': '#eee',
+    '--material-background-color': '#fff',
+    padding: 16,
+    width: 98,
+    fontFamily: 'Roboto',
+    backgroundColor: 'var(--material-background-color)',
+    ...style,
+  } as CSSProperties;
+
   return (
-    <div
-      ref={ref}
-      className={[prefixCls, className || ''].filter(Boolean).join(' ')}
-      style={{ padding: 16, width: 98, fontFamily: 'Roboto', backgroundColor: '#fff', ...style }}
-      {...other}
-    >
+    <div ref={ref} className={[prefixCls, className || ''].filter(Boolean).join(' ')} style={styleWrapper} {...other}>
       <EditableInput
         label="Hex"
         value={hex.toLocaleUpperCase()}
@@ -56,8 +62,9 @@ const Material = React.forwardRef<HTMLDivElement, MaterialProps>((props, ref) =>
           padding: 0,
           boxShadow: 'initial',
           borderWidth: '0 0 2px 0',
-          borderBottomColor: hex ? `#${hex}` : '#eee',
+          borderBottomColor: hex ? `#${hex}` : 'var(--material-border-bottom-color)',
           borderBottomStyle: 'solid',
+          background: 'transparent',
         }}
         style={{ flexDirection: 'column-reverse', alignItems: 'flex-start' }}
       />

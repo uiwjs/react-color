@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { CSSProperties, Fragment } from 'react';
 import {
   HsvaColor,
   hsvaToRgbaString,
@@ -57,11 +57,26 @@ const Chrome = React.forwardRef<HTMLDivElement, ChromeProps>((props, ref) => {
   };
   const labelStyle: React.CSSProperties = { paddingTop: 6 };
   const inputStyle: React.CSSProperties = { textAlign: 'center', paddingTop: 4, paddingBottom: 4 };
+  const wrapperStyle = {
+    '--chrome-arrow-fill': '#333',
+    '--chrome-arrow-background-color': '#e8e8e8',
+    borderRadius: 0,
+    flexDirection: 'column',
+    width: 230,
+    padding: 0,
+    ...style,
+  } as CSSProperties;
+  const alphaStyle = {
+    '--chrome-alpha-box-shadow': 'rgb(0 0 0 / 25%) 0px 0px 1px inset',
+    borderRadius: '50%',
+    background: hsvaToRgbaString(hsva),
+    boxShadow: 'var(--chrome-alpha-box-shadow)',
+  };
   return (
     <Github
       ref={ref}
       color={hsva}
-      style={{ borderRadius: 0, flexDirection: 'column', width: 230, padding: 0, ...style }}
+      style={wrapperStyle}
       colors={undefined}
       className={[prefixCls, className].filter(Boolean).join(' ')}
       placement={GithubPlacement.TopLeft}
@@ -87,11 +102,7 @@ const Chrome = React.forwardRef<HTMLDivElement, ChromeProps>((props, ref) => {
               }}
               bgProps={{ style: { background: 'transparent' } }}
               innerProps={{
-                style: {
-                  borderRadius: '50%',
-                  background: hsvaToRgbaString(hsva),
-                  boxShadow: 'rgb(0 0 0 / 25%) 0px 0px 1px inset',
-                },
+                style: alphaStyle,
               }}
               pointer={() => <Fragment />}
             />

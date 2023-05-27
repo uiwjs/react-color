@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { CSSProperties, useCallback } from 'react';
 import { HsvaColor, hsvaToHslaString } from '@uiw/color-convert';
 import Interactive, { Interaction } from '@uiw/react-drag-event-interactive';
 import { Pointer, PointerProps } from './Pointer';
@@ -63,19 +63,22 @@ const Aplha = React.forwardRef<HTMLDivElement, AlphaProps>((props, ref) => {
   } else {
     comProps.top = `${hsva.a * 100}%`;
   }
-
+  const styleWrapper = {
+    '--alpha-background-color': '#fff',
+    '--alpha-pointer-background-color': 'rgb(248, 248, 248)',
+    '--alpha-pointer-box-shadow': 'rgb(0 0 0 / 37%) 0px 1px 4px 0px',
+    borderRadius: radius,
+    background: `url(${BACKGROUND_IMG}) left center`,
+    backgroundColor: 'var(--alpha-background-color)',
+    ...style,
+    position: 'relative',
+    ...{ width, height },
+  } as CSSProperties;
   return (
     <div
       {...other}
       className={[prefixCls, `${prefixCls}-${direction}`, className || ''].filter(Boolean).join(' ')}
-      style={{
-        borderRadius: radius,
-        background: `url(${BACKGROUND_IMG}) left center`,
-        backgroundColor: '#fff',
-        ...style,
-        position: 'relative',
-        ...{ width, height },
-      }}
+      style={styleWrapper}
       ref={ref}
     >
       <div
