@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>28/28</span>
+                <span class='fraction'>32/32</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>26/26</span>
+                <span class='fraction'>30/30</span>
             </div>
         
             
@@ -268,7 +268,8 @@
 <a name='L203'></a><a href='#L203'>203</a>
 <a name='L204'></a><a href='#L204'>204</a>
 <a name='L205'></a><a href='#L205'>205</a>
-<a name='L206'></a><a href='#L206'>206</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L206'></a><a href='#L206'>206</a>
+<a name='L207'></a><a href='#L207'>207</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -376,6 +377,23 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">44x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">44x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">44x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">44x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -390,10 +408,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -448,19 +462,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -473,7 +475,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState, useCallback, Fragment } from 'react';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState, useCallback, Fragment, CSSProperties } from 'react';
 import Saturation from '@uiw/react-color-saturation';
 import Alpha, { PointerProps } from '@uiw/react-color-alpha';
 import EditableInput from '@uiw/react-color-editable-input';
@@ -569,19 +571,36 @@ const Sketch = React.forwardRef&lt;HTMLDivElement, SketchProps&gt;((props, ref) 
   };
   const handleAlphaChange = (newAlpha: { a: number }) =&gt; handleChange({ ...hsva, ...{ a: newAlpha.a } });
   const handleSaturationChange = (newColor: HsvaColor) =&gt; handleChange({ ...hsva, ...newColor, a: hsva.a });
+  const styleMain = {
+    '--sketch-background': 'rgb(255, 255, 255)',
+    '--sketch-box-shadow': 'rgb(0 0 0 / 15%) 0px 0px 0px 1px, rgb(0 0 0 / 15%) 0px 8px 16px',
+    '--sketch-swatch-box-shadow': 'rgb(0 0 0 / 15%) 0px 0px 0px 1px inset',
+    '--sketch-alpha-box-shadow': 'rgb(0 0 0 / 15%) 0px 0px 0px 1px inset, rgb(0 0 0 / 25%) 0px 0px 4px inset',
+    '--sketch-swatch-border-top': '1px solid rgb(238, 238, 238)',
+    background: 'var(--sketch-background)',
+    borderRadius: 4,
+    boxShadow: 'var(--sketch-box-shadow)',
+    width,
+    ...style,
+  } as CSSProperties;
+  const styleAlpha = {
+    borderRadius: 2,
+    background: hsvaToRgbaString(hsva),
+    boxShadow: 'var(--sketch-alpha-box-shadow)',
+  } as CSSProperties;
+  const styleSwatch = {
+    borderTop: 'var(--sketch-swatch-border-top)',
+    paddingTop: 10,
+    paddingLeft: 10,
+  } as CSSProperties;
+  const styleSwatchRect = {
+    marginRight: 10,
+    marginBottom: 10,
+    borderRadius: 3,
+    boxShadow: 'var(--sketch-swatch-box-shadow)',
+  } as CSSProperties;
   return (
-    &lt;div
-      {...other}
-      className={`${prefixCls} ${className || ''}`}
-      ref={ref}
-      style={{
-        background: 'rgb(255, 255, 255)',
-        borderRadius: 4,
-        boxShadow: 'rgb(0 0 0 / 15%) 0px 0px 0px 1px, rgb(0 0 0 / 15%) 0px 8px 16px',
-        width,
-        ...style,
-      }}
-    &gt;
+    &lt;div {...other} className={`${prefixCls} ${className || ''}`} ref={ref} style={styleMain}&gt;
       &lt;div style={{ padding: '10px 10px 8px' }}&gt;
         &lt;Saturation hsva={hsva} style={{ width: 'auto', height: 150 }} onChange={handleSaturationChange} /&gt;
         &lt;div style={{ display: 'flex', marginTop: 4 }}&gt;
@@ -621,11 +640,7 @@ const Sketch = React.forwardRef&lt;HTMLDivElement, SketchProps&gt;((props, ref) 
               }}
               bgProps={{ style: { background: 'transparent' } }}
               innerProps={{
-                style: {
-                  borderRadius: 2,
-                  background: hsvaToRgbaString(hsva),
-                  boxShadow: 'rgb(0 0 0 / 15%) 0px 0px 0px 1px inset, rgb(0 0 0 / 25%) 0px 0px 4px inset',
-                },
+                style: styleAlpha,
               }}
               pointer={() =&gt; &lt;Fragment /&gt;}
             /&gt;
@@ -650,24 +665,12 @@ const Sketch = React.forwardRef&lt;HTMLDivElement, SketchProps&gt;((props, ref) 
       )}
       {presetColors &amp;&amp; presetColors.length &gt; 0 &amp;&amp; (
         &lt;Swatch
-          style={{
-            borderTop: '1px solid rgb(238, 238, 238)',
-            paddingTop: 10,
-            paddingLeft: 10,
-          }}
+          style={styleSwatch}
           colors={presetColors}
           color={hsvaToHex(hsva)}
           onChange={(hsvColor) =&gt; handleChange(hsvColor)}
           rectProps={{
-            style: {
-              marginRight: 10,
-              marginBottom: 10,
-              borderRadius: 3,
-              boxShadow: 'rgb(0 0 0 / 15%) 0px 0px 0px 1px inset',
-              // display: 'flex',
-              // alignItems: 'center',
-              // justifyContent: 'center',
-            },
+            style: styleSwatchRect,
           }}
         /&gt;
       )}
@@ -685,7 +688,7 @@ export default Sketch;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-05-24T13:26:07.462Z
+                at 2023-05-28T12:46:46.199Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

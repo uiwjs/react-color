@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>26/26</span>
+                <span class='fraction'>28/28</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>25/25</span>
+                <span class='fraction'>27/27</span>
             </div>
         
             
@@ -231,7 +231,18 @@
 <a name='L166'></a><a href='#L166'>166</a>
 <a name='L167'></a><a href='#L167'>167</a>
 <a name='L168'></a><a href='#L168'>168</a>
-<a name='L169'></a><a href='#L169'>169</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L169'></a><a href='#L169'>169</a>
+<a name='L170'></a><a href='#L170'>170</a>
+<a name='L171'></a><a href='#L171'>171</a>
+<a name='L172'></a><a href='#L172'>172</a>
+<a name='L173'></a><a href='#L173'>173</a>
+<a name='L174'></a><a href='#L174'>174</a>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a>
+<a name='L177'></a><a href='#L177'>177</a>
+<a name='L178'></a><a href='#L178'>178</a>
+<a name='L179'></a><a href='#L179'>179</a>
+<a name='L180'></a><a href='#L180'>180</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -299,6 +310,21 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -306,10 +332,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -399,7 +421,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Fragment } from 'react';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { CSSProperties, Fragment } from 'react';
 import {
   HsvaColor,
   hsvaToRgbaString,
@@ -458,11 +480,26 @@ const Chrome = React.forwardRef&lt;HTMLDivElement, ChromeProps&gt;((props, ref) 
   };
   const labelStyle: React.CSSProperties = { paddingTop: 6 };
   const inputStyle: React.CSSProperties = { textAlign: 'center', paddingTop: 4, paddingBottom: 4 };
+  const wrapperStyle = {
+    '--chrome-arrow-fill': '#333',
+    '--chrome-arrow-background-color': '#e8e8e8',
+    borderRadius: 0,
+    flexDirection: 'column',
+    width: 230,
+    padding: 0,
+    ...style,
+  } as CSSProperties;
+  const alphaStyle = {
+    '--chrome-alpha-box-shadow': 'rgb(0 0 0 / 25%) 0px 0px 1px inset',
+    borderRadius: '50%',
+    background: hsvaToRgbaString(hsva),
+    boxShadow: 'var(--chrome-alpha-box-shadow)',
+  };
   return (
     &lt;Github
       ref={ref}
       color={hsva}
-      style={{ borderRadius: 0, flexDirection: 'column', width: 230, padding: 0, ...style }}
+      style={wrapperStyle}
       colors={undefined}
       className={[prefixCls, className].filter(Boolean).join(' ')}
       placement={GithubPlacement.TopLeft}
@@ -488,11 +525,7 @@ const Chrome = React.forwardRef&lt;HTMLDivElement, ChromeProps&gt;((props, ref) 
               }}
               bgProps={{ style: { background: 'transparent' } }}
               innerProps={{
-                style: {
-                  borderRadius: '50%',
-                  background: hsvaToRgbaString(hsva),
-                  boxShadow: 'rgb(0 0 0 / 25%) 0px 0px 1px inset',
-                },
+                style: alphaStyle,
               }}
               pointer={() =&gt; &lt;Fragment /&gt;}
             /&gt;
@@ -574,7 +607,7 @@ export default Chrome;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-05-24T13:26:07.462Z
+                at 2023-05-28T12:46:46.199Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
