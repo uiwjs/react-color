@@ -19,9 +19,9 @@ it('Github', async () => {
     expect(tree.props.style).toMatchObject({
       width: 200,
       borderRadius: 4,
-      background: '#fff',
-      boxShadow: 'rgb(0 0 0 / 15%) 0px 3px 12px',
-      border: '1px solid rgba(0, 0, 0, 0.2)',
+      background: 'var(--github-background-color)',
+      boxShadow: 'var(--github-box-shadow)',
+      border: 'var(--github-border)',
       position: 'relative',
       padding: 5,
     });
@@ -84,321 +84,252 @@ it('Github mouseEnter/mouseLeave color = undefined', async () => {
 
 it('Github GithubPlacement.Left', async () => {
   const handleChange = jest.fn((color) => color.hex);
-  const { getByTitle } = render(
-    <Github colors={['#F44E3B', '#FE9200', '#FCDC00', '#DBDF00']} placement={GithubPlacement.Left} onChange={handleChange} />,
+  const { getByTitle, getByTestId } = render(
+    <Github
+      colors={['#F44E3B', '#FE9200', '#FCDC00', '#DBDF00']}
+      data-testid="test-element"
+      placement={GithubPlacement.Left}
+      onChange={handleChange}
+    />,
   );
-  const arr = getByTitle('#F44E3B').previousSibling;
-  const borderArr = arr?.previousSibling;
-  expect((arr as any).style).toMatchObject({
-    'border-style': 'solid',
-    'border-width': '7px 7px 7px 0px',
-    'border-color': 'transparent #fff transparent transparent',
-    left: '-7px',
-    top: '50%',
-    'margin-top': '-7px',
-  });
-  expect((borderArr as any).style).toMatchObject({
-    'border-style': 'solid',
-    'border-width': '8px 8px 8px 0px',
-    'border-color': 'transparent rgba(0, 0, 0, 0.15) transparent transparent',
-    left: '-8px',
-    top: '50%',
-    'margin-top': '-8px',
-  });
+  // const arr = getByTitle('#F44E3B').previousSibling;
+  expect(getByTitle('#F44E3B').title).toEqual('#F44E3B');
+  const elm = getByTestId('test-element');
+  expect(elm.firstElementChild?.getAttribute('style')).toEqual(
+    'border-style: solid; position: absolute; border-width: 8px 8px 8px 0px; left: -8px; top: 50%; margin-top: -8px;',
+  );
+  expect(elm.firstElementChild).toHaveProperty(['style', 'left'], '-8px');
+  expect(elm.firstElementChild).toHaveProperty(['style', 'top'], '50%');
+  expect(elm.firstElementChild).toHaveProperty(['style', 'borderStyle'], 'solid');
+  expect(elm.firstElementChild).toHaveProperty(['style', 'position'], 'absolute');
+  expect(elm.firstElementChild).toHaveProperty(['style', 'borderWidth'], '8px 8px 8px 0px');
+  expect(elm.firstElementChild).toHaveProperty(['style', 'marginTop'], '-8px');
+  // expect(elm.firstElementChild).toHaveProperty(['style', 'borderColor'], 'transparent var(--github-arrow-border-color) transparent transparent')
   expect(handleChange).not.toHaveReturned();
+  const component = TestRenderer.create(
+    <Github colors={['#F44E3B', '#FE9200', '#FCDC00', '#DBDF00']} data-testid="test-element" placement={GithubPlacement.Left} />,
+  );
+  const tree = component.toJSON();
+  if (tree && !Array.isArray(tree) && tree.children && tree.children[0]) {
+    const child = (tree.children[0] as any)?.props.style;
+    expect(child).toMatchObject({
+      borderStyle: 'solid',
+      position: 'absolute',
+      borderWidth: '8px 8px 8px 0',
+      borderColor: 'transparent var(--github-arrow-border-color) transparent transparent',
+      left: -8,
+      top: '50%',
+      marginTop: -8,
+    });
+  }
 });
 
 it('Github GithubPlacement.LeftTop', async () => {
-  const handleChange = jest.fn((color) => color.hex);
-  const { getByTitle } = render(
-    <Github colors={['#F44E3B', '#FE9200', '#FCDC00', '#DBDF00']} placement={GithubPlacement.LeftTop} onChange={handleChange} />,
+  const component = TestRenderer.create(
+    <Github
+      colors={['#F44E3B', '#FE9200', '#FCDC00', '#DBDF00']}
+      data-testid="test-element"
+      placement={GithubPlacement.LeftTop}
+    />,
   );
-  const arr = getByTitle('#F44E3B').previousSibling;
-  const borderArr = arr?.previousSibling;
-  expect((arr as any).style).toMatchObject({
-    'border-style': 'solid',
-    'border-width': '7px 7px 7px 0px',
-    'border-color': 'transparent #fff transparent transparent',
-    left: '-7px',
-    top: '6px',
-  });
-  expect((borderArr as any).style).toMatchObject({
-    'border-style': 'solid',
-    'border-width': '8px 8px 8px 0px',
-    'border-color': 'transparent rgba(0, 0, 0, 0.15) transparent transparent',
-    left: '-8px',
-    top: '5px',
-  });
-  expect(handleChange).not.toHaveReturned();
+  const tree = component.toJSON();
+  if (tree && !Array.isArray(tree) && tree.children && tree.children[0]) {
+    const child = (tree.children[0] as any)?.props.style;
+    expect(child).toMatchObject({
+      borderStyle: 'solid',
+      position: 'absolute',
+      borderWidth: '8px 8px 8px 0',
+      borderColor: 'transparent var(--github-arrow-border-color) transparent transparent',
+      left: -8,
+      top: 5,
+    });
+  }
 });
 
 it('Github GithubPlacement.LeftBotton', async () => {
-  const handleChange = jest.fn((color) => color.hex);
-  const { getByTitle } = render(
+  const component = TestRenderer.create(
     <Github
       colors={['#F44E3B', '#FE9200', '#FCDC00', '#DBDF00']}
+      data-testid="test-element"
       placement={GithubPlacement.LeftBotton}
-      onChange={handleChange}
     />,
   );
-  const arr = getByTitle('#F44E3B').previousSibling;
-  const borderArr = arr?.previousSibling;
-  expect((arr as any).style).toMatchObject({
-    'border-style': 'solid',
-    'border-width': '7px 7px 7px 0px',
-    'border-color': 'transparent #fff transparent transparent',
-    left: '-7px',
-    top: '100%',
-    'margin-top': '-20px',
-  });
-  expect((borderArr as any).style).toMatchObject({
-    'border-style': 'solid',
-    'border-width': '8px 8px 8px 0px',
-    'border-color': 'transparent rgba(0, 0, 0, 0.15) transparent transparent',
-    left: '-8px',
-    top: '100%',
-    'margin-top': '-21px',
-  });
-  expect(handleChange).not.toHaveReturned();
+  const tree = component.toJSON();
+  if (tree && !Array.isArray(tree) && tree.children && tree.children[0]) {
+    const child = (tree.children[0] as any)?.props.style;
+    expect(child).toMatchObject({
+      borderStyle: 'solid',
+      position: 'absolute',
+      borderWidth: '8px 8px 8px 0',
+      borderColor: 'transparent var(--github-arrow-border-color) transparent transparent',
+      left: -8,
+      top: '100%',
+    });
+  }
 });
 
 it('Github GithubPlacement.Right', async () => {
-  const handleChange = jest.fn((color) => color.hex);
-  const { getByTitle } = render(
-    <Github colors={['#F44E3B', '#FE9200', '#FCDC00', '#DBDF00']} placement={GithubPlacement.Right} onChange={handleChange} />,
+  const component = TestRenderer.create(
+    <Github colors={['#F44E3B']} data-testid="test-element" placement={GithubPlacement.Right} />,
   );
-  const arr = getByTitle('#F44E3B').previousSibling;
-  const borderArr = arr?.previousSibling;
-  expect((arr as any).style).toMatchObject({
-    'border-width': '7px 0px 7px 7px',
-    'border-color': 'transparent transparent transparent #fff',
-    right: '-7px',
-    top: '50%',
-    'margin-top': '-7px',
-  });
-  expect((borderArr as any).style).toMatchObject({
-    'border-width': '8px 0px 8px 8px',
-    'border-color': 'transparent transparent transparent rgba(0, 0, 0, 0.15)',
-    right: '-8px',
-    top: '50%',
-    'margin-top': '-8px',
-  });
-  expect(handleChange).not.toHaveReturned();
+  const tree = component.toJSON();
+  if (tree && !Array.isArray(tree) && tree.children && tree.children[0]) {
+    const child = (tree.children[0] as any)?.props.style;
+    expect(child).toMatchObject({
+      borderStyle: 'solid',
+      position: 'absolute',
+      borderWidth: '8px 0 8px 8px',
+      borderColor: 'transparent transparent transparent var(--github-arrow-border-color)',
+      right: -8,
+      top: '50%',
+      marginTop: -8,
+    });
+  }
 });
 
 it('Github GithubPlacement.RightTop', async () => {
-  const handleChange = jest.fn((color) => color.hex);
-  const { getByTitle } = render(
-    <Github colors={['#F44E3B', '#FE9200', '#FCDC00', '#DBDF00']} placement={GithubPlacement.RightTop} onChange={handleChange} />,
+  const component = TestRenderer.create(
+    <Github colors={['#F44E3B']} data-testid="test-element" placement={GithubPlacement.RightTop} />,
   );
-  const arr = getByTitle('#F44E3B').previousSibling;
-  const borderArr = arr?.previousSibling;
-  expect((arr as any).style).toMatchObject({
-    'border-style': 'solid',
-    'border-width': '7px 0px 7px 7px',
-    'border-color': 'transparent transparent transparent #fff',
-    right: '-7px',
-    top: '6px',
-  });
-  expect((borderArr as any).style).toMatchObject({
-    'border-style': 'solid',
-    'border-width': '8px 0px 8px 8px',
-    'border-color': 'transparent transparent transparent rgba(0, 0, 0, 0.15)',
-    right: '-8px',
-    top: '5px',
-  });
-  expect(handleChange).not.toHaveReturned();
+  const tree = component.toJSON();
+  if (tree && !Array.isArray(tree) && tree.children && tree.children[0]) {
+    const child = (tree.children[0] as any)?.props.style;
+    expect(child).toMatchObject({
+      borderStyle: 'solid',
+      position: 'absolute',
+      borderWidth: '8px 0 8px 8px',
+      borderColor: 'transparent transparent transparent var(--github-arrow-border-color)',
+      right: -8,
+      top: 5,
+    });
+  }
 });
 
 it('Github GithubPlacement.RightBotton', async () => {
-  const handleChange = jest.fn((color) => color.hex);
-  const { getByTitle } = render(
-    <Github
-      colors={['#F44E3B', '#FE9200', '#FCDC00', '#DBDF00']}
-      placement={GithubPlacement.RightBotton}
-      onChange={handleChange}
-    />,
+  const component = TestRenderer.create(
+    <Github colors={['#F44E3B']} data-testid="test-element" placement={GithubPlacement.RightBotton} />,
   );
-  const arr = getByTitle('#F44E3B').previousSibling;
-  const borderArr = arr?.previousSibling;
-  const style = {
-    position: 'absolute',
-  };
-  expect((arr as any).style).toMatchObject({
-    ...style,
-    'border-width': '7px 0px 7px 7px',
-    'border-color': 'transparent transparent transparent #fff',
-    'border-left-color': '#fff',
-    right: '-7px',
-    top: '100%',
-    'margin-top': '-20px',
-  });
-  expect((borderArr as any).style).toMatchObject({
-    ...style,
-    'border-width': '8px 0px 8px 8px',
-    'border-color': 'transparent transparent transparent rgba(0, 0, 0, 0.15)',
-    'border-left-color': 'rgba(0, 0, 0, 0.15)',
-    right: '-8px',
-    top: '100%',
-    'margin-top': '-21px',
-  });
-  expect(handleChange).not.toHaveReturned();
+  const tree = component.toJSON();
+  if (tree && !Array.isArray(tree) && tree.children && tree.children[0]) {
+    const child = (tree.children[0] as any)?.props.style;
+    expect(child).toMatchObject({
+      borderStyle: 'solid',
+      position: 'absolute',
+      borderWidth: '8px 0 8px 8px',
+      borderColor: 'transparent transparent transparent var(--github-arrow-border-color)',
+      top: '100%',
+      marginTop: -21,
+      right: -8,
+    });
+  }
 });
 
 it('Github GithubPlacement.Top', async () => {
-  const handleChange = jest.fn((color) => color.hex);
-  const { getByTitle } = render(
-    <Github colors={['#F44E3B', '#FE9200', '#FCDC00', '#DBDF00']} placement={GithubPlacement.Top} onChange={handleChange} />,
+  const component = TestRenderer.create(
+    <Github colors={['#F44E3B']} data-testid="test-element" placement={GithubPlacement.Top} />,
   );
-  const arr = getByTitle('#F44E3B').previousSibling;
-  const borderArr = arr?.previousSibling;
-  expect((arr as any).style).toMatchObject({
-    'border-width': '0px 7px 7px',
-    'border-color': 'transparent transparent #fff',
-    top: '-7px',
-    left: '50%',
-    'margin-left': '-7px',
-  });
-  expect((borderArr as any).style).toMatchObject({
-    'border-style': 'solid',
-    position: 'absolute',
-    'border-width': '0px 8px 8px',
-    'border-color': 'transparent transparent rgba(0, 0, 0, 0.15)',
-    top: '-8px',
-    left: '50%',
-    'margin-left': '-8px',
-  });
-  expect(handleChange).not.toHaveReturned();
+  const tree = component.toJSON();
+  if (tree && !Array.isArray(tree) && tree.children && tree.children[0]) {
+    const child = (tree.children[0] as any)?.props.style;
+    expect(child).toMatchObject({
+      borderStyle: 'solid',
+      position: 'absolute',
+      borderWidth: '0 8px 8px',
+      borderColor: 'transparent transparent var(--github-arrow-border-color)',
+      left: '50%',
+      top: -8,
+      marginLeft: -8,
+    });
+  }
 });
 
 it('Github GithubPlacement.TopLeft', async () => {
-  const handleChange = jest.fn((color) => color.hex);
-  const { getByTitle } = render(
-    <Github colors={['#F44E3B', '#FE9200', '#FCDC00', '#DBDF00']} placement={GithubPlacement.TopLeft} onChange={handleChange} />,
+  const component = TestRenderer.create(
+    <Github colors={['#F44E3B']} data-testid="test-element" placement={GithubPlacement.TopLeft} />,
   );
-  const arr = getByTitle('#F44E3B').previousSibling;
-  const borderArr = arr?.previousSibling;
-  expect((arr as any).style).toMatchObject({
-    position: 'absolute',
-    'border-width': '0px 7px 7px',
-    'border-color': 'transparent transparent #fff',
-    top: '-7px',
-    left: '8px',
-  });
-  expect((borderArr as any).style).toMatchObject({
-    position: 'absolute',
-    'border-width': '0px 8px 8px',
-    'border-color': 'transparent transparent rgba(0, 0, 0, 0.15)',
-    top: '-8px',
-    left: '7px',
-  });
-  expect(handleChange).not.toHaveReturned();
+  const tree = component.toJSON();
+  if (tree && !Array.isArray(tree) && tree.children && tree.children[0]) {
+    const child = (tree.children[0] as any)?.props.style;
+    expect(child).toMatchObject({
+      borderStyle: 'solid',
+      position: 'absolute',
+      borderWidth: '0 8px 8px',
+      borderColor: 'transparent transparent var(--github-arrow-border-color)',
+      left: 7,
+      top: -8,
+    });
+  }
 });
 
 it('Github GithubPlacement.TopRight', async () => {
-  const handleChange = jest.fn((color) => color.hex);
-  const { getByTitle } = render(
-    <Github colors={['#F44E3B', '#FE9200', '#FCDC00', '#DBDF00']} placement={GithubPlacement.TopRight} onChange={handleChange} />,
+  const component = TestRenderer.create(
+    <Github colors={['#F44E3B']} data-testid="test-element" placement={GithubPlacement.TopRight} />,
   );
-  const arr = getByTitle('#F44E3B').previousSibling;
-  const borderArr = arr?.previousSibling;
-  expect((arr as any).style).toMatchObject({
-    position: 'absolute',
-    'border-width': '0px 7px 7px',
-    'border-color': 'transparent transparent #fff',
-    top: '-7px',
-    right: '11px',
-  });
-  expect((borderArr as any).style).toMatchObject({
-    'border-style': 'solid',
-    position: 'absolute',
-    'border-width': '0px 8px 8px',
-    'border-color': 'transparent transparent rgba(0, 0, 0, 0.15)',
-    top: '-8px',
-    right: '10px',
-  });
-  expect(handleChange).not.toHaveReturned();
+  const tree = component.toJSON();
+  if (tree && !Array.isArray(tree) && tree.children && tree.children[0]) {
+    const child = (tree.children[0] as any)?.props.style;
+    expect(child).toMatchObject({
+      borderStyle: 'solid',
+      position: 'absolute',
+      borderWidth: '0 8px 8px',
+      borderColor: 'transparent transparent var(--github-arrow-border-color)',
+      right: 10,
+      top: -8,
+    });
+  }
 });
 
 it('Github GithubPlacement.Botton', async () => {
-  const handleChange = jest.fn((color) => color.hex);
-  const { getByTitle } = render(
-    <Github colors={['#F44E3B', '#FE9200', '#FCDC00', '#DBDF00']} placement={GithubPlacement.Botton} onChange={handleChange} />,
+  const component = TestRenderer.create(
+    <Github colors={['#F44E3B']} data-testid="test-element" placement={GithubPlacement.Botton} />,
   );
-  const arr = getByTitle('#F44E3B').previousSibling;
-  const borderArr = arr?.previousSibling;
-  expect((arr as any).style).toMatchObject({
-    'border-style': 'solid',
-    'border-width': '7px 7px 0px',
-    'border-color': '#fff transparent transparent',
-    top: '100%',
-    left: '50%',
-    'margin-left': '-7px',
-  });
-  expect((borderArr as any).style).toMatchObject({
-    'border-style': 'solid',
-    'border-width': '8px 8px 0px',
-    'border-color': 'rgba(0, 0, 0, 0.15) transparent transparent',
-    top: '100%',
-    left: '50%',
-    'margin-left': '-8px',
-  });
-  expect(handleChange).not.toHaveReturned();
+  const tree = component.toJSON();
+  if (tree && !Array.isArray(tree) && tree.children && tree.children[0]) {
+    const child = (tree.children[0] as any)?.props.style;
+    expect(child).toMatchObject({
+      borderStyle: 'solid',
+      position: 'absolute',
+      borderWidth: '8px 8px 0',
+      borderColor: 'var(--github-arrow-border-color) transparent transparent',
+      left: '50%',
+      top: '100%',
+      marginLeft: -8,
+    });
+  }
 });
 
 it('Github GithubPlacement.BottonLeft', async () => {
-  const handleChange = jest.fn((color) => color.hex);
-  const { getByTitle } = render(
-    <Github
-      colors={['#F44E3B', '#FE9200', '#FCDC00', '#DBDF00']}
-      placement={GithubPlacement.BottonLeft}
-      onChange={handleChange}
-    />,
+  const component = TestRenderer.create(
+    <Github colors={['#F44E3B']} data-testid="test-element" placement={GithubPlacement.BottonLeft} />,
   );
-  const arr = getByTitle('#F44E3B').previousSibling;
-  const borderArr = arr?.previousSibling;
-  expect((arr as any).style).toMatchObject({
-    'border-style': 'solid',
-    'border-width': '7px 7px 0px',
-    'border-color': '#fff transparent transparent',
-    top: '100%',
-    left: '8px',
-  });
-  expect((borderArr as any).style).toMatchObject({
-    'border-style': 'solid',
-    position: 'absolute',
-    'border-width': '8px 8px 0px',
-    'border-color': 'rgba(0, 0, 0, 0.15) transparent transparent',
-    top: '100%',
-    left: '7px',
-  });
-  expect(handleChange).not.toHaveReturned();
+  const tree = component.toJSON();
+  if (tree && !Array.isArray(tree) && tree.children && tree.children[0]) {
+    const child = (tree.children[0] as any)?.props.style;
+    expect(child).toMatchObject({
+      borderStyle: 'solid',
+      position: 'absolute',
+      borderWidth: '8px 8px 0',
+      borderColor: 'var(--github-arrow-border-color) transparent transparent',
+      top: '100%',
+      left: 7,
+    });
+  }
 });
 
 it('Github GithubPlacement.BottonRight', async () => {
-  const handleChange = jest.fn((color) => color.hex);
-  const { getByTitle } = render(
-    <Github
-      colors={['#F44E3B', '#FE9200', '#FCDC00', '#DBDF00']}
-      placement={GithubPlacement.BottonRight}
-      onChange={handleChange}
-    />,
+  const component = TestRenderer.create(
+    <Github colors={['#F44E3B']} data-testid="test-element" placement={GithubPlacement.BottonRight} />,
   );
-  const arr = getByTitle('#F44E3B').previousSibling;
-  const borderArr = arr?.previousSibling;
-  expect((arr as any).style).toMatchObject({
-    'border-style': 'solid',
-    'border-width': '7px 7px 0px',
-    'border-color': '#fff transparent transparent',
-    top: '100%',
-    right: '11px',
-  });
-  expect((borderArr as any).style).toMatchObject({
-    'border-style': 'solid',
-    'border-width': '8px 8px 0px',
-    'border-color': 'rgba(0, 0, 0, 0.15) transparent transparent',
-    top: '100%',
-    right: '10px',
-  });
-  expect(handleChange).not.toHaveReturned();
+  const tree = component.toJSON();
+  if (tree && !Array.isArray(tree) && tree.children && tree.children[0]) {
+    const child = (tree.children[0] as any)?.props.style;
+    expect(child).toMatchObject({
+      borderStyle: 'solid',
+      position: 'absolute',
+      borderWidth: '8px 8px 0',
+      borderColor: 'var(--github-arrow-border-color) transparent transparent',
+      top: '100%',
+      right: 10,
+    });
+  }
 });

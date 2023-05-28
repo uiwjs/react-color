@@ -19,8 +19,8 @@ it('Block', async () => {
     expect(tree.props.style).toMatchObject({
       width: 170,
       borderRadius: 6,
-      background: 'rgb(255, 255, 255)',
-      boxShadow: 'rgb(0 0 0 / 10%) 0 1px',
+      background: 'var(--block-background-color)',
+      boxShadow: 'var(--block-box-shadow)',
       position: 'relative',
     });
     if (tree.children) {

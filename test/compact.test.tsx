@@ -26,7 +26,7 @@ it('Compact', async () => {
     expect(tree.type).toEqual('div');
     expect(tree.props.className).toEqual('w-color-compact');
     expect(tree.props.style).toMatchObject({
-      background: '#f6f6f6',
+      background: 'var(--compact-background-color)',
       borderRadius: 3,
       display: 'flex',
       width: 240,

@@ -26,9 +26,9 @@ it('Sketch', async () => {
     expect(tree.type).toEqual('div');
     expect(tree.props.className).toEqual('w-color-sketch ');
     expect(tree.props.style).toMatchObject({
-      background: 'rgb(255, 255, 255)',
+      background: 'var(--sketch-background)',
       borderRadius: 4,
-      boxShadow: 'rgb(0 0 0 / 15%) 0px 0px 0px 1px, rgb(0 0 0 / 15%) 0px 8px 16px',
+      boxShadow: 'var(--sketch-box-shadow)',
       width: 218,
       marginLeft: 20,
     });

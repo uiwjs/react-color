@@ -29,7 +29,7 @@ it('Hue', async () => {
       height: 16,
       borderRadius: 0,
       position: 'relative',
-      backgroundColor: '#fff',
+      backgroundColor: 'var(--alpha-background-color)',
     });
     expect(tree.props.style.background).toEqual(`url(${BACKGROUND_IMG}) left center`);
     if (tree.children) {

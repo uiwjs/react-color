@@ -31,6 +31,52 @@ function Example() {
       </div>
       <div style={{ display: 'flex', gap: '1rem', marginTop: 20 }}>
         <Github
+          placement={GithubPlacement.Left}
+          color={hsva}
+          onChange={(color) => {
+            dispatch!({ hsva: { ...hsva, ...color.hsva } });
+          }}
+        />
+        <Github
+          color={hsva}
+          placement={GithubPlacement.LeftTop}
+          onChange={(color) => {
+            dispatch!({ hsva: { ...hsva, ...color.hsva } });
+          }}
+        />
+        <Github
+          color={hsva}
+          placement={GithubPlacement.LeftBotton}
+          onChange={(color) => {
+            dispatch!({ hsva: { ...hsva, ...color.hsva } });
+          }}
+        />
+      </div>
+      <div style={{ display: 'flex', gap: '1rem', marginTop: 20 }}>
+        <Github
+          placement={GithubPlacement.Right}
+          color={hsva}
+          onChange={(color) => {
+            dispatch!({ hsva: { ...hsva, ...color.hsva } });
+          }}
+        />
+        <Github
+          color={hsva}
+          placement={GithubPlacement.RightTop}
+          onChange={(color) => {
+            dispatch!({ hsva: { ...hsva, ...color.hsva } });
+          }}
+        />
+        <Github
+          color={hsva}
+          placement={GithubPlacement.RightBotton}
+          onChange={(color) => {
+            dispatch!({ hsva: { ...hsva, ...color.hsva } });
+          }}
+        />
+      </div>
+      <div style={{ display: 'flex', gap: '1rem', marginTop: 20 }}>
+        <Github
           placement={GithubPlacement.BottonLeft}
           color={hsva}
           onChange={(color) => {

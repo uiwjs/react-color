@@ -103,9 +103,9 @@ const Github = React.forwardRef<HTMLDivElement, GithubProps>((props, ref) => {
     arrStyl.top = -7;
   }
   if (/^B/.test(placement)) {
-    arrBrStyl.borderWidth = '8px 8px 0 ';
+    arrBrStyl.borderWidth = '8px 8px 0';
     arrBrStyl.borderColor = 'var(--github-arrow-border-color) transparent transparent';
-    arrStyl.borderWidth = '7px 7px 0px';
+    arrStyl.borderWidth = '7px 7px 0';
     arrStyl.borderColor = 'var(--github-background-color) transparent transparent';
     if (placement === GithubPlacement.BottonRight) {
       arrBrStyl.top = '100%';
@@ -137,17 +137,17 @@ const Github = React.forwardRef<HTMLDivElement, GithubProps>((props, ref) => {
     }
   }
   if (/^L/.test(placement)) {
-    arrBrStyl.borderWidth = '8px 8px 8px 0px';
+    arrBrStyl.borderWidth = '8px 8px 8px 0';
     arrBrStyl.borderColor = 'transparent var(--github-arrow-border-color) transparent transparent';
-    arrStyl.borderWidth = '7px 7px 7px 0px';
+    arrStyl.borderWidth = '7px 7px 7px 0';
     arrStyl.borderColor = 'transparent var(--github-background-color) transparent transparent';
     arrBrStyl.left = -8;
     arrStyl.left = -7;
   }
   if (/^R/.test(placement)) {
-    arrBrStyl.borderWidth = '8px 0px 8px 8px';
+    arrBrStyl.borderWidth = '8px 0 8px 8px';
     arrBrStyl.borderColor = 'transparent transparent transparent var(--github-arrow-border-color)';
-    arrStyl.borderWidth = '7px 0px 7px 7px';
+    arrStyl.borderWidth = '7px 0 7px 7px';
     arrStyl.borderColor = 'transparent transparent transparent var(--github-background-color)';
     arrBrStyl.right = -8;
     arrStyl.right = -7;
