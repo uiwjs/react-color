@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[732],{48982:function(n,e,t){t.r(e),t.d(e,{Component:function(){return i}});var r=t(91976),a=t(22951),c=t(67591),u=t(99616),i=function(n){(0,c.Z)(i,n);var e=(0,u.Z)(i);function i(){var n;(0,a.Z)(this,i);for(var r=arguments.length,c=new Array(r),u=0;u<r;u++)c[u]=arguments[u];return(n=e.call.apply(e,[this].concat(c))).editorUrl="/packages/color-name/README.md",n.getMdStr=function(){return t.e(469).then(t.bind(t,31469))},n}return(0,r.Z)(i)}(t(92007).Z)}}]);
-//# sourceMappingURL=732.0880bcbb.chunk.js.map
