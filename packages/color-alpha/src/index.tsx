@@ -1,4 +1,4 @@
-import React, { CSSProperties, useCallback } from 'react';
+import React, { CSSProperties, FC, memo, useCallback, useMemo } from 'react';
 import { HsvaColor, hsvaToHslaString } from '@uiw/color-convert';
 import Interactive, { Interaction } from '@uiw/react-drag-event-interactive';
 import { Pointer, PointerProps } from './Pointer';
@@ -14,7 +14,7 @@ export interface AlphaProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
   /** hsva => `{ h: 0, s: 75, v: 82, a: 1 }` */
   hsva: HsvaColor;
   /** React Component, Custom pointer component */
-  pointer?: ({ prefixCls, left }: PointerProps) => JSX.Element;
+  pointer?: (props: PointerProps) => JSX.Element;
   /** Set rounded corners. */
   radius?: React.CSSProperties['borderRadius'];
   /** Set the background color. */
@@ -23,6 +23,7 @@ export interface AlphaProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
   bgProps?: React.HTMLAttributes<HTMLDivElement>;
   /** Set the interactive element props. */
   innerProps?: React.HTMLAttributes<HTMLDivElement>;
+  pointerProps?: PointerProps;
   /** String Enum, horizontal or vertical. Default `horizontal` */
   direction?: 'vertical' | 'horizontal';
   onChange?: (newAlpha: { a: number }, offset: Interaction) => void;
@@ -39,6 +40,7 @@ const Aplha = React.forwardRef<HTMLDivElement, AlphaProps>((props, ref) => {
     background,
     bgProps = {},
     innerProps = {},
+    pointerProps = {},
     radius = 0,
     width,
     height = 16,
@@ -74,6 +76,14 @@ const Aplha = React.forwardRef<HTMLDivElement, AlphaProps>((props, ref) => {
     position: 'relative',
     ...{ width, height },
   } as CSSProperties;
+
+  const pointerElement =
+    pointer && typeof pointer === 'function' ? (
+      pointer({ prefixCls, ...pointerProps, ...comProps })
+    ) : (
+      <Pointer {...pointerProps} prefixCls={prefixCls} {...comProps} />
+    );
+
   return (
     <div
       {...other}
@@ -102,10 +112,7 @@ const Aplha = React.forwardRef<HTMLDivElement, AlphaProps>((props, ref) => {
         onMove={handleChange}
         onDown={handleChange}
       >
-        {React.createElement(pointer || Pointer, {
-          prefixCls,
-          ...comProps,
-        })}
+        {pointerElement}
       </Interactive>
     </div>
   );

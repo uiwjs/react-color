@@ -54,6 +54,16 @@ const Wheel = React.forwardRef<HTMLDivElement, WheelProps>((props, ref) => {
     };
     onChange && onChange(handleColor(handleHsva));
   };
+  const pointerStyle: React.CSSProperties = {
+    zIndex: 1,
+    transform: `translate(${positions.x}px, ${positions.y}px)`,
+  };
+  const pointerElement =
+    pointer && typeof pointer === 'function' ? (
+      pointer({ prefixCls, style: pointerStyle, ...comProps })
+    ) : (
+      <Pointer prefixCls={prefixCls} style={pointerStyle} {...comProps} />
+    );
   return (
     <Interactive
       className={[prefixCls, className || ''].filter(Boolean).join(' ')}
@@ -68,14 +78,7 @@ const Wheel = React.forwardRef<HTMLDivElement, WheelProps>((props, ref) => {
       onMove={handleChange}
       onDown={handleChange}
     >
-      {React.createElement(pointer || Pointer, {
-        prefixCls,
-        style: {
-          zIndex: 1,
-          transform: `translate(${positions.x}px, ${positions.y}px)`,
-        },
-        ...comProps,
-      })}
+      {pointerElement}
       <div
         style={{
           position: 'absolute',

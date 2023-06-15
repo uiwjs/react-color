@@ -39,7 +39,12 @@ const Saturation = React.forwardRef<HTMLDivElement, SaturationProps>((props, ref
     left: `${hsva.s}%`,
     color: hsvaToHslaString(hsva),
   };
-
+  const pointerElement =
+    pointer && typeof pointer === 'function' ? (
+      pointer({ prefixCls, ...comProps })
+    ) : (
+      <Pointer prefixCls={prefixCls} {...comProps} />
+    );
   return (
     <Interactive
       className={[prefixCls, className || ''].filter(Boolean).join(' ')}
@@ -55,10 +60,7 @@ const Saturation = React.forwardRef<HTMLDivElement, SaturationProps>((props, ref
       onMove={handleChange}
       onDown={handleChange}
     >
-      {React.createElement(pointer || Pointer, {
-        prefixCls,
-        ...comProps,
-      })}
+      {pointerElement}
     </Interactive>
   );
 });

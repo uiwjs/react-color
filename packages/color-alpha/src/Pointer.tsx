@@ -1,14 +1,15 @@
 import React, { CSSProperties } from 'react';
-import { useMemo } from 'react';
 
 export interface PointerProps extends React.HTMLAttributes<HTMLDivElement> {
   prefixCls?: string;
   left?: string;
   top?: string;
+  fillProps?: React.HTMLAttributes<HTMLDivElement>;
 }
 
-export const Pointer = ({ className, prefixCls, left, top }: PointerProps): JSX.Element => {
-  const style: React.CSSProperties = {
+export const Pointer = ({ className, prefixCls, left, top, style, fillProps, ...reset }: PointerProps): JSX.Element => {
+  const styleWrapper: React.CSSProperties = {
+    ...style,
     position: 'absolute',
     left,
     top,
@@ -16,17 +17,15 @@ export const Pointer = ({ className, prefixCls, left, top }: PointerProps): JSX.
   const stylePointer = {
     width: 18,
     height: 18,
-    transform: left ? 'translate(-9px, -1px)' : 'translate(-1px, -9px)',
     boxShadow: 'var(--alpha-pointer-box-shadow)',
     borderRadius: '50%',
     backgroundColor: 'var(--alpha-pointer-background-color)',
+    ...fillProps?.style,
+    transform: left ? 'translate(-9px, -1px)' : 'translate(-1px, -9px)',
   } as CSSProperties;
-  return useMemo(
-    () => (
-      <div className={`${prefixCls}-pointer ${className || ''}`} style={style}>
-        <div className={`${prefixCls}-fill`} style={stylePointer} />
-      </div>
-    ),
-    [className, left, top, prefixCls],
+  return (
+    <div className={`${prefixCls}-pointer ${className || ''}`} style={styleWrapper} {...reset}>
+      <div className={`${prefixCls}-fill`} {...fillProps} style={stylePointer} />
+    </div>
   );
 };
