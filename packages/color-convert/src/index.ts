@@ -205,7 +205,7 @@ export const hexToRgba = (hex: string): RgbaColor => {
     r,
     g,
     b,
-    a: a ? a / RGB_MAX : 1,
+    a: (a ?? 255) / RGB_MAX,
   };
 };
 
