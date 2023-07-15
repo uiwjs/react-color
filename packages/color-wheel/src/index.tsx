@@ -10,6 +10,8 @@ export interface WheelProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
   width?: number;
   height?: number;
   radius?: React.CSSProperties['borderRadius'];
+  /** Direction of the oval: 'x' or 'y'. */
+  oval?: string;
   /** Starting angle of the color wheel's hue gradient, measured in degrees. */
   angle?: number;
   /** Direction of the color wheel's hue gradient; either clockwise or anticlockwise. Default: `anticlockwise` */
@@ -30,6 +32,7 @@ const Wheel = React.forwardRef<HTMLDivElement, WheelProps>((props, ref) => {
     style,
     width = 200,
     height = 200,
+    oval,
     direction = 'anticlockwise',
     angle = 180,
     color,
@@ -56,7 +59,9 @@ const Wheel = React.forwardRef<HTMLDivElement, WheelProps>((props, ref) => {
   };
   const pointerStyle: React.CSSProperties = {
     zIndex: 1,
-    transform: `translate(${positions.x}px, ${positions.y}px)`,
+    transform: `translate(${positions.x}px, ${positions.y}px) ${
+      oval === 'x' || oval === 'X' ? 'scaleY(2)' : oval === 'y' || oval === 'Y' ? 'scaleX(2)' : ''
+    }`,
   };
   const pointerElement =
     pointer && typeof pointer === 'function' ? (
@@ -71,6 +76,7 @@ const Wheel = React.forwardRef<HTMLDivElement, WheelProps>((props, ref) => {
       style={{
         position: 'relative',
         width,
+        transform: oval === 'x' || oval === 'X' ? 'scaleY(0.5)' : oval === 'y' || oval === 'Y' ? 'scaleX(0.5)' : '',
         height,
         ...style,
       }}
