@@ -99,11 +99,11 @@ it('Converts HEX to RGBA', () => {
   expect(hsvaToHslString(hexToHsva('#d0021b'))).toEqual('hsl(352.71844660194176, 98%, 41%)');
   expect(hsvaToHex(rgbaToHsva(hexToRgba('#d0021b')))).toEqual('#d0021b');
   expect(hexToRgba('#d0021b')).toMatchObject({ r: 208, g: 2, b: 27, a: 1 });
-
   expect(hexToRgba('#abc')).toMatchObject({ r: 170, g: 187, b: 204, a: 1 });
   expect(hexToRgba('#aabbcc')).toMatchObject({ r: 170, g: 187, b: 204, a: 1 });
   expect(hexToRgba('#282c34')).toMatchObject({ r: 40, g: 44, b: 52, a: 1 });
   expect(hexToRgba('#4780f17a')).toMatchObject({ r: 71, g: 128, b: 241, a: 0.47843137254901963 });
+  expect(hexToRgba('#00000000')).toMatchObject({ r: 0, g: 0, b: 0, a: 0 });
 });
 
 it('Converts HEX to HSVA', () => {
