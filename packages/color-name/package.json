@@ -34,7 +34,8 @@
     "@babel/runtime": ">=7.19.0"
   },
   "dependencies": {
-    "@uiw/color-convert": "1.3.2"
+    "colors-named-hex": "^1.0.1",
+    "colors-named": "^1.0.1"
   },
   "devDependencies": {
     "@babel/runtime": "^7.21.0"
