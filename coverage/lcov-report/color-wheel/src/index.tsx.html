@@ -30,9 +30,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">92.3% </span>
+                <span class="strong">85.71% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>24/26</span>
+                <span class='fraction'>36/42</span>
             </div>
         
             
@@ -177,7 +177,15 @@
 <a name='L112'></a><a href='#L112'>112</a>
 <a name='L113'></a><a href='#L113'>113</a>
 <a name='L114'></a><a href='#L114'>114</a>
-<a name='L115'></a><a href='#L115'>115</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L115'></a><a href='#L115'>115</a>
+<a name='L116'></a><a href='#L116'>116</a>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -214,15 +222,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
@@ -230,6 +232,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -238,12 +247,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -303,6 +315,8 @@ export interface WheelProps extends Omit&lt;React.HTMLAttributes&lt;HTMLDivEleme
   width?: number;
   height?: number;
   radius?: React.CSSProperties['borderRadius'];
+  /** Direction of the oval: 'x' or 'y'. */
+  oval?: string;
   /** Starting angle of the color wheel's hue gradient, measured in degrees. */
   angle?: number;
   /** Direction of the color wheel's hue gradient; either clockwise or anticlockwise. Default: `anticlockwise` */
@@ -323,6 +337,7 @@ const Wheel = React.forwardRef&lt;HTMLDivElement, WheelProps&gt;((props, ref) =&
     style,
     width = 200,
     height = 200,
+    oval,
     direction = 'anticlockwise',
     angle = 180,
     color,
@@ -349,7 +364,9 @@ const Wheel = React.forwardRef&lt;HTMLDivElement, WheelProps&gt;((props, ref) =&
   };
   const pointerStyle: React.CSSProperties = {
     zIndex: 1,
-    transform: `translate(${positions.x}px, ${positions.y}px)`,
+    transform: `translate(${positions.x}px, ${positions.y}px) ${
+      oval === 'x' || oval === 'X' ? <span class="branch-0 cbranch-no" title="branch not covered" >'scaleY(2)' </span>: oval === 'y' || oval === 'Y' ? <span class="branch-0 cbranch-no" title="branch not covered" >'scaleX(2)' </span>: ''
+    }`,
   };
   const pointerElement =
     pointer &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >typeof pointer === 'function' </span>? (
@@ -364,6 +381,7 @@ const Wheel = React.forwardRef&lt;HTMLDivElement, WheelProps&gt;((props, ref) =&
       style={{
         position: 'relative',
         width,
+        transform: oval === 'x' || oval === 'X' ? <span class="branch-0 cbranch-no" title="branch not covered" >'scaleY(0.5)' </span>: oval === 'y' || oval === 'Y' ? <span class="branch-0 cbranch-no" title="branch not covered" >'scaleX(0.5)' </span>: '',
         height,
         ...style,
       }}
@@ -412,7 +430,7 @@ export default Wheel;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-07-15T01:24:31.658Z
+                at 2023-07-16T12:49:51.769Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
