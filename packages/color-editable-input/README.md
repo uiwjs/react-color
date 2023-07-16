@@ -5,7 +5,9 @@ React Color Editable Input
 
 EditableInput Component is a subcomponent of [**`@react-color`**](https://uiwjs.github.io/react-color).
 
+<!--rehype:ignore:start-->
 [![editable-input](https://user-images.githubusercontent.com/1680273/125950802-3feb68a9-23ca-4395-9477-72ade831dc0b.png)](https://uiwjs.github.io/react-color/#/editable-input)
+<!--rehype:ignore:end-->
 
 ## Install
 
@@ -15,12 +17,12 @@ npm i @uiw/react-color-editable-input
 
 ## Usage
 
-```js
-import { useState } from 'react';
+```jsx mdx:preview
+import React, { useState } from 'react';
 import { hsvaToHex } from '@uiw/color-convert';
 import EditableInput from '@uiw/react-color-editable-input';
 
-function Demo() {
+export default function Demo() {
   const [hsva, setHsva] = useState({ h: 209, s: 36, v: 90, a: 1 });
   return (
     <div style={{ padding: '0 10px 0 20px' }}>
@@ -47,6 +49,8 @@ export interface EditableInputProps extends Omit<React.InputHTMLAttributes<HTMLI
   inputStyle?: React.CSSProperties;
   onChange?: (evn: React.ChangeEvent<HTMLInputElement>, value: string | number) => void;
 }
+declare const EditableInput: React.ForwardRefExoticComponent<EditableInputProps & React.RefAttributes<HTMLInputElement>>;
+export default EditableInput;
 ```
 
 <!--footer-dividing-->

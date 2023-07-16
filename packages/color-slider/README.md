@@ -5,7 +5,9 @@ React Color Slider
 
 Slider Component is a subcomponent of [**`@react-color`**](https://uiwjs.github.io/react-color).
 
+<!--rehype:ignore:start-->
 [![react-color-slider](https://user-images.githubusercontent.com/1680273/125950115-1ef0c47b-e856-481a-b57e-d8168d41872b.png)](https://uiwjs.github.io/react-color/#/slider)
+<!--rehype:ignore:end-->
 
 ## Install
 
@@ -15,10 +17,11 @@ npm i @uiw/react-color-slider
 
 ## Usage
 
-```js
+```tsx mdx:preview
+import React, { useState } from 'react';
 import Slider from '@uiw/react-color-slider';
 
-function Demo() {
+export default function Demo() {
   const [hsva, setHsva] = useState({ h: 0, s: 0, v: 68, a: 1 });
   return (
     <Slider
@@ -42,6 +45,8 @@ export interface SliderProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 
   lightness?: number[];
   onChange?: (color: ColorResult, evn: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }
+declare const Slider: React.ForwardRefExoticComponent<SliderProps & React.RefAttributes<HTMLDivElement>>;
+export default Slider;
 ```
 
 <!--footer-dividing-->

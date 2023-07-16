@@ -5,7 +5,9 @@ React Color Wheel
 
 Wheel Component is a subcomponent of [**`@react-color`**](https://uiwjs.github.io/react-color).
 
+<!--rehype:ignore:start-->
 [![react-color-wheel](https://user-images.githubusercontent.com/1680273/125949147-ab96c3d8-1490-4418-b2cf-3f347993bdcb.png)](https://uiwjs.github.io/react-color/#/wheel)
+<!--rehype:ignore:end-->
 
 ## Install
 
@@ -15,20 +17,22 @@ npm i @uiw/react-color-wheel
 
 ## Usage
 
-```js
+```tsx mdx:preview
+import React, { useState, Fragment } from 'react';
 import Wheel from '@uiw/react-color-wheel';
+import { hsvaToHex } from '@uiw/color-convert';
 
 function Demo() {
-  const [hsva, setHsva] = useState({ h: 0, s: 0, v: 68, a: 1 });
+  const [hsva, setHsva] = useState({ h: 214, s: 43, v: 90, a: 1 });
   return (
-    <Wheel
-      color={hsva}
-      onChange={(color) => {
-        setHsva({ ...hsva, ...color.hsva });
-      }}
-    />
+    <Fragment>
+      <Wheel color={hsva} onChange={(color) => setHsva({ ...hsva, ...color.hsva })} />
+      <div style={{ width: '100%', height: 34, background: hsvaToHex(hsva) }}></div>
+    </Fragment>
   );
 }
+
+export default Demo;
 ```
 
 ## Props
@@ -36,13 +40,7 @@ function Demo() {
 ```ts
 import React from 'react';
 import { HsvaColor, ColorResult } from '@uiw/color-convert';
-export interface PointerProps extends React.HTMLAttributes<HTMLDivElement> {
-  prefixCls?: string;
-  top?: string;
-  left: string;
-  color?: string;
-}
-export declare const Pointer: ({ className, color, left, top, style, prefixCls }: PointerProps) => JSX.Element;
+import { PointerProps } from './Pointer';
 export interface WheelProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'color'> {
   prefixCls?: string;
   color?: string | HsvaColor;
@@ -58,6 +56,8 @@ export interface WheelProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
   pointer?: ({ prefixCls, left, top, color }: PointerProps) => JSX.Element;
   onChange?: (color: ColorResult) => void;
 }
+declare const Wheel: React.ForwardRefExoticComponent<WheelProps & React.RefAttributes<HTMLDivElement>>;
+export default Wheel;
 ```
 
 <!--footer-dividing-->

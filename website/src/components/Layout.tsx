@@ -4,11 +4,30 @@ import { useEffect, useReducer } from 'react';
 import { Outlet, ScrollRestoration } from 'react-router-dom';
 import { hsvaToHslaString } from '@uiw/react-color';
 import '@wcj/dark-mode';
+import styled from 'styled-components';
 import { reducer, Context, defaultContext } from '../Store';
 import { routes } from '../router';
 import Header from '../components/Header';
 
-import styles from './Layout.module.less';
+const Wrapper = styled.div`
+  transition: background-color 0.3s ease 0s;
+  min-height: 100vh;
+  dark-mode {
+    font-size: 18px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+  }
+`;
+
+const Version = styled.div`
+  position: fixed;
+  left: 88px;
+  top: 12px;
+  background: var(--color-theme-bg);
+  border-radius: 3px;
+  padding: 0px 6px;
+`;
 
 export default function Root() {
   const [state, dispatch] = useReducer(reducer, defaultContext);
@@ -17,16 +36,14 @@ export default function Root() {
   }, []);
   return (
     <Context.Provider value={{ ...state, dispatch }}>
-      <div
-        style={{ backgroundColor: hsvaToHslaString(state.hsva), transition: 'background-color 0.3s ease 0s', minHeight: '100vh' }}
-      >
+      <Wrapper style={{ backgroundColor: hsvaToHslaString(state.hsva) }}>
         <dark-mode permanent light="Dark" dark="Light"></dark-mode>
-        <div className={styles.version}>v{VERSION}</div>
+        <Version>v{VERSION}</Version>
         <GitHubCorners fixed zIndex={99} size={60} target="__blank" href="https://github.com/uiwjs/react-color" />
         <Header menus={routes.children || []} />
         <Outlet />
         <ScrollRestoration />
-      </div>
+      </Wrapper>
     </Context.Provider>
   );
 }

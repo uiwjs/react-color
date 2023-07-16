@@ -5,7 +5,9 @@ React Color Colorful
 
 Colorful Component is a subcomponent of [**`@react-color`**](https://uiwjs.github.io/react-color).
 
+<!--rehype:ignore:start-->
 [![react-color-colorful](https://user-images.githubusercontent.com/1680273/125949419-cdcac5cb-f5a9-47af-956f-4056630503c9.png)](https://uiwjs.github.io/react-color/#/colorful)
+<!--rehype:ignore:end-->
 
 ## Install
 
@@ -19,7 +21,7 @@ npm i @uiw/react-color-colorful
 import React, { useState } from 'react';
 import Colorful from '@uiw/react-color-colorful';
 
-function Demo() {
+export default function Demo() {
   const [hex, setHex] = useState("#59c09a");
   return (
     <>
@@ -35,14 +37,13 @@ function Demo() {
     </>
   );
 }
-export default Demo;
 ```
 
 ```jsx mdx:preview
 import React, { useState } from 'react';
 import Colorful from '@uiw/react-color-colorful';
 
-function Demo() {
+export default function Demo() {
   const [hex, setHex] = useState("#59c09a");
   const [disableAlpha, setDisableAlpha] = useState(false);
   return (
@@ -68,7 +69,6 @@ function Demo() {
     </>
   );
 }
-export default Demo;
 ```
 
 
@@ -83,6 +83,8 @@ export interface ColorfulProps extends Omit<React.HTMLAttributes<HTMLDivElement>
   color?: string | HsvaColor;
   disableAlpha?: boolean;
 }
+declare const Colorful: React.ForwardRefExoticComponent<ColorfulProps & React.RefAttributes<HTMLDivElement>>;
+export default Colorful;
 ```
 
 <!--footer-dividing-->

@@ -5,7 +5,9 @@ React Color Sketch
 
 Sketch Component is a subcomponent of [**`@react-color`**](https://uiwjs.github.io/react-color).
 
+<!--rehype:ignore:start-->
 [![react-color-sketch](https://user-images.githubusercontent.com/1680273/125952146-290199b4-8810-4552-944b-3ee673fb4350.png)](https://uiwjs.github.io/react-color/#/sketch)
+<!--rehype:ignore:end-->
 
 ## Install
 
@@ -57,6 +59,8 @@ export interface SketchProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 
   disableAlpha?: boolean;
   onChange?: (newShade: ColorResult) => void;
 }
+declare const Sketch: React.ForwardRefExoticComponent<SketchProps & React.RefAttributes<HTMLDivElement>>;
+export default Sketch;
 ```
 
 <!--footer-dividing-->

@@ -5,7 +5,9 @@ React Color Saturation
 
 Saturation Component is a subcomponent of [**`@react-color`**](https://uiwjs.github.io/react-color).
 
+<!--rehype:ignore:start-->
 [![react-color-saturation](https://user-images.githubusercontent.com/1680273/125951532-ee5bb5df-1d1f-43ed-a4be-e7e8818bf897.png)](https://uiwjs.github.io/react-color/#/saturation)
+<!--rehype:ignore:end-->
 
 ## Install
 
@@ -15,10 +17,11 @@ npm i @uiw/react-color-saturation
 
 ## Usage
 
-```js
+```jsx mdx:preview
+import React, { useState } from 'react';
 import Saturation from '@uiw/react-color-saturation';
 
-function Demo() {
+export default function Demo() {
   const [hsva, setHsva] = useState({ h: 0, s: 0, v: 68, a: 1 });
   return (
     <Saturation
@@ -36,13 +39,7 @@ function Demo() {
 ```ts
 import React from 'react';
 import { HsvaColor } from '@uiw/color-convert';
-export interface PointerProps extends React.HTMLAttributes<HTMLDivElement> {
-  prefixCls?: string;
-  top?: string;
-  left: string;
-  color?: string;
-}
-export declare const Pointer: ({ className, color, left, top, prefixCls }: PointerProps) => JSX.Element;
+import { PointerProps } from './Pointer';
 export interface SaturationProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   prefixCls?: string;
   /** hsva => `{ h: 0, s: 75, v: 82, a: 1 }` */
@@ -52,6 +49,8 @@ export interface SaturationProps extends Omit<React.HTMLAttributes<HTMLDivElemen
   pointer?: ({ prefixCls, left, top, color }: PointerProps) => JSX.Element;
   onChange?: (newColor: HsvaColor) => void;
 }
+declare const Saturation: React.ForwardRefExoticComponent<SaturationProps & React.RefAttributes<HTMLDivElement>>;
+export default Saturation;
 ```
 
 <!--footer-dividing-->

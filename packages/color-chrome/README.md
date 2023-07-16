@@ -5,9 +5,12 @@ React Color Chrome
 
 Chrome Component is a subcomponent of [**`@react-color`**](https://uiwjs.github.io/react-color).
 
+<!--rehype:ignore:start-->
 <a href="https://uiwjs.github.io/react-color/#/chrome">
   <img src="https://user-images.githubusercontent.com/1680273/126048126-172abdc2-f7cf-4519-8974-f815c102e2de.png" width="210" alt="react-color-chrome" />
 </a>
+
+<!--rehype:ignore:end-->
 
 ## Install
 
@@ -56,27 +59,15 @@ export default Demo;
 import React from 'react';
 import { GithubProps } from '@uiw/react-color-github';
 export declare enum ChromeInputType {
-  HEXA = 'hexa',
-  RGBA = 'rgba',
-  HSLA = 'hsla',
+    HEXA = "hexa",
+    RGBA = "rgba",
+    HSLA = "hsla"
 }
 export interface ChromeProps extends Omit<GithubProps, 'colors'> {
-  inputType?: ChromeInputType;
+    inputType?: ChromeInputType;
 }
-export declare enum GithubPlacement {
-  Left = "L",
-  LeftTop = "LT",
-  LeftBotton = "LB",
-  Right = "R",
-  RightTop = "RT",
-  RightBotton = "RB",
-  Top = "T",
-  TopRight = "TR",
-  TopLeft = "TL",
-  Botton = "B",
-  BottonLeft = "BL",
-  BottonRight = "BR"
-}
+declare const Chrome: React.ForwardRefExoticComponent<ChromeProps & React.RefAttributes<HTMLDivElement>>;
+export default Chrome;
 ```
 
 <!--footer-dividing-->

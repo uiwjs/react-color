@@ -5,7 +5,9 @@ React Color Swatch
 
 Circle Component is a subcomponent of [**`@react-color`**](https://uiwjs.github.io/react-color).
 
+<!--rehype:ignore:start-->
 [![react-color-circle](https://user-images.githubusercontent.com/1680273/125948967-87e1d2eb-ed51-46c8-9378-9bf964b093ea.png)](https://uiwjs.github.io/react-color/#/circle)
+<!--rehype:ignore:end-->
 
 ## Install
 
@@ -15,10 +17,11 @@ npm i @uiw/react-color-circle
 
 ## Usage
 
-```js
+```jsx mdx:preview
+import React, { useState } from 'react';
 import Circle from '@uiw/react-color-circle';
 
-function Demo() {
+export default function Demo() {
   const [hex, setHex] = useState('#F44E3B');
   return (
     <Circle
@@ -42,6 +45,8 @@ export interface CircleProps extends Omit<SwatchProps, 'color' | 'onChange'> {
   color?: string | HsvaColor;
   onChange?: (color: ColorResult) => void;
 }
+declare const Circle: React.ForwardRefExoticComponent<CircleProps & React.RefAttributes<HTMLDivElement>>;
+export default Circle;
 ```
 
 <!--footer-dividing-->

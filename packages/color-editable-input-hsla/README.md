@@ -5,7 +5,9 @@ React Color Editable Input HSLA
 
 EditableInputHSLA Component is a subcomponent of [**`@react-color`**](https://uiwjs.github.io/react-color).
 
+<!--rehype:ignore:start-->
 [![react-color-editable-input-rgba](https://user-images.githubusercontent.com/1680273/126024611-516a5174-4cf2-4986-af36-ddc4d3d620bb.png)](https://uiwjs.github.io/react-color/#/editable-input-hsla)
+<!--rehype:ignore:end-->
 
 ## Install
 
@@ -15,12 +17,12 @@ npm i @uiw/react-color-editable-input-hsla
 
 ## Usage
 
-```js
-import { useState } from 'react';
+```jsx mdx:preview
+import React, { useState } from 'react';
 import { hsvaToHex } from '@uiw/color-convert';
 import EditableInputHSLA from '@uiw/react-color-editable-input-hsla';
 
-function Demo() {
+export default function Demo() {
   const [hsva, setHsva] = useState({ h: 209, s: 36, v: 90, a: 1 });
   return (
     <div style={{ padding: '0 10px 0 20px' }}>
@@ -46,6 +48,8 @@ export interface EditableInputHSLAProps extends Omit<EditableInputRGBAProps, 'rP
   lProps?: EditableInputRGBAProps['gProps'];
   aProps?: EditableInputRGBAProps['aProps'];
 }
+declare const EditableInputHSLA: React.ForwardRefExoticComponent<EditableInputHSLAProps & React.RefAttributes<HTMLDivElement>>;
+export default EditableInputHSLA;
 ```
 
 <!--footer-dividing-->

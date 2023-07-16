@@ -5,7 +5,9 @@ React Color Github
 
 Github Component is a subcomponent of [**`@react-color`**](https://uiwjs.github.io/react-color).
 
+<!--rehype:ignore:start-->
 [![react-color-github](https://user-images.githubusercontent.com/1680273/125949553-67c1adef-b37f-43e2-9414-3ffb77c26ba0.png)](https://uiwjs.github.io/react-color/#/github)
+<!--rehype:ignore:end-->
 
 ## Install
 
@@ -19,7 +21,7 @@ npm i @uiw/react-color-github
 import React, { useState } from 'react';
 import Github from '@uiw/react-color-github';
 
-function Demo() {
+export default function Demo() {
   const [hex, setHex] = useState("#fff");
   return (
     <>
@@ -36,7 +38,6 @@ function Demo() {
     </>
   );
 }
-export default Demo;
 ```
 
 ## Props
@@ -67,6 +68,8 @@ export interface GithubProps extends Omit<SwatchProps, 'color' | 'onChange'> {
   color?: string | HsvaColor;
   onChange?: (color: ColorResult) => void;
 }
+declare const Github: React.ForwardRefExoticComponent<GithubProps & React.RefAttributes<HTMLDivElement>>;
+export default Github;
 ```
 
 <!--footer-dividing-->

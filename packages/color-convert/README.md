@@ -224,9 +224,9 @@ export declare const equalColorObjects: (first: ObjectColor, second: ObjectColor
 export declare const equalColorString: (first: string, second: string) => boolean;
 export declare const equalHex: (first: string, second: string) => boolean;
 export declare const validHex: (hex: string) => boolean;
-export declare const getContrastingColor: (str: string | HsvaColor) => "#fff" | "#000";
-export declare type ObjectColor = RgbColor | HslColor | HsvColor | RgbaColor | HslaColor | HsvaColor;
-export declare type ColorResult = {
+export declare const getContrastingColor: (str: string | HsvaColor) => "#ffffff" | "#000000";
+export type ObjectColor = RgbColor | HslColor | HsvColor | RgbaColor | HslaColor | HsvaColor;
+export type ColorResult = {
   rgb: RgbColor;
   hsl: HslColor;
   hsv: HsvColor;

@@ -5,7 +5,9 @@ React Color Editable Input RGBA
 
 EditableInputRGBA Component is a subcomponent of [**`@react-color`**](https://uiwjs.github.io/react-color).
 
+<!--rehype:ignore:start-->
 [![react-color-editable-input-rgba](https://user-images.githubusercontent.com/1680273/125950920-96bbfc1e-031a-4ea2-bfa2-28fab4d3c9d3.png)](https://uiwjs.github.io/react-color/#/editable-input-rgba)
+<!--rehype:ignore:end-->
 
 ## Install
 
@@ -15,12 +17,12 @@ npm i @uiw/react-color-editable-input-rgba
 
 ## Usage
 
-```js
-import { useState } from 'react';
+```jsx mdx:preview
+import React, { useState } from 'react';
 import { hsvaToHex } from '@uiw/color-convert';
 import EditableInputRGBA from '@uiw/react-color-editable-input-rgba';
 
-function Demo() {
+export default function Demo() {
   const [hsva, setHsva] = useState({ h: 209, s: 36, v: 90, a: 1 });
   return (
     <div style={{ padding: '0 10px 0 20px' }}>
@@ -51,6 +53,8 @@ export interface EditableInputRGBAProps extends Omit<React.HTMLAttributes<HTMLDi
   aProps?: false | EditableInputProps;
   onChange?: (color: ColorResult) => void;
 }
+declare const EditableInputRGBA: React.ForwardRefExoticComponent<EditableInputRGBAProps & React.RefAttributes<HTMLDivElement>>;
+export default EditableInputRGBA;
 ```
 
 <!--footer-dividing-->

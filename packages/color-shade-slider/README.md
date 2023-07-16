@@ -5,7 +5,9 @@ React Color Shade Slider
 
 ShadeSlider Component is a subcomponent of [**`@react-color`**](https://uiwjs.github.io/react-color).
 
+<!--rehype:ignore:start-->
 [![react-color-shade-slider](https://user-images.githubusercontent.com/1680273/125951397-89e90c05-1de2-4da7-81ed-4b77980482a0.png)](https://uiwjs.github.io/react-color/#/shade-slider)
+<!--rehype:ignore:end-->
 
 ## Install
 
@@ -15,10 +17,11 @@ npm i @uiw/react-color-shade-slider
 
 ## Usage
 
-```js
+```jsx mdx:preview
+import React, { useState } from 'react';
 import ShadeSlider from '@uiw/react-color-shade-slider';
 
-function Demo() {
+export default function Demo() {
   const [hsva, setHsva] = useState({ h: 0, s: 0, v: 68, a: 1 });
   return (
     <ShadeSlider
@@ -38,10 +41,12 @@ import React from 'react';
 import { AlphaProps } from '@uiw/react-color-alpha';
 export interface ShadeSliderProps extends Omit<AlphaProps, 'onChange'> {
   onChange?: (newShade: {
-      v: number;
-      s: number;
+    v: number;
   }) => void;
 }
+declare const ShadeSlider: React.ForwardRefExoticComponent<ShadeSliderProps & React.RefAttributes<HTMLDivElement>>;
+export default ShadeSlider;
+
 ```
 
 <!--footer-dividing-->

@@ -5,7 +5,9 @@ React Color Material
 
 Material Component is a subcomponent of [**`@react-color`**](https://uiwjs.github.io/react-color).
 
+<!--rehype:ignore:start-->
 [![react-color-material](https://user-images.githubusercontent.com/1680273/125949704-6fdaa53b-6cae-4ef5-8e5d-f12a09152528.png)](https://uiwjs.github.io/react-color/#/material)
+<!--rehype:ignore:end-->
 
 ## Install
 
@@ -15,10 +17,11 @@ npm i @uiw/react-color-material
 
 ## Usage
 
-```js
+```jsx mdx:preview
+import React, { useState } from 'react';
 import Material from '@uiw/react-color-material';
 
-function Demo() {
+export default function Demo() {
   const [hex, setHex] = useState("#fff");
   return (
     <Material
@@ -41,6 +44,8 @@ export interface MaterialProps extends Omit<React.HTMLAttributes<HTMLDivElement>
   color?: string | HsvaColor;
   onChange?: (color: ColorResult) => void;
 }
+declare const Material: React.ForwardRefExoticComponent<MaterialProps & React.RefAttributes<HTMLDivElement>>;
+export default Material;
 ```
 
 <!--footer-dividing-->

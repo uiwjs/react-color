@@ -5,7 +5,9 @@ React Color Hue
 
 Hue Component is a subcomponent of [**`@react-color`**](https://uiwjs.github.io/react-color).
 
+<!--rehype:ignore:start-->
 [![react-color-hue](https://user-images.githubusercontent.com/1680273/125951739-e38dad1a-5d11-4e4b-a146-3365bd0d98fb.png)](https://uiwjs.github.io/react-color/#/hue)
+<!--rehype:ignore:end-->
 
 ## Install
 
@@ -15,10 +17,11 @@ npm i @uiw/react-color-hue
 
 ## Usage
 
-```js
+```jsx mdx:preview
+import React, { useState } from 'react';
 import Hue from '@uiw/react-color-hue';
 
-function Demo() {
+export default function Demo() {
   const [hsva, setHsva] = useState({ h: 0, s: 0, v: 68, a: 1 });
   return (
     <Hue
@@ -37,9 +40,13 @@ function Demo() {
 import React from 'react';
 import { AlphaProps } from '@uiw/react-color-alpha';
 export interface HueProps extends Omit<AlphaProps, 'hsva' | 'onChange'> {
-  onChange?: (newHue: { h: number; }) => void;
+  onChange?: (newHue: {
+    h: number;
+  }) => void;
   hue: number;
 }
+declare const Hue: React.ForwardRefExoticComponent<HueProps & React.RefAttributes<HTMLDivElement>>;
+export default Hue;
 ```
 
 <!--footer-dividing-->

@@ -5,7 +5,9 @@ React Color Compact
 
 Compact Component is a subcomponent of [**`@react-color`**](https://uiwjs.github.io/react-color).
 
+<!--rehype:ignore:start-->
 [![react-color-compact](https://user-images.githubusercontent.com/1680273/125949911-bb919f60-2bf3-487b-9aad-5aef82bcd5ed.png)](https://uiwjs.github.io/react-color/#/compact)
+<!--rehype:ignore:end-->
 
 ## Install
 
@@ -15,10 +17,11 @@ npm i @uiw/react-color-compact
 
 ## Usage
 
-```js
+```jsx mdx:preview
+import React, { useState } from 'react';
 import Compact from '@uiw/react-color-compact';
 
-function Demo() {
+export default function Demo() {
   const [hex, setHex] = useState("#fff");
   return (
     <Compact
@@ -42,6 +45,8 @@ export interface CompactProps<T> extends Omit<React.HTMLAttributes<HTMLDivElemen
   colors?: string[];
   onChange?: (color: ColorResult, evn?: T) => void;
 }
+declare const Compact: React.ForwardRefExoticComponent<CompactProps<React.MouseEvent<HTMLDivElement, MouseEvent>> & React.RefAttributes<HTMLDivElement>>;
+export default Compact;
 ```
 
 <!--footer-dividing-->

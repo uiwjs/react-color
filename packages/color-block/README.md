@@ -5,7 +5,9 @@ React Color Block
 
 Block is a subcomponent of [**`@react-color`**](https://uiwjs.github.io/react-color).
 
+<!--rehype:ignore:start-->
 [![react-color-block](https://user-images.githubusercontent.com/1680273/125902022-0b18f481-2931-441e-b854-79b924b6c190.png)](https://uiwjs.github.io/react-color/#/block)
+<!--rehype:ignore:end-->
 
 ## Install
 
@@ -19,7 +21,7 @@ npm i @uiw/react-color-block
 import React, { useState } from 'react';
 import Block from '@uiw/react-color-block';
 
-function Demo() {
+export default function Demo() {
   const [hex, setHex] = useState("#fff");
   return (
     <>
@@ -33,8 +35,6 @@ function Demo() {
     </>
   );
 }
-
-export default Demo;
 ```
 
 ## Props
@@ -42,12 +42,14 @@ export default Demo;
 ```ts
 import React from 'react';
 import { HsvaColor, ColorResult } from '@uiw/color-convert';
-interface BlockProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'color'> {
+export interface BlockProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'color'> {
   prefixCls?: string;
   color?: string | HsvaColor;
   colors?: string[];
   onChange?: (color: ColorResult) => void;
 }
+declare const Block: React.ForwardRefExoticComponent<BlockProps & React.RefAttributes<HTMLDivElement>>;
+export default Block;
 ```
 
 <!--footer-dividing-->
