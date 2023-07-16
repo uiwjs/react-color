@@ -49,6 +49,8 @@ export interface WheelProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
   width?: number;
   height?: number;
   radius?: React.CSSProperties['borderRadius'];
+  /** Direction of the oval: 'x' or 'y'. */ 
+  oval?: string;
   /** Starting angle of the color wheel's hue gradient, measured in degrees. */
   angle?: number;
   /** Direction of the color wheel's hue gradient; either clockwise or anticlockwise. Default: `anticlockwise` */
