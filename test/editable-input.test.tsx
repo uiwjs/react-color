@@ -4,6 +4,7 @@
 import React, { useState } from 'react';
 import TestRenderer from 'react-test-renderer';
 import { screen, render, fireEvent } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import EditableInput from '../packages/color-editable-input/src';
 import { hsvaToHex, hexToHsva } from '../packages/color-convert/src';
@@ -190,6 +191,7 @@ it('EditableInput Input Number', async () => {
 });
 
 it('EditableInput Input Number', async () => {
+  const user = userEvent.setup();
   function MyComponent() {
     const [hsva, setHsva] = useState({ h: 209, s: 36, v: 90, a: 1 });
     return (
@@ -226,8 +228,9 @@ it('EditableInput Input Number', async () => {
     );
   }
   const { getByTitle } = render(<MyComponent />);
-  const elm = getByTitle('test');
+  const elm = getByTitle('test') as HTMLInputElement;
   elm.focus();
   fireEvent.change(elm, { target: { value: 0.15 } });
-  // elm.blur();
+  await user.tab(); // blur
+  expect(elm.value).toEqual('0.15');
 });
