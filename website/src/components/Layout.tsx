@@ -37,7 +37,7 @@ export default function Root() {
   }, []);
   const hsva = state.hsva;
   useEffect(() => {
-    document.documentElement.style.backgroundColor = hsvaToHslaString(state.hsva);
+    document.documentElement.style.backgroundColor = hsvaToHslaString(hsva);
   }, [hsva]);
   return (
     <Context.Provider value={{ ...state, dispatch }}>
