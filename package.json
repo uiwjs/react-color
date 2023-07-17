@@ -28,8 +28,12 @@
   },
   "license": "MIT",
   "jest": {
+    "transformIgnorePatterns": [
+      "node_modules/(?!(colors-named|colors-named-hex)/)"
+    ],
     "collectCoverageFrom": [
       "<rootDir>/packages/**/*.{tsx,ts}",
+      "!**/.kktrc.ts",
       "!**/*.{js,d.ts}"
     ],
     "coverageReporters": [
