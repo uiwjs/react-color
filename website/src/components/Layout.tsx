@@ -33,7 +33,12 @@ export default function Root() {
   const [state, dispatch] = useReducer(reducer, defaultContext);
   useEffect(() => {
     document.body.style.background = `url(${BACKGROUND_IMG}) left center`;
+    document.body.style.backgroundAttachment = 'fixed';
   }, []);
+  const hsva = state.hsva;
+  useEffect(() => {
+    document.documentElement.style.backgroundColor = hsvaToHslaString(state.hsva);
+  }, [hsva]);
   return (
     <Context.Provider value={{ ...state, dispatch }}>
       <Wrapper style={{ backgroundColor: hsvaToHslaString(state.hsva) }}>
