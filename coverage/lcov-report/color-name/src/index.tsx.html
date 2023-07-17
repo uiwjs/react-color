@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/8</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/8</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -120,15 +120,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">148x</span>
+<span class="cline-any cline-yes">148x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -147,13 +144,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">148x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import named from 'colors-named';
 import hex from 'colors-named-hex';
@@ -166,12 +166,12 @@ export type ColorKeywords = {
  * Extended color keywords
  * https://www.w3.org/TR/css-color-3/#svg-color
  */
-export const colorKeywords = <span class="cstat-no" title="statement not covered" >named.reduce(<span class="fstat-no" title="function not covered" >(o</span>bj, key, index) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >  obj[key] = hex[index];</span>
-<span class="cstat-no" title="statement not covered" >  return obj;</span>
+export const colorKeywords = named.reduce((obj, key, index) =&gt; {
+  obj[key] = hex[index];
+  return obj;
 }, {} as ColorKeywords);
 &nbsp;
-export const baseNamed = <span class="cstat-no" title="statement not covered" >[</span>
+export const baseNamed = [
   'aqua',
   'black',
   'blue',
@@ -193,13 +193,13 @@ export type ColorKeywordsBase = {
   [key in (typeof baseNamed)[number]]: ColorKeywords[key];
 };
 &nbsp;
-export const colorKeywordsBase = <span class="cstat-no" title="statement not covered" >baseNamed.reduce(<span class="fstat-no" title="function not covered" >(o</span>bj, key) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >  obj[key] = colorKeywords[key];</span>
-<span class="cstat-no" title="statement not covered" >  return obj;</span>
+export const colorKeywordsBase = baseNamed.reduce((obj, key) =&gt; {
+  obj[key] = colorKeywords[key];
+  return obj;
 }, {} as ColorKeywordsBase);
 &nbsp;
-export default function <span class="fstat-no" title="function not covered" >colorNameToHex(</span>name: keyof ColorKeywords) {
-<span class="cstat-no" title="statement not covered" >  return colorKeywords[name];</span>
+export default function colorNameToHex(name: keyof ColorKeywords) {
+  return colorKeywords[name];
 }
 &nbsp;</pre></td></tr></table></pre>
 
@@ -208,7 +208,7 @@ export default function <span class="fstat-no" title="function not covered" >col
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-07-16T15:45:17.657Z
+                at 2023-07-17T01:23:25.182Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
