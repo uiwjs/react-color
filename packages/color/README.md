@@ -166,6 +166,16 @@ npm run watch # Monitor the compiled package `@uiw/react-block`
 npm run start     # development mode, listen to compile preview website instance
 ```
 
+## Contributors
+
+As always, thanks to our amazing contributors!
+
+<a href="https://uiwjs.github.io/react-color/graphs/contributors">
+  <img src="https://uiwjs.github.io/react-color/coverage/CONTRIBUTORS.svg" />
+</a>
+
+Made with [contributors](https://github.com/jaywcjlove/github-action-contributors).
+
 ## License
 
 Licensed under the MIT License.

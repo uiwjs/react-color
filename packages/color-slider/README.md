@@ -51,6 +51,16 @@ export default Slider;
 
 <!--footer-dividing-->
 
+## Contributors
+
+As always, thanks to our amazing contributors!
+
+<a href="https://uiwjs.github.io/react-color/graphs/contributors">
+  <img src="https://uiwjs.github.io/react-color/coverage/CONTRIBUTORS.svg" />
+</a>
+
+Made with [contributors](https://github.com/jaywcjlove/github-action-contributors).
+
 ## License
 
 Licensed under the MIT License.
