@@ -7,6 +7,9 @@ on:
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -107,154 +110,154 @@ jobs:
 
     
       - name: 📦 @uiw/react-color publish to NPM
-        run: npm publish
+        run: npm publish --access public --provenance
         continue-on-error: true
         working-directory: ./packages/color
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       
       - name: 📦 @uiw/react-color-alpha publish to NPM
-        run: npm publish
+        run: npm publish --access public --provenance
         continue-on-error: true
         working-directory: ./packages/color-alpha
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       
       - name: 📦 @uiw/react-color-block publish to NPM
-        run: npm publish
+        run: npm publish --access public --provenance
         continue-on-error: true
         working-directory: ./packages/color-block
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       
       - name: 📦 @uiw/react-color-convert publish to NPM
-        run: npm publish
+        run: npm publish --access public --provenance
         continue-on-error: true
         working-directory: ./packages/color-convert
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       
       - name: 📦 @uiw/react-color-compact publish to NPM
-        run: npm publish
+        run: npm publish --access public --provenance
         continue-on-error: true
         working-directory: ./packages/color-compact
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       
       - name: 📦 @uiw/react-color-colorful publish to NPM
-        run: npm publish
+        run: npm publish --access public --provenance
         continue-on-error: true
         working-directory: ./packages/color-colorful
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       
       - name: 📦 @uiw/react-color-circle publish to NPM
-        run: npm publish
+        run: npm publish --access public --provenance
         continue-on-error: true
         working-directory: ./packages/color-circle
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       
       - name: 📦 @uiw/react-color-github publish to NPM
-        run: npm publish
+        run: npm publish --access public --provenance
         continue-on-error: true
         working-directory: ./packages/color-github
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       
       - name: 📦 @uiw/react-color-chrome publish to NPM
-        run: npm publish
+        run: npm publish --access public --provenance
         continue-on-error: true
         working-directory: ./packages/color-chrome
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       
       - name: 📦 @uiw/react-color-editable-input publish to NPM
-        run: npm publish
+        run: npm publish --access public --provenance
         continue-on-error: true
         working-directory: ./packages/color-editable-input
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       
       - name: 📦 @uiw/react-color-editable-input-hsla publish to NPM
-        run: npm publish
+        run: npm publish --access public --provenance
         continue-on-error: true
         working-directory: ./packages/color-editable-input-hsla
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       
       - name: 📦 @uiw/react-color-editable-input-rgba publish to NPM
-        run: npm publish
+        run: npm publish --access public --provenance
         continue-on-error: true
         working-directory: ./packages/color-editable-input-rgba
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       
       - name: 📦 @uiw/react-color-hue publish to NPM
-        run: npm publish
+        run: npm publish --access public --provenance
         continue-on-error: true
         working-directory: ./packages/color-hue
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       
       - name: 📦 @uiw/react-color-name publish to NPM
-        run: npm publish
+        run: npm publish --access public --provenance
         continue-on-error: true
         working-directory: ./packages/color-name
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       
       - name: 📦 @uiw/react-color-material publish to NPM
-        run: npm publish
+        run: npm publish --access public --provenance
         continue-on-error: true
         working-directory: ./packages/color-material
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       
       - name: 📦 @uiw/react-color-saturation publish to NPM
-        run: npm publish
+        run: npm publish --access public --provenance
         continue-on-error: true
         working-directory: ./packages/color-saturation
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       
       - name: 📦 @uiw/react-color-shade-slider publish to NPM
-        run: npm publish
+        run: npm publish --access public --provenance
         continue-on-error: true
         working-directory: ./packages/color-shade-slider
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       
       - name: 📦 @uiw/react-color-sketch publish to NPM
-        run: npm publish
+        run: npm publish --access public --provenance
         continue-on-error: true
         working-directory: ./packages/color-sketch
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       
       - name: 📦 @uiw/react-color-slider publish to NPM
-        run: npm publish
+        run: npm publish --access public --provenance
         continue-on-error: true
         working-directory: ./packages/color-slider
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       
       - name: 📦 @uiw/react-color-swatch publish to NPM
-        run: npm publish
+        run: npm publish --access public --provenance
         continue-on-error: true
         working-directory: ./packages/color-swatch
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       
       - name: 📦 @uiw/react-color-wheel publish to NPM
-        run: npm publish
+        run: npm publish --access public --provenance
         continue-on-error: true
         working-directory: ./packages/color-wheel
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       
       - name: 📦 @uiw/react-drag-event-interactive publish to NPM
-        run: npm publish
+        run: npm publish --access public --provenance
         continue-on-error: true
         working-directory: ./packages/drag-event-interactive
         env:
