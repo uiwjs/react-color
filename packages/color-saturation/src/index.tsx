@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { HsvaColor, hsvaToHslaString } from '@uiw/color-convert';
 import Interactive, { Interaction } from '@uiw/react-drag-event-interactive';
 import { Pointer, PointerProps } from './Pointer';
@@ -6,7 +6,8 @@ import { Pointer, PointerProps } from './Pointer';
 export interface SaturationProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   prefixCls?: string;
   /** hsva => `{ h: 0, s: 75, v: 82, a: 1 }` */
-  hsva: HsvaColor;
+  hsva?: HsvaColor;
+  hue?: number;
   radius?: React.CSSProperties['borderRadius'];
   /** React Component, Custom pointer component */
   pointer?: ({ prefixCls, left, top, color }: PointerProps) => JSX.Element;
@@ -14,7 +15,7 @@ export interface SaturationProps extends Omit<React.HTMLAttributes<HTMLDivElemen
 }
 
 const Saturation = React.forwardRef<HTMLDivElement, SaturationProps>((props, ref) => {
-  const { prefixCls = 'w-color-saturation', radius = 0, pointer, className, style, hsva, onChange, ...other } = props;
+  const { prefixCls = 'w-color-saturation', radius = 0, pointer, className, hue = 0, style, hsva, onChange, ...other } = props;
   const containerStyle: React.CSSProperties = {
     width: 200,
     height: 200,
@@ -25,6 +26,7 @@ const Saturation = React.forwardRef<HTMLDivElement, SaturationProps>((props, ref
 
   const handleChange = (interaction: Interaction, event: MouseEvent | TouchEvent) => {
     onChange &&
+      hsva &&
       onChange({
         h: hsva.h,
         s: interaction.left * 100,
@@ -34,17 +36,19 @@ const Saturation = React.forwardRef<HTMLDivElement, SaturationProps>((props, ref
       });
   };
 
-  const comProps = {
-    top: `${100 - hsva.v}%`,
-    left: `${hsva.s}%`,
-    color: hsvaToHslaString(hsva),
-  };
-  const pointerElement =
-    pointer && typeof pointer === 'function' ? (
-      pointer({ prefixCls, ...comProps })
-    ) : (
-      <Pointer prefixCls={prefixCls} {...comProps} />
-    );
+  const pointerElement = useMemo(() => {
+    if (!hsva) return null;
+    const comProps = {
+      top: `${100 - hsva.v}%`,
+      left: `${hsva.s}%`,
+      color: hsvaToHslaString(hsva),
+    };
+    if (pointer && typeof pointer === 'function') {
+      return pointer({ prefixCls, ...comProps });
+    }
+    return <Pointer prefixCls={prefixCls} {...comProps} />;
+  }, [hsva, pointer, prefixCls]);
+
   return (
     <Interactive
       className={[prefixCls, className || ''].filter(Boolean).join(' ')}
@@ -53,7 +57,9 @@ const Saturation = React.forwardRef<HTMLDivElement, SaturationProps>((props, ref
         position: 'absolute',
         inset: 0,
         cursor: 'crosshair',
-        backgroundImage: `linear-gradient(0deg, #000, transparent), linear-gradient(90deg, #fff, hsl(${hsva.h}, 100%, 50%))`,
+        backgroundImage: `linear-gradient(0deg, #000, transparent), linear-gradient(90deg, #fff, hsl(${
+          hsva?.h ?? hue
+        }, 100%, 50%))`,
         ...containerStyle,
       }}
       ref={ref}
