@@ -59,7 +59,8 @@ import { PointerProps } from './Pointer';
 export interface SaturationProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   prefixCls?: string;
   /** hsva => `{ h: 0, s: 75, v: 82, a: 1 }` */
-  hsva: HsvaColor;
+  hsva?: HsvaColor;
+  hue?: number;
   radius?: React.CSSProperties['borderRadius'];
   /** React Component, Custom pointer component */
   pointer?: ({ prefixCls, left, top, color }: PointerProps) => JSX.Element;
