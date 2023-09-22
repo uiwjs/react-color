@@ -35,6 +35,32 @@ function Demo() {
 export default Demo;
 ```
 
+```tsx mdx:preview
+import React, { useState } from 'react';
+import Wheel from '@uiw/react-color-wheel';
+import { hsvaToHex } from '@uiw/color-convert';
+
+function Demo() {
+  const [hsva, setHsva] = useState({ h: 214, s: 43, v: 90, a: 1 });
+  return (
+    <div style={{ display: 'grid', gap: 20, gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))' }}>
+      <Wheel color={{a: 1, h: 214, s: 0, v: 100}} />
+      <Wheel color={{a: 1, h: 214, s: 0, v: 90}} />
+      <Wheel color={{a: 1, h: 214, s: 0, v: 80}} />
+      <Wheel color={{a: 1, h: 214, s: 0, v: 70}} />
+      <Wheel color={{a: 1, h: 214, s: 0, v: 50}} />
+      <Wheel color={{a: 1, h: 214, s: 0, v: 40}} />
+      <Wheel color={{a: 1, h: 214, s: 0, v: 40}} width={100} height={100} />
+      <Wheel color={{a: 1, h: 214, s: 0, v: 30}} width={100} height={100} />
+      <Wheel color={{a: 1, h: 214, s: 0, v: 20}} width={100} height={100} />
+      <Wheel color={{a: 1, h: 214, s: 0, v: 10}} width={100} height={100} />
+    </div>
+  );
+}
+
+export default Demo;
+```
+
 ## Props
 
 ```ts
