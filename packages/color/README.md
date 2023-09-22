@@ -116,6 +116,10 @@ function Demo() {
 }
 ```
 
+## Documentation
+
+You can find the react-color documentation [on the website](https://uiwjs.github.io/react-color/).
+
 ## Packages
 
 Package | Bundle size(gzip) | Downloads | Version / unpkg

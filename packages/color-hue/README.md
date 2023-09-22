@@ -34,6 +34,17 @@ export default function Demo() {
 }
 ```
 
+```jsx mdx:preview
+import React, { useState } from 'react';
+import Hue from '@uiw/react-color-hue';
+
+export default function Demo() {
+  return (
+    <Hue hue={undefined} />
+  );
+}
+```
+
 ## Props
 
 ```ts

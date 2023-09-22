@@ -3,7 +3,7 @@ import Alpha, { AlphaProps } from '@uiw/react-color-alpha';
 
 export interface HueProps extends Omit<AlphaProps, 'hsva' | 'onChange'> {
   onChange?: (newHue: { h: number }) => void;
-  hue: number;
+  hue?: number;
 }
 
 const Hue = React.forwardRef<HTMLDivElement, HueProps>((props, ref) => {
