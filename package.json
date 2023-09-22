@@ -12,6 +12,7 @@
     "build": "lerna exec --scope @uiw/* -- tsbb build \"src/*.{ts,tsx}\" --use-babel --cjs cjs",
     "start": "lerna exec --scope website -- npm run start",
     "doc": "lerna exec --scope website -- npm run build",
+    "type-check": "lerna exec \"tsc --noEmit\" --scope @uiw/* --stream",
     "test": "tsbb test --env=jsdom",
     "coverage": "tsbb test --coverage --bail",
     "prepare": "husky install",
