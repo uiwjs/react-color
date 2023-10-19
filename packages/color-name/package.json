@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-color-name",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "Color Name to Hex",
   "author": "Kenny Wong <wowohoo@qq.com>",
   "homepage": "https://uiwjs.github.io/react-color/#/name",
