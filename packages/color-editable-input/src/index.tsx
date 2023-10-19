@@ -49,7 +49,6 @@ const EditableInput = React.forwardRef<HTMLInputElement, EditableInputProps>((pr
       onChange && onChange(evn, val);
     }
     setValue(value);
-    // setValueProps(value);
   }
   function handleBlur(evn: React.FocusEvent<HTMLInputElement>) {
     isFocus.current = false;

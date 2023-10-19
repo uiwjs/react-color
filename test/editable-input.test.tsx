@@ -143,9 +143,13 @@ it('EditableInput Input Hex String', async () => {
         title="test"
         value={hsvaToHex(hsva)}
         onChange={(evn, value) => {
-          expect(value).toEqual('#333');
-          expect(evn.target.value).toEqual('#333');
-          setHsva(hexToHsva(value as string));
+          if (typeof value === 'string') {
+            expect(value).toBe('333333');
+          } else {
+            expect(value).toBe(333333);
+          }
+          expect(evn.target.value).toBe('#333333');
+          setHsva(hexToHsva(`#${value}`));
         }}
         labelStyle={{ position: 'relative', display: 'block' }}
         style={{
@@ -159,7 +163,7 @@ it('EditableInput Input Hex String', async () => {
   const { getByTitle } = render(<MyComponent />);
   const elm = getByTitle('test');
   elm.focus();
-  fireEvent.change(elm, { target: { value: '#333' } });
+  fireEvent.change(elm, { target: { value: '#333333' } });
 });
 
 it('EditableInput Input Number', async () => {

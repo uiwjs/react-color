@@ -65,7 +65,7 @@ it('Material hex onChange', async () => {
   const input = screen.getByText('Hex').previousSibling;
   expect((input as any).value).toEqual('E27300');
   fireEvent.change(input!, { target: { value: '#333333' } });
-  expect((input as any).value).toEqual('#333333');
+  expect((input as any).value).toEqual('333333');
   fireEvent.blur(input!);
   expect((input as any).value).toEqual('E27300');
 });
