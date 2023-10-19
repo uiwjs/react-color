@@ -40,7 +40,7 @@ const EditableInput = React.forwardRef<HTMLInputElement, EditableInputProps>((pr
   }, [props.value]);
 
   function handleChange(evn: React.FocusEvent<HTMLInputElement>, valInit?: string) {
-    const value = valInit || evn.target.value;
+    const value = (valInit || evn.target.value).trim().replace(/^#/, '');
     if (validHex(value)) {
       onChange && onChange(evn, value);
     }
