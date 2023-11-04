@@ -49,16 +49,16 @@ import { SwatchProps, SwatchRectRenderProps } from '@uiw/react-color-swatch';
 export declare enum GithubPlacement {
   Left = "L",
   LeftTop = "LT",
-  LeftBotton = "LB",
+  LeftBottom = "LB",
   Right = "R",
   RightTop = "RT",
-  RightBotton = "RB",
+  RightBottom = "RB",
   Top = "T",
   TopRight = "TR",
   TopLeft = "TL",
-  Botton = "B",
-  BottonLeft = "BL",
-  BottonRight = "BR"
+  Bottom = "B",
+  BottomLeft = "BL",
+  BottomRight = "BR"
 }
 export interface GithubRectRenderProps extends SwatchRectRenderProps {
   arrow?: JSX.Element;

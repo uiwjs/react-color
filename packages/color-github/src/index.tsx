@@ -25,16 +25,16 @@ const CORLER_HEX = [
 export enum GithubPlacement {
   Left = 'L',
   LeftTop = 'LT',
-  LeftBotton = 'LB',
+  LeftBottom = 'LB',
   Right = 'R',
   RightTop = 'RT',
-  RightBotton = 'RB',
+  RightBottom = 'RB',
   Top = 'T',
   TopRight = 'TR',
   TopLeft = 'TL',
-  Botton = 'B',
-  BottonLeft = 'BL',
-  BottonRight = 'BR',
+  Bottom = 'B',
+  BottomLeft = 'BL',
+  BottomRight = 'BR',
 }
 
 export interface GithubRectRenderProps extends SwatchRectRenderProps {
@@ -107,31 +107,31 @@ const Github = React.forwardRef<HTMLDivElement, GithubProps>((props, ref) => {
     arrBrStyl.borderColor = 'var(--github-arrow-border-color) transparent transparent';
     arrStyl.borderWidth = '7px 7px 0';
     arrStyl.borderColor = 'var(--github-background-color) transparent transparent';
-    if (placement === GithubPlacement.BottonRight) {
+    if (placement === GithubPlacement.BottomRight) {
       arrBrStyl.top = '100%';
       arrStyl.top = '100%';
     }
-    if (placement === GithubPlacement.Botton) {
+    if (placement === GithubPlacement.Bottom) {
       arrBrStyl.top = '100%';
       arrStyl.top = '100%';
     }
-    if (placement === GithubPlacement.BottonLeft) {
+    if (placement === GithubPlacement.BottomLeft) {
       arrBrStyl.top = '100%';
       arrStyl.top = '100%';
     }
   }
   if (/^(B|T)/.test(placement)) {
-    if (placement === GithubPlacement.Top || placement === GithubPlacement.Botton) {
+    if (placement === GithubPlacement.Top || placement === GithubPlacement.Bottom) {
       arrBrStyl.left = '50%';
       arrBrStyl.marginLeft = -8;
       arrStyl.left = '50%';
       arrStyl.marginLeft = -7;
     }
-    if (placement === GithubPlacement.TopRight || placement === GithubPlacement.BottonRight) {
+    if (placement === GithubPlacement.TopRight || placement === GithubPlacement.BottomRight) {
       arrBrStyl.right = 10;
       arrStyl.right = 11;
     }
-    if (placement === GithubPlacement.TopLeft || placement === GithubPlacement.BottonLeft) {
+    if (placement === GithubPlacement.TopLeft || placement === GithubPlacement.BottomLeft) {
       arrBrStyl.left = 7;
       arrStyl.left = 8;
     }
@@ -163,7 +163,7 @@ const Github = React.forwardRef<HTMLDivElement, GithubProps>((props, ref) => {
       arrBrStyl.marginTop = -8;
       arrStyl.marginTop = -7;
     }
-    if (placement === GithubPlacement.LeftBotton || placement === GithubPlacement.RightBotton) {
+    if (placement === GithubPlacement.LeftBottom || placement === GithubPlacement.RightBottom) {
       arrBrStyl.top = '100%';
       arrStyl.top = '100%';
       arrBrStyl.marginTop = -21;

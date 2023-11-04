@@ -46,7 +46,7 @@ function Example() {
         />
         <Github
           color={hsva}
-          placement={GithubPlacement.LeftBotton}
+          placement={GithubPlacement.LeftBottom}
           onChange={(color) => {
             dispatch!({ hsva: { ...hsva, ...color.hsva } });
           }}
@@ -69,7 +69,7 @@ function Example() {
         />
         <Github
           color={hsva}
-          placement={GithubPlacement.RightBotton}
+          placement={GithubPlacement.RightBottom}
           onChange={(color) => {
             dispatch!({ hsva: { ...hsva, ...color.hsva } });
           }}
@@ -77,7 +77,7 @@ function Example() {
       </div>
       <div style={{ display: 'flex', gap: '1rem', marginTop: 20 }}>
         <Github
-          placement={GithubPlacement.BottonLeft}
+          placement={GithubPlacement.BottomLeft}
           color={hsva}
           onChange={(color) => {
             dispatch!({ hsva: { ...hsva, ...color.hsva } });
@@ -85,14 +85,14 @@ function Example() {
         />
         <Github
           color={hsva}
-          placement={GithubPlacement.Botton}
+          placement={GithubPlacement.Bottom}
           onChange={(color) => {
             dispatch!({ hsva: { ...hsva, ...color.hsva } });
           }}
         />
         <Github
           color={hsva}
-          placement={GithubPlacement.BottonRight}
+          placement={GithubPlacement.BottomRight}
           onChange={(color) => {
             dispatch!({ hsva: { ...hsva, ...color.hsva } });
           }}

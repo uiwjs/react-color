@@ -146,12 +146,12 @@ it('Github GithubPlacement.LeftTop', async () => {
   }
 });
 
-it('Github GithubPlacement.LeftBotton', async () => {
+it('Github GithubPlacement.LeftBottom', async () => {
   const component = TestRenderer.create(
     <Github
       colors={['#F44E3B', '#FE9200', '#FCDC00', '#DBDF00']}
       data-testid="test-element"
-      placement={GithubPlacement.LeftBotton}
+      placement={GithubPlacement.LeftBottom}
     />,
   );
   const tree = component.toJSON();
@@ -205,9 +205,9 @@ it('Github GithubPlacement.RightTop', async () => {
   }
 });
 
-it('Github GithubPlacement.RightBotton', async () => {
+it('Github GithubPlacement.RightBottom', async () => {
   const component = TestRenderer.create(
-    <Github colors={['#F44E3B']} data-testid="test-element" placement={GithubPlacement.RightBotton} />,
+    <Github colors={['#F44E3B']} data-testid="test-element" placement={GithubPlacement.RightBottom} />,
   );
   const tree = component.toJSON();
   if (tree && !Array.isArray(tree) && tree.children && tree.children[0]) {
@@ -279,9 +279,9 @@ it('Github GithubPlacement.TopRight', async () => {
   }
 });
 
-it('Github GithubPlacement.Botton', async () => {
+it('Github GithubPlacement.Bottom', async () => {
   const component = TestRenderer.create(
-    <Github colors={['#F44E3B']} data-testid="test-element" placement={GithubPlacement.Botton} />,
+    <Github colors={['#F44E3B']} data-testid="test-element" placement={GithubPlacement.Bottom} />,
   );
   const tree = component.toJSON();
   if (tree && !Array.isArray(tree) && tree.children && tree.children[0]) {
@@ -298,9 +298,9 @@ it('Github GithubPlacement.Botton', async () => {
   }
 });
 
-it('Github GithubPlacement.BottonLeft', async () => {
+it('Github GithubPlacement.BottomLeft', async () => {
   const component = TestRenderer.create(
-    <Github colors={['#F44E3B']} data-testid="test-element" placement={GithubPlacement.BottonLeft} />,
+    <Github colors={['#F44E3B']} data-testid="test-element" placement={GithubPlacement.BottomLeft} />,
   );
   const tree = component.toJSON();
   if (tree && !Array.isArray(tree) && tree.children && tree.children[0]) {
@@ -316,9 +316,9 @@ it('Github GithubPlacement.BottonLeft', async () => {
   }
 });
 
-it('Github GithubPlacement.BottonRight', async () => {
+it('Github GithubPlacement.BottomRight', async () => {
   const component = TestRenderer.create(
-    <Github colors={['#F44E3B']} data-testid="test-element" placement={GithubPlacement.BottonRight} />,
+    <Github colors={['#F44E3B']} data-testid="test-element" placement={GithubPlacement.BottomRight} />,
   );
   const tree = component.toJSON();
   if (tree && !Array.isArray(tree) && tree.children && tree.children[0]) {
