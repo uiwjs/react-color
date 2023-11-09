@@ -15,7 +15,7 @@ export interface SwatchProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 
   color?: string;
   colors?: SwatchPresetColor[];
   rectProps?: React.HTMLAttributes<HTMLDivElement>;
-  rectRender?: (props: SwatchRectRenderProps) => JSX.Element;
+  rectRender?: (props: SwatchRectRenderProps) => JSX.Element | undefined;
   onChange?: (hsva: HsvaColor, color: ColorResult, evn: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
   addonAfter?: React.ReactNode;
   addonBefore?: React.ReactNode;
@@ -78,8 +78,9 @@ const Swatch = React.forwardRef<HTMLDivElement, SwatchProps>((props, ref) => {
             background = item.color;
           }
           const checked = color && color.toLocaleLowerCase() === background.toLocaleLowerCase();
-          if (rectRender) {
-            return rectRender({
+          const render =
+            rectRender &&
+            rectRender({
               key: idx,
               title,
               color: background,
@@ -87,6 +88,8 @@ const Swatch = React.forwardRef<HTMLDivElement, SwatchProps>((props, ref) => {
               style: { ...rectStyle, background },
               onClick: (evn) => handleClick(background, evn),
             });
+          if (render) {
+            return render;
           }
           const child =
             rectProps.children && React.isValidElement(rectProps.children)
