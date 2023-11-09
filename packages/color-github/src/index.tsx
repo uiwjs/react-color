@@ -57,6 +57,7 @@ const Github = React.forwardRef<HTMLDivElement, GithubProps>((props, ref) => {
     colors = CORLER_HEX,
     rectProps = {},
     onChange,
+    rectRender,
     ...other
   } = props;
   const hsva = (typeof color === 'string' && validHex(color) ? hexToHsva(color) : color) as HsvaColor;
@@ -170,15 +171,18 @@ const Github = React.forwardRef<HTMLDivElement, GithubProps>((props, ref) => {
       arrStyl.marginTop = -20;
     }
   }
+  const render = ({ key, ...props }: SwatchRectRenderProps) => {
+    const handle = rectRender && rectRender({ key, ...props });
+    if (handle) return handle;
+    return <Point key={key} {...props} rectProps={rectProps} />;
+  };
   return (
     <Swatch
       ref={ref}
       className={[prefixCls, className].filter(Boolean).join(' ')}
       colors={colors}
       color={hex}
-      rectRender={({ key, ...props }) => {
-        return <Point key={key} {...props} rectProps={rectProps} />;
-      }}
+      rectRender={render}
       {...other}
       onChange={handleChange}
       style={styleWrapper}

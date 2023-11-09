@@ -40,6 +40,36 @@ export default function Demo() {
 }
 ```
 
+Add clear button
+
+```jsx mdx:preview
+import React, { useState } from 'react';
+import Github from '@uiw/react-color-github';
+
+export default function Demo() {
+  const [hex, setHex] = useState("#fff");
+  return (
+    <>
+      <Github
+        color={hex}
+        style={{
+          '--github-background-color': '#d1eff9'
+        }}
+        onChange={(color) => {
+          setHex(color.hex);
+        }}
+        rectRender={(props) => {
+          if (props.key == 15) {
+            return <button key={props.key} onClick={() => setHex(null)}>x</button>
+          }
+        }}
+      />
+      <div style={{ width: 120, height: 50, backgroundColor: hex }} />
+    </>
+  );
+}
+```
+
 ## Props
 
 ```ts
