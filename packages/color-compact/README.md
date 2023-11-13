@@ -26,6 +26,9 @@ export default function Demo() {
   return (
     <Compact
       color={hex}
+      style={{
+        boxShadow: 'rgb(0 0 0 / 15%) 0px 0px 0px 1px, rgb(0 0 0 / 15%) 0px 8px 16px',
+      }}
       onChange={(color) => {
         setHex(color.hex);
       }}
@@ -34,16 +37,48 @@ export default function Demo() {
 }
 ```
 
+Add clear button
+
+```jsx mdx:preview
+import React, { useState } from 'react';
+import Compact from '@uiw/react-color-compact';
+
+export default function Demo() {
+  const [hex, setHex] = useState("#fff");
+  return (
+    <Compact
+      color={hex}
+      style={{
+        boxShadow: 'rgb(0 0 0 / 15%) 0px 0px 0px 1px, rgb(0 0 0 / 15%) 0px 8px 16px',
+      }}
+      onChange={(color) => {
+        setHex(color.hex);
+      }}
+      rectRender={(props) => {
+        console.log(props.key)
+        if (props.key == 35) {
+          return <button key={props.key} style={{ width: 15, height: 15, padding: 0, lineHeight: "10px" }} onClick={() => setHex(null)}>x</button>
+        }
+      }}
+    />
+  );
+}
+```
+
+
 ## Props
 
 ```ts
 import React from 'react';
 import { ColorResult, HsvaColor } from '@uiw/color-convert';
+import { type SwatchProps, type SwatchRectRenderProps } from '@uiw/react-color-swatch';
 export interface CompactProps<T> extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'color'> {
   prefixCls?: string;
   color?: string | HsvaColor;
   colors?: string[];
   onChange?: (color: ColorResult, evn?: T) => void;
+  rectRender?: (props: SwatchRectRenderProps) => JSX.Element | undefined;
+  rectProps?: SwatchProps['rectProps'];
 }
 declare const Compact: React.ForwardRefExoticComponent<CompactProps<React.MouseEvent<HTMLDivElement, MouseEvent>> & React.RefAttributes<HTMLDivElement>>;
 export default Compact;

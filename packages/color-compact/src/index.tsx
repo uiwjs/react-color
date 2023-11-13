@@ -10,13 +10,15 @@ import {
 } from '@uiw/color-convert';
 import EditableInput from '@uiw/react-color-editable-input';
 import RGBA from '@uiw/react-color-editable-input-rgba';
-import Swatch from '@uiw/react-color-swatch';
+import Swatch, { type SwatchProps, type SwatchRectRenderProps } from '@uiw/react-color-swatch';
 
 export interface CompactProps<T> extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'color'> {
   prefixCls?: string;
   color?: string | HsvaColor;
   colors?: string[];
   onChange?: (color: ColorResult, evn?: T) => void;
+  rectRender?: (props: SwatchRectRenderProps) => JSX.Element | undefined;
+  rectProps?: SwatchProps['rectProps'];
 }
 
 const COLORS = [
@@ -73,7 +75,17 @@ function Point(props: { color?: string; checked?: boolean }) {
 }
 
 const Compact = React.forwardRef<HTMLDivElement, CompactProps<React.MouseEvent<HTMLDivElement, MouseEvent>>>((props, ref) => {
-  const { prefixCls = 'w-color-compact', className, style, onChange, color, colors = COLORS, ...other } = props;
+  const {
+    prefixCls = 'w-color-compact',
+    className,
+    style,
+    onChange,
+    color,
+    colors = COLORS,
+    rectProps,
+    rectRender,
+    ...other
+  } = props;
   const hsva = (typeof color === 'string' && validHex(color) ? hexToHsva(color) : color) as HsvaColor;
   const hex = color ? hsvaToHex(hsva).replace(/^#/, '') : '';
   const handleChangeCallback = useCallback((hsv: HsvaColor) => onChange && onChange(handleColor(hsv)), []);
@@ -104,12 +116,15 @@ const Compact = React.forwardRef<HTMLDivElement, CompactProps<React.MouseEvent<H
       <Swatch
         colors={colors}
         color={color ? hsvaToHex(hsva) : undefined}
+        rectRender={rectRender}
         rectProps={{
           children: <Point />,
+          ...rectProps,
           style: {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            ...rectProps?.style,
           },
         }}
         onChange={(hsvColor) => handleChangeCallback(hsvColor)}
