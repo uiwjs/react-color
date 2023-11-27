@@ -3,6 +3,7 @@
   "version": "2.0.2",
   "description": "Color Picker component for React.",
   "homepage": "https://uiwjs.github.io/react-color",
+  "funding": "https://jaywcjlove.github.io/#/sponsor",
   "author": "Kenny Wong <wowohoo@qq.com>",
   "sideEffects": false,
   "main": "cjs/index.js",

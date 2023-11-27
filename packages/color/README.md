@@ -16,6 +16,9 @@
   <a href="https://github.com/uiwjs/react-color/actions/workflows/ci.yml">
     <img alt="Build & Deploy" src="https://github.com/uiwjs/react-color/actions/workflows/ci.yml/badge.svg" />
   </a>
+  <a href="https://github.com/uiwjs/react-color/actions/workflows/ci.yml">
+    <img alt="Build & Deploy" src="https://github.com/uiwjs/react-color/actions/workflows/ci.yml/badge.svg" />
+  </a>
   <a href="https://uiwjs.github.io/react-color/coverage/lcov-report/">
     <img alt="Coverage Status" src="https://uiwjs.github.io/react-color/coverage/badges.svg" />
   </a>

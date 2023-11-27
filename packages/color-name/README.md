@@ -1,6 +1,7 @@
 React Color Name
 ===
 
+[![Buy me a coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-048754?logo=buymeacoffee)](https://jaywcjlove.github.io/#/sponsor)
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/@uiw/react-color-name)](https://bundlephobia.com/package/@uiw/react-color-name) [![npm version](https://img.shields.io/npm/v/@uiw/react-color-name.svg)](https://www.npmjs.com/package/@uiw/react-color-name) [![Open in unpkg](https://img.shields.io/badge/Open%20in-unpkg-blue)](https://uiwjs.github.io/npm-unpkg/#/pkg/@uiw/react-color-name/file/README.md)
 
 Color Name to Hex. [**`@react-color`**](https://uiwjs.github.io/react-color).
