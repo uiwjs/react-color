@@ -14,6 +14,8 @@ export default (conf: Configuration, env: 'development' | 'production', options:
   );
 
   conf.module!.exprContextCritical = false;
+  conf.ignoreWarnings = [{ module: /node_modules[\\/]parse5[\\/]/ }];
+
   if (env === 'production') {
     conf.optimization = {
       ...conf.optimization,
