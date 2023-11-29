@@ -72,9 +72,9 @@ const Alpha = React.forwardRef<HTMLDivElement, AlphaProps>((props, ref) => {
     borderRadius: radius,
     background: `url(${BACKGROUND_IMG}) left center`,
     backgroundColor: 'var(--alpha-background-color)',
+    ...{ width, height },
     ...style,
     position: 'relative',
-    ...{ width, height },
   } as CSSProperties;
 
   const pointerElement =

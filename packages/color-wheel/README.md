@@ -28,7 +28,7 @@ function Demo() {
   return (
     <Fragment>
       <Wheel color={hsva} onChange={(color) => setHsva({ ...hsva, ...color.hsva })} />
-      <div style={{ width: '100%', height: 34, background: hsvaToHex(hsva) }}></div>
+      <div style={{ width: '100%', height: 34, marginTop: 20, background: hsvaToHex(hsva) }}></div>
     </Fragment>
   );
 }
@@ -75,7 +75,7 @@ function Demo() {
       <Wheel color={hsva} onChange={(color) => setHsva({ ...hsva, ...color.hsva })} />
       <ShadeSlider
         hsva={hsva}
-        style={{ width: 210 }}
+        style={{ width: 210, marginTop: 20 }}
         onChange={(newShade) => {
           setHsva({ ...hsva, ...newShade });
         }}
