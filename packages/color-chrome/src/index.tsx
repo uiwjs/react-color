@@ -169,7 +169,7 @@ const Chrome = React.forwardRef<HTMLDivElement, ChromeProps>((props, ref) => {
           </div>
         </Fragment>
       }
-      rectRender={({ key }) => <Fragment key={key} />}
+      rectRender={() => <Fragment />}
     />
   );
 });
