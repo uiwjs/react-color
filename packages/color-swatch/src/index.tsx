@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { HsvaColor, hexToHsva, color as handleColor, ColorResult } from '@uiw/color-convert';
 
 export type SwatchPresetColor = { color: string; title?: string } | string;
 export type SwatchRectRenderProps = {
-  key: string | number;
   title: string;
   color: string;
   checked: boolean;
@@ -81,7 +80,6 @@ const Swatch = React.forwardRef<HTMLDivElement, SwatchProps>((props, ref) => {
           const render =
             rectRender &&
             rectRender({
-              key: idx,
               title,
               color: background,
               checked: !!checked,
@@ -89,7 +87,7 @@ const Swatch = React.forwardRef<HTMLDivElement, SwatchProps>((props, ref) => {
               onClick: (evn) => handleClick(background, evn),
             });
           if (render) {
-            return render;
+            return <Fragment key={idx}>{render}</Fragment>;
           }
           const child =
             rectProps.children && React.isValidElement(rectProps.children)
