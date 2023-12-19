@@ -171,10 +171,10 @@ const Github = React.forwardRef<HTMLDivElement, GithubProps>((props, ref) => {
       arrStyl.marginTop = -20;
     }
   }
-  const render = ({ key, ...props }: SwatchRectRenderProps) => {
-    const handle = rectRender && rectRender({ key, ...props });
+  const render = ({ ...props }: SwatchRectRenderProps) => {
+    const handle = rectRender && rectRender({ ...props });
     if (handle) return handle;
-    return <Point key={key} {...props} rectProps={rectProps} />;
+    return <Point {...props} rectProps={rectProps} />;
   };
   return (
     <Swatch
