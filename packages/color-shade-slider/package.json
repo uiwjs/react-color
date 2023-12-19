@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-color-shade-slider",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Color ShadeSlider component for React.",
   "homepage": "https://uiwjs.github.io/react-color/#/shade-slider",
   "funding": "https://jaywcjlove.github.io/#/sponsor",
@@ -36,8 +36,8 @@
     "react-dom": ">=16.9.0"
   },
   "dependencies": {
-    "@uiw/color-convert": "2.0.3",
-    "@uiw/react-color-alpha": "2.0.3"
+    "@uiw/color-convert": "2.0.4",
+    "@uiw/react-color-alpha": "2.0.4"
   },
   "devDependencies": {
     "@babel/runtime": "^7.21.0"
