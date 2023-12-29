@@ -21,19 +21,20 @@ npm i @uiw/react-color-colorful
 ```jsx mdx:preview
 import React, { useState } from 'react';
 import Colorful from '@uiw/react-color-colorful';
+import { hsvaToHex } from '@uiw/color-convert';
 
 export default function Demo() {
-  const [hex, setHex] = useState("#59c09a");
+  const [hsva, setHsva] = useState({ h: 0, s: 0, v: 68, a: 1 });
   return (
     <>
       <Colorful
-        color={hex}
+        color={hsva}
         onChange={(color) => {
-          setHex(color.hexa);
+          setHsva(color.hsva);
         }}
       />
-      <div style={{ background: hex, marginTop: 30, padding: 10 }}>
-        {hex}
+      <div style={{ background: hsvaToHex(hsva), marginTop: 30, padding: 10 }}>
+        {JSON.stringify(hsva)}
       </div>
     </>
   );
@@ -43,9 +44,10 @@ export default function Demo() {
 ```jsx mdx:preview
 import React, { useState } from 'react';
 import Colorful from '@uiw/react-color-colorful';
+import { hsvaToHex } from '@uiw/color-convert';
 
 export default function Demo() {
-  const [hex, setHex] = useState("#59c09a");
+  const [hsva, setHsva] = useState({ h: 0, s: 0, v: 68, a: 1 });
   const [disableAlpha, setDisableAlpha] = useState(false);
   return (
     <>
@@ -58,14 +60,14 @@ export default function Demo() {
         {disableAlpha ? "Hide" : "Show"} Alpha
       </label>
       <Colorful
-        color={hex}
+        color={hsva}
         disableAlpha={disableAlpha}
         onChange={(color) => {
-          setHex(color.hexa);
+          setHsva(color.hsva);
         }}
       />
-      <div style={{ background: hex, marginTop: 30, padding: 10 }}>
-        {hex}
+      <div style={{ background: hsvaToHex(hsva), marginTop: 30, padding: 10 }}>
+        {JSON.stringify(hsva)}
       </div>
     </>
   );
