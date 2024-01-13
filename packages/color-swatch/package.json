@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-color-swatch",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "Color swatch component for React.",
   "homepage": "https://uiwjs.github.io/react-color/#/swatch",
   "funding": "https://jaywcjlove.github.io/#/sponsor",
@@ -36,7 +36,7 @@
     "react-dom": ">=16.9.0"
   },
   "dependencies": {
-    "@uiw/color-convert": "2.0.5"
+    "@uiw/color-convert": "2.0.6"
   },
   "devDependencies": {
     "@babel/runtime": "^7.21.0"
