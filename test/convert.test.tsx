@@ -1,7 +1,7 @@
 import { color, getContrastingColor } from '../packages/color-convert/src';
 // HEX
 import { hexToHsva, hexToRgba, hsvaToHex, hsvaToHexa } from '../packages/color-convert/src';
-import { equalHex } from '../packages/color-convert/src/utils';
+import { equalHex } from '../packages/color-convert/src';
 // HSLA
 import { hsvaToHsla, hslaToHsva, HsvaColor, HslaColor } from '../packages/color-convert/src';
 // HSL
@@ -24,7 +24,7 @@ import { hsvaToHsvaString, hsvaToHslaString, hsvaStringToHsva } from '../package
 import { hsvaToHsv } from '../packages/color-convert/src';
 // HSV string
 import { hsvaToHsvString, hsvStringToHsva } from '../packages/color-convert/src';
-import { equalColorString, equalColorObjects, validHex } from '../packages/color-convert/src/utils';
+import { equalColorString, equalColorObjects, validHex } from '../packages/color-convert/src';
 
 it('Converts color => getContrastingColor', () => {
   expect(getContrastingColor('#d0021b')).toEqual('#ffffff');
