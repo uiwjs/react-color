@@ -1,22 +1,4 @@
 export * from '@uiw/color-convert';
-export * from '@uiw/react-color-alpha';
-export * from '@uiw/react-color-compact';
-export * from '@uiw/react-color-chrome';
-export * from '@uiw/react-color-colorful';
-export * from '@uiw/react-color-circle';
-export * from '@uiw/react-color-block';
-export * from '@uiw/react-color-editable-input';
-export * from '@uiw/react-color-editable-input-rgba';
-export * from '@uiw/react-color-editable-input-hsla';
-export * from '@uiw/react-color-hue';
-export * from '@uiw/react-color-github';
-export * from '@uiw/react-color-material';
-export * from '@uiw/react-color-saturation';
-export * from '@uiw/react-color-shade-slider';
-export * from '@uiw/react-color-sketch';
-export * from '@uiw/react-color-slider';
-export * from '@uiw/react-color-swatch';
-export * from '@uiw/react-color-wheel';
 
 export { default as Alpha } from '@uiw/react-color-alpha';
 export { default as Block } from '@uiw/react-color-block';
