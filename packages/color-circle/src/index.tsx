@@ -12,14 +12,15 @@ const Circle = React.forwardRef<HTMLDivElement, CircleProps>((props, ref) => {
   const { prefixCls = 'w-color-circle', className, color, colors = [], rectProps = {}, onChange, ...other } = props;
   const hsva = (typeof color === 'string' && validHex(color) ? hexToHsva(color) : color || {}) as HsvaColor;
   const hex = color ? hsvaToHex(hsva) : '';
+  const cls = [prefixCls, className].filter(Boolean).join(' ');
   return (
     <Swatch
       ref={ref}
       colors={colors}
       color={hex}
       {...other}
-      className={[prefixCls, className].filter(Boolean).join(' ')}
-      rectRender={({ ...props }) => <Point {...props} rectProps={rectProps} />}
+      className={cls}
+      rectRender={({ ...props }) => <Point {...props} className={`${prefixCls}-point`} rectProps={rectProps} />}
       onChange={(hsvColor) => {
         onChange && onChange(handleColor(hsvColor));
       }}

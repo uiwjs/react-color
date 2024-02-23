@@ -4,9 +4,10 @@ import { useRef } from 'react';
 
 interface PointProps extends SwatchRectRenderProps {
   rectProps?: SwatchProps['rectProps'];
+  className?: string;
 }
 
-export default function Point({ style, title, checked, color, onClick, rectProps }: PointProps) {
+export default function Point({ style, className, title, checked, color, onClick, rectProps }: PointProps) {
   const btn = useRef<HTMLDivElement>(null);
   const handleMouseEnter = useCallback(() => {
     btn.current!.style['transform'] = 'scale(1.2)';
@@ -34,6 +35,7 @@ export default function Point({ style, title, checked, color, onClick, rectProps
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       title={title}
+      className={className}
       style={{
         ...style,
         display: 'flex',
