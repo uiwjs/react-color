@@ -70,8 +70,7 @@ export type SwatchPresetColor = {
   color: string;
   title?: string;
 } | string;
-export type SwatchRectRenderProps = {
-  key: string | number;
+export interface SwatchRectRenderProps extends React.HTMLAttributes<HTMLDivElement> {
   title: string;
   color: string;
   checked: boolean;

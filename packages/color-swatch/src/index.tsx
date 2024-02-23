@@ -2,13 +2,13 @@ import React, { Fragment } from 'react';
 import { HsvaColor, hexToHsva, color as handleColor, ColorResult } from '@uiw/color-convert';
 
 export type SwatchPresetColor = { color: string; title?: string } | string;
-export type SwatchRectRenderProps = {
+export interface SwatchRectRenderProps extends React.HTMLAttributes<HTMLDivElement> {
   title: string;
   color: string;
   checked: boolean;
   style: React.CSSProperties;
   onClick: (evn: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
-};
+}
 export interface SwatchProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'color'> {
   prefixCls?: string;
   color?: string;
