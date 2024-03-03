@@ -10,7 +10,16 @@ export interface CircleProps extends Omit<SwatchProps, 'color' | 'onChange'> {
 }
 
 const Circle = React.forwardRef<HTMLDivElement, CircleProps>((props, ref) => {
-  const { prefixCls = 'w-color-circle', className, color, colors = [], rectProps = {}, pointProps, onChange, ...other } = props;
+  const {
+    prefixCls = 'w-color-circle',
+    className,
+    color,
+    colors = [],
+    rectProps = {},
+    pointProps = {},
+    onChange,
+    ...other
+  } = props;
   const hsva = (typeof color === 'string' && validHex(color) ? hexToHsva(color) : color || {}) as HsvaColor;
   const hex = color ? hsvaToHex(hsva) : '';
   const cls = [prefixCls, className].filter(Boolean).join(' ');
@@ -22,7 +31,15 @@ const Circle = React.forwardRef<HTMLDivElement, CircleProps>((props, ref) => {
       color={hex}
       {...other}
       className={cls}
-      rectRender={({ ...props }) => <Point {...props} {...pointProps} className={clsPoint} rectProps={rectProps} />}
+      rectRender={({ ...props }) => (
+        <Point
+          {...props}
+          {...pointProps}
+          style={{ ...props.style, ...pointProps.style }}
+          className={clsPoint}
+          rectProps={rectProps}
+        />
+      )}
       onChange={(hsvColor) => {
         onChange && onChange(handleColor(hsvColor));
       }}

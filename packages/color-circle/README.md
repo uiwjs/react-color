@@ -36,6 +36,38 @@ export default function Demo() {
 }
 ```
 
+Modify point style
+
+```jsx mdx:preview
+import React, { useState } from 'react';
+import Circle from '@uiw/react-color-circle';
+
+export default function Demo() {
+  const [hex, setHex] = useState('#F44E3B');
+  return (
+    <Circle
+      colors={[
+        '#f44336',
+        '#e91e63',
+        '#9c27b0',
+        '#673ab7',
+        '#3f51b5',
+        '#2196f3',
+      ]}
+      color={hex}
+      pointProps={{
+        style: {
+          marginRight: 20,
+        },
+      }}
+      onChange={(color) => {
+        setHex(color.hex);
+      }}
+    />
+  );
+}
+```
+
 ## Props
 
 ```ts
@@ -45,6 +77,7 @@ import { SwatchProps } from '@uiw/react-color-swatch';
 export interface CircleProps extends Omit<SwatchProps, 'color' | 'onChange'> {
   color?: string | HsvaColor;
   onChange?: (color: ColorResult) => void;
+  pointProps?: React.HTMLAttributes<HTMLDivElement>;
 }
 declare const Circle: React.ForwardRefExoticComponent<CircleProps & React.RefAttributes<HTMLDivElement>>;
 export default Circle;
