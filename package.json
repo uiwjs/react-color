@@ -15,7 +15,7 @@
     "type-check": "lerna exec \"tsc --noEmit\" --scope @uiw/* --stream",
     "test": "tsbb test --env=jsdom",
     "coverage": "tsbb test --coverage --bail",
-    "prepare": "husky install",
+    "prepare": "husky",
     "publish": "lerna publish from-package --yes --no-verify-access",
     "version": "lerna version --exact --force-publish --no-push --no-git-tag-version",
     "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
