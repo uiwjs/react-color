@@ -187,7 +187,7 @@ export const rgbaToHexa = ({ r, g, b, a }: RgbaColor): string => {
   const alpha = typeof a === 'number' && ((a * 255) | (1 << 8)).toString(16).slice(1);
   return `${rgbaToHex({ r, g, b, a })}${alpha ? alpha : ''}`;
 };
-
+export type HexColor = `#${string}`;
 export const hexToHsva = (hex: string): HsvaColor => rgbaToHsva(hexToRgba(hex));
 export const hexToRgba = (hex: string): RgbaColor => {
   const htemp = hex.replace('#', '');
