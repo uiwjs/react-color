@@ -16,7 +16,6 @@
     "declaration": true,
     "baseUrl": ".",
     "noFallthroughCasesInSwitch": true,
-    "noEmit": true,
-    "types": ["jest", "node"]
+    "noEmit": true
   }
 }

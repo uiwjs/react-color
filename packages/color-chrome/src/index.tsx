@@ -17,6 +17,7 @@ import EditableInputRGBA from '@uiw/react-color-editable-input-rgba';
 import EditableInputHSLA from '@uiw/react-color-editable-input-hsla';
 import { useState } from 'react';
 import Arrow from './Arrow';
+import { EyeDropper, isSupportEyeDropper } from './EyeDropper';
 
 export enum ChromeInputType {
   HEXA = 'hexa',
@@ -72,6 +73,10 @@ const Chrome = React.forwardRef<HTMLDivElement, ChromeProps>((props, ref) => {
     background: hsvaToRgbaString(hsva),
     boxShadow: 'var(--chrome-alpha-box-shadow)',
   };
+  const handleClickColor = (hex: string) => {
+    let result = hexToHsva(hex);
+    handleChange({ ...result });
+  };
   return (
     <Github
       ref={ref}
@@ -90,14 +95,14 @@ const Chrome = React.forwardRef<HTMLDivElement, ChromeProps>((props, ref) => {
               handleChange({ ...hsva, ...newColor, a: hsva.a });
             }}
           />
-          <div style={{ padding: 15, display: 'flex', alignItems: 'center' }}>
+          <div style={{ padding: 15, display: 'flex', alignItems: 'center', gap: 15 }}>
+            {isSupportEyeDropper && <EyeDropper onPickColor={handleClickColor} />}
             <Alpha
-              width={24}
-              height={24}
+              width={28}
+              height={28}
               hsva={hsva}
               radius={2}
               style={{
-                marginRight: 15,
                 borderRadius: '50%',
               }}
               bgProps={{ style: { background: 'transparent' } }}

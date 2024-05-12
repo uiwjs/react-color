@@ -1,6 +1,6 @@
 {
   "extends": "../../tsconfig",
-  "include": ["./src"],
+  "include": ["./src", "../color-chrome/src/EyeDropper.tsx"],
   "compilerOptions": {
     "outDir": "./cjs",
     "noEmit": false
