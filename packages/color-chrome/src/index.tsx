@@ -77,6 +77,7 @@ const Chrome = React.forwardRef<HTMLDivElement, ChromeProps>((props, ref) => {
     let result = hexToHsva(hex);
     handleChange({ ...result });
   };
+  const styleSize = { height: 14, width: 14 };
   return (
     <Github
       ref={ref}
@@ -95,7 +96,7 @@ const Chrome = React.forwardRef<HTMLDivElement, ChromeProps>((props, ref) => {
               handleChange({ ...hsva, ...newColor, a: hsva.a });
             }}
           />
-          <div style={{ padding: 15, display: 'flex', alignItems: 'center', gap: 15 }}>
+          <div style={{ padding: 15, display: 'flex', alignItems: 'center', gap: 10 }}>
             {isSupportEyeDropper && <EyeDropper onPickColor={handleClickColor} />}
             <Alpha
               width={28}
@@ -114,7 +115,11 @@ const Chrome = React.forwardRef<HTMLDivElement, ChromeProps>((props, ref) => {
             <div style={{ flex: 1 }}>
               <Hue
                 hue={hsva.h}
-                style={{ width: '100%' }}
+                style={{ width: '100%', height: 12 }}
+                pointerProps={{
+                  style: { ...styleSize },
+                  fillProps: { style: styleSize },
+                }}
                 bgProps={{
                   style: { borderRadius: 2 },
                 }}
@@ -124,7 +129,11 @@ const Chrome = React.forwardRef<HTMLDivElement, ChromeProps>((props, ref) => {
               />
               <Alpha
                 hsva={hsva}
-                style={{ marginTop: 10 }}
+                style={{ marginTop: 6, height: 12 }}
+                pointerProps={{
+                  style: { ...styleSize },
+                  fillProps: { style: styleSize },
+                }}
                 bgProps={{
                   style: { borderRadius: 2 },
                 }}
