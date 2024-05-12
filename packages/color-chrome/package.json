@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-color-chrome",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "Color Github Picker",
   "author": "Kenny Wong <wowohoo@qq.com>",
   "homepage": "https://uiwjs.github.io/react-color/#/chrome",
@@ -37,14 +37,14 @@
     "react-dom": ">=16.9.0"
   },
   "dependencies": {
-    "@uiw/color-convert": "2.2.0",
-    "@uiw/react-color-alpha": "2.2.0",
-    "@uiw/react-color-editable-input": "2.2.0",
-    "@uiw/react-color-editable-input-hsla": "2.2.0",
-    "@uiw/react-color-editable-input-rgba": "2.2.0",
-    "@uiw/react-color-github": "2.2.0",
-    "@uiw/react-color-hue": "2.2.0",
-    "@uiw/react-color-saturation": "2.2.0"
+    "@uiw/color-convert": "2.3.0",
+    "@uiw/react-color-alpha": "2.3.0",
+    "@uiw/react-color-editable-input": "2.3.0",
+    "@uiw/react-color-editable-input-hsla": "2.3.0",
+    "@uiw/react-color-editable-input-rgba": "2.3.0",
+    "@uiw/react-color-github": "2.3.0",
+    "@uiw/react-color-hue": "2.3.0",
+    "@uiw/react-color-saturation": "2.3.0"
   },
   "devDependencies": {
     "@babel/runtime": "^7.21.0"
