@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.6ef0c5a4.css",
-    "main.js": "/static/js/main.13561499.js",
+    "main.js": "/static/js/main.a6811659.js",
     "static/css/313.b92d3464.chunk.css": "/static/css/313.b92d3464.chunk.css",
     "static/js/313.a77bf974.chunk.js": "/static/js/313.a77bf974.chunk.js",
     "static/js/914.6d1bf002.chunk.js": "/static/js/914.6d1bf002.chunk.js",
@@ -34,7 +34,7 @@
     "static/js/108.e2da7336.chunk.js": "/static/js/108.e2da7336.chunk.js",
     "static/js/546.6c27f8a1.chunk.js": "/static/js/546.6c27f8a1.chunk.js",
     "static/js/716.03947700.chunk.js": "/static/js/716.03947700.chunk.js",
-    "static/js/137.85ae22c3.chunk.js": "/static/js/137.85ae22c3.chunk.js",
+    "static/js/137.8f4839f5.chunk.js": "/static/js/137.8f4839f5.chunk.js",
     "static/js/785.9f771baa.chunk.js": "/static/js/785.9f771baa.chunk.js",
     "static/js/315.79b8b34e.chunk.js": "/static/js/315.79b8b34e.chunk.js",
     "static/js/547.0c00da74.chunk.js": "/static/js/547.0c00da74.chunk.js",
@@ -51,11 +51,11 @@
     "react-vendor.js": "/static/js/react-vendor.9874219f.js",
     "static/css/920.b716e98e.chunk.css": "/static/css/920.b716e98e.chunk.css",
     "static/js/920.012c9f96.chunk.js": "/static/js/920.012c9f96.chunk.js",
-    "static/js/571.c5cd9301.chunk.js": "/static/js/571.c5cd9301.chunk.js",
+    "static/js/571.f2fe434b.chunk.js": "/static/js/571.f2fe434b.chunk.js",
     "index.html": "/index.html",
     "static/media/home.svg": "/static/media/home.7d51f25c64fe597ec540c3e724748f4e.svg",
     "main.6ef0c5a4.css.map": "/static/css/main.6ef0c5a4.css.map",
-    "main.13561499.js.map": "/static/js/main.13561499.js.map",
+    "main.a6811659.js.map": "/static/js/main.a6811659.js.map",
     "313.b92d3464.chunk.css.map": "/static/css/313.b92d3464.chunk.css.map",
     "313.a77bf974.chunk.js.map": "/static/js/313.a77bf974.chunk.js.map",
     "914.6d1bf002.chunk.js.map": "/static/js/914.6d1bf002.chunk.js.map",
@@ -88,7 +88,7 @@
     "108.e2da7336.chunk.js.map": "/static/js/108.e2da7336.chunk.js.map",
     "546.6c27f8a1.chunk.js.map": "/static/js/546.6c27f8a1.chunk.js.map",
     "716.03947700.chunk.js.map": "/static/js/716.03947700.chunk.js.map",
-    "137.85ae22c3.chunk.js.map": "/static/js/137.85ae22c3.chunk.js.map",
+    "137.8f4839f5.chunk.js.map": "/static/js/137.8f4839f5.chunk.js.map",
     "785.9f771baa.chunk.js.map": "/static/js/785.9f771baa.chunk.js.map",
     "315.79b8b34e.chunk.js.map": "/static/js/315.79b8b34e.chunk.js.map",
     "547.0c00da74.chunk.js.map": "/static/js/547.0c00da74.chunk.js.map",
@@ -105,11 +105,11 @@
     "react-vendor.9874219f.js.map": "/static/js/react-vendor.9874219f.js.map",
     "920.b716e98e.chunk.css.map": "/static/css/920.b716e98e.chunk.css.map",
     "920.012c9f96.chunk.js.map": "/static/js/920.012c9f96.chunk.js.map",
-    "571.c5cd9301.chunk.js.map": "/static/js/571.c5cd9301.chunk.js.map"
+    "571.f2fe434b.chunk.js.map": "/static/js/571.f2fe434b.chunk.js.map"
   },
   "entrypoints": [
     "static/js/react-vendor.9874219f.js",
     "static/css/main.6ef0c5a4.css",
-    "static/js/main.13561499.js"
+    "static/js/main.a6811659.js"
   ]
 }
