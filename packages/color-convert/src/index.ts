@@ -336,4 +336,4 @@ export const equalHex = (first: string, second: string): boolean => {
   return equalColorObjects(hexToRgba(first), hexToRgba(second));
 };
 
-export const validHex = (hex: string): boolean => /^#?([A-Fa-f0-9]{3,4}){1,2}$/.test(hex);
+export const validHex = (hex: string): hex is HexColor => /^#?([A-Fa-f0-9]{3,4}){1,2}$/.test(hex);
