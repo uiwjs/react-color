@@ -1,6 +1,6 @@
 import { color, getContrastingColor } from '../packages/color-convert/src';
 // HEX
-import { hexToHsva, hexToRgba, hsvaToHex, hsvaToHexa } from '../packages/color-convert/src';
+import { hexToHsva, hexToRgba, hsvaToHex, hsvaToHexa, hexToXY } from '../packages/color-convert/src';
 import { equalHex } from '../packages/color-convert/src';
 // HSLA
 import { hsvaToHsla, hslaToHsva, HsvaColor, HslaColor } from '../packages/color-convert/src';
@@ -15,7 +15,7 @@ import { hsvaToRgba, rgbaToHsva, RgbaColor } from '../packages/color-convert/src
 // RGBA string
 import { hsvaToRgbaString, rgbaStringToHsva } from '../packages/color-convert/src';
 // RGB
-import { rgbaToRgb, rgbaToHex, rgbaToHexa } from '../packages/color-convert/src';
+import { rgbaToRgb, rgbaToHex, rgbaToHexa, rgbToXY } from '../packages/color-convert/src';
 // RGB string
 import { hsvaToRgbString, rgbStringToHsva } from '../packages/color-convert/src';
 // HSVA String
@@ -25,6 +25,8 @@ import { hsvaToHsv } from '../packages/color-convert/src';
 // HSV string
 import { hsvaToHsvString, hsvStringToHsva } from '../packages/color-convert/src';
 import { equalColorString, equalColorObjects, validHex } from '../packages/color-convert/src';
+// XY
+import { xyToHex, xyToRgb } from '../packages/color-convert/src';
 
 it('Converts color => getContrastingColor', () => {
   expect(getContrastingColor('#d0021b')).toEqual('#ffffff');
@@ -41,7 +43,7 @@ it('Converts color => hslString To Hsl', () => {
 });
 
 it('Converts color => HEX to ColorResult', () => {
-  const { rgb, rgba, hex, hexa, hsl, hsla, hsv, hsva } = color('#d1021a');
+  const { rgb, rgba, hex, hexa, hsl, hsla, hsv, hsva, xy } = color('#d1021a');
   expect(hex).toEqual('#d1021a');
   expect(hexa).toEqual('#d1021aff');
   expect(color({ h: 353.04347826086956, s: 99.04306220095694, v: 81.96078431372548, a: 1 }).hex).toEqual('#d1021a');
@@ -52,6 +54,7 @@ it('Converts color => HEX to ColorResult', () => {
   expect(hsla).toEqual({ h: 353.04347826086956, l: 41.37254901960784, s: 98.10426540284361, a: 1 });
   expect(hsv).toEqual({ h: 353.04347826086956, s: 99.04306220095694, v: 81.96078431372548 });
   expect(hsva).toEqual({ h: 353.04347826086956, s: 99.04306220095694, v: 81.96078431372548, a: 1 });
+  expect(xy).toEqual({ x: 0.26502656639062083, y: 0.13673307363113865, bri: 0.022196477290623278 });
 });
 
 it('Converts color => HEXA to ColorResult', () => {
@@ -95,6 +98,16 @@ it('Converts RGBA to HEXA', () => {
   expect(rgbaToHexa({ b: 26, g: 2, r: 209 } as any)).toEqual('#d1021a');
 });
 
+it('Converts RGB to XY', () => {
+  expect(rgbToXY({ r: 255, g: 255, b: 255 })).toMatchObject({ x: 0.9505, y: 1, bri: 1.089 });
+  expect(rgbToXY({ r: 0, g: 0, b: 0 })).toMatchObject({ x: 0.0, y: 0.0, bri: 0 });
+  expect(rgbToXY({ r: 71, g: 128, b: 241 })).toMatchObject({
+    x: 0.26194888875915034,
+    y: 0.23128809648982562,
+    bri: 0.863027753196167,
+  });
+});
+
 it('Converts HEX to RGBA', () => {
   expect(hsvaToHslString(hexToHsva('#d0021b'))).toEqual('hsl(352.71844660194176, 98%, 41%)');
   expect(hsvaToHex(rgbaToHsva(hexToRgba('#d0021b')))).toEqual('#d0021b');
@@ -113,6 +126,12 @@ it('Converts HEX to HSVA', () => {
   expect(hexToHsva('#ff0000')).toMatchObject({ h: 0, s: 100, v: 100, a: 1 });
   expect(hexToHsva('#000000')).toMatchObject({ h: 0, s: 0, v: 0, a: 1 });
   expect(hexToHsva('#c62182')).toMatchObject({ h: 324.72727272727275, s: 83.33333333333334, v: 77.64705882352942, a: 1 });
+});
+
+it('Converts HEX to XY', () => {
+  expect(hexToXY('#ffffff')).toMatchObject({ x: 0.9505, y: 1, bri: 1.089 });
+  expect(hexToXY('#000000')).toMatchObject({ x: 0.0, y: 0.0, bri: 0 });
+  expect(hexToXY('#4780f1')).toMatchObject({ x: 0.26194888875915034, y: 0.23128809648982562, bri: 0.863027753196167 });
 });
 
 it('Converts shorthand HEX to HSVA', () => {
@@ -408,4 +427,20 @@ it('Validates HEX colors', () => {
   expect(validHex(null)).toBe(false);
   // @ts-ignore
   expect(validHex()).toBe(false);
+});
+
+it('Converts XY to RGB', () => {
+  expect(xyToRgb({ x: 0.9505, y: 1, bri: 1.089 })).toMatchObject({ r: 255, g: 255, b: 255 });
+  expect(xyToRgb({ x: 0.0, y: 0.0, bri: 0 })).toMatchObject({ r: 0, g: 0, b: 0 });
+  expect(xyToRgb({ x: 0.26194888875915034, y: 0.23128809648982562, bri: 0.863027753196167 })).toMatchObject({
+    r: 71,
+    g: 128,
+    b: 241,
+  });
+});
+
+it('Converts XY to HEX', () => {
+  expect(xyToHex({ x: 0.9505, y: 1, bri: 1.089 })).toBe('#ffffff');
+  expect(xyToHex({ x: 0.0, y: 0.0, bri: 0 })).toBe('#000000');
+  expect(xyToHex({ x: 0.26194888875915034, y: 0.23128809648982562, bri: 0.863027753196167 })).toBe('#4780f1');
 });
