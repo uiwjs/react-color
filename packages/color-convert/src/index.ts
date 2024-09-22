@@ -10,6 +10,7 @@ export type ColorResult = {
   rgba: RgbaColor;
   hsla: HslaColor;
   hsva: HsvaColor;
+  xy: XYColor;
   hex: string;
   hexa: string;
 };
@@ -287,59 +288,44 @@ export const xyToHex = (xy: XYColor): string =>
   });
 
 /**
- * Converts RGB to XY. Based on formula from https://developers.meethue.com/develop/application-design-guidance/color-conversion-formulas-rgb-to-xy-and-back/
- * @param color RGB color as an array [0-255, 0-255, 0-255]
+ * Converts XY to RGB. Based on formula from https://developers.meethue.com/develop/application-design-guidance/color-conversion-formulas-rgb-to-xy-and-back/
+ * @param color XY color and brightness as an array [0-1, 0-1, 0-1]
  */
-export const rgbToXY = ({ r, g, b }: RgbColor): XYColor => {
-  let red = r / 255;
-  let green = g / 255;
-  let blue = b / 255;
+export const xyToRgb = ({ x, y, bri = 255 }: XYColor): RgbColor => {
+  const red = x * 3.2406255 + y * -1.537208 + bri * -0.4986286;
+  const green = x * -0.9689307 + y * 1.8757561 + bri * 0.0415175;
+  const blue = x * 0.0557101 + y * -0.2040211 + bri * 1.0569959;
 
-  red = red > 0.04045 ? Math.pow((red + 0.055) / 1.055, 2.4) : red / 12.92;
-  green = green > 0.04045 ? Math.pow((green + 0.055) / 1.055, 2.4) : green / 12.92;
-  blue = blue > 0.04045 ? Math.pow((blue + 0.055) / 1.055, 2.4) : blue / 12.92;
-
-  const X = red * 0.4124 + green * 0.3576 + blue * 0.1805;
-  const Y = red * 0.2126 + green * 0.7152 + blue * 0.0722;
-  const Z = red * 0.0193 + green * 0.1192 + blue * 0.9505;
-
-  let x = X / (X + Y + Z);
-  let y = Y / (X + Y + Z);
-
-  if (isNaN(x)) x = 0;
-  if (isNaN(y)) y = 0;
+  const translate = function (color: number) {
+    return color <= 0.0031308 ? 12.92 * color : 1.055 * Math.pow(color, 1 / 2.4) - 0.055;
+  };
 
   return {
-    x,
-    y,
-    bri: Y,
+    r: Math.round(255 * translate(red)),
+    g: Math.round(255 * translate(green)),
+    b: Math.round(255 * translate(blue)),
   };
 };
 
 /**
- * Converts XY to RGB. Based on formula from https://developers.meethue.com/develop/application-design-guidance/color-conversion-formulas-rgb-to-xy-and-back/
- * @param color XY color and brightness as an array [0-1, 0-1, 0-1]
+ * Converts RGB to XY. Based on formula from https://developers.meethue.com/develop/application-design-guidance/color-conversion-formulas-rgb-to-xy-and-back/
+ * @param color RGB color as an array [0-255, 0-255, 0-255]
  */
-export const xyToRgb = ({ x, y, bri = 1 }: XYColor): RgbColor => {
-  const z = 1.0 - x - y;
-
-  const Y = bri;
-  const X = (Y / y) * x;
-  const Z = (Y / y) * z;
-
-  let r = X * 1.656492 - Y * 0.354851 - Z * 0.255038;
-  let g = -X * 0.707196 + Y * 1.655397 + Z * 0.036152;
-  let b = X * 0.051713 - Y * 0.121364 + Z * 1.01153;
-
-  r = r <= 0.0031308 ? 12.92 * r : (1.0 + 0.055) * Math.pow(r, 1.0 / 2.4) - 0.055;
-  g = g <= 0.0031308 ? 12.92 * g : (1.0 + 0.055) * Math.pow(g, 1.0 / 2.4) - 0.055;
-  b = b <= 0.0031308 ? 12.92 * b : (1.0 + 0.055) * Math.pow(b, 1.0 / 2.4) - 0.055;
-
-  return {
-    r: Math.round(r * 255),
-    g: Math.round(g * 255),
-    b: Math.round(b * 255),
+export const rgbToXY = ({ r, g, b }: RgbColor): XYColor => {
+  const translateColor = function (color: number) {
+    return color <= 0.04045 ? color / 12.92 : Math.pow((color + 0.055) / 1.055, 2.4);
   };
+
+  const red = translateColor(r / 255);
+  const green = translateColor(g / 255);
+  const blud = translateColor(b / 255);
+
+  const xyz = {} as XYColor;
+  xyz.x = red * 0.4124 + green * 0.3576 + blud * 0.1805;
+  xyz.y = red * 0.2126 + green * 0.7152 + blud * 0.0722;
+  xyz.bri = red * 0.0193 + green * 0.1192 + blud * 0.9505;
+
+  return xyz;
 };
 
 export const color = (str: string | HsvaColor): ColorResult => {
@@ -349,6 +335,7 @@ export const color = (str: string | HsvaColor): ColorResult => {
   let rgba!: RgbaColor;
   let hsla!: HslaColor;
   let hsva!: HsvaColor;
+  let xy!: XYColor;
   let hex!: string;
   let hexa!: string;
   if (typeof str === 'string' && validHex(str)) {
@@ -365,8 +352,9 @@ export const color = (str: string | HsvaColor): ColorResult => {
     hex = hsvaToHex(hsva);
     hsl = hslaToHsl(hsla);
     rgb = rgbaToRgb(rgba);
+    xy = rgbToXY(rgb);
   }
-  return { rgb, hsl, hsv, rgba, hsla, hsva, hex, hexa };
+  return { rgb, hsl, hsv, rgba, hsla, hsva, hex, hexa, xy };
 };
 
 export const getContrastingColor = (str: string | HsvaColor) => {

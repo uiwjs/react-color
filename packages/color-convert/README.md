@@ -205,27 +205,25 @@ rgbaToHexa({ b: 26, g: 2, r: 209, a: 1 }) // => '#d1021aff'
 ### `hexToXY`
 
 ```js
-hexToXY('#4780f1')
+hexToXY('#4780f1') // => { x: 0.261, y: 0.231, bri: 0.863 }
 ```
 
 ### `xyToHex`
 
 ```js
-xyToHex({ x: 0.193, y: 0.17, bri: 1 })
-xyToHex({ x: 0.193, y: 0.17, bri: 0.231 })
+xyToHex({ x: 0.261, y: 0.231, bri: 0.863 }) // => #4780f1
 ```
 
 ### `rgbToXY`
 
 ```js
-rgbToXY({ r: 71, g: 128, b: 241 })
+rgbToXY({ r: 71, g: 128, b: 241 }) // => { x: 0.261, y: 0.231, bri: 0.863 }
 ```
 
 ### `xyToRgb`
 
 ```js
-xyToRgb({ x: 0.193, y: 0.17, bri: 1 })
-xyToRgb({ x: 0.193 y: 0.17, bri: 0.23 })
+xyToRgb({ x: 0.261, y: 0.231, bri: 0.863 }) // => { r: 71, g: 128, b: 241 }
 ```
 
 #### `color`
