@@ -202,6 +202,32 @@ validHex("#8c0dba") //=> true
 rgbaToHexa({ b: 26, g: 2, r: 209, a: 1 }) // => '#d1021aff'
 ```
 
+### `hexToXY`
+
+```js
+hexToXY('#4780f1')
+```
+
+### `xyToHex`
+
+```js
+xyToHex({ x: 0.193, y: 0.17, bri: 1 })
+xyToHex({ x: 0.193, y: 0.17, bri: 0.231 })
+```
+
+### `rgbToXY`
+
+```js
+rgbToXY({ r: 71, g: 128, b: 241 })
+```
+
+### `xyToRgb`
+
+```js
+xyToRgb({ x: 0.193, y: 0.17, bri: 1 })
+xyToRgb({ x: 0.193 y: 0.17, bri: 0.23 })
+```
+
 #### `color`
 
 ```js
@@ -221,37 +247,32 @@ const { rgb, rgba, hsl, hsv, hsla, hsva } = color('#d1021a');
 ## type
 
 ```ts
-export declare const equalColorObjects: (first: ObjectColor, second: ObjectColor) => boolean;
-export declare const equalColorString: (first: string, second: string) => boolean;
-export declare const equalHex: (first: string, second: string) => boolean;
-export declare const validHex: (hex: string) => boolean;
-export declare const getContrastingColor: (str: string | HsvaColor) => "#ffffff" | "#000000";
 export type ObjectColor = RgbColor | HslColor | HsvColor | RgbaColor | HslaColor | HsvaColor;
 export type ColorResult = {
-  rgb: RgbColor;
-  hsl: HslColor;
-  hsv: HsvColor;
-  rgba: RgbaColor;
-  hsla: HslaColor;
-  hsva: HsvaColor;
-  hex: string;
-  hexa: string;
+    rgb: RgbColor;
+    hsl: HslColor;
+    hsv: HsvColor;
+    rgba: RgbaColor;
+    hsla: HslaColor;
+    hsva: HsvaColor;
+    hex: string;
+    hexa: string;
 };
 export interface HsvColor {
-  h: number;
-  s: number;
-  v: number;
+    h: number;
+    s: number;
+    v: number;
 }
 export interface HsvaColor extends HsvColor {
-  a: number;
+    a: number;
 }
 export interface RgbColor {
-  r: number;
-  g: number;
-  b: number;
+    r: number;
+    g: number;
+    b: number;
 }
 export interface RgbaColor extends RgbColor {
-  a: number;
+    a: number;
 }
 /**
  * ```js
@@ -268,12 +289,12 @@ export declare const hslaStringToHsva: (hslString: string) => HsvaColor;
 export declare const hslStringToHsva: (hslString: string) => HsvaColor;
 export declare const hslaToHsva: ({ h, s, l, a }: HslaColor) => HsvaColor;
 export interface HslColor {
-  h: number;
-  s: number;
-  l: number;
+    h: number;
+    s: number;
+    l: number;
 }
 export interface HslaColor extends HslColor {
-  a: number;
+    a: number;
 }
 export declare const hsvaToHsla: ({ h, s, v, a }: HsvaColor) => HslaColor;
 export declare const hsvaStringToHsva: (hsvString: string) => HsvaColor;
@@ -284,6 +305,7 @@ export declare const rgbStringToHsva: (rgbaString: string) => HsvaColor;
 /** Converts an RGBA color plus alpha transparency to hex */
 export declare const rgbaToHex: ({ r, g, b }: RgbaColor) => string;
 export declare const rgbaToHexa: ({ r, g, b, a }: RgbaColor) => string;
+export type HexColor = `#${string}`;
 export declare const hexToHsva: (hex: string) => HsvaColor;
 export declare const hexToRgba: (hex: string) => RgbaColor;
 /**
@@ -299,6 +321,11 @@ export declare const hsvaToHex: (hsva: HsvaColor) => string;
 export declare const hsvaToHexa: (hsva: HsvaColor) => string;
 export declare const hsvaToHsv: ({ h, s, v }: HsvaColor) => HsvColor;
 export declare const color: (str: string | HsvaColor) => ColorResult;
+export declare const getContrastingColor: (str: string | HsvaColor) => "#ffffff" | "#000000";
+export declare const equalColorObjects: (first: ObjectColor, second: ObjectColor) => boolean;
+export declare const equalColorString: (first: string, second: string) => boolean;
+export declare const equalHex: (first: string, second: string) => boolean;
+export declare const validHex: (hex: string) => hex is HexColor;
 ```
 
 ## Contributors
