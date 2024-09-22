@@ -33,6 +33,12 @@ export interface RgbaColor extends RgbColor {
   a: number;
 }
 
+export interface XYColor {
+  x: number;
+  y: number;
+  bri?: number;
+}
+
 /**
  * ```js
  * rgbaToHsva({ r: 255, g: 255, b: 255, a: 1 }) //=> { h: 0, s: 0, v: 100, a: 1 }
@@ -273,6 +279,68 @@ export const hslaToHsl = ({ h, s, l }: HslaColor): HslColor => ({ h, s, l });
 export const hsvaToHex = (hsva: HsvaColor): string => rgbaToHex(hsvaToRgba(hsva));
 export const hsvaToHexa = (hsva: HsvaColor): string => rgbaToHexa(hsvaToRgba(hsva));
 export const hsvaToHsv = ({ h, s, v }: HsvaColor): HsvColor => ({ h, s, v });
+export const hexToXY = (hex: string): XYColor => rgbToXY(rgbaToRgb(hexToRgba(hex)));
+export const xyToHex = (xy: XYColor): string =>
+  rgbaToHex({
+    ...xyToRgb(xy),
+    a: 255,
+  });
+
+/**
+ * Converts RGB to XY. Based on formula from https://developers.meethue.com/develop/application-design-guidance/color-conversion-formulas-rgb-to-xy-and-back/
+ * @param color RGB color as an array [0-255, 0-255, 0-255]
+ */
+export const rgbToXY = ({ r, g, b }: RgbColor): XYColor => {
+  let red = r / 255;
+  let green = g / 255;
+  let blue = b / 255;
+
+  red = red > 0.04045 ? Math.pow((red + 0.055) / 1.055, 2.4) : red / 12.92;
+  green = green > 0.04045 ? Math.pow((green + 0.055) / 1.055, 2.4) : green / 12.92;
+  blue = blue > 0.04045 ? Math.pow((blue + 0.055) / 1.055, 2.4) : blue / 12.92;
+
+  const X = red * 0.4124 + green * 0.3576 + blue * 0.1805;
+  const Y = red * 0.2126 + green * 0.7152 + blue * 0.0722;
+  const Z = red * 0.0193 + green * 0.1192 + blue * 0.9505;
+
+  let x = X / (X + Y + Z);
+  let y = Y / (X + Y + Z);
+
+  if (isNaN(x)) x = 0;
+  if (isNaN(y)) y = 0;
+
+  return {
+    x,
+    y,
+    bri: Y,
+  };
+};
+
+/**
+ * Converts XY to RGB. Based on formula from https://developers.meethue.com/develop/application-design-guidance/color-conversion-formulas-rgb-to-xy-and-back/
+ * @param color XY color and brightness as an array [0-1, 0-1, 0-1]
+ */
+export const xyToRgb = ({ x, y, bri = 1 }: XYColor): RgbColor => {
+  const z = 1.0 - x - y;
+
+  const Y = bri;
+  const X = (Y / y) * x;
+  const Z = (Y / y) * z;
+
+  let r = X * 1.656492 - Y * 0.354851 - Z * 0.255038;
+  let g = -X * 0.707196 + Y * 1.655397 + Z * 0.036152;
+  let b = X * 0.051713 - Y * 0.121364 + Z * 1.01153;
+
+  r = r <= 0.0031308 ? 12.92 * r : (1.0 + 0.055) * Math.pow(r, 1.0 / 2.4) - 0.055;
+  g = g <= 0.0031308 ? 12.92 * g : (1.0 + 0.055) * Math.pow(g, 1.0 / 2.4) - 0.055;
+  b = b <= 0.0031308 ? 12.92 * b : (1.0 + 0.055) * Math.pow(b, 1.0 / 2.4) - 0.055;
+
+  return {
+    r: Math.round(r * 255),
+    g: Math.round(g * 255),
+    b: Math.round(b * 255),
+  };
+};
 
 export const color = (str: string | HsvaColor): ColorResult => {
   let rgb!: RgbColor;
