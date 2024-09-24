@@ -186,7 +186,7 @@ export const rgbStringToHsva = rgbaStringToHsva;
 
 /** Converts an RGBA color plus alpha transparency to hex */
 export const rgbaToHex = ({ r, g, b }: RgbaColor): string => {
-  let bin = (r << 16) | (g << 8) | b;
+  const bin = (r << 16) | (g << 8) | b;
   return `#${((h) => new Array(7 - h.length).join('0') + h)(bin.toString(16))}`;
 };
 
