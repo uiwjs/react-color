@@ -202,25 +202,25 @@ validHex("#8c0dba") //=> true
 rgbaToHexa({ b: 26, g: 2, r: 209, a: 1 }) // => '#d1021aff'
 ```
 
-### `hexToXY`
+#### `hexToXY`
 
 ```js
 hexToXY('#4780f1') // => { x: 0.261, y: 0.231, bri: 0.863 }
 ```
 
-### `xyToHex`
+#### `xyToHex`
 
 ```js
 xyToHex({ x: 0.261, y: 0.231, bri: 0.863 }) // => #4780f1
 ```
 
-### `rgbToXY`
+#### `rgbToXY`
 
 ```js
 rgbToXY({ r: 71, g: 128, b: 241 }) // => { x: 0.261, y: 0.231, bri: 0.863 }
 ```
 
-### `xyToRgb`
+#### `xyToRgb`
 
 ```js
 xyToRgb({ x: 0.261, y: 0.231, bri: 0.863 }) // => { r: 71, g: 128, b: 241 }
