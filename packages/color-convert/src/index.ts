@@ -318,12 +318,12 @@ export const rgbToXY = ({ r, g, b }: RgbColor): XYColor => {
 
   const red = translateColor(r / 255);
   const green = translateColor(g / 255);
-  const blud = translateColor(b / 255);
+  const blue = translateColor(b / 255);
 
   const xyz = {} as XYColor;
-  xyz.x = red * 0.4124 + green * 0.3576 + blud * 0.1805;
-  xyz.y = red * 0.2126 + green * 0.7152 + blud * 0.0722;
-  xyz.bri = red * 0.0193 + green * 0.1192 + blud * 0.9505;
+  xyz.x = red * 0.4124 + green * 0.3576 + blue * 0.1805;
+  xyz.y = red * 0.2126 + green * 0.7152 + blue * 0.0722;
+  xyz.bri = red * 0.0193 + green * 0.1192 + blue * 0.9505;
 
   return xyz;
 };
