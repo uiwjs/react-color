@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.6ef0c5a4.css",
-    "main.js": "/static/js/main.69368691.js",
+    "main.js": "/static/js/main.a9f38c43.js",
     "static/css/313.b92d3464.chunk.css": "/static/css/313.b92d3464.chunk.css",
     "static/js/313.f82cd4c3.chunk.js": "/static/js/313.f82cd4c3.chunk.js",
     "static/js/914.ae19d238.chunk.js": "/static/js/914.ae19d238.chunk.js",
@@ -46,7 +46,7 @@
     "static/js/428.18facd97.chunk.js": "/static/js/428.18facd97.chunk.js",
     "static/js/135.f9adc46b.chunk.js": "/static/js/135.f9adc46b.chunk.js",
     "static/js/583.5bb748c3.chunk.js": "/static/js/583.5bb748c3.chunk.js",
-    "static/js/24.19f21cea.chunk.js": "/static/js/24.19f21cea.chunk.js",
+    "static/js/24.c97c8f80.chunk.js": "/static/js/24.c97c8f80.chunk.js",
     "refractor-vendor.js": "/static/js/refractor-vendor.c5f44634.chunk.js",
     "react-vendor.js": "/static/js/react-vendor.9874219f.js",
     "static/css/920.f36a3507.chunk.css": "/static/css/920.f36a3507.chunk.css",
@@ -55,7 +55,7 @@
     "index.html": "/index.html",
     "static/media/home.svg": "/static/media/home.7d51f25c64fe597ec540c3e724748f4e.svg",
     "main.6ef0c5a4.css.map": "/static/css/main.6ef0c5a4.css.map",
-    "main.69368691.js.map": "/static/js/main.69368691.js.map",
+    "main.a9f38c43.js.map": "/static/js/main.a9f38c43.js.map",
     "313.b92d3464.chunk.css.map": "/static/css/313.b92d3464.chunk.css.map",
     "313.f82cd4c3.chunk.js.map": "/static/js/313.f82cd4c3.chunk.js.map",
     "914.ae19d238.chunk.js.map": "/static/js/914.ae19d238.chunk.js.map",
@@ -100,7 +100,7 @@
     "428.18facd97.chunk.js.map": "/static/js/428.18facd97.chunk.js.map",
     "135.f9adc46b.chunk.js.map": "/static/js/135.f9adc46b.chunk.js.map",
     "583.5bb748c3.chunk.js.map": "/static/js/583.5bb748c3.chunk.js.map",
-    "24.19f21cea.chunk.js.map": "/static/js/24.19f21cea.chunk.js.map",
+    "24.c97c8f80.chunk.js.map": "/static/js/24.c97c8f80.chunk.js.map",
     "refractor-vendor.c5f44634.chunk.js.map": "/static/js/refractor-vendor.c5f44634.chunk.js.map",
     "react-vendor.9874219f.js.map": "/static/js/react-vendor.9874219f.js.map",
     "920.f36a3507.chunk.css.map": "/static/css/920.f36a3507.chunk.css.map",
@@ -110,6 +110,6 @@
   "entrypoints": [
     "static/js/react-vendor.9874219f.js",
     "static/css/main.6ef0c5a4.css",
-    "static/js/main.69368691.js"
+    "static/js/main.a9f38c43.js"
   ]
 }
