@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>35/35</span>
+                <span class='fraction'>36/36</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">97.77% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>43/43</span>
+                <span class='fraction'>44/45</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>27/27</span>
+                <span class='fraction'>28/28</span>
             </div>
         
             
@@ -148,7 +148,13 @@
 <a name='L83'></a><a href='#L83'>83</a>
 <a name='L84'></a><a href='#L84'>84</a>
 <a name='L85'></a><a href='#L85'>85</a>
-<a name='L86'></a><a href='#L86'>86</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L86'></a><a href='#L86'>86</a>
+<a name='L87'></a><a href='#L87'>87</a>
+<a name='L88'></a><a href='#L88'>88</a>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -196,6 +202,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -222,11 +237,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -234,14 +244,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
-import EditableInputRGBA, { EditableInputRGBAProps } from '@uiw/react-color-editable-input-rgba';
-import { HslaColor, color as handleColor, hsvaToHsla, hslaToHsva } from '@uiw/color-convert';
+import { type EditableInputProps } from '@uiw/react-color-editable-input';
+import EditableInputRGBA, { type EditableInputRGBAProps } from '@uiw/react-color-editable-input-rgba';
+import { type HslaColor, color as handleColor, hsvaToHsla, hslaToHsva } from '@uiw/color-convert';
 &nbsp;
 export interface EditableInputHSLAProps extends Omit&lt;EditableInputRGBAProps, 'rProps' | 'gProps' | 'bProps'&gt; {
   hProps?: EditableInputRGBAProps['gProps'];
   sProps?: EditableInputRGBAProps['gProps'];
   lProps?: EditableInputRGBAProps['gProps'];
-  aProps?: EditableInputRGBAProps['aProps'];
+  aProps?: false | EditableInputRGBAProps['aProps'];
 }
 &nbsp;
 const EditableInputHSLA = React.forwardRef&lt;HTMLDivElement, EditableInputHSLAProps&gt;((props, ref) =&gt; {
@@ -281,6 +292,15 @@ const EditableInputHSLA = React.forwardRef&lt;HTMLDivElement, EditableInputHSLAP
       }
     }
   };
+  let aPropsObj: false | EditableInputProps =
+    aProps == false
+      ? <span class="branch-0 cbranch-no" title="branch not covered" >false</span>
+      : {
+          label: 'A',
+          value: Math.round(hsla.a * 100) / 100,
+          ...aProps,
+          onChange: (evn, val) =&gt; handleChange(val, 'a', evn),
+        };
   return (
     &lt;EditableInputRGBA
       ref={ref}
@@ -303,12 +323,7 @@ const EditableInputHSLA = React.forwardRef&lt;HTMLDivElement, EditableInputHSLAP
         ...lProps,
         onChange: (evn, val) =&gt; handleChange(val, 'l', evn),
       }}
-      aProps={{
-        label: 'A',
-        value: Math.round(hsla.a * 100) / 100,
-        ...aProps,
-        onChange: (evn, val) =&gt; handleChange(val, 'a', evn),
-      }}
+      aProps={aPropsObj}
       className={[prefixCls, className || ''].filter(Boolean).join(' ')}
       {...other}
     /&gt;
@@ -325,7 +340,7 @@ export default EditableInputHSLA;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-09-24T16:02:36.835Z
+                at 2024-09-27T05:55:37.334Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
