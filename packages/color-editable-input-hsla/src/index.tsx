@@ -1,12 +1,13 @@
 import React from 'react';
-import EditableInputRGBA, { EditableInputRGBAProps } from '@uiw/react-color-editable-input-rgba';
-import { HslaColor, color as handleColor, hsvaToHsla, hslaToHsva } from '@uiw/color-convert';
+import { type EditableInputProps } from '@uiw/react-color-editable-input';
+import EditableInputRGBA, { type EditableInputRGBAProps } from '@uiw/react-color-editable-input-rgba';
+import { type HslaColor, color as handleColor, hsvaToHsla, hslaToHsva } from '@uiw/color-convert';
 
 export interface EditableInputHSLAProps extends Omit<EditableInputRGBAProps, 'rProps' | 'gProps' | 'bProps'> {
   hProps?: EditableInputRGBAProps['gProps'];
   sProps?: EditableInputRGBAProps['gProps'];
   lProps?: EditableInputRGBAProps['gProps'];
-  aProps?: EditableInputRGBAProps['aProps'];
+  aProps?: false | EditableInputRGBAProps['aProps'];
 }
 
 const EditableInputHSLA = React.forwardRef<HTMLDivElement, EditableInputHSLAProps>((props, ref) => {
@@ -46,6 +47,15 @@ const EditableInputHSLA = React.forwardRef<HTMLDivElement, EditableInputHSLAProp
       }
     }
   };
+  let aPropsObj: false | EditableInputProps =
+    aProps == false
+      ? false
+      : {
+          label: 'A',
+          value: Math.round(hsla.a * 100) / 100,
+          ...aProps,
+          onChange: (evn, val) => handleChange(val, 'a', evn),
+        };
   return (
     <EditableInputRGBA
       ref={ref}
@@ -68,12 +78,7 @@ const EditableInputHSLA = React.forwardRef<HTMLDivElement, EditableInputHSLAProp
         ...lProps,
         onChange: (evn, val) => handleChange(val, 'l', evn),
       }}
-      aProps={{
-        label: 'A',
-        value: Math.round(hsla.a * 100) / 100,
-        ...aProps,
-        onChange: (evn, val) => handleChange(val, 'a', evn),
-      }}
+      aProps={aPropsObj}
       className={[prefixCls, className || ''].filter(Boolean).join(' ')}
       {...other}
     />

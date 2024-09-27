@@ -47,7 +47,7 @@ export interface EditableInputHSLAProps extends Omit<EditableInputRGBAProps, 'rP
   hProps?: EditableInputRGBAProps['gProps'];
   sProps?: EditableInputRGBAProps['gProps'];
   lProps?: EditableInputRGBAProps['gProps'];
-  aProps?: EditableInputRGBAProps['aProps'];
+  aProps?: false | EditableInputRGBAProps['aProps'];
 }
 declare const EditableInputHSLA: React.ForwardRefExoticComponent<EditableInputHSLAProps & React.RefAttributes<HTMLDivElement>>;
 export default EditableInputHSLA;

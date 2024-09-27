@@ -1,6 +1,6 @@
-import React, { CSSProperties, Fragment } from 'react';
+import React, { type CSSProperties, Fragment } from 'react';
 import {
-  HsvaColor,
+  type HsvaColor,
   hsvaToRgbaString,
   color as handleColor,
   validHex,
@@ -8,7 +8,7 @@ import {
   hsvaToHex,
   hsvaToHexa,
 } from '@uiw/color-convert';
-import Github, { GithubProps, GithubPlacement } from '@uiw/react-color-github';
+import Github, { type GithubProps, GithubPlacement } from '@uiw/react-color-github';
 import Saturation from '@uiw/react-color-saturation';
 import Hue from '@uiw/react-color-hue';
 import Alpha from '@uiw/react-color-alpha';
@@ -132,7 +132,7 @@ const Chrome = React.forwardRef<HTMLDivElement, ChromeProps>((props, ref) => {
               {showHue == true && (
                 <Hue
                   hue={hsva.h}
-                  style={{ width: '100%', height: 12 }}
+                  style={{ width: '100%', height: 12, borderRadius: 2 }}
                   pointerProps={pointerProps}
                   bgProps={{
                     style: { borderRadius: 2 },
@@ -145,7 +145,7 @@ const Chrome = React.forwardRef<HTMLDivElement, ChromeProps>((props, ref) => {
               {showAlpha == true && (
                 <Alpha
                   hsva={hsva}
-                  style={{ marginTop: 6, height: 12 }}
+                  style={{ marginTop: 6, height: 12, borderRadius: 2 }}
                   pointerProps={pointerProps}
                   bgProps={{
                     style: { borderRadius: 2 },
@@ -166,7 +166,7 @@ const Chrome = React.forwardRef<HTMLDivElement, ChromeProps>((props, ref) => {
                     rProps={{ labelStyle, inputStyle }}
                     gProps={{ labelStyle, inputStyle }}
                     bProps={{ labelStyle, inputStyle }}
-                    aProps={{ labelStyle, inputStyle }}
+                    aProps={showAlpha == false ? false : { labelStyle, inputStyle }}
                     onChange={(reColor) => handleChange(reColor.hsva)}
                   />
                 )}
@@ -189,7 +189,7 @@ const Chrome = React.forwardRef<HTMLDivElement, ChromeProps>((props, ref) => {
                     hProps={{ labelStyle, inputStyle }}
                     sProps={{ labelStyle, inputStyle }}
                     lProps={{ labelStyle, inputStyle }}
-                    aProps={{ labelStyle, inputStyle }}
+                    aProps={showAlpha == false ? false : { labelStyle, inputStyle }}
                     onChange={(reColor) => handleChange(reColor.hsva)}
                   />
                 )}
