@@ -330,7 +330,7 @@ export declare const validHex: (hex: string) => hex is HexColor;
 
 As always, thanks to our amazing contributors!
 
-<a href="https://uiwjs.github.io/react-color/graphs/contributors">
+<a href="https://github.com/uiwjs/react-color/graphs/contributors">
   <img src="https://uiwjs.github.io/react-color/coverage/CONTRIBUTORS.svg" />
 </a>
 
