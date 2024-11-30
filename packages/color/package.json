@@ -19,6 +19,12 @@
   "keywords": [
     "react",
     "react-color",
+    "react-component",
+    "color-picker",
+    "colorpicker",
+    "color picker",
+    "colorful",
+    "color",
     "react-color-alpha",
     "react-color-hua",
     "color-convert",
@@ -31,8 +37,6 @@
     "chrome",
     "alpha",
     "editable-input",
-    "colorful",
-    "color",
     "convert"
   ],
   "license": "MIT",
