@@ -12,6 +12,7 @@ export interface EditableInputProps extends Omit<React.InputHTMLAttributes<HTMLI
   placement?: 'top' | 'left' | 'bottom' | 'right';
   inputStyle?: React.CSSProperties;
   onChange?: (evn: React.ChangeEvent<HTMLInputElement>, value: string | number) => void;
+  renderInput?: (props: React.InputHTMLAttributes<HTMLInputElement>, ref: React.Ref<HTMLInputElement>) => React.ReactNode;
 }
 
 const EditableInput = React.forwardRef<HTMLInputElement, EditableInputProps>((props, ref) => {
@@ -26,6 +27,7 @@ const EditableInput = React.forwardRef<HTMLInputElement, EditableInputProps>((pr
     inputStyle,
     onChange,
     onBlur,
+    renderInput,
     ...other
   } = props;
   const [value, setValue] = useState<string | number | undefined>(initValue);
@@ -90,18 +92,19 @@ const EditableInput = React.forwardRef<HTMLInputElement, EditableInputProps>((pr
     boxShadow: 'var(--editable-input-box-shadow)',
     ...inputStyle,
   } as React.CSSProperties;
+
+  const inputProps: React.InputHTMLAttributes<HTMLInputElement> = {
+    value,
+    onChange: handleChange,
+    onBlur: handleBlur,
+    autoComplete: 'off',
+    onFocus: () => (isFocus.current = true),
+    ...other,
+    style: editableStyle,
+  };
   return (
     <div className={[prefixCls, className || ''].filter(Boolean).join(' ')} style={wrapperStyle}>
-      <input
-        ref={ref}
-        value={value}
-        onChange={handleChange}
-        onBlur={handleBlur}
-        autoComplete="off"
-        onFocus={() => (isFocus.current = true)}
-        {...other}
-        style={editableStyle}
-      />
+      {renderInput ? renderInput(inputProps, ref) : <input ref={ref} {...inputProps} />}
       {label && (
         <span
           style={{

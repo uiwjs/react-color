@@ -49,6 +49,7 @@ export interface EditableInputProps extends Omit<React.InputHTMLAttributes<HTMLI
   placement?: 'top' | 'left' | 'bottom' | 'right';
   inputStyle?: React.CSSProperties;
   onChange?: (evn: React.ChangeEvent<HTMLInputElement>, value: string | number) => void;
+  renderInput?: (props: React.InputHTMLAttributes<HTMLInputElement>, ref: React.Ref<HTMLInputElement>) => React.ReactNode;
 }
 declare const EditableInput: React.ForwardRefExoticComponent<EditableInputProps & React.RefAttributes<HTMLInputElement>>;
 export default EditableInput;
