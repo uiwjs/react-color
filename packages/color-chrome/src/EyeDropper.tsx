@@ -10,10 +10,16 @@ export function EyeDropper(props: EyeDropperProps) {
   const click = () => {
     if ('EyeDropper' in window) {
       const eyeDropper = new (window as any).EyeDropper();
-      eyeDropper.open().then((result: any) => {
-        console.log(result);
-        props.onPickColor?.(result.sRGBHex);
-      });
+      eyeDropper
+        .open()
+        .then((result: any) => {
+          props.onPickColor?.(result.sRGBHex);
+        })
+        .catch((err: Error) => {
+          if (err.name === 'AbortError') {
+          } else {
+          }
+        });
     }
   };
   return (
