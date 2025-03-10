@@ -45,6 +45,47 @@ function Demo() {
 export default Demo;
 ```
 
+Set presetColors Example
+
+```jsx mdx:preview
+import React, { useState } from 'react';
+import Sketch from '@uiw/react-color-sketch';
+
+const PRESET_COLORS = [
+  '#D0021B',
+  '#F5A623',
+  '#f8e61b',
+  '#8B572A',
+  '#7ED321',
+  '#417505',
+  '#BD10E0',
+  '#9013FE',
+];
+
+function Demo() {
+  const [hex, setHex] = useState("#fff");
+  const [disableAlpha, setDisableAlpha] = useState(false);
+  return (
+    <div>
+      <Sketch
+        style={{ marginLeft: 20 }}
+        color={hex}
+        disableAlpha={disableAlpha}
+        presetColors={PRESET_COLORS}
+        onChange={(color) => {
+          setHex(color.hex);
+        }}
+      />
+      <button onClick={() => setDisableAlpha(!disableAlpha)}>
+        disableAlpha={disableAlpha.toString()}
+      </button>
+    </div>
+  );
+}
+
+export default Demo;
+```
+
 ## Props
 
 ```ts
