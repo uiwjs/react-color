@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">95.55% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>36/36</span>
+                <span class='fraction'>43/45</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">91.3% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>27/27</span>
+                <span class='fraction'>21/23</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>33/33</span>
+                <span class='fraction'>40/40</span>
             </div>
         
             
@@ -151,7 +151,14 @@
 <a name='L86'></a><a href='#L86'>86</a>
 <a name='L87'></a><a href='#L87'>87</a>
 <a name='L88'></a><a href='#L88'>88</a>
-<a name='L89'></a><a href='#L89'>89</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L89'></a><a href='#L89'>89</a>
+<a name='L90'></a><a href='#L90'>90</a>
+<a name='L91'></a><a href='#L91'>91</a>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a>
+<a name='L94'></a><a href='#L94'>94</a>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -177,30 +184,36 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">10x</span>
@@ -214,6 +227,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -265,44 +279,51 @@ const Interactive = React.forwardRef&lt;HTMLDivElement, InteractiveProps&gt;((pr
     hasTouched.current = isTouch(event);
     return true;
   };
-&nbsp;
   const handleMove = useCallback(
     (event: MouseEvent | TouchEvent) =&gt; {
       preventDefaultMove(event);
-      // If user moves the pointer outside of the window or iframe bounds and release it there,
-      // `mouseup`/`touchend` won't be fired. In order to stop the picker from following the cursor
-      // after the user has moved the mouse/finger back to the document, we check `event.buttons`
-      // and `event.touches`. It allows us to detect that the user is just moving his pointer
-      // without pressing it down
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (!container.current) <span class="cstat-no" title="statement not covered" >return;</span>
+&nbsp;
       const isDown = isTouch(event) ? event.touches.length &gt; 0 : event.buttons &gt; 0;
-      if (isDown &amp;&amp; container.current) {
-        onMoveCallback &amp;&amp; onMoveCallback(getRelativePosition(container.current!, event), event);
-      } else {
+      if (!isDown) {
         setDragging(false);
+        return;
       }
+&nbsp;
+      onMoveCallback?.(getRelativePosition(container.current, event), event);
     },
     [onMoveCallback],
   );
 &nbsp;
   const handleMoveEnd = useCallback(() =&gt; setDragging(false), []);
-  const toggleDocumentEvents = useCallback((state: boolean) =&gt; {
-    const toggleEvent = state ? window.addEventListener : window.removeEventListener;
-    toggleEvent(hasTouched.current ? 'touchmove' : 'mousemove', handleMove);
-    toggleEvent(hasTouched.current ? 'touchend' : 'mouseup', handleMoveEnd);
-  }, []);
+  const toggleDocumentEvents = useCallback(
+    (state: boolean) =&gt; {
+      if (state) {
+        window.addEventListener(hasTouched.current ? 'touchmove' : 'mousemove', handleMove);
+        window.addEventListener(hasTouched.current ? 'touchend' : 'mouseup', handleMoveEnd);
+      } else {
+        window.removeEventListener('mousemove', handleMove);
+        window.removeEventListener('mouseup', handleMoveEnd);
+        window.removeEventListener('touchmove', handleMove);
+        window.removeEventListener('touchend', handleMoveEnd);
+      }
+    },
+    [handleMove, handleMoveEnd],
+  );
 &nbsp;
   useEffect(() =&gt; {
     toggleDocumentEvents(isDragging);
     return () =&gt; {
-      isDragging &amp;&amp; toggleDocumentEvents(false);
+      toggleDocumentEvents(false);
     };
-  }, [isDragging, toggleDocumentEvents]);
+  }, [isDragging, handleMove, handleMoveEnd, toggleDocumentEvents]);
 &nbsp;
   const handleMoveStart = useCallback(
     (event: React.MouseEvent | React.TouchEvent) =&gt; {
       preventDefaultMove(event.nativeEvent);
       if (!isValid(event.nativeEvent)) return;
-      onKeyCallback &amp;&amp; onKeyCallback(getRelativePosition(container.current!, event.nativeEvent), event.nativeEvent);
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (!container.current) <span class="cstat-no" title="statement not covered" >return;</span>
+      onKeyCallback?.(getRelativePosition(container.current, event.nativeEvent), event.nativeEvent);
       setDragging(true);
     },
     [onKeyCallback],
@@ -334,7 +355,7 @@ export default Interactive;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-03-10T15:32:24.289Z
+                at 2025-03-14T04:30:57.746Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
