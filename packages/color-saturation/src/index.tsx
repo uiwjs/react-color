@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { HsvaColor, hsvaToHslaString } from '@uiw/color-convert';
 import Interactive, { Interaction } from '@uiw/react-drag-event-interactive';
 import { Pointer, PointerProps } from './Pointer';
@@ -24,7 +24,9 @@ const Saturation = React.forwardRef<HTMLDivElement, SaturationProps>((props, ref
     position: 'relative',
   };
 
+  const [interaction, setInteraction] = useState<Interaction>({ left: 0, top: 0, x: 0, y: 0, width: 0, height: 0 });
   const handleChange = (interaction: Interaction, event: MouseEvent | TouchEvent) => {
+    setInteraction(interaction);
     onChange &&
       hsva &&
       onChange({
@@ -39,15 +41,15 @@ const Saturation = React.forwardRef<HTMLDivElement, SaturationProps>((props, ref
   const pointerElement = useMemo(() => {
     if (!hsva) return null;
     const comProps = {
-      top: `${100 - hsva.v}%`,
-      left: `${hsva.s}%`,
+      top: `${interaction.y}px`,
+      left: `${interaction.x}px`,
       color: hsvaToHslaString(hsva),
     };
     if (pointer && typeof pointer === 'function') {
       return pointer({ prefixCls, ...comProps });
     }
     return <Pointer prefixCls={prefixCls} {...comProps} />;
-  }, [hsva, pointer, prefixCls]);
+  }, [hsva, interaction, pointer, prefixCls]);
 
   return (
     <Interactive

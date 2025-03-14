@@ -26,7 +26,7 @@ const Pointer = ({ style, color, ...props }: React.HTMLAttributes<HTMLDivElement
     height: 28,
     width: 28,
     position: 'absolute',
-    transform: 'translate(-16px, -10px)',
+    transform: 'translate(-16px, -16px)',
     boxShadow: '0 2px 4px rgb(0 0 0 / 20%)',
     borderRadius: '50%',
     background: `url(${BACKGROUND_IMG})`,
@@ -78,7 +78,9 @@ const Colorful = React.forwardRef<HTMLDivElement, ColorfulProps>((props, ref) =>
         radius={disableAlpha ? '0 0 8px 8px' : 0}
         className={prefixCls}
         onChange={(newHue) => handleChange({ ...hsva, ...newHue })}
-        pointer={({ left }) => <Pointer style={{ left }} color={`hsl(${hsva.h || 0}deg 100% 50%)`} />}
+        pointer={({ left }) => (
+          <Pointer style={{ left, transform: 'translate(-16px, -5px)' }} color={`hsl(${hsva.h || 0}deg 100% 50%)`} />
+        )}
       />
       {!disableAlpha && (
         <Alpha
@@ -86,7 +88,7 @@ const Colorful = React.forwardRef<HTMLDivElement, ColorfulProps>((props, ref) =>
           height={24}
           className={prefixCls}
           radius="0 0 8px 8px"
-          pointer={({ left }) => <Pointer style={{ left }} color={hsvaToRgbaString(hsva)} />}
+          pointer={({ left }) => <Pointer style={{ left, transform: 'translate(-16px, -5px)' }} color={hsvaToRgbaString(hsva)} />}
           onChange={(newAlpha) => handleChange({ ...hsva, ...newAlpha })}
         />
       )}
