@@ -26,7 +26,7 @@ const Pointer = ({ style, color, ...props }: React.HTMLAttributes<HTMLDivElement
     height: 28,
     width: 28,
     position: 'absolute',
-    transform: 'translate(-14px, -4px)',
+    transform: 'translate(-16px, -10px)',
     boxShadow: '0 2px 4px rgb(0 0 0 / 20%)',
     borderRadius: '50%',
     background: `url(${BACKGROUND_IMG})`,
@@ -41,7 +41,7 @@ const Pointer = ({ style, color, ...props }: React.HTMLAttributes<HTMLDivElement
         style={{
           backgroundColor: color,
           borderRadius: '50%',
-          height: ' 100%',
+          height: '100%',
           width: '100%',
         }}
       />
@@ -69,9 +69,7 @@ const Colorful = React.forwardRef<HTMLDivElement, ColorfulProps>((props, ref) =>
         className={prefixCls}
         radius="8px 8px 0 0"
         style={{ width: 'auto', height: 150, minWidth: 120, borderBottom: '12px solid #000' }}
-        pointer={({ left, top, color }) => (
-          <Pointer style={{ left, top, transform: 'translate(-16px, -16px)' }} color={hsvaToHex(hsva)} />
-        )}
+        pointer={({ left, top, color }) => <Pointer style={{ left, top }} color={hsvaToHex(hsva)} />}
         onChange={(newColor) => handleChange({ ...hsva, ...newColor })}
       />
       <Hue
