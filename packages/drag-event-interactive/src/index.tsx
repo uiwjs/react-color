@@ -24,44 +24,51 @@ const Interactive = React.forwardRef<HTMLDivElement, InteractiveProps>((props, r
     hasTouched.current = isTouch(event);
     return true;
   };
-
   const handleMove = useCallback(
     (event: MouseEvent | TouchEvent) => {
       preventDefaultMove(event);
-      // If user moves the pointer outside of the window or iframe bounds and release it there,
-      // `mouseup`/`touchend` won't be fired. In order to stop the picker from following the cursor
-      // after the user has moved the mouse/finger back to the document, we check `event.buttons`
-      // and `event.touches`. It allows us to detect that the user is just moving his pointer
-      // without pressing it down
+      if (!container.current) return;
+
       const isDown = isTouch(event) ? event.touches.length > 0 : event.buttons > 0;
-      if (isDown && container.current) {
-        onMoveCallback && onMoveCallback(getRelativePosition(container.current!, event), event);
-      } else {
+      if (!isDown) {
         setDragging(false);
+        return;
       }
+
+      onMoveCallback?.(getRelativePosition(container.current, event), event);
     },
     [onMoveCallback],
   );
 
   const handleMoveEnd = useCallback(() => setDragging(false), []);
-  const toggleDocumentEvents = useCallback((state: boolean) => {
-    const toggleEvent = state ? window.addEventListener : window.removeEventListener;
-    toggleEvent(hasTouched.current ? 'touchmove' : 'mousemove', handleMove);
-    toggleEvent(hasTouched.current ? 'touchend' : 'mouseup', handleMoveEnd);
-  }, []);
+  const toggleDocumentEvents = useCallback(
+    (state: boolean) => {
+      if (state) {
+        window.addEventListener(hasTouched.current ? 'touchmove' : 'mousemove', handleMove);
+        window.addEventListener(hasTouched.current ? 'touchend' : 'mouseup', handleMoveEnd);
+      } else {
+        window.removeEventListener('mousemove', handleMove);
+        window.removeEventListener('mouseup', handleMoveEnd);
+        window.removeEventListener('touchmove', handleMove);
+        window.removeEventListener('touchend', handleMoveEnd);
+      }
+    },
+    [handleMove, handleMoveEnd],
+  );
 
   useEffect(() => {
     toggleDocumentEvents(isDragging);
     return () => {
-      isDragging && toggleDocumentEvents(false);
+      toggleDocumentEvents(false);
     };
-  }, [isDragging, toggleDocumentEvents]);
+  }, [isDragging, handleMove, handleMoveEnd, toggleDocumentEvents]);
 
   const handleMoveStart = useCallback(
     (event: React.MouseEvent | React.TouchEvent) => {
       preventDefaultMove(event.nativeEvent);
       if (!isValid(event.nativeEvent)) return;
-      onKeyCallback && onKeyCallback(getRelativePosition(container.current!, event.nativeEvent), event.nativeEvent);
+      if (!container.current) return;
+      onKeyCallback?.(getRelativePosition(container.current, event.nativeEvent), event.nativeEvent);
       setDragging(true);
     },
     [onKeyCallback],
