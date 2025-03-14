@@ -44,7 +44,7 @@ it('Wheel color=hsvaColor ', async () => {
   expect(handleChange).toHaveReturnedWith('#e6c300');
 });
 
-it('Wheel mousedown onChange', async () => {
+it('Wheel mousedown onChange 2', async () => {
   const handleChange = jest.fn((color) => color.hex);
   const {
     container: { firstChild },

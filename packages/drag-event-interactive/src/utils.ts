@@ -36,37 +36,19 @@ export interface Interaction {
   y: number;
 }
 
-// // Returns a relative position of the pointer inside the node's bounding box
-// export const getRelativePosition = (node: HTMLDivElement, event: MouseEvent | TouchEvent): Interaction => {
-//   const rect = node.getBoundingClientRect();
-
-//   // Get user's pointer position from `touches` array if it's a `TouchEvent`
-//   const pointer = isTouch(event) ? event.touches[0] : (event as MouseEvent);
-
-//   return {
-//     left: clamp((pointer.pageX - (rect.left + window.pageXOffset)) / rect.width),
-//     top: clamp((pointer.pageY - (rect.top + window.pageYOffset)) / rect.height),
-//     width: rect.width,
-//     height: rect.height,
-//     x: pointer.pageX - (rect.left + window.pageXOffset),
-//     y: pointer.pageY - (rect.top + window.pageYOffset),
-//   };
-// };
-
 // Returns a relative position of the pointer inside the node's bounding box
 export const getRelativePosition = (node: HTMLDivElement, event: MouseEvent | TouchEvent): Interaction => {
   const rect = node.getBoundingClientRect();
+
+  // Get user's pointer position from `touches` array if it's a `TouchEvent`
   const pointer = isTouch(event) ? event.touches[0] : (event as MouseEvent);
 
-  const x = clamp(pointer.pageX - (rect.left + window.pageXOffset), 0, rect.width);
-  const y = clamp(pointer.pageY - (rect.top + window.pageYOffset), 0, rect.height);
-
   return {
-    left: x / rect.width,
-    top: y / rect.height,
+    left: clamp((pointer.pageX - (rect.left + window.pageXOffset)) / rect.width),
+    top: clamp((pointer.pageY - (rect.top + window.pageYOffset)) / rect.height),
     width: rect.width,
     height: rect.height,
-    x,
-    y,
+    x: pointer.pageX - (rect.left + window.pageXOffset),
+    y: pointer.pageY - (rect.top + window.pageYOffset),
   };
 };
