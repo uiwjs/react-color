@@ -1,7 +1,7 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { HsvaColor, hsvaToHslaString } from '@uiw/color-convert';
-import Interactive, { Interaction } from '@uiw/react-drag-event-interactive';
-import { Pointer, PointerProps } from './Pointer';
+import Interactive, { type Interaction, clamp } from '@uiw/react-drag-event-interactive';
+import { Pointer, type PointerProps } from './Pointer';
 
 export interface SaturationProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   prefixCls?: string;
@@ -40,9 +40,15 @@ const Saturation = React.forwardRef<HTMLDivElement, SaturationProps>((props, ref
 
   const pointerElement = useMemo(() => {
     if (!hsva) return null;
+    var ponitX = `${clamp(interaction.x, 0, interaction.width)}px`;
+    var ponitY = `${clamp(interaction.y, 0, interaction.height)}px`;
+    if (interaction.width === 0 || interaction.height === 0) {
+      ponitX = `${hsva.s}%`;
+      ponitY = `${100 - hsva.v}%`;
+    }
     const comProps = {
-      top: `${interaction.y}px`,
-      left: `${interaction.x}px`,
+      top: ponitY,
+      left: ponitX,
       color: hsvaToHslaString(hsva),
     };
     if (pointer && typeof pointer === 'function') {
