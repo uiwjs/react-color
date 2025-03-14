@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-color-slider",
-  "version": "2.4.3",
+  "version": "2.4.4",
   "description": "Color Slider component for React.",
   "homepage": "https://uiwjs.github.io/react-color/#/slider",
   "funding": "https://jaywcjlove.github.io/#/sponsor",
@@ -48,8 +48,8 @@
     "react-dom": ">=16.9.0"
   },
   "dependencies": {
-    "@uiw/color-convert": "2.4.3",
-    "@uiw/react-color-alpha": "2.4.3"
+    "@uiw/color-convert": "2.4.4",
+    "@uiw/react-color-alpha": "2.4.4"
   },
   "devDependencies": {
     "@babel/runtime": "^7.21.0"
