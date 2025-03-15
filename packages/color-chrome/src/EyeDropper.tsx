@@ -1,6 +1,8 @@
 import React from 'react';
 
-export const isSupportEyeDropper = 'EyeDropper' in window;
+export function getIsEyeDropperSupported() {
+  return 'EyeDropper' in window;
+}
 
 export interface EyeDropperProps {
   onPickColor?: (color: string) => void;
