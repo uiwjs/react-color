@@ -1,6 +1,6 @@
 {
   "name": "@uiw/react-color-compact",
-  "version": "2.4.4",
+  "version": "2.4.5",
   "description": "Color Compact component for React.",
   "homepage": "https://uiwjs.github.io/react-color/#/compact",
   "funding": "https://jaywcjlove.github.io/#/sponsor",
@@ -48,10 +48,10 @@
     "react-dom": ">=16.9.0"
   },
   "dependencies": {
-    "@uiw/color-convert": "2.4.4",
-    "@uiw/react-color-editable-input": "2.4.4",
-    "@uiw/react-color-editable-input-rgba": "2.4.4",
-    "@uiw/react-color-swatch": "2.4.4"
+    "@uiw/color-convert": "2.4.5",
+    "@uiw/react-color-editable-input": "2.4.5",
+    "@uiw/react-color-editable-input-rgba": "2.4.5",
+    "@uiw/react-color-swatch": "2.4.5"
   },
   "devDependencies": {
     "@babel/runtime": "^7.21.0"
