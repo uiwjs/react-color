@@ -17,7 +17,7 @@ import EditableInputRGBA from '@uiw/react-color-editable-input-rgba';
 import EditableInputHSLA from '@uiw/react-color-editable-input-hsla';
 import { useState } from 'react';
 import Arrow from './Arrow';
-import { EyeDropper, isSupportEyeDropper } from './EyeDropper';
+import { EyeDropper, getIsEyeDropperSupported } from './EyeDropper';
 
 export enum ChromeInputType {
   HEXA = 'hexa',
@@ -111,7 +111,7 @@ const Chrome = React.forwardRef<HTMLDivElement, ChromeProps>((props, ref) => {
             }}
           />
           <div style={{ padding: 15, display: 'flex', alignItems: 'center', gap: 10 }}>
-            {isSupportEyeDropper && showEyeDropper && <EyeDropper onPickColor={handleClickColor} />}
+            {getIsEyeDropperSupported() && showEyeDropper && <EyeDropper onPickColor={handleClickColor} />}
             {showColorPreview && (
               <Alpha
                 width={28}
