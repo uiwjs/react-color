@@ -26,10 +26,17 @@ export default function Demo() {
   const [hex, setHex] = useState("#fff");
   return (
     <>
-      <Block
-        color={hex}
-        onChange={(color) => setHex(color.hex)}
-      />
+      <div style={{ display: "flex", gap: 10 }}>
+        <Block
+          color={hex}
+          onChange={(color) => setHex(color.hex)}
+        />
+        <Block
+          color={hex}
+          showTriangle={false}
+          onChange={(color) => setHex(color.hex)}
+        />
+      </div>
       <div style={{ background: hex, marginTop: 30, padding: 10 }}>
         {hex}
       </div>
@@ -45,6 +52,7 @@ import React from 'react';
 import { HsvaColor, ColorResult } from '@uiw/color-convert';
 export interface BlockProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'color'> {
   prefixCls?: string;
+  showTriangle?: boolean;
   color?: string | HsvaColor;
   colors?: string[];
   onChange?: (color: ColorResult) => void;

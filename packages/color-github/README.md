@@ -97,6 +97,7 @@ export interface GithubRectRenderProps extends SwatchRectRenderProps {
 export interface GithubProps extends Omit<SwatchProps, 'color' | 'onChange'> {
   placement?: GithubPlacement;
   color?: string | HsvaColor;
+  showTriangle?: boolean;
   onChange?: (color: ColorResult) => void;
 }
 declare const Github: React.ForwardRefExoticComponent<GithubProps & React.RefAttributes<HTMLDivElement>>;

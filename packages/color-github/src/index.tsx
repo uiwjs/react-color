@@ -44,6 +44,7 @@ export interface GithubRectRenderProps extends SwatchRectRenderProps {
 export interface GithubProps extends Omit<SwatchProps, 'color' | 'onChange'> {
   placement?: GithubPlacement;
   color?: string | HsvaColor;
+  showTriangle?: boolean;
   onChange?: (color: ColorResult) => void;
 }
 
@@ -55,6 +56,7 @@ const Github = React.forwardRef<HTMLDivElement, GithubProps>((props, ref) => {
     style,
     color,
     colors = CORLER_HEX,
+    showTriangle = true,
     rectProps = {},
     onChange,
     rectRender,
@@ -197,8 +199,12 @@ const Github = React.forwardRef<HTMLDivElement, GithubProps>((props, ref) => {
       }}
       addonBefore={
         <Fragment>
-          <div style={arrBrStyl} />
-          <div style={arrStyl} />
+          {showTriangle && (
+            <Fragment>
+              <div style={arrBrStyl} />
+              <div style={arrStyl} />
+            </Fragment>
+          )}
         </Fragment>
       }
     />

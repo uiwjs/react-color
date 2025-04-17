@@ -98,6 +98,15 @@ function Example() {
           }}
         />
       </div>
+      <div style={{ display: 'flex', gap: '1rem', marginTop: 20 }}>
+        <Github
+          color={hsva}
+          showTriangle={false}
+          onChange={(color) => {
+            dispatch!({ hsva: { ...hsva, ...color.hsva } });
+          }}
+        />
+      </div>
     </Fragment>
   );
 }

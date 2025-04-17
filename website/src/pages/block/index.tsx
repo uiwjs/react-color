@@ -6,9 +6,16 @@ import { Context } from '../../Store';
 function Example() {
   const { hsva, dispatch } = useContext(Context);
   return (
-    <div style={{ width: 300 }}>
+    <div style={{ minWidth: 300, display: 'flex', gap: '1rem' }}>
       <Block
         color={hsva}
+        onChange={(color) => {
+          dispatch!({ hsva: { ...hsva, ...color.hsva } });
+        }}
+      />
+      <Block
+        color={hsva}
+        showTriangle={false}
         onChange={(color) => {
           dispatch!({ hsva: { ...hsva, ...color.hsva } });
         }}
