@@ -15,13 +15,23 @@ const CORLER_HEX = ['#D9E3F0', '#F47373', '#697689', '#37D67A', '#2CCCE4', '#555
 
 export interface BlockProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'color'> {
   prefixCls?: string;
+  showTriangle?: boolean;
   color?: string | HsvaColor;
   colors?: string[];
   onChange?: (color: ColorResult) => void;
 }
 
 const Block = React.forwardRef<HTMLDivElement, BlockProps>((props, ref) => {
-  const { prefixCls = 'w-color-block', className, style, color, colors = CORLER_HEX, onChange, ...other } = props;
+  const {
+    prefixCls = 'w-color-block',
+    className,
+    style,
+    color,
+    colors = CORLER_HEX,
+    showTriangle = true,
+    onChange,
+    ...other
+  } = props;
   const hsva = (typeof color === 'string' && validHex(color) ? hexToHsva(color) : color) as HsvaColor;
   const hex = color ? hsvaToHex(hsva) : '';
   const handleChange = (hsv: HsvaColor) => {
@@ -44,19 +54,21 @@ const Block = React.forwardRef<HTMLDivElement, BlockProps>((props, ref) => {
   } as CSSProperties;
   return (
     <div ref={ref} className={[prefixCls, className].filter(Boolean).join(' ')} style={stylePointer} {...other}>
-      <div
-        style={{
-          width: 0,
-          height: 0,
-          borderStyle: 'solid',
-          borderWidth: '0 10px 10px',
-          borderColor: `transparent transparent ${hex}`,
-          position: 'absolute',
-          top: -10,
-          left: '50%',
-          marginLeft: -10,
-        }}
-      />
+      {showTriangle && (
+        <div
+          style={{
+            width: 0,
+            height: 0,
+            borderStyle: 'solid',
+            borderWidth: '0 10px 10px',
+            borderColor: `transparent transparent ${hex}`,
+            position: 'absolute',
+            top: -10,
+            left: '50%',
+            marginLeft: -10,
+          }}
+        />
+      )}
       <div
         title={hex}
         style={{
