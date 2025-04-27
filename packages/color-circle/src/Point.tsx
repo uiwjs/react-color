@@ -40,7 +40,6 @@ export default function Point({ style, className, title, checked, color, onClick
         padding: 3,
         marginRight: 12,
         marginBottom: 12,
-        ...style,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -49,8 +48,9 @@ export default function Point({ style, className, title, checked, color, onClick
         borderRadius: '50%',
         boxSizing: 'border-box',
         transform: 'scale(1)',
-        boxShadow: `${color} 0px 0px ${checked ? 5 : 0}px`,
         transition: 'transform 100ms ease 0s, box-shadow 100ms ease 0s',
+        ...style,
+        boxShadow: `${color} 0px 0px ${checked ? 5 : 0}px`,
       }}
     >
       <div {...rectProps} style={styleWrapper} />
