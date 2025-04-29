@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.6ef0c5a4.css",
-    "main.js": "/static/js/main.696dd922.js",
+    "main.js": "/static/js/main.85edc73d.js",
     "static/css/313.b92d3464.chunk.css": "/static/css/313.b92d3464.chunk.css",
     "static/js/313.ef6fdfb6.chunk.js": "/static/js/313.ef6fdfb6.chunk.js",
     "static/js/615.089588b9.chunk.js": "/static/js/615.089588b9.chunk.js",
@@ -51,12 +51,12 @@
     "react-vendor.js": "/static/js/react-vendor.50f24e41.js",
     "static/css/630.f7412fed.chunk.css": "/static/css/630.f7412fed.chunk.css",
     "static/js/630.ddd20691.chunk.js": "/static/js/630.ddd20691.chunk.js",
-    "static/js/968.7a2a4e37.chunk.js": "/static/js/968.7a2a4e37.chunk.js",
+    "static/js/968.bebce17b.chunk.js": "/static/js/968.bebce17b.chunk.js",
     "static/js/668.bc9cfd29.chunk.js": "/static/js/668.bc9cfd29.chunk.js",
     "index.html": "/index.html",
     "static/media/home.svg": "/static/media/home.7d51f25c64fe597ec540c3e724748f4e.svg",
     "main.6ef0c5a4.css.map": "/static/css/main.6ef0c5a4.css.map",
-    "main.696dd922.js.map": "/static/js/main.696dd922.js.map",
+    "main.85edc73d.js.map": "/static/js/main.85edc73d.js.map",
     "313.b92d3464.chunk.css.map": "/static/css/313.b92d3464.chunk.css.map",
     "313.ef6fdfb6.chunk.js.map": "/static/js/313.ef6fdfb6.chunk.js.map",
     "615.089588b9.chunk.js.map": "/static/js/615.089588b9.chunk.js.map",
@@ -106,12 +106,12 @@
     "react-vendor.50f24e41.js.map": "/static/js/react-vendor.50f24e41.js.map",
     "630.f7412fed.chunk.css.map": "/static/css/630.f7412fed.chunk.css.map",
     "630.ddd20691.chunk.js.map": "/static/js/630.ddd20691.chunk.js.map",
-    "968.7a2a4e37.chunk.js.map": "/static/js/968.7a2a4e37.chunk.js.map",
+    "968.bebce17b.chunk.js.map": "/static/js/968.bebce17b.chunk.js.map",
     "668.bc9cfd29.chunk.js.map": "/static/js/668.bc9cfd29.chunk.js.map"
   },
   "entrypoints": [
     "static/js/react-vendor.50f24e41.js",
     "static/css/main.6ef0c5a4.css",
-    "static/js/main.696dd922.js"
+    "static/js/main.85edc73d.js"
   ]
 }
