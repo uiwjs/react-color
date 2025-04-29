@@ -186,13 +186,17 @@ export const rgbStringToHsva = rgbaStringToHsva;
 
 /** Converts an RGBA color plus alpha transparency to hex */
 export const rgbaToHex = ({ r, g, b }: RgbaColor): string => {
+  return rgbToHex({ r, g, b });
+};
+
+export const rgbToHex = ({ r, g, b }: RgbColor): string => {
   const bin = (r << 16) | (g << 8) | b;
   return `#${((h) => new Array(7 - h.length).join('0') + h)(bin.toString(16))}`;
 };
 
 export const rgbaToHexa = ({ r, g, b, a }: RgbaColor): string => {
   const alpha = typeof a === 'number' && ((a * 255) | (1 << 8)).toString(16).slice(1);
-  return `${rgbaToHex({ r, g, b, a })}${alpha ? alpha : ''}`;
+  return `${rgbToHex({ r, g, b })}${alpha ? alpha : ''}`;
 };
 export type HexColor = `#${string}`;
 export const hexToHsva = (hex: string): HsvaColor => rgbaToHsva(hexToRgba(hex));
@@ -277,14 +281,13 @@ export const hsvaToRgbaString = (hsva: HsvaColor): string => {
 
 export const rgbaToRgb = ({ r, g, b }: RgbaColor): RgbColor => ({ r, g, b });
 export const hslaToHsl = ({ h, s, l }: HslaColor): HslColor => ({ h, s, l });
-export const hsvaToHex = (hsva: HsvaColor): string => rgbaToHex(hsvaToRgba(hsva));
+export const hsvaToHex = (hsva: HsvaColor): string => rgbToHex(hsvaToRgba(hsva));
 export const hsvaToHexa = (hsva: HsvaColor): string => rgbaToHexa(hsvaToRgba(hsva));
 export const hsvaToHsv = ({ h, s, v }: HsvaColor): HsvColor => ({ h, s, v });
 export const hexToXY = (hex: string): XYColor => rgbToXY(rgbaToRgb(hexToRgba(hex)));
 export const xyToHex = (xy: XYColor): string =>
-  rgbaToHex({
+  rgbToHex({
     ...xyToRgb(xy),
-    a: 255,
   });
 
 /**
