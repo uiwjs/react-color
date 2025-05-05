@@ -23,18 +23,28 @@ import React, { useState } from 'react';
 import Sketch from '@uiw/react-color-sketch';
 
 function Demo() {
-  const [hex, setHex] = useState("#fff");
+  const [hsva, setHsva] = useState({ h: 214, s: 43, v: 90, a: 1 });
   const [disableAlpha, setDisableAlpha] = useState(false);
   return (
     <div>
-      <Sketch
-        style={{ marginLeft: 20 }}
-        color={hex}
-        disableAlpha={disableAlpha}
-        onChange={(color) => {
-          setHex(color.hex);
-        }}
-      />
+      <div style={{ display: 'flex' }}>
+        <Sketch
+          style={{ marginLeft: 20 }}
+          color={hsva}
+          disableAlpha={disableAlpha}
+          onChange={(color) => {
+            setHsva(color.hsva);
+          }}
+        />
+        <Sketch
+          style={{ marginLeft: 20 }}
+          color={hsva}
+          disableAlpha={disableAlpha}
+          onChange={(color) => {
+            setHsva(color.hsva);
+          }}
+        />
+      </div>
       <button onClick={() => setDisableAlpha(!disableAlpha)}>
         disableAlpha={disableAlpha.toString()}
       </button>

@@ -24,9 +24,7 @@ const Saturation = React.forwardRef<HTMLDivElement, SaturationProps>((props, ref
     position: 'relative',
   };
 
-  const [interaction, setInteraction] = useState<Interaction>({ left: 0, top: 0, x: 0, y: 0, width: 0, height: 0 });
   const handleChange = (interaction: Interaction, event: MouseEvent | TouchEvent) => {
-    setInteraction(interaction);
     onChange &&
       hsva &&
       onChange({
@@ -40,22 +38,16 @@ const Saturation = React.forwardRef<HTMLDivElement, SaturationProps>((props, ref
 
   const pointerElement = useMemo(() => {
     if (!hsva) return null;
-    var ponitX = `${clamp(interaction.x, 0, interaction.width)}px`;
-    var ponitY = `${clamp(interaction.y, 0, interaction.height)}px`;
-    if (interaction.width === 0 || interaction.height === 0) {
-      ponitX = `${hsva.s}%`;
-      ponitY = `${100 - hsva.v}%`;
-    }
     const comProps = {
-      top: ponitY,
-      left: ponitX,
+      top: `${100 - hsva.v}%`,
+      left: `${hsva.s}%`,
       color: hsvaToHslaString(hsva),
     };
     if (pointer && typeof pointer === 'function') {
       return pointer({ prefixCls, ...comProps });
     }
     return <Pointer prefixCls={prefixCls} {...comProps} />;
-  }, [hsva, interaction, pointer, prefixCls]);
+  }, [hsva, pointer, prefixCls]);
 
   return (
     <Interactive
