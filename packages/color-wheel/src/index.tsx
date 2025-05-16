@@ -59,6 +59,7 @@ const Wheel = React.forwardRef<HTMLDivElement, WheelProps>((props, ref) => {
   };
   const pointerStyle: React.CSSProperties = {
     zIndex: 1,
+    position: 'absolute',
     transform: `translate(${positions.x}px, ${positions.y}px) ${
       oval === 'x' || oval === 'X' ? 'scaleY(2)' : oval === 'y' || oval === 'Y' ? 'scaleX(2)' : ''
     }`,

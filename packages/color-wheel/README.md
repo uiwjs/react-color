@@ -87,6 +87,50 @@ function Demo() {
 
 export default Demo;
 ```
+### Custom Pointer
+
+```tsx mdx:preview
+import React, { useState, Fragment } from 'react';
+import Wheel from '@uiw/react-color-wheel';
+import ShadeSlider from '@uiw/react-color-shade-slider';
+import { hsvaToHex } from '@uiw/color-convert';
+
+function Demo() {
+  const [hsva, setHsva] = useState({ h: 214, s: 43, v: 90, a: 1 });
+  return (
+    <Fragment>
+      <Wheel color={hsva} onChange={(color) => setHsva({ ...hsva, ...color.hsva })}
+      /* Passing the style prop is required in the topmost element. */
+      pointer={({ color, style }) => {
+          return (
+            <div style={style}>
+              <div
+                style={{
+                  width: 12,
+                  height: 12,
+                  transform: 'translate(-5px, -5px)',
+                  backgroundColor: color,
+                  border: '1px solid #000',
+                }}
+              ></div>
+            </div>
+          );
+        }}
+      />
+      <ShadeSlider
+        hsva={hsva}
+        style={{ width: 210, marginTop: 20 }}
+        onChange={(newShade) => {
+          setHsva({ ...hsva, ...newShade });
+        }}
+      />
+      <div style={{ width: '100%', height: 34, marginTop: 20, background: hsvaToHex(hsva) }}></div>
+    </Fragment>
+  );
+}
+
+export default Demo;
+```
 
 
 ## Props
@@ -107,7 +151,8 @@ export interface WheelProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
   angle?: number;
   /** Direction of the color wheel's hue gradient; either clockwise or anticlockwise. Default: `anticlockwise` */
   direction?: 'clockwise' | 'anticlockwise';
-  pointer?: ({ prefixCls, left, top, color }: PointerProps) => JSX.Element;
+  /** Passing the style prop is required in the topmost element. */
+  pointer?: ({ color, style }: PointerProps) => JSX.Element;
   onChange?: (color: ColorResult) => void;
 }
 declare const Wheel: React.ForwardRefExoticComponent<WheelProps & React.RefAttributes<HTMLDivElement>>;
