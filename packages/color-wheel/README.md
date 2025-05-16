@@ -99,9 +99,11 @@ function Demo() {
   const [hsva, setHsva] = useState({ h: 214, s: 43, v: 90, a: 1 });
   return (
     <Fragment>
-      <Wheel color={hsva} onChange={(color) => setHsva({ ...hsva, ...color.hsva })}
-      /* Passing the style prop is required in the topmost element. */
-      pointer={({ color, style }) => {
+      <Wheel
+        color={hsva}
+        onChange={(color) => setHsva({ ...hsva, ...color.hsva })}
+        /* Passing the style prop is required in the topmost element. */
+        pointer={({ color, style }) => {
           return (
             <div style={style}>
               <div
@@ -112,7 +114,7 @@ function Demo() {
                   backgroundColor: color,
                   border: '1px solid #000',
                 }}
-              ></div>
+              />
             </div>
           );
         }}
