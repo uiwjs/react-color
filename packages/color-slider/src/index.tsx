@@ -22,18 +22,21 @@ const hsvaCheck = (color?: string | HsvaColor): HsvaColor => {
   return (typeof color === 'string' && validHex(color) ? hexToHsva(color) : color || {}) as HsvaColor;
 };
 
-const hsvaEqual = (c1: HsvaColor, c2: HsvaColor, lightnessArray?: number[]): boolean => {
-  // Check for exact match of all properties
-  const exactMatch = c1.h === c2.h && c1.s === c2.s && c1.v === c2.v && c1.a === c2.a;
+// Check if values are within specified units of each other
+const withinRange = (val1: number, val2: number, tolerance: number = 2): boolean => Math.abs(val1 - val2) <= tolerance;
 
-  // If there's an exact match, return true
+const hsvaEqual = (c1: HsvaColor, c2: HsvaColor, lightnessArray?: number[]): boolean => {
+  // Check for match within 2 units of all properties
+  const baseMatch = withinRange(c1.h, c2.h) && withinRange(c1.s, c2.s) && withinRange(c1.a, c2.a);
+  const exactMatch = baseMatch && withinRange(c1.v, c2.v);
+
+  // If there's a match within range, return true
   if (exactMatch) return true;
 
-  // If no exact match and a lightness array exists, check if the base
-  // properties match and value is within 1 unit of any lightness value
+  // If no exact match and a lightness array exists,
+  // check if value is within range of any of the lightness array values
   if (lightnessArray) {
-    const baseMatch = c1.h === c2.h && c1.s === c2.s && c1.a === c2.a;
-    return baseMatch && lightnessArray.some((lightness) => Math.abs(c2.v - lightness) <= 1);
+    return baseMatch && lightnessArray.some((lightness) => withinRange(c2.v, lightness));
   }
 
   return false;
