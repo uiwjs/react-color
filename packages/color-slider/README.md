@@ -60,6 +60,27 @@ export default function Demo() {
 }
 ```
 
+```tsx mdx:preview
+import React, { useState } from 'react';
+import Slider from '@uiw/react-color-slider';
+
+export default function Demo() {
+  const [hsva, setHsva] = useState({ h: 0, s: 0, v: 0, a: 1 });
+  return (
+    <Slider
+      color={hsva}
+      onChange={(color) => {
+        setHsva({ ...hsva, ...color.hsv });
+      }}
+      customColorShades={[
+        { color: '#000000', lightness: [50, 40, 30, 20, 10] },
+        { color: '#ffffff', lightness: [95, 90, 80, 70, 60] },
+      ]}
+    />
+  );
+}
+```
+
 ## Props
 
 ```ts
@@ -69,6 +90,10 @@ export interface SliderProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 
   prefixCls?: string;
   color?: string | HsvaColor;
   lightness?: number[];
+  customColorShades?: {
+      color: string | HsvaColor;
+      lightness: number[];
+  }[];
   onChange?: (color: ColorResult, evn: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }
 declare const Slider: React.ForwardRefExoticComponent<SliderProps & React.RefAttributes<HTMLDivElement>>;
