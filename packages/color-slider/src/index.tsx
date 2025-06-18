@@ -46,7 +46,10 @@ const Slider = React.forwardRef<HTMLDivElement, SliderProps>((props, ref) => {
     style,
     onChange,
     color,
-    customColorShades = [{ color: hexToHsva('#000000'), lightness: [14, 12, 10, 8, 6] }],
+    customColorShades = [
+      { color: '#000000', lightness: [50, 40, 30, 20, 10] },
+      { color: '#ffffff', lightness: [95, 90, 80, 70, 60] },
+    ],
     lightness = [80, 65, 50, 35, 20],
     ...other
   } = props;
