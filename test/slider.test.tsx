@@ -43,8 +43,8 @@ it('Slider onChange color:HexColor', async () => {
       color="#93bee6"
       onChange={(color) => {
         expect(Object.keys(color)).toEqual(expect.arrayContaining(['rgb', 'hsl', 'hsv', 'rgba', 'hsla', 'hsva', 'hex', 'hexa']));
-        expect(color.hex).toEqual('#b3cde6');
-        expect(color.hexa).toEqual('#b3cde6ff');
+        expect(color.hex).toEqual('#82a9cc');
+        expect(color.hexa).toEqual('#82a9ccff');
       }}
     />,
   );
