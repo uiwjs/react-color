@@ -135,7 +135,10 @@ const Compact = React.forwardRef<HTMLDivElement, CompactProps<React.MouseEvent<H
         addonBefore={addonBefore}
         addonAfter={addonAfter}
       />
-      <div style={{ display: 'flex', margin: '0 4px 3px 0' }}>
+      <div
+        className={[`${prefixCls}-input-wrapper`, className || ''].filter(Boolean).join(' ')}
+        style={{ display: 'flex', margin: '0 4px 3px 0' }}
+      >
         <EditableInput
           onChange={(evn, val) => handleHex(val, evn)}
           labelStyle={{ paddingRight: 5, marginTop: -1 }}
