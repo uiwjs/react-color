@@ -19,6 +19,8 @@ export interface CompactProps<T> extends Omit<React.HTMLAttributes<HTMLDivElemen
   onChange?: (color: ColorResult, evn?: T) => void;
   rectRender?: (props: SwatchRectRenderProps) => JSX.Element | undefined;
   rectProps?: SwatchProps['rectProps'];
+  addonBefore?: React.ReactNode;
+  addonAfter?: React.ReactNode;
 }
 
 const COLORS = [
@@ -84,6 +86,8 @@ const Compact = React.forwardRef<HTMLDivElement, CompactProps<React.MouseEvent<H
     colors = COLORS,
     rectProps,
     rectRender,
+    addonBefore,
+    addonAfter,
     ...other
   } = props;
   const hsva = (typeof color === 'string' && validHex(color) ? hexToHsva(color) : color) as HsvaColor;
@@ -128,6 +132,8 @@ const Compact = React.forwardRef<HTMLDivElement, CompactProps<React.MouseEvent<H
           },
         }}
         onChange={(hsvColor) => handleChangeCallback(hsvColor)}
+        addonBefore={addonBefore}
+        addonAfter={addonAfter}
       />
       <div style={{ display: 'flex', margin: '0 4px 3px 0' }}>
         <EditableInput
