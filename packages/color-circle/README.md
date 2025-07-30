@@ -30,7 +30,7 @@
 </div>
 <hr>
 
-React Color Swatch
+React Color Circle
 ===
 
 [![Buy me a coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-048754?logo=buymeacoffee)](https://jaywcjlove.github.io/#/sponsor)
@@ -87,9 +87,21 @@ export default function Demo() {
         '#2196f3',
       ]}
       color={hex}
+      style={{
+        gap: 23
+      }}
+      rectProps={{
+        style: {
+          borderRadius: 2,
+          width: 18,
+          height: 18,
+        }
+      }}
       pointProps={{
         style: {
-          marginRight: 20,
+          width: 26,
+          height: 26,
+          borderRadius: 5
         },
       }}
       onChange={(color) => {

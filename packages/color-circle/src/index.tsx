@@ -17,6 +17,7 @@ const Circle = React.forwardRef<HTMLDivElement, CircleProps>((props, ref) => {
     colors = [],
     rectProps = {},
     pointProps = {},
+    style = {},
     onChange,
     ...other
   } = props;
@@ -24,11 +25,19 @@ const Circle = React.forwardRef<HTMLDivElement, CircleProps>((props, ref) => {
   const hex = color ? hsvaToHex(hsva) : '';
   const cls = [prefixCls, className].filter(Boolean).join(' ');
   const clsPoint = [`${prefixCls}-point`, pointProps?.className].filter(Boolean).join(' ');
+  pointProps.style = pointProps.style || {};
+  pointProps.style.borderRadius = pointProps.style?.borderRadius || '50%';
+  pointProps.style.width = pointProps.style?.width || 26;
+  pointProps.style.height = pointProps.style?.height || 26;
+  pointProps.style.marginRight = pointProps.style?.marginRight || 0;
+  pointProps.style.marginBottom = pointProps.style?.marginBottom || 0;
+  style.gap = style.gap || 10;
   return (
     <Swatch
       ref={ref}
       colors={colors}
       color={hex}
+      style={style}
       {...other}
       className={cls}
       rectRender={({ ...props }) => (

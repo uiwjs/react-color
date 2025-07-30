@@ -62,7 +62,7 @@ function Example() {
               '#795548',
               '#607d8b',
             ]}
-            style={{ width: 252 }}
+            style={{ width: 222 }}
             color={hsva}
             onChange={(color) => {
               dispatch!({ hsva: { ...hsva, ...color.hsva } });

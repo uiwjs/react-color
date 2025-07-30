@@ -17,15 +17,17 @@ export default function Point({ style, className, title, checked, color, onClick
     btn.current!.style['transform'] = 'scale(1)';
   }, []);
 
+  let width = rectProps?.style?.width || '100%';
+  let height = rectProps?.style?.height || '100%';
   const styleWrapper = {
     '--circle-point-background-color': '#fff',
-    height: checked ? '100%' : 0,
-    width: checked ? '100%' : 0,
-    borderRadius: '50%',
     backgroundColor: 'var(--circle-point-background-color)',
     boxSizing: 'border-box',
     transition: 'height 100ms ease 0s, width 100ms ease 0s',
     ...rectProps!.style,
+    borderRadius: rectProps?.style?.borderRadius || '50%',
+    height: checked ? height : 0,
+    width: checked ? width : 0,
   } as CSSProperties;
 
   return (
