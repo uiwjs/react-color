@@ -65,6 +65,8 @@ const Interactive = React.forwardRef<HTMLDivElement, InteractiveProps>((props, r
 
   const handleMoveStart = useCallback(
     (event: React.MouseEvent | React.TouchEvent) => {
+      const activeEl = document.activeElement as HTMLElement | null;
+      activeEl?.blur();
       preventDefaultMove(event.nativeEvent);
       if (!isValid(event.nativeEvent)) return;
       if (!container.current) return;
