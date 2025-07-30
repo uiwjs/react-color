@@ -1,5 +1,21 @@
 import { useContext } from 'react';
-import { Colorful, Sketch, Block, Circle, Compact, Wheel, Github, Material, Chrome } from '@uiw/react-color';
+import {
+  Colorful,
+  Sketch,
+  Block,
+  Circle,
+  Compact,
+  Wheel,
+  Github,
+  Material,
+  Chrome,
+  Saturation,
+  Alpha,
+  ShadeSlider,
+  Hue,
+  Swatch,
+  Slider,
+} from '@uiw/react-color';
 import { hsvaToHex } from '@uiw/react-color';
 import Markdown from '../../components/Markdown';
 import { Context } from '../../Store';
@@ -124,6 +140,67 @@ function Example() {
             }}
           />
           <Title>{`<Block color="${hsvaToHex(hsva)}" />`}</Title>
+        </div>
+      </div>
+      <div style={{ display: 'flex', gap: '20px', justifyContent: 'space-between', paddingTop: 40 }}>
+        <Saturation
+          hsva={hsva}
+          onChange={(color) => {
+            dispatch!({ hsva: { ...hsva, ...color } });
+          }}
+        />
+        <div style={{ flex: 1, display: 'flex', gap: '20px', flexDirection: 'column' }}>
+          <Hue
+            hue={hsva.h}
+            onChange={(newHue) => {
+              dispatch!({ hsva: { ...hsva, ...newHue } });
+            }}
+          />
+          <Alpha
+            hsva={hsva}
+            onChange={(newAlpha) => {
+              dispatch!({ hsva: { ...hsva, ...newAlpha } });
+            }}
+          />
+          <ShadeSlider
+            hsva={hsva}
+            onChange={(newShade) => {
+              dispatch!({ hsva: { ...hsva, ...newShade } });
+            }}
+          />
+          <Slider
+            color={hsva}
+            onChange={(color) => {
+              dispatch!({ hsva: { ...hsva, ...color.hsv } });
+            }}
+            customColorShades={[
+              { color: '#000000', lightness: [50, 40, 30, 20, 10] },
+              { color: '#ffffff', lightness: [95, 90, 80, 70, 60] },
+            ]}
+          />
+          <Swatch
+            colors={[
+              '#D0021B',
+              '#F5A623',
+              '#f8e61b',
+              '#8B572A',
+              '#7ED321',
+              '#417505',
+              '#BD10E0',
+              '#9013FE',
+              '#4A90E2',
+              '#50E3C2',
+              '#B8E986',
+              '#000000',
+              '#4A4A4A',
+              '#9B9B9B',
+              '#FFFFFF',
+            ]}
+            color={hsvaToHex(hsva)}
+            onChange={(hsva) => {
+              dispatch!({ hsva: { ...hsva, ...hsva } });
+            }}
+          />
         </div>
       </div>
     </div>
