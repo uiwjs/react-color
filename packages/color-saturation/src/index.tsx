@@ -1,6 +1,6 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { HsvaColor, hsvaToHslaString } from '@uiw/color-convert';
-import Interactive, { type Interaction, clamp } from '@uiw/react-drag-event-interactive';
+import Interactive, { type Interaction } from '@uiw/react-drag-event-interactive';
 import { Pointer, type PointerProps } from './Pointer';
 
 export interface SaturationProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
@@ -8,7 +8,7 @@ export interface SaturationProps extends Omit<React.HTMLAttributes<HTMLDivElemen
   /** hsva => `{ h: 0, s: 75, v: 82, a: 1 }` */
   hsva?: HsvaColor;
   hue?: number;
-  radius?: React.CSSProperties['borderRadius'];
+  radius?: string | number;
   /** React Component, Custom pointer component */
   pointer?: ({ prefixCls, left, top, color }: PointerProps) => JSX.Element;
   onChange?: (newColor: HsvaColor) => void;
@@ -36,6 +36,50 @@ const Saturation = React.forwardRef<HTMLDivElement, SaturationProps>((props, ref
       });
   };
 
+  const handleKeyDown = useCallback(
+    (event: React.KeyboardEvent<HTMLDivElement>) => {
+      if (!hsva || !onChange) return;
+      const step = 1; // 1% step for saturation and value
+      let newS = hsva.s;
+      let newV = hsva.v;
+      let changed = false;
+
+      switch (event.key) {
+        case 'ArrowLeft':
+          newS = Math.max(0, hsva.s - step);
+          changed = true;
+          event.preventDefault();
+          break;
+        case 'ArrowRight':
+          newS = Math.min(100, hsva.s + step);
+          changed = true;
+          event.preventDefault();
+          break;
+        case 'ArrowUp':
+          newV = Math.min(100, hsva.v + step);
+          changed = true;
+          event.preventDefault();
+          break;
+        case 'ArrowDown':
+          newV = Math.max(0, hsva.v - step);
+          changed = true;
+          event.preventDefault();
+          break;
+        default:
+          return;
+      }
+      if (changed) {
+        onChange({
+          h: hsva.h,
+          s: newS,
+          v: newV,
+          a: hsva.a,
+        });
+      }
+    },
+    [hsva, onChange],
+  );
+
   const pointerElement = useMemo(() => {
     if (!hsva) return null;
     const comProps = {
@@ -49,6 +93,10 @@ const Saturation = React.forwardRef<HTMLDivElement, SaturationProps>((props, ref
     return <Pointer prefixCls={prefixCls} {...comProps} />;
   }, [hsva, pointer, prefixCls]);
 
+  const handleClick = useCallback((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    (event.target as HTMLElement).focus();
+  }, []);
+
   return (
     <Interactive
       className={[prefixCls, className || ''].filter(Boolean).join(' ')}
@@ -61,10 +109,13 @@ const Saturation = React.forwardRef<HTMLDivElement, SaturationProps>((props, ref
           hsva?.h ?? hue
         }, 100%, 50%))`,
         ...containerStyle,
+        outline: 'none',
       }}
       ref={ref}
       onMove={handleChange}
       onDown={handleChange}
+      onKeyDown={handleKeyDown}
+      onClick={handleClick}
     >
       {pointerElement}
     </Interactive>
