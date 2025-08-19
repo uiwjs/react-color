@@ -30,6 +30,7 @@ it('Saturation', async () => {
       borderRadius: 0,
       cursor: 'crosshair',
       inset: 0,
+      outline: 'none',
       position: 'relative',
       touchAction: 'none',
       backgroundImage: 'linear-gradient(0deg, #000, transparent), linear-gradient(90deg, #fff, hsl(0, 100%, 50%))',
