@@ -1,4 +1,5 @@
 import React, { useCallback, useMemo } from 'react';
+import type * as CSS from 'csstype';
 import { HsvaColor, hsvaToHslaString } from '@uiw/color-convert';
 import Interactive, { type Interaction } from '@uiw/react-drag-event-interactive';
 import { Pointer, type PointerProps } from './Pointer';
@@ -16,7 +17,7 @@ export interface SaturationProps extends Omit<React.HTMLAttributes<HTMLDivElemen
 
 const Saturation = React.forwardRef<HTMLDivElement, SaturationProps>((props, ref) => {
   const { prefixCls = 'w-color-saturation', radius = 0, pointer, className, hue = 0, style, hsva, onChange, ...other } = props;
-  const containerStyle: React.CSSProperties = {
+  const containerStyle: CSS.Properties<string | number> = {
     width: 200,
     height: 200,
     borderRadius: radius,

@@ -1,4 +1,5 @@
 import React from 'react';
+import type * as CSS from 'csstype';
 import { useRef, useEffect, useState } from 'react';
 
 const validHex = (hex: string): boolean => /^#?([A-Fa-f0-9]{3,4}){1,2}$/.test(hex);
@@ -8,9 +9,9 @@ export interface EditableInputProps extends Omit<React.InputHTMLAttributes<HTMLI
   prefixCls?: string;
   value?: string | number;
   label?: React.ReactNode;
-  labelStyle?: React.CSSProperties;
+  labelStyle?: CSS.Properties<string | number>;
   placement?: 'top' | 'left' | 'bottom' | 'right';
-  inputStyle?: React.CSSProperties;
+  inputStyle?: CSS.Properties<string | number>;
   onChange?: (evn: React.ChangeEvent<HTMLInputElement>, value: string | number) => void;
   renderInput?: (props: React.InputHTMLAttributes<HTMLInputElement>, ref: React.Ref<HTMLInputElement>) => React.ReactNode;
 }
@@ -57,7 +58,7 @@ const EditableInput = React.forwardRef<HTMLInputElement, EditableInputProps>((pr
     setValue(props.value);
     onBlur && onBlur(evn);
   }
-  const placementStyle: React.CSSProperties = {};
+  const placementStyle: CSS.Properties<string | number> = {};
   if (placement === 'bottom') {
     placementStyle['flexDirection'] = 'column';
   }
@@ -67,7 +68,8 @@ const EditableInput = React.forwardRef<HTMLInputElement, EditableInputProps>((pr
   if (placement === 'left') {
     placementStyle['flexDirection'] = 'row-reverse';
   }
-  const wrapperStyle = {
+
+  const wrapperStyle: CSS.Properties<string | number> = {
     '--editable-input-label-color': 'rgb(153, 153, 153)',
     '--editable-input-box-shadow': 'rgb(204 204 204) 0px 0px 0px 1px inset',
     '--editable-input-color': '#666',
@@ -77,8 +79,9 @@ const EditableInput = React.forwardRef<HTMLInputElement, EditableInputProps>((pr
     fontSize: 11,
     ...placementStyle,
     ...style,
-  } as React.CSSProperties;
-  const editableStyle = {
+  } as CSS.Properties<string | number>;
+
+  const editableStyle: CSS.Properties<string | number> = {
     width: '100%',
     paddingTop: 2,
     paddingBottom: 2,
@@ -91,7 +94,7 @@ const EditableInput = React.forwardRef<HTMLInputElement, EditableInputProps>((pr
     color: 'var(--editable-input-color)',
     boxShadow: 'var(--editable-input-box-shadow)',
     ...inputStyle,
-  } as React.CSSProperties;
+  } as CSS.Properties<string | number>;
 
   const inputProps: React.InputHTMLAttributes<HTMLInputElement> = {
     value,

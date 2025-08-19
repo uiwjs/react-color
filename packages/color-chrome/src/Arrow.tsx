@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, CSSProperties } from 'react';
+import React, { useRef, useCallback } from 'react';
 
 interface ArrowProps extends React.HTMLAttributes<HTMLDivElement> {}
 

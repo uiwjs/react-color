@@ -79,20 +79,21 @@ export default function Demo() {
 import React from 'react';
 import { HsvaColor } from '@uiw/color-convert';
 import { Interaction } from '@uiw/react-drag-event-interactive';
+import type * as CSS from 'csstype';
 import { PointerProps } from './Pointer';
 export * from './Pointer';
 export interface AlphaProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   prefixCls?: string;
   /** String, Pixel value for picker width. Default `316px` */
-  width?: React.CSSProperties['width'];
+  width?: CSS.Properties<string | number>['width'];
   /** String, Pixel value for picker height. Default `16px` */
-  height?: React.CSSProperties['height'];
+  height?: CSS.Properties<string | number>['height'];
   /** hsva => `{ h: 0, s: 75, v: 82, a: 1 }` */
   hsva: HsvaColor;
   /** React Component, Custom pointer component */
   pointer?: (props: PointerProps) => JSX.Element;
   /** Set rounded corners. */
-  radius?: React.CSSProperties['borderRadius'];
+  radius?: CSS.Properties<string | number>['borderRadius'];
   /** Set the background color. */
   background?: string;
   /** Set the background element props. */

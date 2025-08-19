@@ -1,4 +1,5 @@
-import React, { useState, useCallback, Fragment, CSSProperties } from 'react';
+import React, { useState, Fragment } from 'react';
+import type * as CSS from 'csstype';
 import Saturation from '@uiw/react-color-saturation';
 import Alpha, { PointerProps } from '@uiw/react-color-alpha';
 import EditableInput from '@uiw/react-color-editable-input';
@@ -105,23 +106,23 @@ const Sketch = React.forwardRef<HTMLDivElement, SketchProps>((props, ref) => {
     boxShadow: 'var(--sketch-box-shadow)',
     width,
     ...style,
-  } as CSSProperties;
-  const styleAlpha = {
+  } as CSS.Properties<string | number>;
+  const styleAlpha: CSS.Properties<string | number> = {
     borderRadius: 2,
     background: hsvaToRgbaString(hsva),
     boxShadow: 'var(--sketch-alpha-box-shadow)',
-  } as CSSProperties;
-  const styleSwatch = {
+  };
+  const styleSwatch: CSS.Properties<string | number> = {
     borderTop: 'var(--sketch-swatch-border-top)',
     paddingTop: 10,
     paddingLeft: 10,
-  } as CSSProperties;
-  const styleSwatchRect = {
+  };
+  const styleSwatchRect: CSS.Properties<string | number> = {
     marginRight: 10,
     marginBottom: 10,
     borderRadius: 3,
     boxShadow: 'var(--sketch-swatch-box-shadow)',
-  } as CSSProperties;
+  };
   return (
     <div {...other} className={`${prefixCls} ${className || ''}`} ref={ref} style={styleMain}>
       <div style={{ padding: '10px 10px 8px' }}>

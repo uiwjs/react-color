@@ -172,13 +172,14 @@ export default Demo;
 ```ts
 import React from 'react';
 import { HsvaColor, ColorResult } from '@uiw/color-convert';
+import type * as CSS from 'csstype';
 import { PointerProps } from './Pointer';
 export interface WheelProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'color'> {
   prefixCls?: string;
   color?: string | HsvaColor;
   width?: number;
   height?: number;
-  radius?: React.CSSProperties['borderRadius'];
+  radius?: CSS.Properties<string | number>['borderRadius'];
   /** Direction of the oval: 'x' or 'y'. */ 
   oval?: string;
   /** Starting angle of the color wheel's hue gradient, measured in degrees. */

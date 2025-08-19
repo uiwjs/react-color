@@ -1,6 +1,6 @@
-import React, { CSSProperties, useCallback } from 'react';
+import React, { useRef, useCallback } from 'react';
 import { SwatchRectRenderProps, SwatchProps } from '@uiw/react-color-swatch';
-import { useRef } from 'react';
+import type * as CSS from 'csstype';
 
 interface PointProps extends SwatchRectRenderProps {
   rectProps?: SwatchProps['rectProps'];
@@ -19,7 +19,7 @@ export default function Point({ style, className, title, checked, color, onClick
 
   let width = rectProps?.style?.width || '100%';
   let height = rectProps?.style?.height || '100%';
-  const styleWrapper = {
+  const styleWrapper: CSS.Properties<string | number> = {
     '--circle-point-background-color': '#fff',
     backgroundColor: 'var(--circle-point-background-color)',
     boxSizing: 'border-box',
@@ -28,7 +28,7 @@ export default function Point({ style, className, title, checked, color, onClick
     borderRadius: rectProps?.style?.borderRadius || '50%',
     height: checked ? height : 0,
     width: checked ? width : 0,
-  } as CSSProperties;
+  } as CSS.Properties<string | number>;
 
   return (
     <div

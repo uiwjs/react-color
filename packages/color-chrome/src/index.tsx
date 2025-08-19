@@ -1,4 +1,5 @@
-import React, { type CSSProperties, Fragment } from 'react';
+import React, { Fragment } from 'react';
+import type * as CSS from 'csstype';
 import {
   type HsvaColor,
   hsvaToRgbaString,
@@ -66,9 +67,9 @@ const Chrome = React.forwardRef<HTMLDivElement, ChromeProps>((props, ref) => {
       setType(ChromeInputType.RGBA);
     }
   };
-  const labelStyle: React.CSSProperties = { paddingTop: 6 };
-  const inputStyle: React.CSSProperties = { textAlign: 'center', paddingTop: 4, paddingBottom: 4 };
-  const wrapperStyle = {
+  const labelStyle: CSS.Properties<string | number> = { paddingTop: 6 };
+  const inputStyle: CSS.Properties<string | number> = { textAlign: 'center', paddingTop: 4, paddingBottom: 4 };
+  const wrapperStyle: CSS.Properties<string | number> = {
     '--chrome-arrow-fill': '#333',
     '--chrome-arrow-background-color': '#e8e8e8',
     borderRadius: 0,
@@ -76,13 +77,15 @@ const Chrome = React.forwardRef<HTMLDivElement, ChromeProps>((props, ref) => {
     width: 230,
     padding: 0,
     ...style,
-  } as CSSProperties;
-  const alphaStyle = {
+  } as CSS.Properties<string | number>;
+
+  const alphaStyle: CSS.Properties<string | number> = {
     '--chrome-alpha-box-shadow': 'rgb(0 0 0 / 25%) 0px 0px 1px inset',
     borderRadius: '50%',
     background: hsvaToRgbaString(hsva),
     boxShadow: 'var(--chrome-alpha-box-shadow)',
-  };
+  } as CSS.Properties<string | number>;
+
   const handleClickColor = (hex: string) => {
     let result = hexToHsva(hex);
     handleChange({ ...result });

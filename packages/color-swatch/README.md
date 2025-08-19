@@ -97,6 +97,7 @@ export default Demo;
 
 ```ts
 import React from 'react';
+import type * as CSS from 'csstype';
 import { HsvaColor, ColorResult } from '@uiw/color-convert';
 export type SwatchPresetColor = {
   color: string;
@@ -106,7 +107,7 @@ export interface SwatchRectRenderProps extends React.HTMLAttributes<HTMLDivEleme
   title: string;
   color: string;
   checked: boolean;
-  style: React.CSSProperties;
+  style: CSS.Properties<string | number>;
   onClick: (evn: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 };
 export interface SwatchProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'color'> {

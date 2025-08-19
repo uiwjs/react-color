@@ -1,10 +1,11 @@
-import React, { CSSProperties, useCallback } from 'react';
+import React, { useCallback } from 'react';
+import type * as CSS from 'csstype';
 import {
-  ColorResult,
+  type ColorResult,
   color as handleColor,
   hexToHsva,
   validHex,
-  HsvaColor,
+  type HsvaColor,
   hsvaToHex,
   getContrastingColor,
 } from '@uiw/color-convert';
@@ -104,7 +105,7 @@ const Compact = React.forwardRef<HTMLDivElement, CompactProps<React.MouseEvent<H
     },
     inputStyle: { boxShadow: 'none', backgroundColor: 'transparent', outline: 0 },
   };
-  const wrapperStyle = {
+  const wrapperStyle: CSS.Properties<string | number> = {
     '--compact-background-color': '#f6f6f6',
     background: 'var(--compact-background-color)',
     borderRadius: 3,
@@ -114,7 +115,7 @@ const Compact = React.forwardRef<HTMLDivElement, CompactProps<React.MouseEvent<H
     paddingTop: 5,
     paddingLeft: 5,
     ...style,
-  } as CSSProperties;
+  } as CSS.Properties<string | number>;
   return (
     <div ref={ref} style={wrapperStyle} className={[prefixCls, className || ''].filter(Boolean).join(' ')} {...other}>
       <Swatch

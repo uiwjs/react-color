@@ -1,6 +1,7 @@
-import React, { CSSProperties, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { HsvaColor, ColorResult, color as handleColor, validHex, hexToHsva, hsvaToHex } from '@uiw/color-convert';
 import Swatch, { SwatchProps, SwatchRectRenderProps } from '@uiw/react-color-swatch';
+import type * as CSS from 'csstype';
 import Point from './Point';
 
 const CORLER_HEX = [
@@ -79,14 +80,14 @@ const Github = React.forwardRef<HTMLDivElement, GithubProps>((props, ref) => {
     position: 'relative',
     padding: 5,
     ...style,
-  } as CSSProperties;
+  } as CSS.Properties<string | number>;
 
-  const rStyle: React.CSSProperties = {
+  const rStyle: CSS.Properties<string | number> = {
     borderStyle: 'solid',
     position: 'absolute',
   };
-  let arrBrStyl: React.CSSProperties = { ...rStyle };
-  let arrStyl: React.CSSProperties = { ...rStyle };
+  let arrBrStyl: CSS.Properties<string | number> = { ...rStyle };
+  let arrStyl: CSS.Properties<string | number> = { ...rStyle };
   if (/^T/.test(placement)) {
     arrBrStyl.borderWidth = '0 8px 8px';
     arrBrStyl.borderColor = 'transparent transparent var(--github-arrow-border-color)';

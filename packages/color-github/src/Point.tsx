@@ -1,12 +1,12 @@
-import React, { CSSProperties, useCallback } from 'react';
-import { SwatchRectRenderProps, SwatchProps } from '@uiw/react-color-swatch';
-import { useRef } from 'react';
+import React, { useCallback, useRef } from 'react';
+import { SwatchRectRenderProps, type SwatchProps } from '@uiw/react-color-swatch';
+import type * as CSS from 'csstype';
 
 interface PointProps extends SwatchRectRenderProps {
   rectProps?: SwatchProps['rectProps'];
 }
 
-const defalutStyle: CSSProperties = {
+const defalutStyle: CSS.Properties<string | number> = {
   marginRight: 0,
   marginBottom: 0,
   borderRadius: 0,

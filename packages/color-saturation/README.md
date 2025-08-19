@@ -87,14 +87,15 @@ export default function Demo() {
 
 ```ts
 import React from 'react';
-import { HsvaColor } from '@uiw/color-convert';
-import { PointerProps } from './Pointer';
+import type * as CSS from 'csstype';
+import { type HsvaColor } from '@uiw/color-convert';
+import { type PointerProps } from './Pointer';
 export interface SaturationProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   prefixCls?: string;
   /** hsva => `{ h: 0, s: 75, v: 82, a: 1 }` */
   hsva?: HsvaColor;
   hue?: number;
-  radius?: React.CSSProperties['borderRadius'];
+  radius?: CSS.Properties<string | number>['borderRadius'];
   /** React Component, Custom pointer component */
   pointer?: ({ prefixCls, left, top, color }: PointerProps) => JSX.Element;
   onChange?: (newColor: HsvaColor) => void;

@@ -1,12 +1,13 @@
 import React, { Fragment } from 'react';
-import { HsvaColor, hexToHsva, color as handleColor, ColorResult } from '@uiw/color-convert';
+import { type HsvaColor, hexToHsva, color as handleColor, type ColorResult } from '@uiw/color-convert';
+import type * as CSS from 'csstype';
 
 export type SwatchPresetColor = { color: string; title?: string } | string;
 export interface SwatchRectRenderProps extends React.HTMLAttributes<HTMLDivElement> {
   title: string;
   color: string;
   checked: boolean;
-  style: React.CSSProperties;
+  style: CSS.Properties<string | number>;
   onClick: (evn: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }
 export interface SwatchProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'color'> {
@@ -34,7 +35,7 @@ const Swatch = React.forwardRef<HTMLDivElement, SwatchProps>((props, ref) => {
     rectRender,
     ...other
   } = props;
-  const rectStyle = {
+  const rectStyle: CSS.Properties<string | number> = {
     '--swatch-background-color': 'rgb(144, 19, 254)',
     background: 'var(--swatch-background-color)',
     height: 15,
@@ -46,7 +47,7 @@ const Swatch = React.forwardRef<HTMLDivElement, SwatchProps>((props, ref) => {
     outline: 'none',
     borderRadius: 2,
     ...rectProps.style,
-  } as React.CSSProperties;
+  } as CSS.Properties<string | number>;
   const handleClick = (hex: string, evn: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     onChange && onChange(hexToHsva(hex), handleColor(hexToHsva(hex)), evn);
   };

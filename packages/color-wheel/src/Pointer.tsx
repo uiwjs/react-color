@@ -1,5 +1,5 @@
 import React from 'react';
-import { useMemo } from 'react';
+import type * as CSS from 'csstype';
 
 export interface PointerProps extends React.HTMLAttributes<HTMLDivElement> {
   prefixCls?: string;
@@ -11,7 +11,7 @@ export interface PointerProps extends React.HTMLAttributes<HTMLDivElement> {
 const BOXSHADOW = 'rgb(255 255 255) 0px 0px 0px 1.5px, rgb(0 0 0 / 30%) 0px 0px 1px 1px inset, rgb(0 0 0 / 40%) 0px 0px 1px 2px';
 
 export const Pointer = ({ className, color, left, top, style, prefixCls }: PointerProps): JSX.Element => {
-  const styleWarp: React.CSSProperties = {
+  const styleWarp: CSS.Properties<string | number> = {
     ...style,
     position: 'absolute',
     top,

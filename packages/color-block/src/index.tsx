@@ -1,7 +1,8 @@
-import React, { CSSProperties } from 'react';
+import React from 'react';
+import type * as CSS from 'csstype';
 import {
-  HsvaColor,
-  ColorResult,
+  type HsvaColor,
+  type ColorResult,
   color as handleColor,
   validHex,
   hexToHsva,
@@ -42,7 +43,7 @@ const Block = React.forwardRef<HTMLDivElement, BlockProps>((props, ref) => {
       onChange && onChange(handleColor(hexToHsva(value)));
     }
   };
-  const stylePointer = {
+  const stylePointer: CSS.Properties<string | number> = {
     '--block-background-color': 'rgb(255, 255, 255)',
     '--block-box-shadow': 'rgb(0 0 0 / 10%) 0 1px',
     width: 170,
@@ -51,7 +52,7 @@ const Block = React.forwardRef<HTMLDivElement, BlockProps>((props, ref) => {
     boxShadow: 'var(--block-box-shadow)',
     position: 'relative',
     ...style,
-  } as CSSProperties;
+  } as CSS.Properties<string | number>;
   return (
     <div ref={ref} className={[prefixCls, className].filter(Boolean).join(' ')} style={stylePointer} {...other}>
       {showTriangle && (

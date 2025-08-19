@@ -1,10 +1,11 @@
-import React, { CSSProperties } from 'react';
+import React from 'react';
+import type * as CSS from 'csstype';
 import {
   validHex,
   color as handleColor,
   hexToHsva,
-  HsvaColor,
-  ColorResult,
+  type HsvaColor,
+  type ColorResult,
   hsvaToHex,
   hsvaToRgbaString,
 } from '@uiw/color-convert';
@@ -20,7 +21,7 @@ export interface ColorfulProps extends Omit<React.HTMLAttributes<HTMLDivElement>
 }
 
 const Pointer = ({ style, color, ...props }: React.HTMLAttributes<HTMLDivElement> & { color: string }) => {
-  const stylePointer = {
+  const stylePointer: CSS.Properties<string | number> = {
     '--colorful-pointer-background-color': '#fff',
     '--colorful-pointer-border': '2px solid #fff',
     height: 28,
@@ -34,7 +35,7 @@ const Pointer = ({ style, color, ...props }: React.HTMLAttributes<HTMLDivElement
     border: 'var(--colorful-pointer-border)',
     zIndex: 1,
     ...style,
-  } as CSSProperties;
+  } as CSS.Properties<string | number>;
   return (
     <div {...props} style={stylePointer}>
       <div

@@ -1,6 +1,6 @@
 import React from 'react';
-import { validHex, hsvaToHex, HsvaColor, hexToHsva, ColorResult, color as handleColor } from '@uiw/color-convert';
-import Swatch, { SwatchProps } from '@uiw/react-color-swatch';
+import { validHex, hsvaToHex, type HsvaColor, hexToHsva, type ColorResult, color as handleColor } from '@uiw/color-convert';
+import Swatch, { type SwatchProps } from '@uiw/react-color-swatch';
 import Point from './Point';
 
 export interface CircleProps extends Omit<SwatchProps, 'color' | 'onChange'> {

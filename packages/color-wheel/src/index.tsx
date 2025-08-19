@@ -1,7 +1,8 @@
 import React from 'react';
-import { HsvaColor, ColorResult, validHex, hexToHsva, hsvaToHex, color as handleColor } from '@uiw/color-convert';
-import Interactive, { Interaction } from '@uiw/react-drag-event-interactive';
-import { Pointer, PointerProps } from './Pointer';
+import type * as CSS from 'csstype';
+import { HsvaColor, type ColorResult, validHex, hexToHsva, hsvaToHex, color as handleColor } from '@uiw/color-convert';
+import Interactive, { type Interaction } from '@uiw/react-drag-event-interactive';
+import { Pointer, type PointerProps } from './Pointer';
 import { getWheelHandlePosition, getWheelValueFromInput } from './utils';
 
 export interface WheelProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'color'> {
@@ -9,7 +10,7 @@ export interface WheelProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
   color?: string | HsvaColor;
   width?: number;
   height?: number;
-  radius?: React.CSSProperties['borderRadius'];
+  radius?: CSS.Properties<string | number>['borderRadius'];
   /** Direction of the oval: 'x' or 'y'. */
   oval?: string;
   /** Starting angle of the color wheel's hue gradient, measured in degrees. */
@@ -57,7 +58,7 @@ const Wheel = React.forwardRef<HTMLDivElement, WheelProps>((props, ref) => {
     };
     onChange && onChange(handleColor(handleHsva));
   };
-  const pointerStyle: React.CSSProperties = {
+  const pointerStyle: CSS.Properties<string | number> = {
     zIndex: 1,
     position: 'absolute',
     transform: `translate(${positions.x}px, ${positions.y}px) ${
