@@ -37,6 +37,15 @@ const EditableInputRGBA = React.forwardRef<HTMLDivElement, EditableInputRGBAProp
       evn.target.value = '0';
     }
   }
+  const handleAlphaBlur = (evn: React.FocusEvent<HTMLInputElement>) => {
+    const value = Number(evn.target.value);
+    if (value && value > 100) {
+      evn.target.value = '100';
+    }
+    if (value && value < 0) {
+      evn.target.value = '0';
+    }
+  };
   const handleChange = (value: string | number, type: 'r' | 'g' | 'b' | 'a', evn: React.ChangeEvent<HTMLInputElement>) => {
     if (typeof value === 'number') {
       if (type === 'a') {
@@ -63,6 +72,7 @@ const EditableInputRGBA = React.forwardRef<HTMLDivElement, EditableInputRGBAProp
       }
     }
   };
+  const roundedAlpha = rgba.a ? Math.round(rgba.a * 100) / 100 : 0;
   return (
     <div
       ref={ref}
@@ -104,8 +114,8 @@ const EditableInputRGBA = React.forwardRef<HTMLDivElement, EditableInputRGBAProp
       {aProps && (
         <EditableInput
           label="A"
-          value={rgba.a ? parseInt(String(rgba.a * 100), 10) : 0}
-          onBlur={handleBlur}
+          value={parseInt(String(roundedAlpha * 100), 10)}
+          onBlur={handleAlphaBlur}
           placement={placement}
           onChange={(evn, val) => handleChange(val, 'a', evn)}
           {...aProps}
