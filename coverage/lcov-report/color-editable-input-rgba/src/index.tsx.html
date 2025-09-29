@@ -25,28 +25,28 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>34/34</span>
+                <span class='fraction'>41/41</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>54/54</span>
+                <span class='fraction'>62/62</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>7/7</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>32/32</span>
+                <span class='fraction'>39/39</span>
             </div>
         
             
@@ -184,7 +184,17 @@
 <a name='L119'></a><a href='#L119'>119</a>
 <a name='L120'></a><a href='#L120'>120</a>
 <a name='L121'></a><a href='#L121'>121</a>
-<a name='L122'></a><a href='#L122'>122</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -215,12 +225,21 @@
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">13x</span>
@@ -249,6 +268,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -344,6 +364,15 @@ const EditableInputRGBA = React.forwardRef&lt;HTMLDivElement, EditableInputRGBAP
       evn.target.value = '0';
     }
   }
+  const handleAlphaBlur = (evn: React.FocusEvent&lt;HTMLInputElement&gt;) =&gt; {
+    const value = Number(evn.target.value);
+    if (value &amp;&amp; value &gt; 100) {
+      evn.target.value = '100';
+    }
+    if (value &amp;&amp; value &lt; 0) {
+      evn.target.value = '0';
+    }
+  };
   const handleChange = (value: string | number, type: 'r' | 'g' | 'b' | 'a', evn: React.ChangeEvent&lt;HTMLInputElement&gt;) =&gt; {
     if (typeof value === 'number') {
       if (type === 'a') {
@@ -370,6 +399,7 @@ const EditableInputRGBA = React.forwardRef&lt;HTMLDivElement, EditableInputRGBAP
       }
     }
   };
+  const roundedAlpha = rgba.a ? Math.round(rgba.a * 100) / 100 : 0;
   return (
     &lt;div
       ref={ref}
@@ -411,8 +441,8 @@ const EditableInputRGBA = React.forwardRef&lt;HTMLDivElement, EditableInputRGBAP
       {aProps &amp;&amp; (
         &lt;EditableInput
           label="A"
-          value={rgba.a ? parseInt(String(rgba.a * 100), 10) : 0}
-          onBlur={handleBlur}
+          value={parseInt(String(roundedAlpha * 100), 10)}
+          onBlur={handleAlphaBlur}
           placement={placement}
           onChange={(evn, val) =&gt; handleChange(val, 'a', evn)}
           {...aProps}
@@ -433,7 +463,7 @@ export default EditableInputRGBA;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-09-18T16:55:57.802Z
+                at 2025-09-29T15:56:33.154Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
