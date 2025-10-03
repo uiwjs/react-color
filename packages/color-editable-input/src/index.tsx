@@ -104,6 +104,10 @@ const EditableInput = React.forwardRef<HTMLInputElement, EditableInputProps>((pr
     onFocus: () => (isFocus.current = true),
     ...other,
     style: editableStyle,
+    onFocusCapture: (e) => {
+      let elm = e.target as HTMLInputElement;
+      elm.setSelectionRange(elm.value.length, elm.value.length);
+    },
   };
   return (
     <div className={[prefixCls, className || ''].filter(Boolean).join(' ')} style={wrapperStyle}>
