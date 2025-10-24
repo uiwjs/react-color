@@ -2,7 +2,7 @@ export * from '@uiw/color-convert';
 
 export { default as Alpha, type AlphaProps, type PointerProps, BACKGROUND_IMG, Pointer } from '@uiw/react-color-alpha';
 export { default as Block, type BlockProps } from '@uiw/react-color-block';
-export { default as Chrome, type ChromeInputType, type ChromeProps } from '@uiw/react-color-chrome';
+export { default as Chrome, ChromeInputType, type ChromeProps } from '@uiw/react-color-chrome';
 export { default as Circle, type CircleProps } from '@uiw/react-color-circle';
 export { default as Colorful, type ColorfulProps } from '@uiw/react-color-colorful';
 export { default as Compact, type CompactProps } from '@uiw/react-color-compact';
