@@ -74,6 +74,7 @@ import { GithubPlacement } from '@uiw/react-color-github';
 function Demo() {
   const [hsva, setHsva] = useState({ h:0, s:25.71, v:82.35, a:0.32});
   const hex = hsvaToHex(hsva)
+  const hexa = hsvaToHexa(hsva)
   return (
     <>
       <Chrome
@@ -104,6 +105,9 @@ function Demo() {
       />
       <div style={{ background: hex, marginTop: 30, padding: 10 }}>
         {hex}
+      </div>
+      <div style={{ background: hexa, marginTop: 30, padding: 10 }}>
+        {hexa}
       </div>
     </>
   );
