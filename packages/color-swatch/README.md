@@ -95,6 +95,59 @@ function Demo() {
 export default Demo;
 ```
 
+```tsx mdx:preview
+import React, { useState } from 'react';
+import { hsvaToHex, getContrastingColor } from '@uiw/color-convert';
+import Swatch from '@uiw/react-color-swatch';
+
+function Point(props: { color?: string; checked?: boolean }) {
+  if (!props.checked) return null;
+  return (
+    <div
+      style={{
+        height: 5,
+        width: 5,
+        borderRadius: '50%',
+        backgroundColor: getContrastingColor(props.color!),
+      }}
+    />
+  );
+}
+
+function Demo() {
+  const [hex, setHex] = useState("#fff");
+  return (
+    <Swatch
+      colors={['#000000', '#ffffff', '#ff2056', '#e12afb', '#8e51ff',
+        '#2b7fff', '#00b8db', '#00bc7d', '#5ea500', '#ff8904',
+        '#fb64b6', '#00bcff', '#00d5be', '#9ae600', '#ffdf20']}
+      color={hex}
+      rectRender={(renderProps) => (
+        <div
+            {...renderProps}
+            style={{
+                ...renderProps.style,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: renderProps.color,
+                border: "1px solid red",
+                borderRadius: 10
+            }}
+        >
+            <Point color={renderProps.color} checked={renderProps.checked} />
+        </div>
+      )}
+      onChange={(hsvColor) => {
+        setHex(hsvaToHex(hsvColor))
+      }}
+    />
+  );
+}
+
+export default Demo;
+```
+
 ## Props
 
 ```ts
