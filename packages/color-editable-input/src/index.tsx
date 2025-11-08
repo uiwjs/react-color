@@ -42,7 +42,7 @@ const EditableInput = React.forwardRef<HTMLInputElement, EditableInputProps>((pr
     }
   }, [props.value]);
 
-  function handleChange(evn: React.FocusEvent<HTMLInputElement>, valInit?: string) {
+  function handleChange(evn: React.ChangeEvent<HTMLInputElement>, valInit?: string) {
     const value = (valInit || evn.target.value).trim().replace(/^#/, '');
     if (validHex(value)) {
       onChange && onChange(evn, value);
@@ -116,7 +116,6 @@ const EditableInput = React.forwardRef<HTMLInputElement, EditableInputProps>((pr
         <span
           style={{
             color: 'var(--editable-input-label-color)',
-            textTransform: 'capitalize',
             ...labelStyle,
           }}
           children={label}

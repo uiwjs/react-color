@@ -11,7 +11,7 @@ function Example() {
       <EditableInput
         label="Hex"
         value={hsvaToHex(hsva)}
-        onChange={(evn, value) => {
+        onChange={(value, evn) => {
           if (validHex(evn.target.value)) {
             dispatch!({ hsva: hexToHsva(evn.target.value) });
           }
@@ -29,7 +29,7 @@ function Example() {
         label="Hex"
         placement="right"
         value={hsvaToHex(hsva)}
-        onChange={(evn) => {
+        onChange={(value, evn) => {
           if (validHex(evn.target.value)) {
             dispatch!({ hsva: hexToHsva(evn.target.value) });
           }
@@ -44,7 +44,7 @@ function Example() {
       <EditableInput
         label="Hex"
         value={hsvaToHex(hsva)}
-        onChange={(evn) => {
+        onChange={(value, evn) => {
           if (validHex(evn.target.value)) {
             dispatch!({ hsva: hexToHsva(evn.target.value) });
           }

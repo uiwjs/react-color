@@ -49,7 +49,7 @@
   },
   "dependencies": {
     "@uiw/color-convert": "2.9.2",
-    "@uiw/react-color-swatch": "2.9.2"
+    "@uiw/react-color-swatch": "workspace:*"
   },
   "devDependencies": {
     "@babel/runtime": "^7.21.0"

@@ -135,6 +135,7 @@ function Example() {
         <div>
           <Block
             color={hsva}
+            colors={['#EB144C', '#FF6900', '#FCB900', '#FCF800', '#23D000', '#7BDCB5', '#00D084']}
             onChange={(color) => {
               dispatch!({ hsva: { ...hsva, ...color.hsva } });
             }}

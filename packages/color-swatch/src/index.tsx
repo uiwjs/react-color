@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useCallback, useRef } from 'react';
 import { type HsvaColor, hexToHsva, color as handleColor, type ColorResult } from '@uiw/color-convert';
 import type * as CSS from 'csstype';
 
@@ -14,6 +14,7 @@ export interface SwatchProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 
   prefixCls?: string;
   color?: string;
   colors?: SwatchPresetColor[];
+  flexCenter?: boolean;
   rectProps?: React.HTMLAttributes<HTMLDivElement>;
   rectRender?: (props: SwatchRectRenderProps) => JSX.Element | undefined;
   onChange?: (hsva: HsvaColor, color: ColorResult, evn: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
@@ -27,6 +28,7 @@ const Swatch = React.forwardRef<HTMLDivElement, SwatchProps>((props, ref) => {
     className,
     color,
     colors = [],
+    flexCenter,
     style,
     rectProps = {},
     onChange,
@@ -40,15 +42,24 @@ const Swatch = React.forwardRef<HTMLDivElement, SwatchProps>((props, ref) => {
     background: 'var(--swatch-background-color)',
     height: 15,
     width: 15,
-    marginRight: 5,
-    marginBottom: 5,
+    marginRight: flexCenter ? 0 : 10,
+    marginBottom: flexCenter ? 0 : 10,
     cursor: 'pointer',
     position: 'relative',
     outline: 'none',
     borderRadius: 2,
+    transition: '.15s ease-in-out',
     ...rectProps.style,
   } as CSS.Properties<string | number>;
+  const swatchBtn = useRef<HTMLDivElement>(null);
+  const handleMouseEnter = useCallback((evn: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    evn.currentTarget.style.transform = 'scale(1.2)';
+  }, []);
+  const handleMouseLeave = useCallback((evn: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    evn.currentTarget.style.transform = 'scale(1)';
+  }, []);
   const handleClick = (hex: string, evn: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    // console.log(evn.currentTarget.tagName)
     onChange && onChange(hexToHsva(hex), handleColor(hexToHsva(hex)), evn);
   };
   return (
@@ -57,9 +68,21 @@ const Swatch = React.forwardRef<HTMLDivElement, SwatchProps>((props, ref) => {
       {...other}
       className={[prefixCls, className || ''].filter(Boolean).join(' ')}
       style={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        position: 'relative',
+        ...(flexCenter
+          ? {
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(22px, 1fr))',
+              alignItems: 'center',
+              margin: '10px 10px 10px',
+              gap: '10px',
+            }
+          : {
+              display: 'flex',
+              flexWrap: 'wrap',
+              position: 'relative',
+              paddingLeft: 10,
+              paddingTop: 10,
+            }),
         ...style,
       }}
     >
@@ -103,9 +126,17 @@ const Swatch = React.forwardRef<HTMLDivElement, SwatchProps>((props, ref) => {
               key={idx}
               title={title}
               onClick={(evn) => handleClick(background, evn)}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
               {...rectProps}
               children={child}
-              style={{ ...rectStyle, background }}
+              style={{
+                boxSizing: 'border-box',
+                border: `${checked ? `1px solid ${color}` : ''}`,
+                boxShadow: `${checked ? `0px 0px 5px ${color}` : ''}`,
+                ...rectStyle,
+                background,
+              }}
             />
           );
         })}

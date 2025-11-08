@@ -51,9 +51,9 @@
   },
   "dependencies": {
     "@uiw/color-convert": "2.9.2",
-    "@uiw/react-color-alpha": "2.9.2",
-    "@uiw/react-color-hue": "2.9.2",
-    "@uiw/react-color-saturation": "2.9.2"
+    "@uiw/react-color-alpha": "workspace:*",
+    "@uiw/react-color-hue": "workspace:*",
+    "@uiw/react-color-saturation": "workspace:*"
   },
   "devDependencies": {
     "@babel/runtime": "^7.21.0"

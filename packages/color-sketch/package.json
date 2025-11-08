@@ -49,12 +49,12 @@
   },
   "dependencies": {
     "@uiw/color-convert": "2.9.2",
-    "@uiw/react-color-alpha": "2.9.2",
-    "@uiw/react-color-editable-input": "2.9.2",
-    "@uiw/react-color-editable-input-rgba": "2.9.2",
-    "@uiw/react-color-hue": "2.9.2",
-    "@uiw/react-color-saturation": "2.9.2",
-    "@uiw/react-color-swatch": "2.9.2"
+    "@uiw/react-color-alpha": "workspace:*",
+    "@uiw/react-color-editable-input": "workspace:*",
+    "@uiw/react-color-editable-input-rgba": "workspace:*",
+    "@uiw/react-color-hue": "workspace:*",
+    "@uiw/react-color-saturation": "workspace:*",
+    "@uiw/react-color-swatch": "workspace:*"
   },
   "devDependencies": {
     "@babel/runtime": "^7.21.0"
