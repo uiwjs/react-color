@@ -100,7 +100,7 @@ const EditableInputRGBA = React.forwardRef<HTMLDivElement, EditableInputRGBAProp
         placement={placement}
         onChange={(evn, val) => handleChange(val, 'g', evn)}
         {...gProps}
-        style={{ marginLeft: 5, ...rProps.style }}
+        style={{ marginLeft: 5, ...gProps.style }}
       />
       <EditableInput
         label="B"
