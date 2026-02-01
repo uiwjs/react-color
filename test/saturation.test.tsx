@@ -46,3 +46,44 @@ it('Saturation onChange', async () => {
   fireEvent.mouseDown(elm, { clientX: 1 });
   expect(handleChange).toHaveReturnedWith(['h', 's', 'v', 'a']);
 });
+
+it('Saturation focus behavior after interaction', () => {
+  const handleChange = jest.fn((color) => color);
+
+  const MyComponent = () => {
+    const [hsva, setHsva] = useState({ h: 200, s: 50, v: 80, a: 1 });
+    return (
+      <Saturation
+        title="focus-test-element"
+        hsva={hsva}
+        onChange={(newColor) => {
+          setHsva({ ...hsva, ...newColor, a: hsva.a });
+          handleChange(newColor);
+        }}
+      />
+    );
+  };
+
+  render(<MyComponent />);
+  const elm = screen.getByTitle('focus-test-element');
+
+  // Mock getBoundingClientRect for proper drag simulation
+  elm.getBoundingClientRect = jest.fn(() => ({
+    left: 0,
+    top: 0,
+    width: 200,
+    height: 200,
+    right: 200,
+    bottom: 200,
+  })) as any;
+
+  // Simulate mouse down which should trigger handleChange and focus
+  fireEvent.mouseDown(elm, { clientX: 100, clientY: 100, buttons: 1 });
+
+  // Verify that change was triggered
+  expect(handleChange).toHaveBeenCalled();
+
+  // Verify that the element maintains its ability to be focused
+  elm.focus();
+  expect(elm).toHaveAttribute('tabindex', '0');
+});

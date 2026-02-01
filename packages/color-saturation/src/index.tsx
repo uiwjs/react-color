@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useMemo, useRef } from 'react';
 import type * as CSS from 'csstype';
 import { HsvaColor, hsvaToHslaString } from '@uiw/color-convert';
 import Interactive, { type Interaction } from '@uiw/react-drag-event-interactive';
@@ -25,17 +25,40 @@ const Saturation = React.forwardRef<HTMLDivElement, SaturationProps>((props, ref
     position: 'relative',
   };
 
-  const handleChange = (interaction: Interaction, event: MouseEvent | TouchEvent) => {
-    onChange &&
-      hsva &&
-      onChange({
-        h: hsva.h,
-        s: interaction.left * 100,
-        v: (1 - interaction.top) * 100,
-        a: hsva.a,
-        // source: 'hsv',
-      });
-  };
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  // Combine external ref with internal ref
+  const combinedRef = useCallback(
+    (node: HTMLDivElement | null) => {
+      containerRef.current = node;
+      if (typeof ref === 'function') {
+        ref(node);
+      } else if (ref && 'current' in ref) {
+        (ref as React.MutableRefObject<HTMLDivElement | null>).current = node;
+      }
+    },
+    [ref],
+  );
+
+  const handleChange = useCallback(
+    (interaction: Interaction, event: MouseEvent | TouchEvent) => {
+      onChange &&
+        hsva &&
+        onChange({
+          h: hsva.h,
+          s: interaction.left * 100,
+          v: (1 - interaction.top) * 100,
+          a: hsva.a,
+          // source: 'hsv',
+        });
+      // Ensure the component maintains focus after drag interaction
+      const element = containerRef.current;
+      if (element) {
+        element.focus();
+      }
+    },
+    [hsva, onChange],
+  );
 
   const handleKeyDown = useCallback(
     (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -112,7 +135,7 @@ const Saturation = React.forwardRef<HTMLDivElement, SaturationProps>((props, ref
         ...containerStyle,
         outline: 'none',
       }}
-      ref={ref}
+      ref={combinedRef}
       onMove={handleChange}
       onDown={handleChange}
       onKeyDown={handleKeyDown}
