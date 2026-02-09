@@ -93,7 +93,7 @@ const Compact = React.forwardRef<HTMLDivElement, CompactProps<React.MouseEvent<H
   } = props;
   const hsva = (typeof color === 'string' && validHex(color) ? hexToHsva(color) : color) as HsvaColor;
   const hex = color ? hsvaToHex(hsva).replace(/^#/, '') : '';
-  const handleChangeCallback = useCallback((hsv: HsvaColor) => onChange && onChange(handleColor(hsv)), []);
+  const handleChangeCallback = useCallback((hsv: HsvaColor) => onChange && onChange(handleColor(hsv)), [onChange]);
   const handleHex = (value: string | number, evn: React.ChangeEvent<HTMLInputElement>) => {
     if (typeof value === 'string' && validHex(value) && /(3|6)/.test(String(value.length))) {
       handleChangeCallback(hexToHsva(value));
