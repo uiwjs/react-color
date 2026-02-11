@@ -18,7 +18,7 @@ function Example() {
       <div>
         <label>
           <input type="checkbox" checked={disableAlpha} onChange={(evn) => setDisableAlpha(evn.target.checked)} />
-          {disableAlpha ? 'Hide' : 'Show'} Alpha
+          Show Alpha
         </label>
       </div>
     </div>
