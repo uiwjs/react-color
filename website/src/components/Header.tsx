@@ -88,7 +88,7 @@ export default function Header(props: HeaderProps) {
             return null;
           }
           return (
-            <NavLink key={idx} to={item.path} className={item.isComp ? 'comps' : ''}>
+            <NavLink key={idx} to={item.path} prefetch="render" className={item.isComp ? 'comps' : ''}>
               {item.path === '/' && <Home />}
               <span>{item.label}</span>
             </NavLink>
