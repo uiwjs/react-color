@@ -33,6 +33,8 @@ const EditableInput = React.forwardRef<HTMLInputElement, EditableInputProps>((pr
   } = props;
   const [value, setValue] = useState<string | number | undefined>(initValue);
   const isFocus = useRef(false);
+  const inputIdRef = useRef(other.id || `${prefixCls}-${Math.random().toString(36).slice(2, 11)}`);
+  const inputId = other.id || inputIdRef.current;
 
   useEffect(() => {
     if (props.value !== value) {
@@ -103,6 +105,7 @@ const EditableInput = React.forwardRef<HTMLInputElement, EditableInputProps>((pr
     autoComplete: 'off',
     onFocus: () => (isFocus.current = true),
     ...other,
+    id: inputId,
     style: editableStyle,
     onFocusCapture: (e) => {
       let elm = e.target as HTMLInputElement;
@@ -113,7 +116,8 @@ const EditableInput = React.forwardRef<HTMLInputElement, EditableInputProps>((pr
     <div className={[prefixCls, className || ''].filter(Boolean).join(' ')} style={wrapperStyle}>
       {renderInput ? renderInput(inputProps, ref) : <input ref={ref} {...inputProps} />}
       {label && (
-        <span
+        <label
+          htmlFor={inputId}
           style={{
             color: 'var(--editable-input-label-color)',
             textTransform: 'capitalize',

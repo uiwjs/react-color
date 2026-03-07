@@ -42,14 +42,15 @@ const Wheel = React.forwardRef<HTMLDivElement, WheelProps>((props, ref) => {
   } = props;
   const hsva = (typeof color === 'string' && validHex(color) ? hexToHsva(color) : color || {}) as HsvaColor;
   const hex = color ? hsvaToHex(hsva) : '';
-  const positions = getWheelHandlePosition({ width }, hsva);
+  const wheelProps = { width, direction, angle };
+  const positions = getWheelHandlePosition(wheelProps, hsva);
   const comProps = {
     top: '0',
     left: '0',
     color: hex,
   };
   const handleChange = (interaction: Interaction, event: MouseEvent | TouchEvent) => {
-    const result = getWheelValueFromInput({ width }, width - interaction.x, height - interaction.y);
+    const result = getWheelValueFromInput(wheelProps, interaction.x, interaction.y);
     const handleHsva = {
       h: result.h,
       s: result.s,
@@ -91,8 +92,8 @@ const Wheel = React.forwardRef<HTMLDivElement, WheelProps>((props, ref) => {
         style={{
           position: 'absolute',
           borderRadius: '50%',
-          background: direction === 'anticlockwise' ? HUE_GRADIENT_CLOCKWISE : HUE_GRADIENT_ANTICLOCKWISE,
-          transform: `rotateZ(${angle + 90}deg)`,
+          background: direction === 'anticlockwise' ? HUE_GRADIENT_ANTICLOCKWISE : HUE_GRADIENT_CLOCKWISE,
+          transform: `rotateZ(${90 - angle}deg)`,
           inset: 0,
         }}
       />

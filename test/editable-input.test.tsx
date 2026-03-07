@@ -45,11 +45,17 @@ it('EditableInput', async () => {
           expect(child.type).toEqual('input');
         }
         if (typeof child === 'object' && idx === 1) {
-          expect(child.type).toEqual('span');
+          expect(child.type).toEqual('label');
         }
       });
     }
   }
+});
+
+it('EditableInput supports getByLabelText', async () => {
+  render(<EditableInput label="Hex" value="#ffffff" />);
+  const input = screen.getByLabelText('Hex');
+  expect(input.tagName).toEqual('INPUT');
 });
 
 it('EditableInput placement = top', async () => {
