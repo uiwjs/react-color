@@ -27,6 +27,8 @@ export interface AlphaProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
   pointerProps?: PointerProps;
   /** String Enum, horizontal or vertical. Default `horizontal` */
   direction?: 'vertical' | 'horizontal';
+  /** Flip alpha progression along the current axis. */
+  reverse?: boolean;
   onChange?: (newAlpha: { a: number }, offset: Interaction) => void;
 }
 
@@ -46,25 +48,52 @@ const Alpha = React.forwardRef<HTMLDivElement, AlphaProps>((props, ref) => {
     width,
     height = 16,
     direction = 'horizontal',
+    reverse = false,
     style,
     onChange,
     pointer,
     ...other
   } = props;
 
+  const offsetToAlpha = useCallback(
+    (offset: Interaction) => {
+      const value = direction === 'horizontal' ? offset.left : offset.top;
+      if (direction === 'horizontal') {
+        return reverse ? 1 - value : value;
+      }
+      return reverse ? value : 1 - value;
+    },
+    [direction, reverse],
+  );
+
+  const alphaToOffset = useCallback(
+    (alpha: number) => {
+      if (direction === 'horizontal') {
+        return reverse ? 1 - alpha : alpha;
+      }
+      return reverse ? alpha : 1 - alpha;
+    },
+    [direction, reverse],
+  );
+
   const handleChange = (offset: Interaction) => {
-    onChange && onChange({ ...hsva, a: direction === 'horizontal' ? offset.left : offset.top }, offset);
+    const alpha = offsetToAlpha(offset);
+    onChange && onChange({ ...hsva, a: alpha }, offset);
   };
 
   const colorTo = hsvaToHslaString(Object.assign({}, hsva, { a: 1 }));
-  const innerBackground = `linear-gradient(to ${
-    direction === 'horizontal' ? 'right' : 'bottom'
-  }, rgba(244, 67, 54, 0) 0%, ${colorTo} 100%)`;
+  const horizontalGradient = reverse
+    ? `linear-gradient(to right, ${colorTo} 0%, rgba(244, 67, 54, 0) 100%)`
+    : `linear-gradient(to right, rgba(244, 67, 54, 0) 0%, ${colorTo} 100%)`;
+  const verticalGradient = reverse
+    ? `linear-gradient(to bottom, rgba(244, 67, 54, 0) 0%, ${colorTo} 100%)`
+    : `linear-gradient(to bottom, ${colorTo} 0%, rgba(244, 67, 54, 0) 100%)`;
+  const innerBackground = direction === 'horizontal' ? horizontalGradient : verticalGradient;
   const comProps: { left?: string; top?: string } = {};
   if (direction === 'horizontal') {
-    comProps.left = `${hsva.a * 100}%`;
+    comProps.left = `${alphaToOffset(hsva.a) * 100}%`;
   } else {
-    comProps.top = `${hsva.a * 100}%`;
+    comProps.top = `${alphaToOffset(hsva.a) * 100}%`;
   }
   const styleWrapper: CSS.Properties<string | number> = {
     '--alpha-background-color': '#fff',
@@ -86,25 +115,25 @@ const Alpha = React.forwardRef<HTMLDivElement, AlphaProps>((props, ref) => {
       switch (event.key) {
         case 'ArrowLeft':
           if (direction === 'horizontal') {
-            newAlpha = Math.max(0, currentAlpha - step);
+            newAlpha = reverse ? Math.min(1, currentAlpha + step) : Math.max(0, currentAlpha - step);
             event.preventDefault();
           }
           break;
         case 'ArrowRight':
           if (direction === 'horizontal') {
-            newAlpha = Math.min(1, currentAlpha + step);
+            newAlpha = reverse ? Math.max(0, currentAlpha - step) : Math.min(1, currentAlpha + step);
             event.preventDefault();
           }
           break;
         case 'ArrowUp':
           if (direction === 'vertical') {
-            newAlpha = Math.max(0, currentAlpha - step);
+            newAlpha = reverse ? Math.max(0, currentAlpha - step) : Math.min(1, currentAlpha + step);
             event.preventDefault();
           }
           break;
         case 'ArrowDown':
           if (direction === 'vertical') {
-            newAlpha = Math.min(1, currentAlpha + step);
+            newAlpha = reverse ? Math.min(1, currentAlpha + step) : Math.max(0, currentAlpha - step);
             event.preventDefault();
           }
           break;
@@ -113,9 +142,10 @@ const Alpha = React.forwardRef<HTMLDivElement, AlphaProps>((props, ref) => {
       }
 
       if (newAlpha !== currentAlpha) {
+        const syntheticAxisOffset = alphaToOffset(newAlpha);
         const syntheticOffset: Interaction = {
-          left: direction === 'horizontal' ? newAlpha : hsva.a,
-          top: direction === 'vertical' ? newAlpha : hsva.a,
+          left: direction === 'horizontal' ? syntheticAxisOffset : hsva.a,
+          top: direction === 'vertical' ? syntheticAxisOffset : hsva.a,
           width: 0,
           height: 0,
           x: 0,
@@ -124,7 +154,7 @@ const Alpha = React.forwardRef<HTMLDivElement, AlphaProps>((props, ref) => {
         onChange && onChange({ ...hsva, a: newAlpha }, syntheticOffset);
       }
     },
-    [hsva, direction, onChange],
+    [alphaToOffset, hsva, direction, onChange, reverse],
   );
 
   const handleClick = useCallback((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {

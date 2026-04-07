@@ -67,12 +67,42 @@ export default function Demo() {
   const [hsva, setHsva] = useState({ h: 0, s: 0, v: 68, a: 1 });
   return (
     <>
-      <Alpha
-        hsva={hsva}
-        onChange={(newAlpha) => {
-          setHsva({ ...hsva, ...newAlpha });
-        }}
-      />
+      <div style={{ display: "flex", gap: 10, flexDirection: "column", paddingBottom: 20 }}>
+        <Alpha
+          hsva={hsva}
+          onChange={(newAlpha) => {
+            setHsva({ ...hsva, ...newAlpha });
+          }}
+        />
+        <Alpha
+          hsva={hsva}
+          reverse
+          onChange={(newAlpha) => {
+            setHsva({ ...hsva, ...newAlpha });
+          }}
+        />
+      </div>
+      <div style={{ display: "flex", gap: 10, flexDirection: "row" }}>
+        <Alpha
+          hsva={hsva}
+          direction="vertical"
+          width={16}
+          height={120}
+          onChange={(newAlpha) => {
+            setHsva({ ...hsva, ...newAlpha });
+          }}
+        />
+        <Alpha
+          hsva={hsva}
+          direction="vertical"
+          reverse={true}
+          width={16}
+          height={120}
+          onChange={(newAlpha) => {
+            setHsva({ ...hsva, ...newAlpha });
+          }}
+        />
+      </div>
       <div style={{ background: hsvaToRgbaString(hsva), marginTop: 30, padding: 10 }}>
         {JSON.stringify(hsva)}
       </div>
@@ -111,6 +141,8 @@ export interface AlphaProps extends Omit<React.HTMLAttributes<HTMLDivElement>, '
   pointerProps?: PointerProps;
   /** String Enum, horizontal or vertical. Default `horizontal` */
   direction?: 'vertical' | 'horizontal';
+  /** Flip alpha progression along the current axis. */
+  reverse?: boolean;
   onChange?: (newAlpha: {
       a: number;
   }, offset: Interaction) => void;
