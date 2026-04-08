@@ -60,17 +60,53 @@ npm i @uiw/react-color-hue
 
 ```jsx mdx:preview
 import React, { useState } from 'react';
+import { hsvaToRgbaString } from '@uiw/color-convert';
 import Hue from '@uiw/react-color-hue';
 
 export default function Demo() {
-  const [hsva, setHsva] = useState({ h: 0, s: 0, v: 68, a: 1 });
+  const [hsva, setHsva] = useState({ "h":0,"s":100,"v":100,"a":1 });
   return (
-    <Hue
-      hue={hsva.h}
-      onChange={(newHue) => {
-        setHsva({ ...hsva, ...newHue });
-      }}
-    />
+  <>
+    <div style={{ display: "flex", gap: 10, flexDirection: "column", paddingBottom: 20 }}>
+      <Hue
+        hue={hsva.h}
+        onChange={(newHue) => {
+          setHsva({ ...hsva, ...newHue });
+        }}
+      />
+      <Hue
+        hue={hsva.h}
+        reverse={true}
+        onChange={(newHue) => {
+          setHsva({ ...hsva, ...newHue });
+        }}
+      />
+    </div>
+    <div style={{ display: "flex", gap: 10, flexDirection: "row" }}>
+      <Hue
+        hue={hsva.h}
+        direction="vertical"
+        width={16}
+        height={120}
+        onChange={(newHue) => {
+          setHsva({ ...hsva, ...newHue });
+        }}
+      />
+      <Hue
+        hue={hsva.h}
+        direction="vertical"
+        reverse={true}
+        width={16}
+        height={120}
+        onChange={(newHue) => {
+          setHsva({ ...hsva, ...newHue });
+        }}
+      />
+    </div>
+    <div style={{ background: hsvaToRgbaString(hsva), marginTop: 30, padding: 10 }}>
+      {JSON.stringify(hsva)}
+    </div>
+  </>
   );
 }
 ```
