@@ -33,6 +33,7 @@ export interface ChromeProps extends Omit<GithubProps, 'colors'> {
   showColorPreview?: boolean;
   showHue?: boolean;
   showAlpha?: boolean;
+  horizontal?: boolean;
 }
 
 const Chrome = React.forwardRef<HTMLDivElement, ChromeProps>((props, ref) => {
@@ -46,6 +47,7 @@ const Chrome = React.forwardRef<HTMLDivElement, ChromeProps>((props, ref) => {
     showColorPreview = true,
     showHue = true,
     showAlpha = true,
+    horizontal = false,
     inputType = ChromeInputType.RGBA,
     rectProps = {},
     onChange,
@@ -73,8 +75,8 @@ const Chrome = React.forwardRef<HTMLDivElement, ChromeProps>((props, ref) => {
     '--chrome-arrow-fill': '#333',
     '--chrome-arrow-background-color': '#e8e8e8',
     borderRadius: 0,
-    flexDirection: 'column',
-    width: 230,
+    flexDirection: horizontal ? 'row' : 'column',
+    width: horizontal ? 460 : 230,
     padding: 0,
     ...style,
   } as CSS.Properties<string | number>;
@@ -108,98 +110,102 @@ const Chrome = React.forwardRef<HTMLDivElement, ChromeProps>((props, ref) => {
         <Fragment>
           <Saturation
             hsva={hsva}
-            style={{ width: '100%', height: 130 }}
+            style={horizontal ? { width: 230, height: 120 } : { width: '100%', height: 130 }}
             onChange={(newColor) => {
               handleChange({ ...hsva, ...newColor, a: hsva.a });
             }}
           />
-          <div style={{ padding: 15, display: 'flex', alignItems: 'center', gap: 10 }}>
-            {getIsEyeDropperSupported() && showEyeDropper && <EyeDropper onPickColor={handleClickColor} />}
-            {showColorPreview && (
-              <Alpha
-                width={28}
-                height={28}
-                hsva={hsva}
-                radius={2}
-                style={{
-                  borderRadius: '50%',
-                }}
-                bgProps={{ style: { background: 'transparent' } }}
-                innerProps={{
-                  style: alphaStyle,
-                }}
-                pointer={() => <Fragment />}
-              />
-            )}
-            <div style={{ flex: 1 }}>
-              {showHue == true && (
-                <Hue
-                  hue={hsva.h}
-                  style={{ width: '100%', height: 12, borderRadius: 2 }}
-                  pointerProps={pointerProps}
-                  bgProps={{
-                    style: { borderRadius: 2 },
-                  }}
-                  onChange={(newHue) => {
-                    handleChange({ ...hsva, ...newHue });
-                  }}
-                />
-              )}
-              {showAlpha == true && (
+          <div style={{ display: 'flex', flexDirection: 'column', width: 230 }}>
+            <div style={{ padding: 15, display: 'flex', alignItems: 'center', gap: 10 }}>
+              {getIsEyeDropperSupported() && showEyeDropper && <EyeDropper onPickColor={handleClickColor} />}
+              {showColorPreview && (
                 <Alpha
+                  width={28}
+                  height={28}
                   hsva={hsva}
-                  style={{ marginTop: 6, height: 12, borderRadius: 2 }}
-                  pointerProps={pointerProps}
-                  bgProps={{
-                    style: { borderRadius: 2 },
+                  radius={2}
+                  style={{
+                    borderRadius: '50%',
                   }}
-                  onChange={(newAlpha) => {
-                    handleChange({ ...hsva, ...newAlpha });
+                  bgProps={{ style: { background: 'transparent' } }}
+                  innerProps={{
+                    style: alphaStyle,
                   }}
+                  pointer={() => <Fragment />}
                 />
               )}
-            </div>
-          </div>
-          {showEditableInput && (
-            <div style={{ display: 'flex', alignItems: 'flex-start', padding: '0 15px 15px 15px', userSelect: 'none' }}>
               <div style={{ flex: 1 }}>
-                {type == ChromeInputType.RGBA && (
-                  <EditableInputRGBA
-                    hsva={hsva}
-                    rProps={{ labelStyle, inputStyle }}
-                    gProps={{ labelStyle, inputStyle }}
-                    bProps={{ labelStyle, inputStyle }}
-                    aProps={showAlpha == false ? false : { labelStyle, inputStyle }}
-                    onChange={(reColor) => handleChange(reColor.hsva)}
-                  />
-                )}
-                {type === ChromeInputType.HEXA && (
-                  <EditableInput
-                    label="HEX"
-                    labelStyle={labelStyle}
-                    inputStyle={inputStyle}
-                    value={hsva.a > 0 && hsva.a < 1 ? hsvaToHexa(hsva).toLocaleUpperCase() : hsvaToHex(hsva).toLocaleUpperCase()}
-                    onChange={(_, value) => {
-                      if (typeof value === 'string') {
-                        handleChange(hexToHsva(/^#/.test(value) ? value : `#${value}`));
-                      }
+                {showHue == true && (
+                  <Hue
+                    hue={hsva.h}
+                    style={{ width: '100%', height: 12, borderRadius: 2 }}
+                    pointerProps={pointerProps}
+                    bgProps={{
+                      style: { borderRadius: 2 },
+                    }}
+                    onChange={(newHue) => {
+                      handleChange({ ...hsva, ...newHue });
                     }}
                   />
                 )}
-                {type === ChromeInputType.HSLA && (
-                  <EditableInputHSLA
+                {showAlpha == true && (
+                  <Alpha
                     hsva={hsva}
-                    hProps={{ labelStyle, inputStyle }}
-                    sProps={{ labelStyle, inputStyle }}
-                    lProps={{ labelStyle, inputStyle }}
-                    aProps={showAlpha == false ? false : { labelStyle, inputStyle }}
-                    onChange={(reColor) => handleChange(reColor.hsva)}
+                    style={{ marginTop: 6, height: 12, borderRadius: 2 }}
+                    pointerProps={pointerProps}
+                    bgProps={{
+                      style: { borderRadius: 2 },
+                    }}
+                    onChange={(newAlpha) => {
+                      handleChange({ ...hsva, ...newAlpha });
+                    }}
                   />
                 )}
               </div>
-              <Arrow onClick={handleClick} />
             </div>
-          )}
+            {showEditableInput && (
+              <div style={{ display: 'flex', alignItems: 'flex-start', padding: '0 15px 15px 15px', userSelect: 'none' }}>
+                <div style={{ flex: 1 }}>
+                  {type == ChromeInputType.RGBA && (
+                    <EditableInputRGBA
+                      hsva={hsva}
+                      rProps={{ labelStyle, inputStyle }}
+                      gProps={{ labelStyle, inputStyle }}
+                      bProps={{ labelStyle, inputStyle }}
+                      aProps={showAlpha == false ? false : { labelStyle, inputStyle }}
+                      onChange={(reColor) => handleChange(reColor.hsva)}
+                    />
+                  )}
+                  {type === ChromeInputType.HEXA && (
+                    <EditableInput
+                      label="HEX"
+                      labelStyle={labelStyle}
+                      inputStyle={inputStyle}
+                      value={
+                        hsva.a > 0 && hsva.a < 1 ? hsvaToHexa(hsva).toLocaleUpperCase() : hsvaToHex(hsva).toLocaleUpperCase()
+                      }
+                      onChange={(_, value) => {
+                        if (typeof value === 'string') {
+                          handleChange(hexToHsva(/^#/.test(value) ? value : `#${value}`));
+                        }
+                      }}
+                    />
+                  )}
+                  {type === ChromeInputType.HSLA && (
+                    <EditableInputHSLA
+                      hsva={hsva}
+                      hProps={{ labelStyle, inputStyle }}
+                      sProps={{ labelStyle, inputStyle }}
+                      lProps={{ labelStyle, inputStyle }}
+                      aProps={showAlpha == false ? false : { labelStyle, inputStyle }}
+                      onChange={(reColor) => handleChange(reColor.hsva)}
+                    />
+                  )}
+                </div>
+                <Arrow onClick={handleClick} />
+              </div>
+            )}
+          </div>
         </Fragment>
       }
       rectRender={() => <Fragment />}

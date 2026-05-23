@@ -4,8 +4,7 @@ import Layout from './components/Layout';
 import { ErrorPage } from './components/ErrorPage';
 
 export interface MenuRouteObject
-  extends Omit<IndexRouteObject, 'children' | 'index'>,
-    Omit<NonIndexRouteObject, 'children' | 'index'> {
+  extends Omit<IndexRouteObject, 'children' | 'index'>, Omit<NonIndexRouteObject, 'children' | 'index'> {
   index?: boolean;
   label?: string;
   isComp?: boolean;
