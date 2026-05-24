@@ -115,7 +115,7 @@ const Chrome = React.forwardRef<HTMLDivElement, ChromeProps>((props, ref) => {
               handleChange({ ...hsva, ...newColor, a: hsva.a });
             }}
           />
-          <div style={{ display: 'flex', flexDirection: 'column', width: 230 }}>
+          <div style={{ display: 'flex', flexDirection: 'column', width: horizontal ? 230 : 'inherit' }}>
             <div style={{ padding: 15, display: 'flex', alignItems: 'center', gap: 10 }}>
               {getIsEyeDropperSupported() && showEyeDropper && <EyeDropper onPickColor={handleClickColor} />}
               {showColorPreview && (

@@ -180,6 +180,48 @@ function Demo() {
 export default Demo;
 ```
 
+Set the `horizontal` value to `true`
+
+```jsx mdx:preview
+import React, { useState } from 'react';
+
+import {
+  HsvaColor,
+  hsvaToRgbaString,
+  color as handleColor,
+  validHex,
+  hexToHsva,
+  hsvaToHex,
+  hsvaToHexa,
+} from '@uiw/color-convert';
+
+import Chrome from '@uiw/react-color-chrome';
+import { GithubPlacement } from '@uiw/react-color-github';
+
+function Demo() {
+  const [hsva, setHsva] = useState({ h:0, s:25.71, v:82.35, a:0.32});
+  const hex = hsvaToHex(hsva)
+  return (
+    <>
+      <Chrome
+        color={hsva}
+        horizontal={true}
+        style={{ marginTop: 10 }}
+        placement={GithubPlacement.TopRight}
+        showAlpha={false}
+        onChange={(color) => {
+          setHsva(color.hsva);
+        }}
+      />
+      <div style={{ background: hex, marginTop: 30, padding: 10 }}>
+        {hex}
+      </div>
+    </>
+  );
+}
+export default Demo;
+```
+
 
 ## Props
 
