@@ -30,9 +30,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90.19% </span>
+                <span class="strong">85% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>46/51</span>
+                <span class='fraction'>51/60</span>
             </div>
         
             
@@ -275,7 +275,14 @@
 <a name='L210'></a><a href='#L210'>210</a>
 <a name='L211'></a><a href='#L211'>211</a>
 <a name='L212'></a><a href='#L212'>212</a>
-<a name='L213'></a><a href='#L213'>213</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L213'></a><a href='#L213'>213</a>
+<a name='L214'></a><a href='#L214'>214</a>
+<a name='L215'></a><a href='#L215'>215</a>
+<a name='L216'></a><a href='#L216'>216</a>
+<a name='L217'></a><a href='#L217'>217</a>
+<a name='L218'></a><a href='#L218'>218</a>
+<a name='L219'></a><a href='#L219'>219</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -313,6 +320,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -405,6 +413,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -457,6 +466,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -471,6 +482,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -522,6 +534,7 @@ export interface ChromeProps extends Omit&lt;GithubProps, 'colors'&gt; {
   showColorPreview?: boolean;
   showHue?: boolean;
   showAlpha?: boolean;
+  horizontal?: boolean;
 }
 &nbsp;
 const Chrome = React.forwardRef&lt;HTMLDivElement, ChromeProps&gt;((props, ref) =&gt; {
@@ -535,6 +548,7 @@ const Chrome = React.forwardRef&lt;HTMLDivElement, ChromeProps&gt;((props, ref) 
     showColorPreview = true,
     showHue = true,
     showAlpha = true,
+    horizontal = false,
     inputType = ChromeInputType.RGBA,
     rectProps = {},
     onChange,
@@ -562,8 +576,8 @@ const Chrome = React.forwardRef&lt;HTMLDivElement, ChromeProps&gt;((props, ref) 
     '--chrome-arrow-fill': '#333',
     '--chrome-arrow-background-color': '#e8e8e8',
     borderRadius: 0,
-    flexDirection: 'column',
-    width: 230,
+    flexDirection: horizontal ? <span class="branch-0 cbranch-no" title="branch not covered" >'row' </span>: 'column',
+    width: horizontal ? <span class="branch-0 cbranch-no" title="branch not covered" >460 </span>: 230,
     padding: 0,
     ...style,
   } as CSS.Properties&lt;string | number&gt;;
@@ -597,98 +611,102 @@ const Chrome = React.forwardRef&lt;HTMLDivElement, ChromeProps&gt;((props, ref) 
         &lt;Fragment&gt;
           &lt;Saturation
             hsva={hsva}
-            style={{ width: '100%', height: 130 }}
+            style={horizontal ? <span class="branch-0 cbranch-no" title="branch not covered" >{ width: 230, height: 120 } </span>: { width: '100%', height: 130 }}
             onChange={(newColor) =&gt; {
               handleChange({ ...hsva, ...newColor, a: hsva.a });
             }}
           /&gt;
-          &lt;div style={{ padding: 15, display: 'flex', alignItems: 'center', gap: 10 }}&gt;
-            {getIsEyeDropperSupported() &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >showEyeDropper </span>&amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >&lt;EyeDropper onPickColor={handleClickColor} /&gt;}</span>
-            {showColorPreview &amp;&amp; (
-              &lt;Alpha
-                width={28}
-                height={28}
-                hsva={hsva}
-                radius={2}
-                style={{
-                  borderRadius: '50%',
-                }}
-                bgProps={{ style: { background: 'transparent' } }}
-                innerProps={{
-                  style: alphaStyle,
-                }}
-                pointer={() =&gt; &lt;Fragment /&gt;}
-              /&gt;
-            )}
-            &lt;div style={{ flex: 1 }}&gt;
-              {showHue == true &amp;&amp; (
-                &lt;Hue
-                  hue={hsva.h}
-                  style={{ width: '100%', height: 12, borderRadius: 2 }}
-                  pointerProps={pointerProps}
-                  bgProps={{
-                    style: { borderRadius: 2 },
-                  }}
-                  onChange={(newHue) =&gt; {
-                    handleChange({ ...hsva, ...newHue });
-                  }}
-                /&gt;
-              )}
-              {showAlpha == true &amp;&amp; (
+          &lt;div style={{ display: 'flex', flexDirection: 'column', width: horizontal ? <span class="branch-0 cbranch-no" title="branch not covered" >230 </span>: 'inherit' }}&gt;
+            &lt;div style={{ padding: 15, display: 'flex', alignItems: 'center', gap: 10 }}&gt;
+              {getIsEyeDropperSupported() &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >showEyeDropper </span>&amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >&lt;EyeDropper onPickColor={handleClickColor} /&gt;}</span>
+              {showColorPreview &amp;&amp; (
                 &lt;Alpha
+                  width={28}
+                  height={28}
                   hsva={hsva}
-                  style={{ marginTop: 6, height: 12, borderRadius: 2 }}
-                  pointerProps={pointerProps}
-                  bgProps={{
-                    style: { borderRadius: 2 },
+                  radius={2}
+                  style={{
+                    borderRadius: '50%',
                   }}
-                  onChange={(newAlpha) =&gt; {
-                    handleChange({ ...hsva, ...newAlpha });
+                  bgProps={{ style: { background: 'transparent' } }}
+                  innerProps={{
+                    style: alphaStyle,
                   }}
+                  pointer={() =&gt; &lt;Fragment /&gt;}
                 /&gt;
               )}
-            &lt;/div&gt;
-          &lt;/div&gt;
-          {showEditableInput &amp;&amp; (
-            &lt;div style={{ display: 'flex', alignItems: 'flex-start', padding: '0 15px 15px 15px', userSelect: 'none' }}&gt;
               &lt;div style={{ flex: 1 }}&gt;
-                {type == ChromeInputType.RGBA &amp;&amp; (
-                  &lt;EditableInputRGBA
-                    hsva={hsva}
-                    rProps={{ labelStyle, inputStyle }}
-                    gProps={{ labelStyle, inputStyle }}
-                    bProps={{ labelStyle, inputStyle }}
-                    aProps={showAlpha == false ? <span class="branch-0 cbranch-no" title="branch not covered" >false </span>: { labelStyle, inputStyle }}
-                    onChange={(reColor) =&gt; handleChange(reColor.hsva)}
-                  /&gt;
-                )}
-                {type === ChromeInputType.HEXA &amp;&amp; (
-                  &lt;EditableInput
-                    label="HEX"
-                    labelStyle={labelStyle}
-                    inputStyle={inputStyle}
-                    value={hsva.a &gt; 0 &amp;&amp; hsva.a &lt; 1 ? hsvaToHexa(hsva).toLocaleUpperCase() : hsvaToHex(hsva).toLocaleUpperCase()}
-                    onChange={(_, value) =&gt; {
-                      if (typeof value === 'string') {
-                        handleChange(hexToHsva(/^#/.test(value) ? <span class="branch-0 cbranch-no" title="branch not covered" >value </span>: `#${value}`));
-                      }
+                {showHue == true &amp;&amp; (
+                  &lt;Hue
+                    hue={hsva.h}
+                    style={{ width: '100%', height: 12, borderRadius: 2 }}
+                    pointerProps={pointerProps}
+                    bgProps={{
+                      style: { borderRadius: 2 },
+                    }}
+                    onChange={(newHue) =&gt; {
+                      handleChange({ ...hsva, ...newHue });
                     }}
                   /&gt;
                 )}
-                {type === ChromeInputType.HSLA &amp;&amp; (
-                  &lt;EditableInputHSLA
+                {showAlpha == true &amp;&amp; (
+                  &lt;Alpha
                     hsva={hsva}
-                    hProps={{ labelStyle, inputStyle }}
-                    sProps={{ labelStyle, inputStyle }}
-                    lProps={{ labelStyle, inputStyle }}
-                    aProps={showAlpha == false ? <span class="branch-0 cbranch-no" title="branch not covered" >false </span>: { labelStyle, inputStyle }}
-                    onChange={(reColor) =&gt; handleChange(reColor.hsva)}
+                    style={{ marginTop: 6, height: 12, borderRadius: 2 }}
+                    pointerProps={pointerProps}
+                    bgProps={{
+                      style: { borderRadius: 2 },
+                    }}
+                    onChange={(newAlpha) =&gt; {
+                      handleChange({ ...hsva, ...newAlpha });
+                    }}
                   /&gt;
                 )}
               &lt;/div&gt;
-              &lt;Arrow onClick={handleClick} /&gt;
             &lt;/div&gt;
-          )}
+            {showEditableInput &amp;&amp; (
+              &lt;div style={{ display: 'flex', alignItems: 'flex-start', padding: '0 15px 15px 15px', userSelect: 'none' }}&gt;
+                &lt;div style={{ flex: 1 }}&gt;
+                  {type == ChromeInputType.RGBA &amp;&amp; (
+                    &lt;EditableInputRGBA
+                      hsva={hsva}
+                      rProps={{ labelStyle, inputStyle }}
+                      gProps={{ labelStyle, inputStyle }}
+                      bProps={{ labelStyle, inputStyle }}
+                      aProps={showAlpha == false ? <span class="branch-0 cbranch-no" title="branch not covered" >false </span>: { labelStyle, inputStyle }}
+                      onChange={(reColor) =&gt; handleChange(reColor.hsva)}
+                    /&gt;
+                  )}
+                  {type === ChromeInputType.HEXA &amp;&amp; (
+                    &lt;EditableInput
+                      label="HEX"
+                      labelStyle={labelStyle}
+                      inputStyle={inputStyle}
+                      value={
+                        hsva.a &gt; 0 &amp;&amp; hsva.a &lt; 1 ? hsvaToHexa(hsva).toLocaleUpperCase() : hsvaToHex(hsva).toLocaleUpperCase()
+                      }
+                      onChange={(_, value) =&gt; {
+                        if (typeof value === 'string') {
+                          handleChange(hexToHsva(/^#/.test(value) ? <span class="branch-0 cbranch-no" title="branch not covered" >value </span>: `#${value}`));
+                        }
+                      }}
+                    /&gt;
+                  )}
+                  {type === ChromeInputType.HSLA &amp;&amp; (
+                    &lt;EditableInputHSLA
+                      hsva={hsva}
+                      hProps={{ labelStyle, inputStyle }}
+                      sProps={{ labelStyle, inputStyle }}
+                      lProps={{ labelStyle, inputStyle }}
+                      aProps={showAlpha == false ? <span class="branch-0 cbranch-no" title="branch not covered" >false </span>: { labelStyle, inputStyle }}
+                      onChange={(reColor) =&gt; handleChange(reColor.hsva)}
+                    /&gt;
+                  )}
+                &lt;/div&gt;
+                &lt;Arrow onClick={handleClick} /&gt;
+              &lt;/div&gt;
+            )}
+          &lt;/div&gt;
         &lt;/Fragment&gt;
       }
       rectRender={() =&gt; &lt;Fragment /&gt;}
@@ -706,7 +724,7 @@ export default Chrome;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-05-21T17:46:17.952Z
+                at 2026-05-24T18:51:45.583Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
