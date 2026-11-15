@@ -11,7 +11,7 @@ export interface InteractiveProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const Interactive = React.forwardRef<HTMLDivElement, InteractiveProps>((props, ref) => {
   const { prefixCls = 'w-color-interactive', className, onMove, onDown, ...reset } = props;
-  const container = useRef<HTMLDivElement>(null);
+  const container = useRef<HTMLDivElement | null>(null);
   const hasTouched = useRef(false);
   const [isDragging, setDragging] = useState(false);
   const onMoveCallback = useEventCallback<Interaction, MouseEvent | TouchEvent>(onMove);
@@ -76,6 +76,18 @@ const Interactive = React.forwardRef<HTMLDivElement, InteractiveProps>((props, r
     [onKeyCallback],
   );
 
+  const setContainerRef = useCallback(
+    (node: HTMLDivElement | null) => {
+      container.current = node;
+      if (typeof ref === 'function') {
+        ref(node);
+      } else if (ref) {
+        (ref as React.MutableRefObject<HTMLDivElement | null>).current = node;
+      }
+    },
+    [ref],
+  );
+
   return (
     <div
       {...reset}
@@ -84,7 +96,7 @@ const Interactive = React.forwardRef<HTMLDivElement, InteractiveProps>((props, r
         ...reset.style,
         touchAction: 'none',
       }}
-      ref={container}
+      ref={setContainerRef}
       tabIndex={0}
       onMouseDown={handleMoveStart}
       onTouchStart={handleMoveStart}

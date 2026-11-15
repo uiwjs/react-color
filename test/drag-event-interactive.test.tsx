@@ -151,3 +151,18 @@ it('Interactive touchstart/touchmove/touchend', async () => {
   fireEvent(elm, new FakeTouchEvent('touchend', { pageX: 20, pageY: 10 }));
   expect(handleChange).toHaveReturnedWith({ height: 100, left: 0.05, top: 0.05, width: 100, x: 5, y: 5 });
 });
+
+it('Interactive forwards callback and object refs', () => {
+  const callbackRef = jest.fn();
+  const { getByTitle, rerender, unmount } = render(<Interactive ref={callbackRef} title="ref-target" />);
+  const elm = getByTitle('ref-target');
+  expect(callbackRef).toHaveBeenCalledWith(elm);
+
+  const objectRef = React.createRef<HTMLDivElement>();
+  rerender(<Interactive ref={objectRef} title="ref-target" />);
+  expect(callbackRef).toHaveBeenLastCalledWith(null);
+  expect(objectRef.current).toBe(getByTitle('ref-target'));
+
+  unmount();
+  expect(objectRef.current).toBeNull();
+});

@@ -66,40 +66,33 @@ const Saturation = React.forwardRef<HTMLDivElement, SaturationProps>((props, ref
       const step = 1; // 1% step for saturation and value
       let newS = hsva.s;
       let newV = hsva.v;
-      let changed = false;
 
       switch (event.key) {
         case 'ArrowLeft':
           newS = Math.max(0, hsva.s - step);
-          changed = true;
           event.preventDefault();
           break;
         case 'ArrowRight':
           newS = Math.min(100, hsva.s + step);
-          changed = true;
           event.preventDefault();
           break;
         case 'ArrowUp':
           newV = Math.min(100, hsva.v + step);
-          changed = true;
           event.preventDefault();
           break;
         case 'ArrowDown':
           newV = Math.max(0, hsva.v - step);
-          changed = true;
           event.preventDefault();
           break;
         default:
           return;
       }
-      if (changed) {
-        onChange({
-          h: hsva.h,
-          s: newS,
-          v: newV,
-          a: hsva.a,
-        });
-      }
+      onChange({
+        h: hsva.h,
+        s: newS,
+        v: newV,
+        a: hsva.a,
+      });
     },
     [hsva, onChange],
   );
