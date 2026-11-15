@@ -5,7 +5,13 @@ import React, { useState } from 'react';
 import TestRenderer from 'react-test-renderer';
 import { waitFor, screen, render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import { hsvaToRgba } from '@uiw/color-convert';
 import Slider from '../packages/color-slider/src';
+
+const swatchColor = (hsva: { h: number; s: number; v: number; a: number }, lightness: number) => {
+  const rgba = hsvaToRgba({ ...hsva, v: lightness });
+  return rgba.a === 1 ? `rgb(${rgba.r}, ${rgba.g}, ${rgba.b})` : `rgba(${rgba.r}, ${rgba.g}, ${rgba.b}, ${rgba.a})`;
+};
 
 it('Slider', async () => {
   const MyComponent = () => {
@@ -110,4 +116,30 @@ it('Slider onChange checked', async () => {
       fireEvent.click(elm);
     }
   }
+});
+
+it('Slider uses the matching custom shade when the color is within range', () => {
+  const hsva = { h: 1, s: 1, v: 1, a: 1 };
+  const { container } = render(<Slider color={hsva} />);
+  const root = container.firstElementChild as HTMLDivElement;
+  const swatches = Array.from(root.children).map((column) => column.firstElementChild as HTMLDivElement);
+  const expected = [50, 40, 30, 20, 10].map((lightness) => swatchColor(hsva, lightness));
+  expect(swatches).toHaveLength(5);
+  swatches.forEach((node, index) => {
+    expect(node.style.backgroundColor).toEqual(expected[index]);
+  });
+});
+
+it('Slider keeps the default lightness when a custom shade has no lightness array', () => {
+  const hsva = { h: 200, s: 50, v: 40, a: 1 };
+  const { container } = render(
+    <Slider color={hsva} customColorShades={[{ color: '#ff0000' } as { color: string; lightness: number[] }]} />,
+  );
+  const root = container.firstElementChild as HTMLDivElement;
+  const swatches = Array.from(root.children).map((column) => column.firstElementChild as HTMLDivElement);
+  const expected = [80, 65, 50, 35, 20].map((lightness) => swatchColor(hsva, lightness));
+  expect(swatches).toHaveLength(5);
+  swatches.forEach((node, index) => {
+    expect(node.style.backgroundColor).toEqual(expected[index]);
+  });
 });
