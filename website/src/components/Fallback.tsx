@@ -15,6 +15,15 @@ const defaultStyle: CSS.Properties<string | number> = {
   zIndex: 9999,
 };
 
+export function PageFallback() {
+  return (
+    <div className="page-fallback" role="status">
+      <span className="page-fallback-bar" />
+      Loading component…
+    </div>
+  );
+}
+
 export const Fallback = ({ children, style, ...other }: FallbackProps) => (
   <div {...other} style={{ ...defaultStyle, ...style }}>
     <svg width="25" height="30" viewBox="0 0 135 140" fill="currentColor">

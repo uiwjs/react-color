@@ -36,7 +36,7 @@ function Example() {
           />
           <Title>{`<Colorful color="${hsvaToHex(hsva)}" />`}</Title>
         </div>
-        <div style={{ marginLeft: 60, marginRight: 60 }}>
+        <div>
           <Sketch
             color={hsva}
             onChange={(color) => {
@@ -86,7 +86,7 @@ function Example() {
           />
           <Title>{`<Circle color="${hsvaToHex(hsva)}" />`}</Title>
         </div>
-        <div style={{ paddingLeft: 20 }}>
+        <div>
           <Compact
             color={hsva}
             style={{
@@ -98,7 +98,7 @@ function Example() {
           />
           <Title>{`<Compact color="${hsvaToHex(hsva)}" />`}</Title>
         </div>
-        <div style={{ marginLeft: 25 }}>
+        <div>
           <Wheel
             color={hsva}
             width={140}
@@ -120,7 +120,7 @@ function Example() {
           />
           <Title>{`<Github color="${hsvaToHex(hsva)}" />`}</Title>
         </div>
-        <div style={{ marginRight: 30, marginLeft: 30 }}>
+        <div>
           <Material
             color={hsva}
             style={{
@@ -142,14 +142,14 @@ function Example() {
           <Title>{`<Block color="${hsvaToHex(hsva)}" />`}</Title>
         </div>
       </div>
-      <div style={{ display: 'flex', gap: '20px', justifyContent: 'space-between', paddingTop: 40 }}>
+      <div className={styles.stack}>
         <Saturation
           hsva={hsva}
           onChange={(color) => {
             dispatch!({ hsva: { ...hsva, ...color } });
           }}
         />
-        <div style={{ flex: 1, display: 'flex', gap: '20px', flexDirection: 'column' }}>
+        <div className={styles.controls}>
           <Hue
             hue={hsva.h}
             onChange={(newHue) => {

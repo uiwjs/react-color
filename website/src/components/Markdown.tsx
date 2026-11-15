@@ -4,15 +4,15 @@ import MarkdownPreviewExample from '@uiw/react-markdown-preview-example/markdown
 import styled from 'styled-components';
 
 const MarkdownWrapper = styled.div`
-  background-color: var(--color-theme-bg);
-  box-shadow:
-    0 0 0 1px rgb(0 0 0 / 15%),
-    0 8px 16px rgb(0 0 0 / 15%);
-  border-radius: 16px;
-  max-width: 860px;
-  margin: 0 auto;
+  background-color: var(--card, var(--color-theme-bg));
+  border: 1px solid var(--line, rgba(0, 0, 0, 0.08));
+  box-shadow: var(--shadow, 0 8px 16px rgb(0 0 0 / 8%));
+  border-radius: 18px;
+  max-width: 1120px;
+  margin: 20px auto;
   padding-bottom: 20px;
   position: relative;
+  color: var(--ink, inherit);
 `;
 
 interface MarkdownProps {}
@@ -37,7 +37,7 @@ const EditorUrl = styled.a`
 `;
 
 const Wrapper = styled.div`
-  padding-bottom: 120px;
+  padding: 0 16px 80px;
 `;
 
 const Footer = styled.footer`
@@ -53,12 +53,16 @@ const Footer = styled.footer`
 `;
 
 const Example = styled.div`
-  border-bottom: 1px solid var(--color-border-default);
-  border-radius: 16px 16px 0 0;
-  padding: 28px;
+  border-bottom: 1px solid var(--line, var(--color-border-default));
+  border-radius: 18px 18px 0 0;
+  padding: 22px 22px 28px;
   > h3 {
     margin: 0;
-    padding-bottom: 12px;
+    padding-bottom: 14px;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted, #6e655c);
   }
 `;
 

@@ -1,6 +1,25 @@
 .warpper {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
+  align-items: flex-start;
   justify-content: center;
-  padding-top: 26px;
+  gap: 28px 36px;
+  padding-top: 28px;
+}
+
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: space-between;
+  padding-top: 36px;
+  width: 100%;
+}
+
+.controls {
+  flex: 1 1 280px;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  min-width: 240px;
 }

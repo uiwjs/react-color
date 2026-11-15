@@ -1,54 +1,35 @@
-import GitHubCorners from '@uiw/react-github-corners';
-import { BACKGROUND_IMG } from '@uiw/react-color';
-import { useEffect, useReducer } from 'react';
-import { Outlet, ScrollRestoration } from 'react-router-dom';
+import type { CSSProperties } from 'react';
+import { useReducer } from 'react';
+import { Outlet, ScrollRestoration, useLocation } from 'react-router-dom';
 import { hsvaToHslaString } from '@uiw/react-color';
 import '@wcj/dark-mode';
-import styled from 'styled-components';
 import { reducer, Context, defaultContext } from '../Store';
 import { routes } from '../router';
 import Header from '../components/Header';
 
-const Wrapper = styled.div`
-  transition: background-color 0.3s ease 0s;
-  min-height: 100vh;
-  dark-mode {
-    font-size: 18px;
-    position: fixed;
-    top: 10px;
-    left: 10px;
-  }
-`;
-
-const Version = styled.div`
-  position: fixed;
-  left: 88px;
-  top: 12px;
-  background: var(--color-theme-bg);
-  border-radius: 3px;
-  padding: 0px 6px;
-`;
-
 export default function Root() {
+  const location = useLocation();
   const [state, dispatch] = useReducer(reducer, defaultContext);
-  useEffect(() => {
-    document.body.style.background = `url(${BACKGROUND_IMG}) left center`;
-    document.body.style.backgroundAttachment = 'fixed';
-  }, []);
-  const hsva = state.hsva;
-  useEffect(() => {
-    document.documentElement.style.backgroundColor = hsvaToHslaString(hsva);
-  }, [hsva]);
+  const accent = hsvaToHslaString({ ...state.hsva, a: 1 });
+  const style = { '--accent': accent } as CSSProperties;
   return (
     <Context.Provider value={{ ...state, dispatch }}>
-      <Wrapper style={{ backgroundColor: hsvaToHslaString(state.hsva) }}>
-        <dark-mode permanent light="Dark" dark="Light"></dark-mode>
-        <Version>v{VERSION}</Version>
-        <GitHubCorners fixed zIndex={99} size={60} target="__blank" href="https://github.com/uiwjs/react-color" />
+      <div className="shell" style={style}>
         <Header menus={routes.children || []} />
-        <Outlet />
+        {location.pathname === '/' && (
+          <section className="hero">
+            <p className="hero-kicker">Color picker widgets</p>
+            <h1>Tiny pickers for React apps</h1>
+            <p>
+              Install one component, or compose the sliders, inputs, and swatches yourself. Every page below uses the same color.
+            </p>
+          </section>
+        )}
+        <main className="content">
+          <Outlet />
+        </main>
         <ScrollRestoration />
-      </Wrapper>
+      </div>
     </Context.Provider>
   );
 }

@@ -1,100 +1,107 @@
-import { NavLink } from 'react-router-dom';
-import Sketch from '@uiw/react-color-sketch';
-import { useContext } from 'react';
-import styled from 'styled-components';
+import { memo, useEffect, useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import { MenuRouteObject } from '../router';
-import { ReactComponent as Home } from '../assets/home.svg';
-import { Context } from '../Store';
-
-const Detail = styled.div`
-  text-align: center;
-  max-width: 560px;
-  margin: 0 auto;
-  > span {
-    background-color: var(--color-theme-bg);
-    padding: 0 5px;
-  }
-`;
-const Logo = styled.div`
-  text-align: center;
-  font-size: 124px;
-  padding: 100px 0 32px 0;
-`;
-const HeaderWrapper = styled.header`
-  max-width: 860px;
-  margin: 0 auto;
-  padding: 21px 0;
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  a {
-    margin: 6px 10px;
-    padding: 5px 10px;
-    background-color: #e6e6e6;
-    box-shadow: rgb(0 0 0 / 15%) 0px 3px 12px;
-    border-radius: 5px;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    color: #333;
-    transition: background-color 0.3s;
-    &.comps {
-      background: #10b316;
-      color: white !important;
-    }
-    &.active {
-      color: white;
-      background: #333 !important;
-    }
-    svg {
-      margin-right: 5px;
-    }
-  }
-`;
 
 interface HeaderProps {
   menus: MenuRouteObject[];
 }
 
-const Toolbar = () => {
-  const { hsva, dispatch } = useContext(Context);
-  return (
-    <Sketch
-      color={hsva}
-      style={{ margin: '20px auto 0 auto' }}
-      onChange={(color) => {
-        dispatch!({ hsva: { ...hsva, ...color.hsva } });
-      }}
-    />
-  );
-};
+interface NavItem {
+  path: string;
+  label: string;
+  isComp?: boolean;
+}
 
-export default function Header(props: HeaderProps) {
+function toNavItem(item: MenuRouteObject): NavItem | null {
+  if (!item.path || !item.label) {
+    return null;
+  }
+  return { path: item.path, label: item.label, isComp: item.isComp };
+}
+
+function Header(props: HeaderProps) {
   const { menus } = props;
+  const location = useLocation();
+  const [pressed, setPressed] = useState<string | null>(null);
+  const items = menus.map(toNavItem).filter((item): item is NavItem => item !== null);
+  const pickers = items.filter((item) => item.isComp);
+  const parts = items.filter((item) => item.path !== '/' && !item.isComp);
+  const pending = pressed && pressed !== location.pathname ? pressed : null;
+
+  useEffect(() => {
+    setPressed(null);
+  }, [location.pathname]);
+
+  const markPressed = (path: string) => {
+    if (path !== location.pathname) {
+      setPressed(path);
+    }
+  };
+
   return (
-    <div>
-      <Logo>🎨</Logo>
-      <Detail>
-        <span>
-          <b>react-color</b> is a tiny color picker widget component for react apps. These components can be installed and used
-          separately.
-        </span>
-        <Toolbar />
-      </Detail>
-      <HeaderWrapper>
-        {menus.map((item, idx) => {
-          if (!item.path) {
-            return null;
-          }
+    <header className="topbar">
+      <div className="topbar-row">
+        <NavLink
+          to="/"
+          end
+          discover="none"
+          className="brand"
+          onPointerDown={() => markPressed('/')}
+          onClick={() => markPressed('/')}
+        >
+          <span className="brand-mark" aria-hidden="true" />
+          <span className="brand-copy">
+            <strong>react-color</strong>
+            <em>v{VERSION}</em>
+          </span>
+        </NavLink>
+        <div className="topbar-tools">
+          <dark-mode permanent light="Dark" dark="Light"></dark-mode>
+          <a className="github-link" href="https://github.com/uiwjs/react-color" target="_blank" rel="noreferrer">
+            GitHub
+          </a>
+        </div>
+      </div>
+      <nav className="site-nav" aria-label="Components" aria-busy={pending ? true : undefined}>
+        <NavGroup title="Pickers" items={pickers} pending={pending} onPress={markPressed} />
+        <NavGroup title="Parts" items={parts} pending={pending} onPress={markPressed} />
+      </nav>
+      {pending && (
+        <div className="nav-progress" role="progressbar" aria-label="Loading page">
+          <span />
+        </div>
+      )}
+    </header>
+  );
+}
+
+function NavGroup(props: { title: string; items: NavItem[]; pending: string | null; onPress: (path: string) => void }) {
+  const { title, items, pending, onPress } = props;
+  return (
+    <div className="nav-group">
+      <span className="nav-group-title">{title}</span>
+      <div className="nav-links">
+        {items.map((item) => {
+          const current = pending === item.path;
           return (
-            <NavLink key={idx} to={item.path} prefetch="render" className={item.isComp ? 'comps' : ''}>
-              {item.path === '/' && <Home />}
-              <span>{item.label}</span>
+            <NavLink
+              key={item.path}
+              to={item.path}
+              end
+              discover="none"
+              className={({ isActive }) =>
+                ['site-link', item.isComp ? 'is-picker' : '', isActive || current ? 'is-current' : ''].filter(Boolean).join(' ')
+              }
+              onPointerDown={() => onPress(item.path)}
+              onClick={() => onPress(item.path)}
+            >
+              {item.label}
             </NavLink>
           );
         })}
-      </HeaderWrapper>
+      </div>
     </div>
   );
 }
+
+export default memo(Header);

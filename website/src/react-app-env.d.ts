@@ -7,6 +7,16 @@ declare module '*.module.less' {
 
 declare var VERSION: string;
 
+declare namespace JSX {
+  interface IntrinsicElements {
+    'dark-mode': React.DetailedHTMLAttributes<HTMLElement> & {
+      permanent?: boolean;
+      light?: string;
+      dark?: string;
+    };
+  }
+}
+
 declare module '*.md' {
   import { CodeBlockData } from 'markdown-react-code-preview-loader';
   const src: CodeBlockData;
