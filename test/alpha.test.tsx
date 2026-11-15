@@ -250,3 +250,197 @@ it('Alpha reverse maps vertical top to 0 and bottom to 1', async () => {
   expect(handleChange).toHaveBeenNthCalledWith(1, { a: 0, h: 0, s: 0, v: 68 }, expect.objectContaining({ top: 0 }));
   expect(handleChange).toHaveBeenNthCalledWith(2, { a: 1, h: 0, s: 0, v: 68 }, expect.objectContaining({ top: 1 }));
 });
+
+function pressKey(elm: HTMLElement, key: string) {
+  const event = new KeyboardEvent('keydown', { key, bubbles: true, cancelable: true });
+  elm.dispatchEvent(event);
+  return event;
+}
+
+function lastAlphaCall(handleChange: jest.Mock) {
+  const [color, offset] = handleChange.mock.calls.at(-1);
+  return { color, offset };
+}
+
+it('Alpha keyboard adjusts horizontal alpha and ignores the other axis', () => {
+  const handleChange = jest.fn();
+  const hsva = { h: 10, s: 20, v: 30, a: 0.5 };
+  const { rerender } = render(<Alpha innerProps={{ title: 'alpha-keys' }} hsva={hsva} onChange={handleChange} />);
+  const elm = screen.getByTitle('alpha-keys');
+
+  expect(pressKey(elm, 'ArrowLeft').defaultPrevented).toBe(true);
+  let { color, offset } = lastAlphaCall(handleChange);
+  expect(color).toMatchObject({ h: 10, s: 20, v: 30 });
+  expect(color.a).toBeCloseTo(0.49);
+  expect(offset.left).toBeCloseTo(0.49);
+  expect(offset.top).toBe(0.5);
+  expect(offset).toMatchObject({ width: 0, height: 0, x: 0, y: 0 });
+
+  expect(pressKey(elm, 'ArrowRight').defaultPrevented).toBe(true);
+  ({ color, offset } = lastAlphaCall(handleChange));
+  expect(color.a).toBeCloseTo(0.51);
+  expect(offset.left).toBeCloseTo(0.51);
+  expect(offset.top).toBe(0.5);
+
+  expect(pressKey(elm, 'ArrowUp').defaultPrevented).toBe(false);
+  expect(pressKey(elm, 'ArrowDown').defaultPrevented).toBe(false);
+  expect(pressKey(elm, 'Enter').defaultPrevented).toBe(false);
+  expect(handleChange).toHaveBeenCalledTimes(2);
+
+  rerender(<Alpha innerProps={{ title: 'alpha-keys' }} hsva={{ ...hsva, a: 0 }} onChange={handleChange} />);
+  pressKey(elm, 'ArrowLeft');
+  rerender(<Alpha innerProps={{ title: 'alpha-keys' }} hsva={{ ...hsva, a: 1 }} onChange={handleChange} />);
+  pressKey(elm, 'ArrowRight');
+  expect(handleChange).toHaveBeenCalledTimes(2);
+});
+
+it('Alpha reverse keyboard flips horizontal arrows and clamps the ends', () => {
+  const handleChange = jest.fn();
+  const hsva = { h: 10, s: 20, v: 30, a: 0.5 };
+  const { rerender } = render(<Alpha reverse innerProps={{ title: 'alpha-reverse-keys' }} hsva={hsva} onChange={handleChange} />);
+  const elm = screen.getByTitle('alpha-reverse-keys');
+
+  expect(pressKey(elm, 'ArrowLeft').defaultPrevented).toBe(true);
+  let { color, offset } = lastAlphaCall(handleChange);
+  expect(color.a).toBeCloseTo(0.51);
+  expect(offset.left).toBeCloseTo(0.49);
+  expect(offset.top).toBe(0.5);
+
+  expect(pressKey(elm, 'ArrowRight').defaultPrevented).toBe(true);
+  ({ color, offset } = lastAlphaCall(handleChange));
+  expect(color.a).toBeCloseTo(0.49);
+  expect(offset.left).toBeCloseTo(0.51);
+
+  rerender(<Alpha reverse innerProps={{ title: 'alpha-reverse-keys' }} hsva={{ ...hsva, a: 1 }} onChange={handleChange} />);
+  pressKey(elm, 'ArrowLeft');
+  rerender(<Alpha reverse innerProps={{ title: 'alpha-reverse-keys' }} hsva={{ ...hsva, a: 0 }} onChange={handleChange} />);
+  pressKey(elm, 'ArrowRight');
+  expect(handleChange).toHaveBeenCalledTimes(2);
+});
+
+it('Alpha keyboard adjusts vertical alpha and ignores horizontal arrows', () => {
+  const handleChange = jest.fn();
+  const hsva = { h: 10, s: 20, v: 30, a: 0.5 };
+  const { rerender } = render(
+    <Alpha direction="vertical" innerProps={{ title: 'alpha-vertical-keys' }} hsva={hsva} onChange={handleChange} />,
+  );
+  const elm = screen.getByTitle('alpha-vertical-keys');
+
+  expect(pressKey(elm, 'ArrowUp').defaultPrevented).toBe(true);
+  let { color, offset } = lastAlphaCall(handleChange);
+  expect(color.a).toBeCloseTo(0.51);
+  expect(offset.top).toBeCloseTo(0.49);
+  expect(offset.left).toBe(0.5);
+
+  expect(pressKey(elm, 'ArrowDown').defaultPrevented).toBe(true);
+  ({ color, offset } = lastAlphaCall(handleChange));
+  expect(color.a).toBeCloseTo(0.49);
+  expect(offset.top).toBeCloseTo(0.51);
+  expect(offset.left).toBe(0.5);
+
+  expect(pressKey(elm, 'ArrowLeft').defaultPrevented).toBe(false);
+  expect(pressKey(elm, 'ArrowRight').defaultPrevented).toBe(false);
+  expect(handleChange).toHaveBeenCalledTimes(2);
+
+  rerender(
+    <Alpha direction="vertical" innerProps={{ title: 'alpha-vertical-keys' }} hsva={{ ...hsva, a: 1 }} onChange={handleChange} />,
+  );
+  pressKey(elm, 'ArrowUp');
+  rerender(
+    <Alpha direction="vertical" innerProps={{ title: 'alpha-vertical-keys' }} hsva={{ ...hsva, a: 0 }} onChange={handleChange} />,
+  );
+  pressKey(elm, 'ArrowDown');
+  expect(handleChange).toHaveBeenCalledTimes(2);
+});
+
+it('Alpha reverse keyboard flips vertical arrows and clamps the ends', () => {
+  const handleChange = jest.fn();
+  const hsva = { h: 10, s: 20, v: 30, a: 0.5 };
+  const { rerender } = render(
+    <Alpha
+      reverse
+      direction="vertical"
+      innerProps={{ title: 'alpha-reverse-vertical-keys' }}
+      hsva={hsva}
+      onChange={handleChange}
+    />,
+  );
+  const elm = screen.getByTitle('alpha-reverse-vertical-keys');
+
+  expect(pressKey(elm, 'ArrowUp').defaultPrevented).toBe(true);
+  let { color, offset } = lastAlphaCall(handleChange);
+  expect(color.a).toBeCloseTo(0.49);
+  expect(offset.top).toBeCloseTo(0.49);
+  expect(offset.left).toBe(0.5);
+
+  expect(pressKey(elm, 'ArrowDown').defaultPrevented).toBe(true);
+  ({ color, offset } = lastAlphaCall(handleChange));
+  expect(color.a).toBeCloseTo(0.51);
+  expect(offset.top).toBeCloseTo(0.51);
+
+  rerender(
+    <Alpha
+      reverse
+      direction="vertical"
+      innerProps={{ title: 'alpha-reverse-vertical-keys' }}
+      hsva={{ ...hsva, a: 0 }}
+      onChange={handleChange}
+    />,
+  );
+  pressKey(elm, 'ArrowUp');
+  rerender(
+    <Alpha
+      reverse
+      direction="vertical"
+      innerProps={{ title: 'alpha-reverse-vertical-keys' }}
+      hsva={{ ...hsva, a: 1 }}
+      onChange={handleChange}
+    />,
+  );
+  pressKey(elm, 'ArrowDown');
+  expect(handleChange).toHaveBeenCalledTimes(2);
+});
+
+it('Alpha keyboard does nothing when onChange is missing', () => {
+  render(<Alpha innerProps={{ title: 'alpha-no-change' }} hsva={{ h: 0, s: 0, v: 0, a: 0.4 }} />);
+  const elm = screen.getByTitle('alpha-no-change');
+  expect(pressKey(elm, 'ArrowRight').defaultPrevented).toBe(true);
+});
+
+it('Alpha focuses the clicked target', () => {
+  render(<Alpha innerProps={{ title: 'alpha-click' }} hsva={{ h: 0, s: 0, v: 68, a: 1 }} />);
+  const elm = screen.getByTitle('alpha-click');
+  fireEvent.click(elm);
+  expect(elm).toHaveFocus();
+});
+
+it('Alpha renders a custom pointer and falls back when pointer is not a function', () => {
+  const hsva = { h: 1, s: 2, v: 3, a: 0.25 };
+  const { rerender } = render(
+    <Alpha
+      hsva={hsva}
+      prefixCls="alpha"
+      pointerProps={{ className: 'extra' }}
+      pointer={({ prefixCls, left, top, className }) => (
+        <i data-testid="ptr" className={`${prefixCls} ${className || ''}`} data-left={left ?? ''} data-top={top ?? ''} />
+      )}
+    />,
+  );
+  const ptr = screen.getByTestId('ptr');
+  expect(ptr.className).toBe('alpha extra');
+  expect(ptr.getAttribute('data-left')).toBe('25%');
+  expect(ptr.getAttribute('data-top')).toBe('');
+
+  rerender(
+    <Alpha
+      hsva={hsva}
+      direction="vertical"
+      pointer={({ left, top }) => <i data-testid="ptr" data-left={left ?? ''} data-top={top ?? ''} />}
+    />,
+  );
+  expect(screen.getByTestId('ptr').getAttribute('data-top')).toBe('75%');
+  expect(screen.getByTestId('ptr').getAttribute('data-left')).toBe('');
+
+  rerender(<Alpha hsva={hsva} pointer={'x' as unknown as () => JSX.Element} />);
+  expect(document.querySelector('.w-color-alpha-pointer')).toBeInTheDocument();
+});
