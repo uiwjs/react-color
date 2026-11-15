@@ -166,3 +166,39 @@ it('Interactive forwards callback and object refs', () => {
   unmount();
   expect(objectRef.current).toBeNull();
 });
+
+it('Interactive ignores pointer events once the container ref is cleared', () => {
+  const onDown = jest.fn();
+  const onMove = jest.fn();
+  let node: HTMLDivElement | null = null;
+  const ref = (next: HTMLDivElement | null) => {
+    if (next) {
+      node = next;
+      return;
+    }
+    fireEvent(node as HTMLDivElement, new FakeMouseEvent('mousedown', { pageX: 12, pageY: 8 }));
+    fireEvent(window, new FakeMouseEvent('mousemove', { pageX: 30, pageY: 12, buttons: 1 }));
+  };
+
+  const { getByTitle, unmount } = render(<Interactive ref={ref} title="detach" onDown={onDown} onMove={onMove} />);
+  const elm = getByTitle('detach');
+  fireEvent(elm, new FakeMouseEvent('mousedown', { pageX: 10, pageY: 10 }));
+  fireEvent(window, new FakeMouseEvent('mousemove', { pageX: 20, pageY: 10, buttons: 1 }));
+  expect(onDown).toHaveBeenCalledTimes(1);
+  expect(onMove).toHaveBeenCalledTimes(1);
+
+  unmount();
+  expect(onDown).toHaveBeenCalledTimes(1);
+  expect(onMove).toHaveBeenCalledTimes(1);
+});
+
+it('Interactive ignores mousedown when the container ref is empty', () => {
+  const onDown = jest.fn();
+  const { getByTitle, unmount } = render(<Interactive title="empty-down" onDown={onDown} />);
+  const elm = getByTitle('empty-down');
+  const propsKey = Object.keys(elm).find((name) => name.startsWith('__reactProps$')) as string;
+  const props = (elm as unknown as Record<string, { onMouseDown: (event: { nativeEvent: MouseEvent }) => void }>)[propsKey];
+  unmount();
+  props.onMouseDown({ nativeEvent: new FakeMouseEvent('mousedown', { pageX: 1, pageY: 1 }) });
+  expect(onDown).not.toHaveBeenCalled();
+});
