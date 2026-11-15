@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">12.5% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/8</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">20% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/5</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">12.5% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/8</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -101,7 +101,7 @@
 <a name='L36'></a><a href='#L36'>36</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">18x</span>
+<span class="cline-any cline-yes">26x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -109,22 +109,22 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -143,23 +143,23 @@ export interface EyeDropperProps {
   onPickColor?: (color: string) =&gt; void;
 }
 &nbsp;
-export function <span class="fstat-no" title="function not covered" >EyeDropper(</span>props: EyeDropperProps) {
-  const click = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    if ('EyeDropper' in window) {</span>
-      const eyeDropper = <span class="cstat-no" title="statement not covered" >new (window as any).EyeDropper();</span>
-<span class="cstat-no" title="statement not covered" >      eyeDropper</span>
+export function EyeDropper(props: EyeDropperProps) {
+  const click = () =&gt; {
+    if ('EyeDropper' in window) {
+      const eyeDropper = new (window as any).EyeDropper();
+      eyeDropper
         .open()
-        .then(<span class="fstat-no" title="function not covered" >(r</span>esult: any) =&gt; {
-<span class="cstat-no" title="statement not covered" >          props.onPickColor?.(result.sRGBHex);</span>
+        .then((result: any) =&gt; {
+          props.onPickColor?.(result.sRGBHex);
         })
-        .catch(<span class="fstat-no" title="function not covered" >(e</span>rr: Error) =&gt; {
-<span class="cstat-no" title="statement not covered" >          if (err.name === 'AbortError') {</span>
+        .catch((err: Error) =&gt; {
+          if (err.name === 'AbortError') {
           } else {
           }
         });
     }
   };
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  return (
     &lt;svg viewBox="0 0 512 512" height="1em" width="1em" onClick={click}&gt;
       &lt;path
         fill="currentColor"
@@ -175,7 +175,7 @@ export function <span class="fstat-no" title="function not covered" >EyeDropper(
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-11-15T04:13:22.980Z
+                at 2026-11-15T05:16:06.046Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
