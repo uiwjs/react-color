@@ -40,6 +40,23 @@ it('Converts color => hslString To Hsl', () => {
   expect(hslStringToHsla('')).toEqual({ h: undefined, s: undefined, l: undefined, a: undefined });
   expect(hslStringToHsla('hsl(50, 10%, 10%)')).toEqual({ h: 50, s: 10, l: 10 });
   expect(hslStringToHsla('hsl(49deg 90% 65% / 39%)')).toEqual({ h: 49, s: 90, l: 65, a: 39 });
+  // Strings produced by `hsvaToHslaString`, plus decimals, signed hues, and CSS angle units.
+  expect(hslStringToHsla(hsvaToHslaString({ h: 200, s: 40, v: 40, a: 0.5 }))).toEqual({
+    h: 200,
+    s: 25,
+    l: 32,
+    a: 0.5,
+  });
+  expect(hslStringToHsla('hsl(120.5, 50%, 50%)')).toEqual({ h: 120.5, s: 50, l: 50 });
+  expect(hslStringToHsla('hsl(120.5, 50.5%, 49.25%)')).toEqual({ h: 120.5, s: 50.5, l: 49.25 });
+  expect(hslStringToHsla('hsl(-30, 50%, 50%)')).toEqual({ h: -30, s: 50, l: 50 });
+  expect(hslStringToHsla('hsl(-30deg, 50%, 50%)')).toEqual({ h: -30, s: 50, l: 50 });
+  expect(hslStringToHsla('hsl(-.5, 10%, 20%)')).toEqual({ h: -0.5, s: 10, l: 20 });
+  expect(hslStringToHsla('hsla(.5turn 25% 32% / 0.5)')).toEqual({ h: 180, s: 25, l: 32, a: 0.5 });
+  expect(hslStringToHsla('hsl(100grad, 50%, 50%)')).toEqual({ h: 90, s: 50, l: 50 });
+  expect(hslStringToHsla('hsl(1.5708rad, 20%, 10%)')).toEqual({ h: 90.00021045914971, s: 20, l: 10 });
+  expect(hslStringToHsla('hsl(120.5 50% 50% / 0.25)')).toEqual({ h: 120.5, s: 50, l: 50, a: 0.25 });
+  expect(hslStringToHsla('hsla(0, 0%, 0%, 0)')).toEqual({ h: 0, s: 0, l: 0, a: 0 });
 });
 
 it('Converts color => HEX to ColorResult', () => {
@@ -225,6 +242,13 @@ it('Converts HSVA to RGBA', () => {
   test({ h: 0, s: 0, v: 100, a: 1 }, { r: 255, g: 255, b: 255, a: 1 });
   test({ h: 128, s: 0, v: 100, a: 1 }, { r: 255, g: 255, b: 255, a: 1 });
   test({ h: 0, s: 100, v: 100, a: 0.567 }, { r: 255, g: 0, b: 0, a: 0.567 });
+  // CSS <angle>: -30deg is the same hue as 330deg.
+  test({ h: -30, s: 100, v: 100, a: 1 }, { r: 255, g: 0, b: 128, a: 1 });
+  test({ h: 330, s: 100, v: 100, a: 1 }, { r: 255, g: 0, b: 128, a: 1 });
+  test({ h: -90, s: 100, v: 100, a: 0.5 }, { r: 128, g: 0, b: 255, a: 0.5 });
+  test({ h: -390, s: 100, v: 100, a: 1 }, { r: 255, g: 0, b: 128, a: 1 });
+  test({ h: -360, s: 100, v: 100, a: 1 }, { r: 255, g: 0, b: 0, a: 1 });
+  test({ h: 390, s: 100, v: 100, a: 1 }, { r: 255, g: 128, b: 0, a: 1 });
 });
 
 it('Converts RGBA to HSVA', () => {
@@ -283,6 +307,20 @@ it('Converts HSVA to RGB string', () => {
 it('Converts HSVA to RGBA string', () => {
   let test = (input: HsvaColor, output: string) => expect(hsvaToRgbaString(input)).toBe(output);
   test({ h: 200, s: 40, v: 40, a: 0.5 }, 'rgba(61, 88, 102, 0.5)');
+  test({ h: -30, s: 100, v: 100, a: 1 }, 'rgba(255, 0, 128, 1)');
+});
+
+it('Converts negative HSL/HSV hues through to RGB', () => {
+  const fromHsl = hslaStringToHsva('hsl(-30, 100%, 50%)');
+  const fromHsv = hsvaStringToHsva('hsv(-30, 100%, 100%)');
+  expect(fromHsl).toMatchObject({ h: -30, s: 100, v: 100, a: 1 });
+  expect(fromHsv).toMatchObject({ h: -30, s: 100, v: 100, a: 1 });
+  expect(hsvaToRgba(fromHsl)).toEqual({ r: 255, g: 0, b: 128, a: 1 });
+  expect(hsvaToRgbaString(fromHsl)).toBe('rgba(255, 0, 128, 1)');
+  expect(hsvaToHex(fromHsl)).toBe('#ff0080');
+  expect(hsvaToRgba(fromHsv)).toEqual({ r: 255, g: 0, b: 128, a: 1 });
+  expect(color(fromHsl).hex).toEqual('#ff0080');
+  expect(color(fromHsl).rgba).toEqual({ r: 255, g: 0, b: 128, a: 1 });
 });
 
 it('Converts RGBA string to HSVA', () => {

@@ -85,15 +85,27 @@ export const hsvaToHslaString = (hsva: HsvaColor): string => {
   return `hsla(${h}, ${s}%, ${l}%, ${a})`;
 };
 
+// Same number/unit grammar as `hslaStringToHsva`. Alpha is the raw matched number:
+// `0.5` stays `0.5`, and `39%` stays `39` (see the documented `hslStringToHsla` result).
+const hslaMatcher =
+  /hsla?\(?\s*(-?\d*\.?\d+)(deg|rad|grad|turn)?[,\s]+(-?\d*\.?\d+)%?[,\s]+(-?\d*\.?\d+)%?,?\s*[/\s]*(-?\d*\.?\d+)?(%)?\s*\)?/i;
+
 export const hslStringToHsla = (str: string): HslaColor => {
-  const [h, s, l, a] = (str.match(/\d+/g) || []).map(Number);
-  return { h, s, l, a };
+  const match = hslaMatcher.exec(str);
+  if (!match) {
+    return { h: undefined!, s: undefined!, l: undefined!, a: undefined! };
+  }
+
+  return {
+    h: parseHue(match[1], match[2]),
+    s: Number(match[3]),
+    l: Number(match[4]),
+    a: match[5] === undefined ? undefined! : Number(match[5]),
+  };
 };
 
 export const hslaStringToHsva = (hslString: string): HsvaColor => {
-  const matcher =
-    /hsla?\(?\s*(-?\d*\.?\d+)(deg|rad|grad|turn)?[,\s]+(-?\d*\.?\d+)%?[,\s]+(-?\d*\.?\d+)%?,?\s*[/\s]*(-?\d*\.?\d+)?(%)?\s*\)?/i;
-  const match = matcher.exec(hslString);
+  const match = hslaMatcher.exec(hslString);
 
   if (!match) return { h: 0, s: 0, v: 0, a: 1 };
 
@@ -224,6 +236,8 @@ export const hsvaToRgba = ({ h, s, v, a }: HsvaColor): RgbaColor => {
     _s = s / SV_MAX,
     _v = v / SV_MAX,
     hi = Math.floor(_h) % 6;
+  // `%` keeps the sign of the dividend, so a negative hue misses cases 0..5 and yields NaN channels.
+  if (hi < 0) hi += 6;
 
   let f = _h - Math.floor(_h),
     _p = RGB_MAX * _v * (1 - _s),
